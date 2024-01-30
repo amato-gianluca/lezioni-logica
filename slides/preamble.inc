@@ -11,15 +11,12 @@
 \usetikzlibrary{backgrounds, fit, calc, positioning, arrows.meta, shadows, decorations.pathreplacing}
 \usetikzlibrary{overlay-beamer-styles, tikzmark, shapes}
 
-\PassOptionsToPackage{height=1cm}{beamerouterthemesidebar}
-\usetheme{Berkeley}
+\usetheme{Madrid}
 \deftranslation[to=italian]{Definition}{Definizione}
 \deftranslation[to=italian]{Example}{Esempio}
 \deftranslation[to=italian]{Theorem}{Teorema}
 
 % !TeX spellcheck = it_IT
-
-\hypersetup{colorlinks=true,linkcolor=blue}
 
 \let\oldcheckmark\checkmark
 \newcommand{\xmark}{{\color{red}{\ding{55}}}}
@@ -42,6 +39,3 @@
 }
 
 \author[Gianluca Amato]{prof.~Gianluca Amato}
-\institute[CLEII]{Modulo di ``Logica''\\Insegnamento di ``Fondamenti di Informatica``\\
-Corso di Laurea in Economia e Informatica per l'Impresa\\a.a. 2023/24}
-\date{\today}
