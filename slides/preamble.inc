@@ -6,6 +6,7 @@
 \usepackage[normalem]{ulem}
 \usepackage{xspace}
 \usepackage{minted}
+\usepackage{qrcode}
 \usepackage{array}
 \usepackage{mathrsfs}
 \usetikzlibrary{backgrounds, fit, calc, positioning, arrows.meta, shadows, decorations.pathreplacing}
