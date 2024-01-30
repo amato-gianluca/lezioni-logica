@@ -13,6 +13,7 @@
 
 \PassOptionsToPackage{height=1cm}{beamerouterthemesidebar}
 \usetheme{Berkeley}
+\logo{\includegraphics[width=0.8cm,keepaspectratio]{udalogo.png}}
 \deftranslation[to=italian]{Definition}{Definizione}
 \deftranslation[to=italian]{Example}{Esempio}
 \deftranslation[to=italian]{Theorem}{Teorema}
