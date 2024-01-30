@@ -1,8 +1,9 @@
-\documentclass[aspectratio=169,10pt,dvipsnames,handout]{beamer}
+\documentclass[10pt,dvipsnames]{beamer}
 
-%\setbeameroption{show notes}
+\setbeameroption{show notes}
 
 \input{preamble.inc}
+\usepackage{qrcode}
 
 \title{Introduzione alla logica}
 
@@ -11,6 +12,24 @@
 \begin{frame}
 	\titlepage
 \end{frame}
+
+\begin{frame}{}
+	Lezioni basate sul libro:
+
+	\smallskip
+	\hrule
+
+	\medskip
+	Dario Palladino\\
+	\href{https://www.carocci.it/prodotto/corso-di-logica-3}{Corso di logica: introduzione elementare al calcolo dei predicati (terza edizione)}\\
+	Carocci editore\\
+
+	\bigskip
+	\centering
+	\qrcode*{https://www.carocci.it/prodotto/corso-di-logica-3}
+\end{frame}
+
+
 
 \section{Logica, inferenze e proposizioni}
 
@@ -146,7 +165,7 @@
 		\item è probabile che \ldots
 		\item sono abbastanza sicuro che \ldots
 	\end{itemize}
-	La logica si occupa anche dei casi in cui il principio di bivalenza non vale, ma non lo faremo in questo corso.
+	La logica si occupa anche dei casi in cui il principio di bivalenza non vale, ma non lo faremo in queste lezioni.
 \end{frame}
 
 %
@@ -569,7 +588,7 @@
 	Abbiamo trovato un \alert{controesempio}. L'inferenza non è corretta.
 
 	\medskip
-	Ed infatti, se ci pensiamo bene, non è corretta neanche la prima regola di inferenza: magari non sono un ladro, ma devo essere punito per qualche altro motivo.
+	Ed infatti, se ci pensiamo bene, non è corretta neanche la prima inferenza: magari non sono un ladro, ma devo essere punito per qualche altro motivo.
 \end{frame}
 
 \begin{frame}{Fallacia dell'affermazione del conseguente (1)}
@@ -615,10 +634,10 @@
 	Abbiamo trovato un \alert{controesempio}. L'inferenza non è corretta.
 
 	\medskip
-	Ed infatti, se ci pensiamo bene, non è corretta neanche la prima regola di inferenza: magari l'auto non parte perché è scarica la batteria.
+	Ed infatti, se ci pensiamo bene, non è corretta neanche la prima inferenza: magari l'auto non parte perché è scarica la batteria.
 \end{frame}
 
-\note{Esercizi Intro.1, Intro.4, Intro.7}
+%\note{Esercizi Intro.1, Intro.4, Intro.7}
 
 \section{Logica dei predicati}
 
