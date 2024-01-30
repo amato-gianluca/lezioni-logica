@@ -1,0 +1,985 @@
+\documentclass[aspectratio=169,10pt,dvipsnames,handout]{beamer}
+
+%\setbeameroption{show notes}
+
+\input{preamble.inc}
+
+\title{Introduzione alla logica}
+
+\begin{document}
+
+\begin{frame}
+	\titlepage
+\end{frame}
+
+\section{Logica, inferenze e proposizioni}
+
+\begin{frame}{Cos'è la logica}
+	\begin{definition}[Logica]
+		La \alert{logica} (dal greco \textit{logos}, ovvero ``parola'', ``pensiero'') è lo studio del ragionamento.
+	\end{definition}
+	\begin{example}[Esempi di ragionamento]
+		\begin{columns}
+			\column{0.5\textwidth}
+			\centering
+
+			Tutti gli uomini sono mortali.\\
+			Socrate è un uomo.\\
+			Dunque Socrate è mortale.\\[0.6cm]
+			Ogni numero intero è o pari o dispari\\
+			Il numero intero 3 non è pari\\
+			Dunque 3 è dispari.
+			\column{0.5\textwidth}
+			\centering
+			\includegraphics[width=2cm,keepaspectratio]{logica.png}\\
+			\alert{Sono ragionamenti corretti?}
+		\end{columns}
+	\end{example}
+	\begin{block}{Nota}
+		Esistono varie forme di ragionamento, qui siamo interessati al \alert{ragionamento deduttivo}.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Inferenze}
+	La forma principale del ragionamento è quella dell'\alert{inferenza}.
+	\begin{definition}[Inferenza]
+		Una \alert{inferenza} è una sequenza di \alert{proposizioni} di cui l'ultima è ottenuta come \alert{conclusione} delle rimanenti, che si assumono come \alert{premesse}.
+	\end{definition}
+	\begin{example}
+		\[
+			\begin{tikzpicture}
+				\tikzset{
+					fillstyle/.style={rounded corners, draw=black},
+					greenstyle/.style={fillstyle,fill=green!50},
+					redstyle/.style={fillstyle,fill=red!50},
+					bluestyle/.style={fillstyle,fill=blue!50},
+					yellowstyle/.style={fillstyle,fill=yellow!50}
+				}
+				\clip (-6cm, -3cm) rectangle (6cm, 0.5cm);
+				\node (p1) {Tutti gli uomini sono mortali.};
+				\node (p2) [below of=p1] {Socrate è un uomo.};
+				\node (c) [below of=p2] {Socrate è mortale.};
+				\begin{scope}[on background layer]
+					\only<2->{\node (inf) [greenstyle, fit={(p1) (p2) (c)}, inner sep=0.5cm] {};}
+					\only<4->{\node (premises) [redstyle, fit={(p1) (p2)},  inner sep=0.2cm] {};}
+					\only<5->{\node (conclusion) [yellowstyle, fit={(c)},  inner sep=0.2cm] {};}
+					\only<3->{\node (prop1) [bluestyle, fit={(p1)},  inner sep=-0.05cm] {};}
+					\only<3->{\node (prop2) [bluestyle, fit={(p2)},  inner sep=-0.05cm] {};}
+					\only<3->{\node (prop3) [bluestyle, fit={(c)},  inner sep=-0.05cm] {};}
+				\end{scope}
+				\draw ($(c.west) + (-1cm,0.5cm)$) -- ($(c.east) + (1cm,0.5cm)$);
+				\only<2->{
+					\draw (inf) ++ (-4.5cm,0cm)  node (inflabel) [greenstyle] {Inferenza};
+					\draw [thick, ->] (inflabel) -- (inf.west);
+				}
+				\only<4->{
+					\draw (premises) ++ (-4.5cm,0cm)  node (premiseslabel) [redstyle] {Premesse};
+					\draw [thick, ->] (premiseslabel) -- (premises.west);
+				}
+				\only<5->{
+					\draw (conclusion) ++ (-4.5cm,0cm)  node (conclusionlabel) [yellowstyle] {Conclusione};
+					\draw [thick, ->] (conclusionlabel) -- (conclusion.west);
+				}
+				\only<3->{
+					\draw (prop2) ++ (+4.5cm,0cm)  node (proplabel) [bluestyle] {Proposizioni};
+					\draw [thick, ->] (proplabel) -- (prop1.east);
+					\draw [thick, ->] (proplabel) -- (prop2.east);
+					\draw [thick, ->] (proplabel) -- (prop3.east);
+				}
+			\end{tikzpicture}
+		\]
+	\end{example}
+\end{frame}
+
+\begin{frame}{Proposizioni}
+	\begin{definition}[Proposizione]
+		Una \alert{proposizione} è una qualsiasi espressione linguistica per la quale ha senso chiedersi se sia vera o falsa.
+	\end{definition}
+	\begin{example}[Proposizioni \checkmark o no? \xmark]
+		\begin{itemize}
+			\item Elisa ama Massimo \pause \checkmark
+			\item Elisa ama Massimo? \pause \xmark\ (è una \emph{domanda})
+			\item $4 + 2 = 6$ \pause  \checkmark
+			\item $4 + 2 = 5$ \pause \checkmark (è falsa, ma è comunque una proposizione)
+			\item $3 + 5^2$ \pause \ \xmark \ (è una \emph{descrizione})
+			\item Tutti gli uomini sono mortali \pause \checkmark
+			\item Lazzaro, alzati e cammina! \pause \xmark \ (è un \emph{ordine})
+			\item Quel ramo del lago di Como che volge a mezzogiorno \pause \xmark \ (è una \emph{descrizione})
+		\end{itemize}
+	\end{example}
+\end{frame}
+
+% \begin{frame}{Proposizioni}
+% 	\begin{definition}[Proposizione]
+% 		Una \alert{proposizione} è una qualsiasi espressione linguistica per la quale ha senso chiedersi se sia vera o falsa.
+% 	\end{definition}
+% 	Non è necessario che sappiamo dire veramente se una proposizione è vera o falsa.
+
+% 	\begin{example}[Mancanza di contesto]
+% 		\emph{Luigi è più alto di Michele.}
+
+% 		\medskip
+% 		Se non sappiamo a chi ci riferiamo con Luigi e Michele, non sappiamo le proposizione è vera o falsa.
+% 	\end{example}
+
+% 	\begin{example}[Congettura di Goldbach]
+% 		\emph{Ogni numero pari maggiore di 2 può essere scritto come somma di due numeri primi (eventualmente uguali).}
+
+% 		\medskip
+% 		È stata verificata al calcolatore fino a  $4 \cdot 10^{18}$, ma nessuno è mai riuscito a dimostrarla.
+% 	\end{example}
+% \end{frame}
+
+
+\begin{frame}{Valori di verità}
+	% Se una proposizione è vera, diciamo anche che assume il \alert{valore di verità} vero (\alert{V}). Analogamente, se una proposizione è falsa, diciamo anche che assume il \alert{valore di verità} falso (\alert{F}).
+	\begin{definition}[Principio di bivalenza]
+		Una proposizione può assumere uno e uno solo dei due \alert{valori di verità}:
+		\begin{itemize}
+			\item vero (\alert{V}), oppure true in inglese (\alert{T})
+			\item falso (\alert{F}), oppure false in inglese (\alert{F})
+		\end{itemize}
+	\end{definition}
+	Nella vita quotidiana, questo principio non sempre si applica:
+	\begin{itemize}
+		\item è quasi certo che \ldots
+		\item è probabile che \ldots
+		\item sono abbastanza sicuro che \ldots
+	\end{itemize}
+	La logica si occupa anche dei casi in cui il principio di bivalenza non vale, ma non lo faremo in questo corso.
+\end{frame}
+
+%
+%\begin{frame}{Introduciamo qualche simbolo}
+%	\textbf{Variabili per proposizioni}\\
+%	Quando vogliamo indicare una proposizione senza specificarla esattamente, useremo le lettere maiuscole: $A$, $B$, $C$, \ldots, $P$, \ldots.
+%
+%	\medskip
+%	\textbf{Indicatore di conclusiome}\\
+%	Invece di usare parole come ``dunque'' o ``allora'' per indicare la conclusione di una  inferenza, utilizzeremo una linea orizzontale che separi premesse da conclusione.
+%
+%	\begin{center}
+%	\begin{inference}
+%	Tutti gli uomini sono mortali\\
+%	Socrate è un uomo\\
+%	\hline
+%	Socrate è mortale
+%	\end{inference}
+%	\end{center}
+%\end{frame}
+
+% \begin{frame}{Conseguenza logica}
+% 	\begin{definition}[Conseguenza logica]
+% 		Una proposizione $C$ è \alert{conseguenza logica} delle (o \alert{segue logicamente} dalle) proposizioni $P_1, \ldots, P_n$ qualora ogni volta che le proposizioni $P_1, \ldots, P_n$ sono vere, anche la conclusione $C$ sarà necessariamente vera.
+% 	\end{definition}
+% 	\begin{example}[Conseguenza logica]
+% 		Sia
+% 		\begin{itemize}
+% 			\item $P_1 = $ ``Carlo è ligure o Stefano è piemontese''
+% 			\item $P_2 = $ ``Stefano non è piemontese''
+% 			\item $C = $ ``Carlo è ligure''
+% 		\end{itemize}
+% 		Allora \alert{$C$ à conseguenza logica di $P_1$ e $P_2$}.
+% 	\end{example}
+% 	\begin{block}{Nota}
+% 		In alternativa, possiamo dire che $C$ è \alert{conseguenza logica} delle proposizioni $P_1, \ldots, P_n$ qualore è impossibile che $P_1, \ldots, P_n$ siano tutte vere e nello stesso tempo $C$ sia falsa.
+% 	\end{block}
+% \end{frame}
+
+\begin{frame}{Inferenze corrette}
+	\begin{definition}[Inferenza  corretta]
+		Una inferenza è \alert{corretta} (o \alert{valida}) se ogni qualvolta le premesse sono vere, allora è necessariamente
+		vera anche la conclusione.
+	\end{definition}
+	\begin{example}[Inferenza corretta]
+		% \begin{inference}
+		% 	Carlo è ligure o Stefano è piemontese\\
+		% 	Stefano non è piemontese\\
+		% 	Dunque, Carlo è ligure
+		% \end{inference}
+
+		% \medskip
+		% $\Big\Downarrow$\rlap{ che in futuro scriveremo come}
+
+		% \medskip
+		\begin{center}
+			\begin{inference}
+				Carlo è ligure o Stefano è piemontese\\
+				Stefano non è piemontese\\
+				\hline
+				Carlo è ligure
+			\end{inference}
+		\end{center}
+	\end{example}
+	\begin{block}{Nota}
+		In alternativa, possiamo dire che l'inferenza è corretta quando è impossibile che le premesse siano vere e la conclusione falsa.
+	\end{block}
+\end{frame}
+
+\begin{frame}{Inferenze e contesto}
+	Non si considerano corrette inferenze che dipendono dalla conoscenza del contesto.
+	\begin{example}[Inferenza non corretta]
+		\begin{columns}
+			\begin{column}{0.3\textwidth}
+				\begin{center}
+					\begin{inference}
+						Marco è pescarese\\
+						\hline
+						Marco è abruzzese
+					\end{inference}
+				\end{center}
+				\vspace{0.1cm}
+			\end{column}
+			\begin{column}{0.6\textwidth}
+				\pause
+				dipende dal significato di pescarese e abruzzese
+			\end{column}
+		\end{columns}
+	\end{example}
+	\pause
+	La si può rendere corretta esplicitando le assunzioni di fondo:
+	\begin{example}[Inferenza corretta]
+		\begin{center}
+		\begin{inference}
+				Marco è pescarese\\
+				\textcolor{blue}{Tutti i pescaresi sono abruzzesi}\\
+				\hline
+				Marco è abruzzese
+		\end{inference}
+		\end{center}
+		\vspace{0.1cm}
+	\end{example}
+\end{frame}
+
+%\begin{frame}{Inferenze e struttura sintattica (1)}
+%		\begin{example}[Inferenza corretta]
+%			\centering
+%		\begin{inference}
+%			Carlo è ligure o Stefano è piemontese\\
+%			Stefano non è piemontese\\
+%			\hline
+%			Carlo è ligure
+%		\end{inference}
+%	\end{example}
+%
+%	\medskip
+%	Per stabilire che l'inferenza di prima è corretta, non è necessario che conosciamo Carlo o Stefano. La correttezza dipende solo dalla \alert{struttura sintattica} delle proposizioni.
+%
+%	\medskip
+%	In questo caso, la prima premessa dice che una tra due affermazioni (Carlo è ligure, oppure Stefano è piemontese) è vera. La seconda premessa dice che la seconda affermazione (Stefano è piemontese) è vera. Quindi, se le premesse sono entrambe vere, non può che essere vera la prima affermazione (Carlo è ligure).
+%\end{frame}
+
+\section{Regole di inferenza}
+
+\begin{frame}{Inferenze e struttura sintattica}
+	Se rimpiazziamo ``Carlo è ligure'' e ``Stefano è piemontese'' con altre proposizioni, otteniamo altre inferenze corrette: quella che importa è solo la struttura sintattica delle proposizioni, chiamata \alert{forma logica}.
+	\begin{example}
+		\centering
+		\begin{inference}
+			Carlo è ligure o Stefano è piemontese\\
+			Stefano non è piemontese\\
+			\hline
+			Carlo è ligure
+		\end{inference}
+
+		\medskip
+		\begin{inference}
+			Il maggiordomo è colpevole o la cameriera è colpevole.\\
+			La cameriera non è colpevole\\
+			\hline
+			Il maggiordomo è colpevole
+		\end{inference}
+
+		\medskip
+		% \begin{inference}
+		% 	Marcello è matematico o fisico\\
+		% 	Marcello non è fisico\\
+		% 	\hline
+		% 	Marcello è matematico
+		% \end{inference}
+		\begin{inference}
+			Due buchi neri si sono scontrati,\hspace{6cm}\hfill\\ \hfill o il rivelatore di onde gravitazionali è rotto.\\
+			Il rivelatore di onde gravitazionali non è rotto.\\
+			\hline
+			Due buchi neri si sono scontrati.
+		\end{inference}
+	\end{example}
+	%\small Per l'ultima inferenza, notate che dire ``Marcello è matematico o fisico'' è solo un modo compatto per dire ``Marcello è matematico o Marcello è fisico''.
+\end{frame}
+
+% \begin{frame}{Inferenze e struttura sintattica (2)}
+% 	Un esempio ancora più complesso:
+% 	\begin{example}
+% 		\begin{inference}
+% 			O due buchi neri si sono scontrati,\hspace{6cm}\hfill\\ \hfill oppure il rivelatore di onde gravitazionali è rotto.\\
+% 			Il rivelatore di onde gravitazionali non è rotto.\\
+% 			\hline
+% 			Due buchi neri si sono scontrati.
+% 		\end{inference}
+% 	\end{example}
+% 	Se un fisico vi desse questa spiegazione del suo esperimento, potreste anche
+% 	domandarvi perplessi cosa siano le onde gravitazionali, ma non avreste difficoltà
+% 	a seguire la logica del suo ragionamento.
+
+% 	\pause
+% 	\begin{block}{Osservazione}
+% 		La correttezza di una inferenza non dipende dalla verità delle proposizioni che la compongono, ma dalla sua ``forma logica''.
+% 	\end{block}
+% \end{frame}
+
+\begin{frame}{Regole di inferenza}
+	Mettiamo in evidenza la \alert{forma logica} dell'inferenza.
+	\begin{itemize}
+		\item usiamo delle \alert{lettere proposizionali}, al posto delle proposizioni;
+		\item lasciamo invariante parole chiavi come ``o'' e ``non'', chiamate \alert{connettivi}.
+	\end{itemize}
+	\begin{example}[Forma logica]
+		Se si pone \textit{A=``Carlo è ligure''} e \textit{B=``Stefano è piemontese''}:
+		\[
+			\begin{tikzpicture}[remember picture]
+				\node (carlo) {\begin{inference}
+						Carlo è ligure o Stefano è piemontese\\
+						Stefano non è piemontese\\
+						\hline
+						Carlo è ligure
+					\end{inference}
+				};
+				\node (disj) [right=of carlo] {
+					\begin{inference}
+						A o B\\
+						non B\\
+						\hline
+						A
+					\end{inference}
+				};
+				\draw [-{Latex[width=3mm]},very thick] (carlo) -- (disj);
+			\end{tikzpicture}
+		\]
+	\end{example}
+	\pause
+	\begin{definition}[Regola di inferenza]
+		Una inferenza in cui usiamo \alert{lettere proposizionali}  invece di proposizioni vere e proprie prende il nome di \alert{regola di inferenza}.
+		\begin{tikzpicture}[overlay, remember picture]
+			\draw [red, thick] (disj) circle (0.8cm);
+			\path (disj) ++ (1.6cm,1cm) node [red] {Regola di inferenza};
+		\end{tikzpicture}
+	\end{definition}
+\end{frame}
+
+\begin{frame}{Regole di inferenza corrette}
+	Una regola di inferenza rappresenta tutte le inferenze che si possono ottenere rimpiazzando le lettere proposizionali con delle proposizioni.
+	\begin{itemize}
+		\item le inferenze ottenute in questo modo si chiamano \alert{istanze} della regola;
+		\item se una regola è corretta, tutte le istanze lo sono.
+	\end{itemize}
+	\begin{example}
+		La regola di inferenza\\
+		\medskip
+		\qquad
+		\begin{inference}
+			A o B\\
+			non B\\
+			\hline
+			A
+		\end{inference}\\
+		\medskip
+		chiamata \alert{regola del sillogismo disgiuntivo} è corretta, quindi la sua istanza\\
+		\medskip
+		\qquad
+		\begin{inference}
+			Il maggiordomo è colpevole o la cameriera è colpevole.\\
+			La cameriera non è colpevole\\
+			\hline
+			Il maggiordomo è colpevole
+		\end{inference}\\
+
+		\medskip
+		è corretta.
+	\end{example}
+\end{frame}
+
+\begin{frame}{Inferenze corrette e verità delle conclusioni}
+	\medskip
+	Bisogna distinguere la correttezza della inferenze dalla verità della conclusione!
+
+	\medskip
+	Consideriamo alcune istanze della regola vista prima:
+	\[
+		\begin{tikzpicture}
+			\node (i2) {\begin{inference}
+					A o B\\
+					non B\\
+					\hline
+					A
+				\end{inference}
+			};
+			\uncover<2->{
+			\node (i1) [left=of i2] {\begin{inference}
+					3 è primo o 3 è pari \only<3->{(\checkmark)}\\
+					3 non è pari \only<4->{(\checkmark)}\\
+					\hline
+					3 è primo \only<5->{(\checkmark)}
+				\end{inference}
+			};
+			\draw[-{Latex[width=3mm]},very thick] (i2) -- (i1);
+			}
+			\uncover<6->{
+			\node (i3) [right=of i2] {\begin{inference}
+					3 è pari o 3 è primo  \only<7->{(\checkmark)}\\
+					3 non è primo \only<8->{(\xmark)}\\
+					\hline
+					3 è pari \only<9->{(\xmark)}
+				\end{inference}
+			};
+			\draw[-{Latex[width=3mm]},very thick] (i2) -- (i3);
+			}
+			\uncover<10->{
+			\node (i4) [below= of i3]{\begin{inference}
+					3 è dispari o 3 è primo \only<11->{(\checkmark)}\\
+					3 non è primo \only<12->{(\xmark)}\\
+					\hline
+					3 è dispari \only<13->{(\checkmark)}
+				\end{inference}
+			};
+			\draw[-{Latex[width=3mm]},very thick] (i2) -- (i4);
+			}
+			\uncover<14->{
+			\node (i5) [below= of i1]{\begin{inference}
+					?????????????????? (\checkmark)\\
+					?????????????????? (\checkmark)\\
+					\hline
+					?????????????????? (\xmark)
+				\end{inference}
+			};
+			\draw[-{Latex[width=3mm]},very thick] (i2) -- (i5);
+			}
+			\only<15->{
+				\draw  [red, line width=2mm] (i5) ++ (-2cm, 0.55cm) --  ++ (4cm, -1.1cm);
+				\draw  [red, line width=2mm] (i5) ++ (-2cm, -0.55cm) --  ++ (4cm, 1.1cm);
+			}
+		\end{tikzpicture}
+	\]
+\end{frame}
+
+\section{Esempi di regole di inferenza}
+
+\begin{frame}{Un'altra regola corretta: modus ponens}
+	Consideriamo l'inferenza
+	\begin{center}
+		\begin{inference}
+			Se Fabio è pescarese, allora Fabio è abruzzese\\
+			Fabio è pescarese\\
+			\hline
+			Fabio è abruzzese
+		\end{inference}
+	\end{center}
+	\pause
+	Si generalizza nella regola:
+	\begin{center}
+		\begin{inference}
+			Se A allora B\\
+			A\\
+			\hline
+			B
+		\end{inference}
+	\end{center}
+	detta \alert{regola del modus ponens}. Vedi anche:
+	\begin{center}
+		\begin{inference}
+			Se sono colpevole devo essere punito\\
+			Sono colpevole\\
+			\hline
+			Devo essere punito
+		\end{inference}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Un'altra regola corretta: modus tollens}
+	Consideriamo l'inferenza
+	\begin{center}
+		\begin{inference}
+			Se Fabio è pescarese, allora Fabio è abruzzese\\
+			Fabio non è abruzzese\\
+			\hline
+			Fabio non è pescarese
+		\end{inference}
+	\end{center}
+	\pause
+	Si generalizza nella regola:
+	\begin{center}
+		\begin{inference}
+			Se A allora B\\
+			non B\\
+			\hline
+			non A
+		\end{inference}
+	\end{center}
+	detta \alert{regola del modus tollens}. Vedi anche:
+	\begin{center}
+		\begin{inference}
+			Se sono colpevole devo essere punito\\
+			Non devo essere punito\\
+			\hline
+			Non sono colpevole
+		\end{inference}
+	\end{center}
+\end{frame}
+
+\section{Esempi di ragionamenti fallaci}
+
+\begin{frame}{Fallacia della negazione dell'antecedente (1)}
+	Consideriamo l'inferenza
+	\begin{center}
+		\begin{inference}
+			Se sono un ladro allora devo essere punito\\
+			Non sono un ladro\\
+			\hline
+			Non devo essere punito
+		\end{inference}
+	\end{center}
+	che si generalizza nella regola
+	\begin{center}
+		\begin{inference}
+			Se A allora B\\
+			non A\\
+			\hline
+			non B
+		\end{inference}
+	\end{center}
+	È corretta?
+\end{frame}
+
+\begin{frame}{Fallacia della negazione dell'antecedente (2)}
+	All'apparenza lo sembra, ma consideriamo un'altra istanza della regola.
+	\begin{center}
+		\begin{inference}
+			Se Fabio è pecarese, allora Fabio è abruzzese \only<3->{\checkmark}\\
+			Fabio non è pescarese \only<4->{\checkmark}\\
+			\hline
+			Fabio non è abruzzese \only<5->{\xmark}
+		\end{inference}
+	\end{center}
+	È corretta?
+
+	\pause
+	\medskip
+	Questa regola è falsa: pensate al caso in cui Fabio sia nato a Chieti.
+
+	\medskip
+	Abbiamo trovato un \alert{controesempio}. L'inferenza non è corretta.
+
+	\medskip
+	Ed infatti, se ci pensiamo bene, non è corretta neanche la prima regola di inferenza: magari non sono un ladro, ma devo essere punito per qualche altro motivo.
+\end{frame}
+
+\begin{frame}{Fallacia dell'affermazione del conseguente (1)}
+
+	Consideriamo questa inferenza\ldots
+	\begin{center}
+		\begin{inference}
+			Se manca la benzina, allora l'auto non parte\\
+			L'auto non parte\\
+			\hline
+			Manca la benzina
+		\end{inference}
+	\end{center}
+	che si generalizza nella regola
+	\begin{center}
+		\begin{inference}
+			Se A allora B\\
+			B\\
+			\hline
+			A
+		\end{inference}
+	\end{center}
+	È corretta?
+\end{frame}
+
+\begin{frame}{Fallacia della affermazione del conseguente (2)}
+	All'apparenza lo sembra, ma consideriamo un'altra istanza della regola.
+	\begin{center}
+		\begin{inference}
+			Se Fabio è pescarese, allora Fabio è abruzzese\\
+			Fabio è abruzzese\\
+			\hline
+			Fabio è pescarese
+		\end{inference}
+	\end{center}
+	È corretta?
+
+	\pause
+	\medskip
+	Questa regola è falsa: pensate di nuovo al caso in cui Fabio sia nato a Chieti.
+
+	\medskip
+	Abbiamo trovato un \alert{controesempio}. L'inferenza non è corretta.
+
+	\medskip
+	Ed infatti, se ci pensiamo bene, non è corretta neanche la prima regola di inferenza: magari l'auto non parte perché è scarica la batteria.
+\end{frame}
+
+\note{Esercizi Intro.1, Intro.4, Intro.7}
+
+\section{Logica dei predicati}
+
+% \begin{frame}{Regole di inferenza a livello predicativo}
+% 	Negli esempi visti prima, le regole di inferenza sono a livello \alert{proposizionale}: la loro verità dipende dai legami tra le proposizioni.
+
+% 	\medskip
+% 	Queste inferenze sono più complesse:
+% 	\begin{center}
+% 		\begin{inference}
+% 			2 è minore di 5\\
+% 			Se un numero è minore di un altro, allora il secondo è maggiore del primo\\
+% 			\hline
+% 			5 è maggiore di 2
+% 		\end{inference}
+
+% 		\medskip\medskip
+% 		\begin{inference}
+% 			La retta $r$ è perpendicolare alla retta $s$\\
+% 			Se una retta è perpendicolare a un'altra, la seconda interseca la prima\\
+% 			\hline
+% 			$s$ interseca $r$
+% 		\end{inference}
+
+% 		\medskip\medskip
+% 		\begin{inference}
+% 			Maria è moglie di Aldo\\
+% 			Se una persona è moglie di un'altra, allora quest'ultima è marito della prima\\
+% 			\hline
+% 			Aldo è marito di Maria
+% 		\end{inference}
+% 	\end{center}
+% 	Hanno la stessa \alert{forma logica}.
+% \end{frame}
+
+\newcommand{\myfbox}[2]{\tikz[baseline=(n.base)]\node(n)[alt=<1>{fill=#1!50}]{#2};}
+\newcommand{\myfboxbis}[2]{\tikz[baseline=(n.base)]\node(n)[alt=<2>{fill=#1!50}]{#2};}
+
+% \begin{frame}{Evidenziare la forma logica}
+% 	\tikzstyle{every node} = [rounded corners, outer sep=0, inner sep=0.1cm]
+% 	\begin{center}
+% 		\begin{inference}
+% 			\myfbox{red}{2}\myfbox{green}{è minore di}\myfbox{blue}{5}\\
+% 			Se\myfbox{orange}{un numero}\myfbox{green}{è minore di}\myfbox{pink}{un altro}, allora\myfbox{pink}{il secondo}\myfbox{gray}{è maggiore del} \myfbox{orange}{primo}\\
+% 			\hline
+% 			\myfbox{blue}{5}\myfbox{gray}{è maggiore di}\myfbox{red}{2}
+% 		\end{inference}\\[0.2cm]
+% 		$\Downarrow$\\[0.2cm]
+% 		\begin{inference}
+% 			\myfbox{green}{R}\myfbox{red}{a}\myfbox{blue}{b}\\
+% 			\myfboxbis{green}{per ogni }\myfbox{orange}{$x$}, \myfboxbis{green}{per ogni } \myfbox{pink}{$y$}, \myfboxbis{red}{se} \myfbox{green}{R}\myfbox{orange}{$x$}\myfbox{pink}{$y$}\myfboxbis{red}{allora}\myfbox{gray}{S}\myfbox{pink}{$y$}\myfbox{orange}{$x$}\\
+% 			\hline
+% 			\myfbox{gray}{S}\myfbox{blue}{b}\myfbox{red}{a}\\
+% 		\end{inference}\\[0.2cm]
+% 		\pause
+% 		$\Downarrow$\\[0.2cm]
+% 		\begin{inference}
+% 			Rab\\
+% 			$\myfboxbis{green}{$\forall x \forall y$} (Rxy \myfboxbis{red}{$\to$} Syx)$\\
+% 			\hline
+% 			Sba
+% 		\end{inference}
+% 	\end{center}
+% \end{frame}
+
+\begin{frame}{Inferenze a livello predicativo}
+	\tikzstyle{every node} = [rounded corners, outer sep=0, inner sep=0.1cm]
+	Negli esempi visti prima, le regole di inferenza sono a livello di \alert{logica proposizionale}: la loro verità dipende dai legami tra le proposizioni.
+
+	\medskip
+	Queste inferenze sono più complesse:
+
+	\begin{center}
+		\begin{inference}
+			Napoleone è corso\\
+			Tutti i corsi sono francesi\\
+			\hline
+			Napoleone è francese
+		\end{inference}
+		\qquad
+		\begin{inference}
+			Socrate è un uomo\\
+			Tutti gli uomini sono mortali\\
+			\hline
+			Socrate è mortale
+		\end{inference}
+	\end{center}
+	Se analizzate come fatto fin'ora, corrispondo alla regola di inferenza:
+	\begin{center}
+		\begin{inference}
+			A\\
+			B\\
+			\hline
+			C
+		\end{inference}
+	\end{center}
+	che non è corretta! Bisogna passare alla \alert{logica dei predicati}.
+\end{frame}
+
+
+\begin{frame}{Forma logica per regole di inferenza a livello predicativo}
+	\tikzstyle{every node} = [rounded corners, outer sep=0, inner sep=0.1cm]
+	A livello predicativo, la forma logica si ottiene in questo modo:
+	\begin{itemize}
+		\item \myfbox{red}{costanti individuali} al posto di individui (Napoleone, Socrate)
+		\item \myfbox{green}{costanti predicative} al posto di proprietà (essere corso, essere mortale);
+		\item \myfbox{purple}{esiste} o \myfbox{purple}{per ogni} al posto dei quantificatori (tutti, alcuni, \ldots)
+	\end{itemize}
+	\begin{center}
+		\begin{inference}
+			\myfbox{red}{Napoleone} \myfbox{green}{è corso}\\
+			\myfbox{purple}{Tutti} \myfbox{green}{i corsi}  \myfbox{gray}{sono francesi}\\
+			\hline
+			\myfbox{red}{Napoleone} \myfbox{gray}{è francese}
+		\end{inference}
+		\qquad
+		\begin{inference}
+			\myfbox{red}{Socrate} \myfbox{green}{è un uomo}\\
+			\myfbox{purple}{Tutti} \myfbox{green}{gli uomini}  \myfbox{gray}{sono mortali}\\
+			\hline
+			\myfbox{red}{Socrate} \myfbox{gray}{è mortale}
+		\end{inference}
+
+		\medskip
+		{\Huge$\Downarrow$}\\[0.2cm]
+
+		\begin{inference}
+			$\myfbox{green}{P} \myfbox{red}{a}$\\
+			$\myfbox{purple}{per ogni} x, \text{se } \myfbox{green}{P} x \text{ allora } \myfbox{gray}{Q}x$\\
+			\hline
+			$\myfbox{gray}{Q}  \myfbox{red}{a}$
+		\end{inference}
+
+		% \medskip
+		% {\Huge$\Downarrow$}\\[0.2cm]
+
+		% \begin{inference}
+		% 	$P a$\\
+		% 	$\forall x, P x \to Q x$\\
+		% 	\hline
+		% 	$Q a$
+		% \end{inference}
+	\end{center}
+\end{frame}
+
+\begin{frame}{Inferenze corrette e verità delle conclusioni}
+	Come per il caso proposizionale, bisogna distinguere tra correttezza dell'inferenza e verità della conclusione.
+	\begin{center}
+		\begin{inference}
+			Napoleone è francese \only<2->{\rlap\checkmark}\\
+			Tutti i francesi sono abruzzesi \only<2->{\rlap\xmark}\\
+			\hline
+			Napoleone è abruzzese \only<2->{\rlap\xmark}
+		\end{inference}
+		\qquad
+		\begin{inference}
+			Napoleone è francese \only<2->{\rlap\checkmark}\\
+			Tutti i francesi sono corsi \only<2->{\rlap\xmark}\\
+			\hline
+			Napoleone è corso \only<2->{\rlap\checkmark}
+		\end{inference}
+
+		\medskip
+		\begin{inference}
+			Napoleone è genovese \only<3->{\rlap\xmark}\\
+			Tutti i genovesi sono cinesi \only<3->{\rlap\xmark}\\
+			\hline
+			Napoleone è cinese \only<3->{\rlap\xmark}
+		\end{inference}
+		\qquad
+		\begin{inference}
+			Napoleone è cinese \only<3->{\rlap\xmark}\\
+			Tutti i cinesi sono francesi \only<3->{\rlap\xmark}\\
+			\hline
+			Napoleone è francese \only<3->{\rlap\checkmark}
+		\end{inference}
+
+		\medskip
+		\begin{inference}
+			Napoleone è londinese \only<4->{\rlap\xmark}\\
+			Tutti i londinesi sono inglesi \only<4->{\rlap\checkmark}\\
+			\hline
+			Napoleone è inglese \only<4->{\rlap\xmark}
+		\end{inference}
+		\qquad
+		\begin{inference}
+			Napoleone è parigino \only<4->{\rlap\xmark} \\
+			Tutti i parigini sono francesi \only<4->{\rlap\checkmark}\\
+			\hline
+			Napoleone è francese \only<4->{\rlap\checkmark}
+		\end{inference}
+
+		\medskip
+		\tikz[overlay, remember picture]{\node (nocase) {};}
+		\begin{inference}
+			?????????????????? \only<6->{\rlap\checkmark}\\
+			?????????????????? \only<6->{\rlap\checkmark}\\
+			\hline
+			?????????????????? \only<6->{\rlap\xmark}
+		\end{inference}
+		\qquad
+		\begin{inference}
+			Napoleone è corso \only<5->{\rlap\checkmark} \\
+			Tutti i corsi sono francesi \only<5->{\rlap\checkmark}\\
+			\hline
+			Napoleone è francese \only<5->{\rlap\checkmark}
+		\end{inference}
+	\end{center}
+	\only<7->{
+		\begin{tikzpicture}[overlay, remember picture]
+			\draw  [red, line width=2mm] (nocase) ++ (0cm, 0.55cm) --  ++ (4cm, -0.8cm);
+			\draw  [red,  line width=2mm] (nocase) ++ (0cm, -0.25cm) --  ++ (4cm, 0.8cm);
+		\end{tikzpicture}
+	}
+\end{frame}
+
+\section{Oltre il ragionamento deduttivo}
+
+% \begin{frame}{Ragionamenti e inferenze}
+% 	Sebbene abbiamo detto che la logica è lo studio del ragionamento, noi preferiamo non usare questo termine, perché:
+% 	\begin{enumerate}
+% 		\item ci aspettiamo che le premesse di un ragionamento contengano delle motivazioni a sostegno di una verità. Considereremmo queste inferenze convincenti?
+
+% 		      \medskip
+% 		      \begin{center}
+% 			      \begin{inference}
+% 				      Napoleone è cinese\\
+% 				      Tutti i cinesi sono francesi\\
+% 				      \hline
+% 				      Napoleone è francese
+% 			      \end{inference}
+% 			      \qquad
+% 			      \begin{inference}
+% 				      Carlo è ligure o Stefano è piemontese\\
+% 				      Stefano non è piemontese\\
+% 				      \hline
+% 				      Carlo è ligure
+% 			      \end{inference}
+% 		      \end{center}
+% 		      \medskip
+
+% 		\item anche ignorando il punto di cui sopra, le inferenze colgono solo un tipo di ragionamento, chiamato \alert{ragionamento deduttivo}. Ma ce n'è altri!
+% 	\end{enumerate}
+% \end{frame}
+
+\begin{frame}{Ragionamento induttivo e abduttivo}
+	Esistono altre forme di ``ragionamento'', oltre a quello deduttivo visto finora.
+
+	\medskip \textbf{Ragionamento induttivo}: \uncover<2->{\textcolor{blue}{dal caso particolare al generale}}
+
+	\begin{center}
+		\begin{inference}
+			Tutti i corvi finora osservati sono neri\\
+			\hline
+			\uncover<2->{Tutti i corvi sono neri}
+		\end{inference}
+	\end{center}
+
+	\uncover<3->{
+		\medskip \textbf{Ragionamento abduttivo}: \uncover<4->{\textcolor{blue}{introduzione di ipotesi esplicative}}
+
+		\begin{center}
+			\begin{inference}
+				L'assassino ha lasciato tracce di fango\\
+				Chiunque fosse entrato dal giardino, avrebbe lasciato tracce di fango\\
+				\hline
+				\uncover<4->{L'assassino è entrato dal giardino}
+			\end{inference}
+		\end{center}
+	}
+
+	\uncover<4->{
+	\begin{block}{Nota}
+		Dal punto di visto deduttivo, queste inferenze non sono corrette. L'ultima, in particolare, è propria quella che abbiamo chiamato ``fallacia dell'affermazione del conseguente''.
+	\end{block}
+	}
+	% \textbf{Ragionamento per default (o per difetto)}
+	% \begin{inference}
+	% 	Normalmente i polacchi non sanno parlare italiano\\
+	% 	Karol è polacco\\
+	% 	\hline
+	% 	\pause
+	% 	Karol non sa parlare italiano
+	% \end{inference}
+\end{frame}
+
+
+% \begin{frame}{Inferenze e monot\`onia}
+% 	Tutti i tipi di ragionamento visti pocanzi \alert{non sono monot\`oni}: nuove premesse possono trasformare la conclusione del ragionamento.
+% 	\begin{center}
+% 		\begin{inference}
+% 			Normalmente i polacchi non sanno parlare italiano\\
+% 			Karol è polacco\\
+% 			Karol ha vissuto 20 anni in Italia\\
+% 			Quasi sicuramente chi vive più di 10 anni in Italia sa parlare italiano\\
+% 			\hline
+% 			Karol sa parlare italiano
+% 		\end{inference}
+% 	\end{center}
+
+% 	Invece le inferenze (e i ragionamenti deduttivi) \alert{sono monot\`one}. Se aggiungo nuove premesse, l'inferenza rimane corretta.
+
+% 	\medskip
+% 	Per questo l'inferenza è il meccanismo principale delle \alert{dimostrazioni matematiche}.
+% \end{frame}
+
+\begin{frame}{Inferenze e monot\`onia}
+	\begin{itemize}
+		\item Ragionamenti induttivi e abduttivi \alert{non sono monot\`oni}: nuove premesse possono trasformare la conclusione del ragionamento.
+		      \begin{center}
+			      \begin{inference}
+				      L'assassino ha lasciato tracce di fango\\
+				      Chiunque fosse entrato dal giardino, avrebbe lasciato tracce di fango\\
+				      \textcolor{blue}{Un uomo è stato visto imbrattare appositamente le scarpe di fango}\\
+				      \hline
+				      L'assassino non è entrato dal giardino
+			      \end{inference}
+		      \end{center}
+
+		\item Invece il ragionamento deduttivio \alert{è monot\`ono}: se aggiungo nuove premesse, un'inferenza rimane corretta. Per questo il ragionamento deduttivo è il meccanismo principale delle \alert{dimostrazioni matematiche}.
+		\begin{itemize}
+			\item si parte da proposizioni assunte vere per principio;
+			\begin{itemize}
+				\item gli assiomi di Euclide
+				\item gli assiomi dei numeri reali
+			\end{itemize}
+			\item se applicano inferenze corrette a premesse corrette per ottenere conclusioni corrette (teoremi)
+			\item in questo modo il teorema sarà vero per sempre:\\
+		      \medskip \url{https://youtu.be/LlED5V7EuFY?si=40FmAOQ4491dCbVQ&t=313}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{L'esempio di Charles S. Peirce (1839-1914)}
+	\begin{inference}
+		Tutti i fagioli di questo sacchetto sono bianchi\\
+		Questi fagioli vengono da questo sacchetto\\
+		\hline
+		Questi fagioli sono bianchi
+	\end{inference}
+	\only<2->{\qquad \textbf{Deduzione}}
+
+	\medskip\medskip
+	\begin{inference}
+		Questi fagioli vengono da questo sacchetto\\
+		Questi fagioli sono bianchi\\
+		\hline
+		Tutti i fagioli di questo sacchetto sono bianchi\\
+	\end{inference}
+	\only<3->{\qquad \textbf{Induzione}}
+
+	\medskip\medskip
+	\begin{inference}
+		Tutti i fagioli di questo sacchetto sono bianchi\\
+		Questi fagioli sono bianchi\\
+		\hline
+		Questi fagioli vengono da questo sacchetto
+	\end{inference}
+	\only<4->{\qquad \textbf{Abduzione}}
+
+\end{frame}
+
+
+\end{document}

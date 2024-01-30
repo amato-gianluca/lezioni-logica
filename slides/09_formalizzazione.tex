@@ -1,0 +1,951 @@
+\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table,handout]{beamer}
+
+%\includeonlyframes{current}
+
+%\setbeameroption{show notes}
+
+\input{preamble.inc}
+
+\title[]{Formalizzazione}
+
+\newcommand{\myfbox}[2]{\tikz[baseline=(n.base)]\node(n)[alt=<1>{fill=#1!50}]{#2};}
+\newcommand{\mcI}{\mathcal{I}}
+\newcommand{\mc}{\mathcal}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Formalizzazione}
+    In queste slide ci occuperemo di formalizzare la logica delle proposizioni e dei predicati in maniera più rigorosa di quanto fatto finora.
+
+    \medskip Non introdurremo nulla di nuovo, ma il livello di formalità molto elevato potrebbe mettervi in difficoltà. Se vi sembra che tutto ciò sià inutile, tenete conto di due cose:
+    \begin{itemize}
+        \item lasciare tutto a livello un po' informale consente di fare molto, ma rende difficile dimostrare proprietà delle formule logiche;
+        \item la formalizzazione è necessaria per poter scrivere programmi che manipolano formule logiche, per esempio un programma che prende in input una forma proposizionale e stabilisce se è una tautologia; grazie alla formalizzazione che vedremo il problema è più approcciabile (ma comunque alcune delle conoscenze di programmazione richieste verranno introdotte solo nel corso di ``Programmazione e Algoritmi 2'').
+    \end{itemize}
+\end{frame}
+
+\section{Logica delle proposizioni}
+
+\begin{frame}{Segnatura}
+    Per prima cosa fissiamo quali sono i simboli che possiamo usare nella logica proposizionale.
+    \pause
+
+    \begin{definition}[Segnatura]
+        Una \alert{segnatura} $\Sigma$ per la logica proposizionale è un insieme di simboli, chiamati \emph{lettere proposizionali}.
+    \end{definition}
+
+    \pause
+    \begin{example}
+        La segnatura $\Sigma = \{A, B, C\}$ è l'insieme delle tre lettere proposizionali $A$, $B$ e $C$.
+    \end{example}
+
+    \pause
+    \begin{example}
+        La segnatura $\Sigma = \{\star_0, \star_1, \star_2, \ldots \}$ è un'altra segnatura possibile, alquanto bizzarra.
+    \end{example}
+
+    \pause
+    Implicitamente, noi abbiamo sempre usato la segnatura $\Sigma$ costitutita dall'insieme delle lettere maiuscole.
+\end{frame}
+
+
+\begin{frame}{Alfabeto}
+    Andremo adesso a definire il concetto di formula nella logica delle proposizioni. Oltre alle lettere proposizionali useremo anche:
+    \begin{itemize}
+        \item simboli per i connettivi logici, ovvero $\neg$, $\land$, $\lor$, $\xor$, $\to$, $\iff$;
+        \item simboli per le \fp speciali $\top$ e $\bot$;
+        \item le parentesi tonde $(\,)$.
+    \end{itemize}
+    L'insieme di tutti questi simboli, più quelli della segnatura, prende il nome di \alert{alfabeto}: come l'alfabeto che impariamo a scuola primaria è l'insieme delle lettere che si usano per formare le parole nel linguaggio naturale, l'alfabeto in logica è l'insieme dei simboli che si usano per scrivere le formule.
+
+    \medskip
+    Le formule non sono altro che stringhe costituite dai simboli dell'alfabeto.
+\end{frame}
+
+\begin{frame}{Forma proposizionale (1)}
+
+    \begin{definition}[Forme proposizionali]
+        Data una segnatura $\Sigma$, l'insieme delle \emph{forme proposizionali} (su $\Sigma$) è il più piccolo insieme tale che:
+        \begin{enumerate}[<+->]
+            \item ogni lettera proposizionale è una forma proposizionale;
+            \item $\top$ e $\bot$ sono forme proposizionali;
+            \item se $X$ e $Y$ sono forme proposizionali, allora $(\neg X)$, $(X \land Y)$, $(X \lor Y)$, $(X \xor Y)$ $(X \to Y)$, $(X \iff Y)$ sono forme proposizionali.
+        \end{enumerate}
+    \end{definition}
+
+    \begin{block}<+->{Osservazione}
+        Una definizione come questa si dice \alert{induttiva} perché definisce un insieme di oggetti in termini di oggetti dello stesso tipo ma più semplici:
+        \begin{itemize}[<+->]
+            \item i primi due punti sono i \alert{casi base}, che definiscono i casi più semplici e immediati;
+            \item il terzo punto è il \alert{caso induttivo}, che definisce come costruire oggetti più complessi a partire da oggetti più semplici.
+        \end{itemize}
+    \end{block}
+
+\end{frame}
+
+\begin{frame}{Forma proposizionale (2)}
+    \begin{example}
+        Sia $\Sigma=\{A, B, C, D, E, F, \ldots \}$, facciamo vedere che  $(A \to (B \land C))$ è una \fp.
+        \begin{itemize}[<+->]
+            \item per il punto 1 della definizione di forma proposizionale, $A$, $B$ e $C$ sono \fp;
+            \item per il punto 3, poiché $B$ è una \fp e $C$ è una \fp, allora $(B \land C)$ è una \fp;
+            \item sempre per il punto 3, poiché $A$ è una \fp e $(B \land C)$ è una \fp, allora $(A \to (B \land C))$ è una \fp.
+        \end{itemize}
+        \uncover<+->{
+        Analogamente si può fare per qualunque altra \fp.
+        }
+    \end{example}
+
+    \begin{block}<+->{Osservazione}
+        Dimostrare in maniera formale che qualcosa non è una \fp è più difficile, perché bisogna far vedere che, comunque applichiamo le regole della definizione, non riusciamo a costruire la stringa che vogliamo.
+
+        \medskip
+        Ad esempio, consideriamo la stringa $(A \wedge \wedge B)$. Dovrebbe essere abbastanza chiaro intuitivamente che seguendo le regole non possiamo mai mettere due $\wedge$ affiancati, ma la dimostrazione formale è un po' più complicata.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Forma proposizionale (3)}
+    Cambiando la segnatura, cambiano le forme proposizionali.
+    \begin{example}
+        Se $\Sigma=\{\star_0, \star_1, \star_2, \ldots \}$, allora $(A \to (B \land C))$ non è più una \fp. Lo sono invece, ad esempio:
+        \begin{itemize}
+            \item $\star_0 \to (\star_1 \land \star_{13})$;
+            \item $\star_3 \xor (\star_4 \iff \star_{321})$.
+        \end{itemize}
+    \end{example}
+
+    \pause
+    \begin{block}{Osservazioni}
+        \begin{itemize}
+            \item  Come già visto, informalmente possiamo eliminare alcune parentesi confidando sulla priorità tra gli operatori.
+            \item Nel seguito useremo sempre la segnatura classica costituita dalle lettere maiuscole.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Interpretazione (1)}
+    Per determinare il valore di verità di una \fp, bisogna assegnare un valore di verità ad ogni lettera proposizionale. Questo è il ruolo della \emph{interpretazione}.
+
+    \pause
+    \begin{definition}[Interpretazione]
+        Data una segnatura $\Sigma$, una interpretazione $\mcI$ (su $\Sigma$) è una funzione $\mcI: \Sigma \to \{V, F\}$ che associa ad ogni lettera proposizionale un valore di verità.
+    \end{definition}
+
+    \pause
+    \begin{block}{Osservazione}
+        Si può anche pensare ad una interpretazione come una riga della tavola di verità. Le prime colonne della tavola di verità contengono infatti un assegnamento di valori di verità per tutte le lettere proposizionali.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Interpretazione (2)}
+    \begin{example}
+        Se $\Sigma=\{A, B, C\}$, allora $\mcI: \Sigma \to \{V, F\}$ definita come
+        \[
+            \mcI(x) = \begin{cases}
+                V & \text{se $x=A$} \\
+                F & \text{se $x=B$} \\
+                V & \text{se $x=C$}
+            \end{cases}
+        \]
+        è una interpretazione.
+
+        \medskip In seguito, piuttosto che scrivere le interpretazioni in questo modo, elencheremo i valori che l'interpretazione assume per le varie lettere proposizionali, come segue:
+        \[ \mcI(A)=V \qquad \mcI(B)=F \qquad \mcI(C)=V \]
+    \end{example}
+\end{frame}
+
+\begin{frame}{Interpretazione (3)}
+    Una volta che abbiamo una interpretazione, possiamo calcolare il valore di verità di ogni \fp seguendo le regole dei connettivi. Proviamo a formalizzare questa procedura:
+
+    \begin{definition}[Valore di verità di una \fp]
+        Data una segnatura $\Sigma$ e una interpretazione $\mcI$ su $\Sigma$, estendiamo $\mcI$ ad una funzione dalle \fp su $\Sigma$ ai valori di verità come segue, \emph{per induzione sulla struttura delle \fp}:
+        \begin{itemize}
+            \item se $A \in \Sigma$, $\mcI(A)$ è il valore ottenuto dall'interpretazione;
+            \item $\mcI(\top)=V$;
+            \item $\mcI(\bot)=F$;
+            \item $\mcI((\neg X))=\begin{cases}
+                          V & \text{se $\mcI(X)=F$,} \\
+                          F & \text{altrimenti;}
+                      \end{cases}$
+            \item $\mcI((X \wedge  Y))=\begin{cases}
+                          V & \text{se $\mcI(X)=\mcI(Y)=V$,} \\
+                          F & \text{altrimenti;}
+                      \end{cases}$
+            \item analogamente per gli altri connettivi.
+        \end{itemize}
+    \end{definition}
+\end{frame}
+
+\begin{frame}{Interpretazione (4)}
+    \begin{block}{Osservazione}
+        La definizione si dice \alert{induttiva} (o anche \alert{ricorsiva}) perché definisce il valore di verità di una formula in termini del valore di verità di formule più semplici:
+        \begin{itemize}
+            \item i casi base sono i primi tre (che danno il risultato direttamente);
+            \item i casi induttivi sono tutti i restanti (che danno il risultato in termini del valore di verità di formule più semplici).
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Interpretazione (5)}
+
+    \begin{example}
+        Se $\mcI(A)=V$, $\mcI(B)=F$ e $\mcI(C)=V$, allora $\mcI(A \to (B \vee C))= V$. Infatti:
+        \begin{itemize}
+            \item per calcolare  $\mcI(A \to (B \vee C))= V$ bisogna determinare $\mcI(A)$ e $\mcI(B \vee C)$
+                  \begin{itemize}
+                      \item $\mcI(A) = V$ per come abbiamo fissato l'interpretazione $\mcI$
+                      \item \smallskip per determinare $\mcI(B \vee C)$ bisogna determinare $\mcI(B)$ e $\mcI(C)$
+                            \begin{itemize}
+                                \item $\mcI(B)=F$ per come abbiamo fissato l'interpretazione $\mcI$
+                                \item $\mcI(C)=V$ per come abbiamo fissato l'interpretazione $\mcI$
+                            \end{itemize}
+                            pertanto $\mcI(B \vee C)=V$
+                  \end{itemize}
+                  pertanto $\mcI(A \to (B \vee C))=V$
+        \end{itemize}
+    \end{example}
+
+    \begin{block}{Notazione}
+        Nel resto di questa sezione assumiamo fissata una segnatura $\Sigma$. Negli esempi, utilizzeremo $\Sigma=\{A, B, C, \ldots\}$, ma le definizioni saranno valide per qualunque $\Sigma$.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Modello (1)}
+    Spesso, invece di parlare direttamente di valore di verità di una \fp, si usa una terminologia diversa.
+
+    \begin{definition}[Modello]
+        Data una interpretazione $\mcI$, diciamo che $\mcI$ è un \alert{modello} di $X$ se e solo se $\mcI(X)=V$. In tal caso, scriviamo $\mcI \models X$.
+    \end{definition}
+    \pause
+
+    \begin{block}{Notazione $\not\models$}
+        Come sempre in matematica, se vogliamo dire che una relazione espressa da un simbolo non vale, si usa barrare il simbolo. Nel nostro caso, scriviamo $\mcI \not\models X$ per dire che $\mcI$ non è un modello di $X$, ovvero che $\mcI(X)=F$.
+    \end{block}
+    \pause
+
+    \begin{example}
+        Se $\mcI(A)=V$, $\mcI(B)=F$ e $\mcI(C)=V$, allora $\mcI \models A \to (B \vee C)$ e $\mcI \not\models (A \land C) \to B$
+    \end{example}
+\end{frame}
+
+\begin{frame}{Modello (2)}
+    Sarebbe anche possibile definire direttamente la nozione di modello, come segue.
+
+    \begin{definition}[Modello --- definizione diretta]
+        Data una interpretazione $\mcI$, definiamo cosa vuol dire che $\mcI$ è un \alert{modello} per un \fp $X$ per induzione sulla struttura di $X$. In particolare:
+        \begin{itemize}
+            \item se $A \in \Sigma$ (ovvero, $A$ è una lettera proposizionale), $\mcI \models A$ se e solo se $\mcI(A)=V$;
+            \item $\mcI \models \top$;
+            \item $\mcI \models \neg X$ se e solo se $\mcI \not\models X$;
+            \item $\mcI \models X \wedge Y$ se e solo se $\mcI \models X$ e $\mcI \models Y$;
+            \item $\mcI \models X \vee Y$ se e solo se $\mcI \models X$ o $\mcI \models Y$;
+            \item \ldots analogamente per gli altri connettivi \ldots
+        \end{itemize}
+    \end{definition}
+    Se per una \fp $X$ non è possibile ottenere che $\mcI \models X$ usando le formule di sopra, allora $\mcI \not\models X$.
+\end{frame}
+
+\begin{frame}{Modello di un insieme di formule}
+    Il termine \emph{modello} si può estendere anche ad un insieme di formule.
+    \begin{definition}[Modello di un insieme di formule]
+        Diciamo che una interpretazione $\mcI$ è un modello per l'insieme di formule $\mathcal S$ se e solo se $\mcI$ è un modello per tutte le formule in $\mathcal S$. In tal caso, scriviamo $\mcI \models \mathcal S$.
+    \end{definition}
+
+    \pause
+    \begin{example}[Modello di un insieme di formule]
+        Se $\mcI(A)=V$, $\mcI(B)=F$ e $\mcI(C)=V$, allora
+        \[
+            \mcI \models \{A \to (B \vee C), \neg B\}
+        \]
+        ma
+        \[
+            \mcI \not\models \{A \to (B \vee C), \neg A\}
+        \]
+        perché $\mcI \not\models \neg A$.
+    \end{example}
+\end{frame}
+
+\begin{frame}{Altre definizioni (1)}
+    Queste definizioni sono praticamente le stesse che abbiamo già visto, solo rifrasate usando i concetti di interpretazione e modello.
+
+    \begin{definition}[Tautologia e contraddizione]
+        Una \fp X è detta \emph{tautologia} se e solo se tutte le interpretazioni sono modelli di $X$. È detta \emph{contraddizione} se e solo se nessuna interpretazione è un modello di $X$.
+    \end{definition}
+
+    \begin{definition}[Equivalenza logica]
+        Due formule \fp X e \fp Y sono \emph{logicamente equivalenti} se e solo se hanno gli stessi modelli.
+    \end{definition}
+
+    \begin{definition}[Conseguenza logica]
+        Una formula \fp $X$ è \emph{conseguenza logica} di un insieme di \fp $\mathcal{S}$ se e solo tutti i modelli di $\mathcal{S}$ sono anche modelli di $X$. Scriviamo in questo caso \textbf{$\mathcal S \models X$}.
+    \end{definition}
+\end{frame}
+
+\begin{frame}{Altre definizioni (2)}
+    \begin{example}[Conseguenza logica]
+        Sappiamo già che $B$ è conseguenza logica di $A \to B$ ed $A$ (regola nota come \emph{modus ponens}). Possiamo quindi scrivere:
+        \[
+            \{A \to B, A\} \models B
+        \]
+        o anche semplicemente, con un abuso di notazione,
+        \[
+            A \to B, A \models B
+        \]
+        Invece,
+        \[
+            A \to B, B \not\models A
+        \]
+        perché sappiamo che $A$ non è conseguenza logica di $A \to B$ e $B$. Infatti, l'interpretazione $\mcI$ tale che $\mcI(A)=F$ e $\mcI(B)=V$ è un modello di $A \to B$ e $B$, ma non di $A$.
+    \end{example}
+\end{frame}
+
+\section{Logica dei predicati}
+
+\begin{frame}{Segnatura}
+    Per prima cosa fissiamo quali sono i simboli che possiamo usare nella logica dei predicati.
+    \pause
+
+    \begin{definition}[Segnatura]
+        Una segnatura $\Sigma$ per la logica dei predicati è una coppia $(\mathcal{C}, \mathcal{P})$ dove:
+        \begin{itemize}
+            \item $\mathcal C$ è un insieme di simboli, chiamati \emph{costanti individuali};
+            \item $\mathcal P$ è un insieme di simboli, chiamati \emph{costanti predicative}, ad ognuno dei quali è associato un numero intero positivo, chiamato \emph{arità}.
+        \end{itemize}
+    \end{definition}
+
+    \pause
+    L'arità di una costante predicativa determina se il simbolo rappresenta una proprietà (arità 1), una relazione binaria (arità 2) o una relazione ternaria o superiore (arità 3).
+
+    \pause
+    \begin{example}
+        La segnatura $\Sigma = (\{a, b, c\}, \{P/1, Q/1, R/2\})$ è costituita da:
+        \begin{itemize}
+            \item tre costanti individuali: $a$, $b$ e $c$;
+            \item tre costanti predicative: i simboli $P$ e $Q$ hanno arità $1$, mentre $R$ ha arità $2$.
+        \end{itemize}
+    \end{example}
+\end{frame}
+
+\begin{frame}{Alfabeto}
+    Andremo adesso a definire il concetto di formula nella logica dei predicati. Ovviamente, oltre alle costanti individuali e predicative useremo anche:
+    \begin{itemize}
+        \item variabili individuali, per rappresentare individui non specificati, come $x$, $y$, $z$ e varianti con apici e pedici; indichiamo con $\mathcal V$ l'insieme delle variabili;
+        \item simboli per le formule speciali $\top$ e $\bot$;
+        \item simboli per i connettivi logici, ovvero $\neg$, $\land$, $\lor$, $\xor$, $\to$, $\iff$;
+        \item simboli per i quantificatori, ovvero $\forall$ e $\exists$;
+        \item le parentesi tonde $(\,)$.
+    \end{itemize}
+    L'insieme di tutti questi simboli, più quelli della segnatura, prende il nome di \alert{alfabeto}: come l'alfabeto che impariamo a scuola primaria è l'elenco delle lettere che si usano per formare le parole nel linguaggio naturale, l'alfabeto in logica è l'insieme dei simboli che si possono usare per scrivere le formule.
+
+    \medskip
+    Le formule non sono altro che stringhe costituite dai simboli dell'alfabeto.
+\end{frame}
+
+\begin{frame}{Termine}
+    Prima di definire il concetto di formula, è conveniente fare un passaggio intermedio che non era richiesto per la logica proposizionale: definire il concetto di \alert{termine}.
+    \begin{definition}[Termine]
+        Data una segnatura $\Sigma$, si chiama \emph{termine} (su $\Sigma$) una qualsiasi costante individuale o variabile individuale.
+    \end{definition}
+
+    \pause
+    \begin{example}
+        Nella segnatura di prima $a$, $b$, $c$, $x$, $x'$ sono tutti termini, mentre $P$ non è un termine.
+    \end{example}
+
+\end{frame}
+
+\begin{frame}{Formula ben formata (1)}
+    Una volta fissata una segnatura, possiamo definire quali sono le formule, che nel caso della logica dei predicati si chiamano spesso \emph{formule ben formate}.
+    \pause
+
+    \begin{definition}[Formula ben formata]
+        Data una segnatura $\Sigma$, l'insieme delle \emph{formule ben formate} (su $\Sigma$), abbreviate in \fbf, è il più piccolo insieme tale che:
+        \begin{itemize}
+            \item $\top$ e $\bot$ sono \fbf;
+            \item se $P$ è una costante predicativa di arità $n$ e $t_1, \ldots, t_n$ sono termini, allora $P(t_1, \ldots, t_n)$ (o anche $Pt_1\ldots t_n$) è una \fbf; questa prende il nome di \alert{formula atomica};
+            \item se $X$ e $Y$ sono \fbf, allora $(\neg X)$, $(X \land Y)$, $(X \lor Y)$, $(X \xor Y)$, $(X \to Y)$, $(X \iff Y)$ sono \fbf;
+            \item se $X$ è una \fbf ed $\upsilon$ è una variabile, allora $(\forall \upsilon X)$ e $(\exists \upsilon X)$ sono \fbf.
+        \end{itemize}
+    \end{definition}
+
+    \pause
+    Nel seguito chiameremo informalmente una \fbf semplicemente col nome di \emph{formula}.
+\end{frame}
+
+\begin{frame}{Formula ben formata (2)}
+    \begin{example}
+        Con la segnatura di prima,le seguenti sono \fbf:
+        \begin{itemize}
+            \item $(\forall x (P x \to (\exists y Ryx)))$
+            \item $(Pa \to (\exists x Qx))$
+        \end{itemize}
+        mentre le seguenti non lo sono:
+        \begin{itemize}
+            \item $Pax$, perché $P$ ha arità 1 e non può essere applicata a due termini;
+            \item $(Pa \wedge \wedge Qa)$, per la presenza di due $\wedge$ affiancati.
+        \end{itemize}
+    \end{example}
+    \begin{block}{Osservazioni}
+        \begin{itemize}
+            \item Come già visto, informalmente possiamo eliminare alcune parentesi confidando sulla priorità tra gli operatori.
+                  % \item Nel seguito quando daremo una segnatura $\Sigma$ forniremo solo le costanti individuali e predicative. Per le variabili assumeremo sempre che contengano $x$, $y$, $z$ e tutte le possibili varianti con apici e pedici.
+        \end{itemize}
+    \end{block}
+\end{frame}
+
+\begin{frame}{Formalizzazione dei predicati (1)}
+    Per determinare il valore di verità di una \fbf, abbiamo già visto nella presentazione informale che bisogna fissare:
+    \begin{itemize}
+        \item un insieme di individui, chiamato \emph{dominio};
+        \item un individuo per ogni costante individuale;
+        \item un predicato per ogni costante predicativa.
+    \end{itemize}
+
+    \medskip
+    Mentre per i primi due punti non ci sono problemi, formalizzare il concetto di predicato è un po' più complesso. Finora abbiamo associato ad una costante predicativa un predicato in italiano, ad esempio ``essere pari''  o ``essere maggiore di'', ma adesso che stiamo formalizzando meglio le definizioni vogliamo liberarci del linguaggio naturale.
+
+    \medskip
+    La domanda che ci poniamo è quindi: cosa è la controparte formale di un predicato espresso in linguaggio naturale ?
+\end{frame}
+
+\begin{frame}[fragile]{Formalizzazione dei predicati (2)}
+    Consideriamo dapprima un predicato unario sul \emph{dominio} dei numeri naturali, come ``essere pari''. Possiamo identificare il predicato con l'insieme dei numeri che godono della proprietà essere pari. Dunque, essere pari diventa l'insieme
+    \[
+        \{ 0, 2, 4, 6, 8, \ldots \} \subseteq \mathbb N
+    \]
+    che è un \emph{sottoinsieme del dominio}.
+
+    \pause
+    \medskip
+    Analogamente, il predicato ``essere a statuto speciale'' per il dominio delle regioni italiane si può identificare con l'insieme delle regioni che godono di tale proprietà, ovvero
+    \[
+        \{ \text{Friuli Venezia Giulia, Sardegna, Sicilia, Trentino-Alto Adige, Valle d'Aosta} \} \subseteq R
+    \]
+    dove con $R$ indico l'insieme delle regioni italiane.
+\end{frame}
+
+\begin{frame}[fragile]{Formalizzazione dei predicati (3)}
+    Analogamente, un predicato binario come ``essere maggiore di'' per il dominio dei numeri naturali può essere identificato con l'insieme delle \emph{coppie} di numeri in cui il primo elemento è maggiore del secondo:
+    \[
+        \{ (1,0), (2,0), (2,1), (3,0), (3,1), (3,2), \ldots \} \subseteq \mathbb N \times \mathbb N
+    \]
+    che è un sottoinsieme dell'insieme di \alert{coppie ordinate} di numeri naturali, ovvero $ \mathbb N \times \mathbb N$. Notare che possiamo scrivere l'insieme di prima come
+    \[
+        \{ (x,y) \in \mathbb N \times \mathbb N \mid x > y \}
+    \]
+
+    \pause
+    \medskip
+    Analogamente, il predicato ``essere confinante con'' per le regioni italiane si può identificare con l'insieme delle coppie di regioni che godono di tale proprietà, ovvero:
+    \[
+        \{ \text{(Abruzzo, Mole), (Molise, Abruzzo), (Abruzzo, Lazio),  \ldots } \} \subseteq R \times R
+    \]
+\end{frame}
+
+\begin{frame}{Formalizzazione dei predicati (3)}
+    In generale, un predicato di arità $n$ sul dominio $D$ può essere pensato come un sottoinsieme di $D \times D \times ... D = D^n$, ovvero l'insieme delle $n$-uple ordinate di elementi di $D$ che soddisfano il predicato.
+
+    \pause
+    \begin{example}
+        Il predicato ``$x$ ha superato l'esame $y$ con il prof. $z$'' può essere rappresentato da un insieme di triple
+        \begin{center}
+            \{ (Rossi, Logica, Amato), (Verdi, Programmazione, Scozzari), \ldots \}
+        \end{center}
+        dove
+        \[ (Rossi, Logica, Amato) \]
+        vuol dire che il signor Rossi ha superato l'esame di Logica con il prof. Amato.
+    \end{example}
+\end{frame}
+
+\begin{frame}{Relazioni}
+    Un sottoinsieme di $D^n$ in matematica è chiamato spesso \alert{relazione} $n$-aria su $D$. Lo studio delle relazioni sarà fondamentale nel corso di ``Basi di Dati''.
+
+    \begin{example}
+        Una relazione binaria su $\mathbb N$ è,  ad esempio, l'insieme
+        \[
+            \{ (x, y) \in \mathbb N \times \mathbb N \mid x \text{ è un divisore di } y \}
+        \]
+        che rappresenta la relazione in italiano ``essere divisore di''.
+
+        \medskip
+        Ma non è detto che una relazione si debba poter esprimere facilmente nel linguaggio naturale: ad esempio, la relazione
+        \[
+            \{ (0,2), (0,1), (3, 2), (3, 1), (3, 0) \}
+        \]
+        è semplicemente un insieme di coppie di numeri naturali.
+    \end{example}
+\end{frame}
+
+\begin{frame}{Interpretazione (1)}
+    Indichiamo con  $\partof(D^n)$ l'\emph{insieme delle parti} di $D^n$, ovvero l'insieme di tutti i possibili sottinsiemi di $D^n$, ovvero l'insieme di tutte le relazioni su $D^n$.
+    \medskip
+
+    Possiamo a questo punto fissare il concetto di interpretazione per la logica dei predicati come segue.
+
+    \begin{definition}
+        Data una segnatura $\Sigma= (\mc C, \mc P)$, una \alert{interpretazione} $\mcI$ (detta anche \alert{struttura}) è una tripla $(D, \mc I_C, \mc I_P )$ dove:
+        \begin{itemize}
+            \item $D$ è un insieme, detto \emph{dominio};
+            \item $\mc I_C$ è una funzione  $\mcI_C: \mc C \to D$, che associa ad ogni costante individuale un elemento del dominio $D$;
+            \item $\mc I_P$ è una funzione  $\mcI_P: \mc P \to \partof(D^n)$ che associa ad ogni costante predicativa di arità $n$ una relazione $n$-aria su $D$, ovvero un sottoinsieme di $D^n$.
+        \end{itemize}
+    \end{definition}
+\end{frame}
+
+\begin{frame}{Interpretazione (2)}
+    \begin{example}
+        Data la solita segnatura d'esempio, una possibile interpretazione è $\mcI =(\mathbb N, \mathcal I_C, \mathcal I_P)$ dove:
+        \begin{itemize}
+            \item $\mc I_C(a) = 0$, $\mc I_C(b) = 5$, $\mc I_C(c) = 2$;
+            \item $\mc I_P(P) = \{ x \in \mathbb N \mid \text{$x$ è pari} \}$;
+            \item $\mc I_P(Q) = \{ 0, 1, 2, 3 \}$;
+            \item $\mc I_P(R) = \{ (x,y) \in \mathbb N \times \mathbb N \mid x > y \}$.
+        \end{itemize}
+    \end{example}
+
+    \begin{block}{Osservazione}
+        Nella logica proposizionale una interpretazione era sufficiente per assegnare un valore di verità ad una formula, ma non nella logica dei predicati.
+
+        \medskip
+        Se consideriamo l'interpretazione dell'esempio qui sopra, in termini informali possiamo per ora affermare che $Pa$ è vero in questa interpretazione, perché $a$ viene interpretato come $0$ e $0$ è pari. Ma non possiamo dire nulla di $Px$, perché $x$ è una variabile e non sappaimo che valore attribuirgli.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Formule aperte e chiuse}
+
+    \begin{definition}[Formula aperta o chiusa]
+        Una formula si dice \alert{chiusa} se non contiene variabili libere, altrimenti si dice \alert{aperta}.
+    \end{definition}
+
+    \begin{example}
+        Le formule $\forall x Px$, $Pa$, $\forall x (Px \to Qx)$ sono tutte formule chiuse, mentre $Px$ e $\forall x (Px \to Qy)$ sono formule aperte.
+    \end{example}
+
+    \begin{block}{Osservazione}
+        Per dare un valore di verità alle formule aperte, dobbiamo fissare un valore per le variabili libere. Pensare di limitarci alle sole formule chiuse non risolve niente, perché per capire se un formula chiusa $\forall x Px$ è vera, bisogna considerare il valore di verità della formula aperta $Px$ al variare di $x$.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Valutazione (1)}
+    Ricordiamo che il simbolo $\mathcal V$ indica l'insieme delle variabili.
+    \begin{definition}[Valutazione]
+        Dato un insieme $D$, chiamiamo \alert{valutazione su $D$} (o anche \alert{assegnamento}) una funzione $\alpha : \mc V \to D$ che associa ad ogni variabile un elemento dell'insieme.
+    \end{definition}
+
+    \pause
+    \begin{example}
+        La funzione $\alpha(\upsilon) = 0$ che assegna il valore $0$ ad ogni variabile è un valutazione sui naturali. Notare che usiamo $\upsilon$ per riferirci ad una variabile generica, mentre $v$ indica una variabile specifica in $\mc V$.
+    \end{example}
+
+    \pause
+    Per trattare i quantificatori, ci servirà un modo di prendere una valutazione e modificare una variabile per ottenere un'altra valutazione.
+\end{frame}
+
+\begin{frame}{Valutazione (2)}
+    \begin{definition}[Valutazione modificata]
+        Data la valutazione $\alpha$, indichiamo con $\alpha[x \mapsto d]$ una nuova valutazione simile ad $\alpha$, con l'eccezione che alla variabile $x$ viene assegnato il valore $d$. In formule:
+        \[
+            \alpha[x \mapsto d] (\upsilon) = \begin{cases}
+                d                & \text{se $\upsilon = x$} \\
+                \alpha(\upsilon) & \text{altrimenti}
+            \end{cases}
+        \]
+    \end{definition}
+
+    \begin{example}
+        Si consideri la valutazione $\alpha$ che assegna $0$ ad ogni variabile.
+        \begin{itemize}
+            \item $\alpha[x \mapsto 1]$ assegna $1$ ad $x$ e $0$ a tutte le altre variabili.
+            \item $\alpha[x \mapsto 1][y \mapsto 2]$ assegna $1$ ad $x$, $2$ ad $y$ e $0$ a tutte le altre variabili.
+            \item $\alpha[x \mapsto 1][y \mapsto 2][x \mapsto 3]$ assegna $3$ ad $x$, $2$ ad $y$ e $0$ a tutte le altre variabili. Notare che $x$ viene modificata due volte.
+        \end{itemize}
+    \end{example}
+\end{frame}
+
+\begin{frame}{Interpretazione di un termine (1)}
+    Prima di definire il valore di verità di una formula, passiamo per una definizione intermedia che ci consente di determinare il valore di un termine dati una interpretazione e una valutazione.
+
+    \medskip
+    La definizione è semplice: se un termine è una costante, il valore è dato dall'interpretazione, altrimenti dalla valutazione.
+
+    \pause
+    \begin{definition}[Valore di un termine]
+        Data una interpretazione $\mathcal I = (D, \mcI_C, \mcI_P)$, una valutazione $\alpha$ e un termine $t$ su $\Sigma$, definiamo $\mcI_\alpha(t)$, il \alert{valore del termine} $t$ nella interpretazione $\mcI$ con valutazione $\alpha$, come segue:
+        \[
+            \mcI_\alpha(t) = \begin{cases}
+                \uncover<3->{\mcI_C(t)} & \uncover<2->{\text{se $t$ è una costante individuale}}  \\
+                \uncover<5->{\alpha(t)} & \uncover<4->{\text{se $t$ è una variabile individuale}}
+            \end{cases}
+        \]
+    \end{definition}
+\end{frame}
+
+\begin{frame}{Interpretazione di un termine (2)}
+    \begin{example}
+        Con la solita segnatura d'esempio, sia data l'interpretazione $\mcI$ tale che
+        \[\mcI(a) = 2 \quad \mcI(b) = 3 \quad  \mcI(c)=0 \]
+        e la valutazione $\alpha$ sui naturali tale che
+        \[ \alpha(x) = 1 \quad \alpha(y) = 2 \quad \alpha(z) = 35\]
+        Allora:
+        \begin{itemize}
+            \item $\mcI_\alpha(a) = {\only<2|handout:0>{?}\uncover<3->{2}}$
+            \item $\mcI_\alpha(z) = {\only<4|handout:0>{?}\uncover<5->{35}}$
+        \end{itemize}
+    \end{example}
+\end{frame}
+
+\begin{frame}<1-2>[label=model]{Modello}
+    Per la logica dei predicati, preferiamo definire direttamente il concetto di modello:
+    \begin{definition}[Modello]
+        Data una interpretazione $\mcI = (D, \mcI_C, \mcI_P)$ su $\Sigma$ e una valutazione $\alpha$, definiamo cosa vuol dire che $(\mcI, \alpha)$ è un modello della \fbf $X$, in formula $\mcI \models_\alpha X$,  per induzione sulla struttura di $X$. In particolare:
+        \begin{itemize}[<+->]
+            \item $\mcI \models_\alpha \top$;
+            \item $\mcI \models_\alpha Pt_1\ldots t_N$ se e solo se \only<.|handout:0>{???}\uncover<+->{$(\mcI_\alpha(t_1), \ldots, \mcI_\alpha(t_N)) \in \mcI_P(P)$;}
+            \item $\mcI \models_\alpha \neg X$ se e solo se \only<.|handout:0>{???}\uncover<+->{ $\mcI \not\models_\alpha X$;}
+            \item $\mcI \models_\alpha X \land Y$ se e solo se \only<.|handout:0>{???}\uncover<+->{$\mcI\models_\alpha X$ e $\mcI\models_\alpha Y$;}
+            \item \ldots analogamente per gli altri connettivi \ldots
+            \item $\mcI \models_\alpha \exists \upsilon X$ se e solo se \only<.|handout:0>{???}\uncover<+->{esiste un $d \in D$ tale che $\mcI\models_{\alpha[\upsilon \mapsto d]}  Y$;}
+            \item $\mcI \models_\alpha \forall \upsilon X$ se e solo se \only<.|handout:0>{???}\uncover<+->{per ogni $d \in D$, $\mcI\models_{\alpha[\upsilon \mapsto d]}  X$.}
+        \end{itemize}
+    \end{definition}
+\end{frame}
+
+\note{Valutare se definire invece $\mcI_\alpha(X)$ come nel caso della logica delle proposizioni, perché è più semplice con le notazioni far capire che $\mcI_\alpha(X)$ non è ancora stato calcolato di quanto sia facile far capire che $\mcI \models_\alpha X$ non sia ancora stato stabilito.}
+
+\begin{frame}{Modello per le formule atomiche (1)}
+    Supponiamo di avere una formula atomica $Rbx$ e dobbiamo decidere se è vera nella interpretazione $\mcI$ con valutazione $\alpha$. Quello che dobbiamo fare è:
+    \begin{itemize}[<+->]
+        \item Determinare a chi si riferisce il termine $b$, ovvero calcolare $v_b = \mcI_\alpha(b) = 3$.
+        \item Determinare a chi si riferisce il termine $x$, ovvero calcolare $v_x = \mcI_\alpha(x) = 0$.
+        \item Determinare se $v_b = 3$ e $v_x = 0$ sono nella relazione $R$.
+              \begin{itemize}[<+->]
+                  \setlength\itemsep{1.2em}
+                  \item Come sappiamo, ad $R$ corrisponde l'insieme
+                        \[
+                            \mc I_P(R) = \{ (x,y) \in \mathbb N \times \mathbb N \mid x > y \}
+                        \]
+                        di tutte le coppie di elementi che sono in relazione.
+                  \item Dobbiamo determinare se $(3, 0) \in \mcI_P(R)$.
+                  \item Poiché $(3, 0) \in \mcI_P(R)$, allora $\mcI \models_{\alpha} Rbx$
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Modello per le formule atomiche (2)}
+    Supponiamo di avere una formula atomica $Pb$ e dobbiamo decidere se è vera nella interpretazione $\mcI$ con valutazione $\alpha$. Quello che dobbiamo fare è:
+    \begin{itemize}[<+->]
+        \item Determinare a chi si riferisce il termine $b$, ovvero calcolare $v_b = \mcI_\alpha(b) = 3$.
+        \item Determinare se $v_b = 3$ è nella relazione $P$.
+              \begin{itemize}[<+->]
+                  \setlength\itemsep{1.2em}
+                  \item Come sappiamo, a $P$ corrisponde un insieme
+                        \[
+                            \mc I_P(P) = \{ x \in \mathbb N \mid x \text{ è pari} \}
+                        \]
+                        di tutti gli elementi che godono della proprietà $P$.
+                  \item Dobbiamo determinare se $3 \in \mcI_P(P)$.
+                  \item Poiché $3 \notin \mcI_P(P)$, allora $\mcI \not\models_{\alpha} Pb$
+              \end{itemize}
+    \end{itemize}
+    \uncover<+->{
+    \smallskip
+    Se generalizziamo questi esempi, otteniamo:
+    \[
+    \mcI \models_\alpha Pt_1\ldots t_N \text{ se e solo se } (\mcI_\alpha(t_1), \ldots, \mcI_\alpha(t_N)) \in \mcI_P(P) \enspace .
+    \]
+    per un generico simbolo di predicato $P$.
+    }
+\end{frame}
+
+\againframe<3-9|handout:0>{model}
+
+\begin{frame}{Modello per il quantificatore esistenziale}
+    Supponiamo di avere la formula $\exists x Px$ e dobbiamo decidere se è vera nella solita interpretazione $\mcI$ con valutazione $\alpha$.
+
+    \pause
+    \medskip
+    Come sappiamo dalla nostra definizione informale, $\exists x Px$ è vera se esiste un valore per $x$ che rende vera $Px$.
+
+    \pause
+    \medskip
+    Nella definizione formale, specificare un valore per la variabile $x$ significa modificare la valutazione $\alpha$ in modo da assegnare un valore a $x$. Dunque dobbiamo:
+    \begin{itemize}[<+->]
+        \item considerare tutti i possibili valori di $d$ nel dominio $D$;
+        \item per ogni valore $d$ calcolare una nuova valutazione derivata da $\alpha$, ma in cui alla variabile $x$ assegniamo il valore $d$, ovvero $\alpha[x \mapsto d]$;
+        \item verificare se $Px$ è vera nella interpretazione $\mcI$ con la valutazione modificata.
+    \end{itemize}
+
+    \uncover<+->{
+        Se generalizziamo questa procedura, otteniamo:
+        \[
+            \mcI \models_\alpha \exists \upsilon X \text{ se e solo esiste almeno un } d \in D \text{ tale che } \mcI\models_{\alpha[\upsilon \mapsto d]} X
+        \]
+    }
+\end{frame}
+
+\begin{frame}{Modello per il quantificatore esistenziale (2)}
+    \begin{itemize}[<+->]
+        \item Proviamo ad esempio $d=3$. Devo determinare se $\mcI \models_{\alpha[x \mapsto 3]} Px$.
+              \begin{itemize}[<+->]
+                  \item Determino il valore di $x$ nella interpretazione $\mcI$ con la valutazione $\alpha[x \mapsto 3]$, ovvero $\mcI_{\alpha[x \mapsto 3]}(x) = 3$.
+                  \item Verifico se $3 \in \mcI_P(P)$, cosa ovviamente falsa perché $3$ non è pari.
+                  \item Dunque $\mcI \not\models_{\alpha[x \mapsto 3]} Px$.
+              \end{itemize}
+        \item Proviamo adesso $d=2$. Devo determinare se $\mcI \models_{\alpha[x \mapsto 2]} Px$.
+              \begin{itemize}[<+->]
+                  \item Determino il valore di $x$ nella interpretazione $\mcI$ con la valutazione $\alpha[x \mapsto 2]$, ovvero $\mcI_{\alpha[x \mapsto 2]}(x) = 2$.
+                  \item Verifico se $2 \in \mcI_P(P)$, cosa ovviamente vera perché $2$ è pari.
+                  \item Dunque $\mcI \models_{\alpha[x \mapsto 2]} Px$.
+              \end{itemize}
+        \item Poiché ho trovato un valore di $d$ che rende vero  $\mcI \models_{\alpha[x \mapsto d]} Px$, la formula quantificata esisenzialmente è vera, ovvero $\mcI \models_{\alpha} \exists x Px$.
+    \end{itemize}
+\end{frame}
+
+\againframe<10-|handout:0>{model}
+
+\begin{frame}{Osservazioni sulla definizione di modello}
+    La definizione di modello è abbastanza precisa che la verifica del fatto che una formula è vera in un modello è un procedimento meccanico, in teoria implementabile da un computer.
+
+    \medskip Tuttavia, c'è un problema: se il dominio è infinito, la verifica delle formule con $\forall$ ed $\exists$ richiede potenzialmente un numero infinito di passi. Quindi nella pratica, rispondere alla domanda ``$\mcI \models_\alpha X$ ?'' richiede spesso una \emph{dimostrazione}, ovvero un ragionamento complesso che mostra che la formula è vera, senza fare un numero di tentativi infinito.
+
+    \medskip
+    Questo mette la logica dei predicati ad un livello di complessità molto più elevato dell logica proposizionale: in quella, si poteva verificare se una formuala era vera in una interpretazione semplicemente applicando le regole dei connettivi.
+\end{frame}
+
+\begin{frame}{Esempi}
+    Vedremo adesso alcuni esempi in cui verificheremo se una formula è vera in una interpretazione con una data valutazione.
+
+    \medskip Richiamamo la segnatura, interpretazione e valutazione che useremo nel seguito:
+    \begin{itemize}
+        \item segnatura $\Sigma=(\{a, b, c\}, \{P/1, Q/1, R/2\})$;
+        \item interpretazione $\mcI = (\mathbb N, \mcI_C, \mcI_P)$ tale che
+        \begin{itemize}
+            \item $\mc I_C(a) = 0$, $\mc I_C(b) = 5$, $\mc I_C(c) = 2$;
+            \item $\mc I_P(P) = \{ x \in \mathbb N \mid \text{$x$ è pari} \}$, \quad $\mc I_P(Q) = \{ 0, 1, 2, 3 \}$;
+            \item $\mc I_P(R) = \{ (x,y) \in \mathbb N \times \mathbb N \mid x > y \}$;
+        \end{itemize}
+        \item valutazione $\alpha$ tale che $\alpha(\upsilon) = 0$ per ogni $\upsilon \in \mc V$.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Esempio: $\mcI \models_\alpha Px \to Qb$}
+    Tenendo conto della interpretazione, la formula in italiano diventa
+    \begin{center}
+        ``Se $x$ è pari allora $b$ è compreso tra $0$ e $3$''
+    \end{center}
+    Poiché $0$ è pari ma $b = 5$ non è compreso tra $0$ e $3$, ci aspettiamo che la formula sia falsa.
+
+    \medskip
+    \begin{itemize}[<+->]
+        \item $\mcI \models_\alpha Px \to Qb$ \only<.-13|handout:0>{?}\uncover<14->{\xmark}
+        \begin{itemize}
+            \item $\mcI \models_\alpha Px$  \only<.-6|handout:0>{?}\uncover<7->{\checkmark}
+            \begin{itemize}
+                \item $\mcI_\alpha(x) = {}\only<.|handout:0>{?}\uncover<+->{0}$
+                \item $0 \in \mcI_P(P)$ \only<.|handout:0>{?}\uncover<+->{\checkmark \quad perché 0 è pari}
+            \end{itemize}
+            \item<8-> $\mcI \models_\alpha Qb$ \only<.-12|handout:0>{?}\uncover<13->{\xmark}
+            \begin{itemize}
+                \item<9-> $\mcI_\alpha(b) = {}\only<9|handout:0>{?}\uncover<10->{5}$
+                \item<11-> $5 \in \mcI_P(Q)$ \only<11|handout:0>{?}\uncover<12->{\xmark}
+            \end{itemize}
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Esempio: $\mcI \models_\alpha \exists x (Px \vee Qb)$}
+    Tenendo conto della interpretazione, la formula in italiano diventa
+    \begin{center}
+        ``esiste un $x$ tale $x$ è pari oppure $b$ è compreso tra $0$ e $3$''
+    \end{center}
+
+    \begin{itemize}[<+->]
+        \item $\mcI \models_\alpha \exists x (Px \vee Qb)$ \only<.-12|handout:0>{?}\uncover<13->{\checkmark}
+        \begin{itemize}
+            \item Dovremmo provare as assegnare ad $x$ tutti i possibili numeri naturali, fino a trovarne uno che va bene. Ma cerchiamo di usare un po' l'intuizione. La formula $Qb$ è sempre falsa, indipendentemente dalla valutazione, quindi per rendere vera $Px \vee Qb$ dobbiamo rendere vera $Px$, ovvero scegliere un valore pari per $x$.
+            \item con $x \mapsto 2$ otteniamo $\mcI \models_{\alpha[x \mapsto 2]} Px \vee Qb$ \only<.-10|handout:0>{?}\uncover<11->{\checkmark}
+            \begin{itemize}
+                \item $\mcI \models_{\alpha[x \mapsto 2]} Px$ \only<.-8|handout:0>{?}\uncover<9->{\checkmark}
+
+                \uncover<+->{
+                \qquad $\mcI_{\alpha[x \mapsto 2]}(x) = {}\only<.|handout:0>{?}\uncover<+->{2}$
+                }
+
+                \uncover<+->{
+                \qquad $2 \in \mcI_P(P)$ \only<.|handout:0>{?}\uncover<+->{\checkmark \quad perché 2  è pari}
+                }
+                \item<10-> non è necessario controllare $Qb$, sappiamo già che la disgiunzione è vera
+            \end{itemize}
+            \item<12-> dunque $2$ è il valore di $x$ cercato che rende vera la formula con il quantificatore esistenziale.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Esempio: $\mcI \models_\alpha \forall x \exists y Ryx$ (1)}
+    Tenendo conto che $Ryx$ vuol dire ``$y$ maggiore di $x$'', la formula in italiano diventa
+    \begin{center}
+        ``per ogni $x$ esiste un $y$ maggiore di $x$''
+    \end{center}
+    che intuitivamente ci aspettiamo sia vera. Proviamo a verificarla formalmente.
+
+    \pause \medskip
+    \begin{itemize}[<+->]
+        \item $\mcI \models_\alpha \forall x \exists y Ryx$ ?
+              % se e solo se per ogni $d \in \mathbb N$ vale $\mcI \models_{\alpha[x \mapsto d]} \exists y Ryx$.
+              \begin{itemize}
+                  \item per $x \mapsto 0$: $\mcI \models_{\alpha[x \mapsto 0]} \exists y Ryx$ \only<.-11|handout:0>{?}\uncover<12->{\checkmark}
+                        %, ovvero  trovare un $d' \in \mathbb N$ tale che $\mcI \models_{\alpha[x \mapsto 0][y \mapsto d']} Ryx$. Possiamo scegliere $d'=1$ perché:
+                        \begin{itemize}
+                            \item scegliamo $y \mapsto 1$: $\mcI \models_{\alpha[x \mapsto 0][y \mapsto 1]} Ryx$ \only<.-10|handout:0>{?}\uncover<11->{\checkmark}
+
+                                  \uncover<+->{\qquad$\mcI_{\alpha[x \mapsto 0][y \mapsto 1]}(x) = {} \only<.|handout:0>{?}\uncover<+->{0}$}
+
+                                      \uncover<+->{\qquad$\mcI_{\alpha[x \mapsto 0][y \mapsto 1]}(y) = {} \only<.|handout:0>{?}\uncover<+->{1}$}
+
+                                  \uncover<+->{\qquad$(1, 0)  \in \mc I_P(R)$ \only<.|handout:0>{?}\uncover<+->{\checkmark}}
+                        \end{itemize}
+                  \item<13-> per $x \mapsto 1$: $\mcI \models_{\alpha[x \mapsto 1]} \exists y Ryx$ \only<.-15|handout:0>{?}\uncover<16->{\checkmark}
+                      \begin{itemize}
+                          \item<14-> scegliamo $y \mapsto 2$: $\mcI \models_{\alpha[x \mapsto 1][y \mapsto 2]} Ryx$ \only<.|handout:0>{?}\uncover<15->{\checkmark}
+                      \end{itemize}
+                  \item<17-> in teoria dovremmo ripetere il discorso per ogni numero naturale. Invece, facciamo una \emph{dimostrazione} prendendo una $d$ generica.
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Esempio: $\mcI \models_\alpha \forall x \exists y Ryx$ (2)}
+    \begin{itemize}[<+->]
+        \item $\mcI \models_\alpha \forall x \exists y Ryx$ \only<.-11|handout:0>{?}\uncover<12->{\checkmark}
+              \begin{itemize}
+                  \item per $x \mapsto d$ otteniamo $\mcI \models_{\alpha[x \mapsto d]} \exists y Ryx$ \only<.-10|handout:0>{?}\uncover<11->{\checkmark}
+                        %ovvero  trovare un $d' \in \mathbb N$ tale che $\mcI \models_{\alpha[x \mapsto d][y \mapsto d']} Ryx$. Possiamo scegliere $d'=d+1$ perché:
+                        \begin{itemize}
+                            \item scegliamo $y \mapsto d+1$ otteniamo $\mcI \models_{\alpha[x \mapsto d][y \mapsto d+1]} Ryx$ \only<.-9|handout:0>{?}\uncover<10->{\checkmark}
+
+                                  \uncover<+->{
+                                  \qquad $\mcI_{\alpha[x \mapsto d][y \mapsto d+1]}(x) = {}\only<.|handout:0>{?}\uncover<+->{d}$
+                                  }
+
+                                  \uncover<+->{
+                                  \qquad $\mcI_{\alpha[x \mapsto d][y \mapsto d+1]}(y) = {}\only<.|handout:0>{?}\uncover<+->{d+1}$
+                                  }
+
+                                  \uncover<+->{
+                                      \qquad $(d+1, d)  \in \mc I_P(R)$ \only<.|handout:0>{?}
+                                      \uncover<+->{\checkmark \quad perché  $d+1 > d$}
+                                  }
+                        \end{itemize}
+                  \item<12-> avendo verificato $\mcI \models_{\alpha[x \mapsto d]} \exists y Ryx$ per un $d$ generico, è come averlo verificato per tutti.
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Esempio: $\mcI \not\models_\alpha \forall x \exists y Rxy$}
+    Tenendo conto che $Rxy$ vuol dire ``$x$ maggiore di $y$'', la formula in italiano diventa
+    \begin{center}
+        ``per ogni $x$ esiste un $y$ tale $x$ è maggiore di $y$''
+    \end{center}
+    o anche
+    \begin{center}
+        ``per ogni $x$ esiste un $y$ minore di $x$''
+    \end{center}
+    Intuitivamente ci aspettiamo che questa formula sia falsa, perché se $x=0$ otteniamo ``esiste un $y$ minore di 0'' ma non esistono numeri naturali minori di $0$.
+
+    \pause
+    \medskip
+    \begin{itemize}[<+->]
+        \item $\mcI \models_\alpha \forall x \exists y Rxy$ \only<.-6|handout:0>{?}\uncover<7->{\xmark}
+              \begin{itemize}
+                  \item per $x \mapsto 0$ otteniamo $\mcI \models_{\alpha[x \mapsto 0]} \exists y Rxy$ \only<.-5|handout:0>{?}\uncover<6->{\xmark}
+                        \begin{itemize}
+                            \item scegliendo $y \mapsto 1$ otteniamo $\mcI \models_{\alpha[x \mapsto 0, y \mapsto 1]} Rxy$ \only<.|handout:0>{?}\uncover<+->{\xmark \quad perché $0 \not> 1$}
+                        \end{itemize}
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Esempio: $\mcI \models_\alpha \forall x (\neg P x \to \exists y Rxy)$ (1) }
+    La formula
+    \[
+        \forall x (\neg P x \to \exists y Rxy)
+    \]
+    è simile a quella precedete, ma ora la premessa $\neg Px$ limita il quantificatore $\forall x$ ai soli valori di $x$ che non sono soddisfano $P$.
+
+    \medskip
+    La si può rendere in italiano come:
+    \begin{center}
+        ``per ogni $x$ non pari esiste un $y$ minore di $x$''
+    \end{center}
+
+    Intuitivamente ci aspettiamo che questa formula sia vera, perché il controesempio $x=0$ che rendeva falsa la formula precedente non si applica più, dato che $0$ è pari.
+\end{frame}
+
+\begin{frame}{Esempio: $\mcI \models_\alpha \forall x (\neg P x \to \exists y Rxy)$ (2)}
+    \begin{itemize}[<+->]
+        \item $\mcI \models_\alpha \forall x (\neg P x \to \exists y Rxy)$ \only<.|handout:0-16>{?}\uncover<17->{\checkmark}
+              \begin{itemize}
+                  \item per $x \mapsto 0$ otteniamo $\mcI \models_{\alpha[x \mapsto 0]} \neg P x \to \exists y Rxy$ \only<.-6|handout:0>{?}\uncover<7->{\checkmark \quad perché la premessa è falsa}
+                        \begin{itemize}
+                            \item $\mcI \models_{\alpha[x \mapsto 0]} \neg P x$ \only<.-5|handout:0>{?}\uncover<6->{\xmark}
+
+                                  \uncover<+->{
+                                      \smallskip
+                                      \qquad $\mcI \models_{\alpha[x \mapsto 0]} P x$ \only<.|handout:0>{?}\uncover<+->{\checkmark}
+                                  }
+                        \end{itemize}
+                  \item<8-> per $x \mapsto 1$ otteniamo $\mcI \models_{\alpha[x \mapsto 1]} \neg P x \to \exists y Rxy$ \only<.-14|handout:0>{?}\uncover<15->{\checkmark}
+                      \begin{itemize}
+                          \setlength\itemsep{0.6em}
+                          \item<9-> $\mcI \models_{\alpha[x \mapsto 1]} \neg P x$ \only<.-10|handout:0>{?}\uncover<11->{\checkmark}
+
+                              \uncover<10->{
+                                  \smallskip
+                                  \qquad $\mcI \models_{\alpha[x \mapsto 1]} \neg P x$ \only<.|handout:0>{?}\uncover<+->{\xmark}
+                              }
+                          \item<12-> $\mcI \models_{\alpha[x \mapsto 1]} \exists y Rxy$ \only<.-13|handout:0>{?}\uncover<14->{\checkmark quad scegliendo $y \mapsto 0$}
+                      \end{itemize}
+                  \item<16-> per gli altri valori di $x$, tutto procedece come il caso $x \mapsto 0$ o $x \mapsto 1$ a seconda se il numero è pari o dispari.
+              \end{itemize}
+        \item<18-> Notare il ruolo svolto dalla implicazione:
+            \begin{itemize}
+                \item gli $x$ pari rendono la premessa falsa, quindi la formula è vera banalmente;
+                \item gli $x$ dispari rendono la premessa vera, quindi la formula è vera se e solo se la conclusione è vera.
+            \end{itemize}
+            Quindi l'implicazione ``salta'' i casi che non sono di interesse (quelli pari).
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Valutazioni e variabili libere}
+    La definizione di modello dipende da una valutazione, ma è ovvio che quello che conta è solo il valore della valutazione per le variabili che compaiono libere nella formula. In altre parole, per determinare il valore di $Py \to Qz$, il valore di $x$ non ci interessa!
+    \begin{theorem}
+        Siano $\mcI$ una interpretazione, $X$ una \fbf e $\alpha$ e $\alpha'$ due valutazioni su $D$ tali che $\alpha(\upsilon) = \alpha'(\upsilon)$ per ogni variabile libera $\upsilon$ in $X$. Allora $\mcI \models_\alpha X$ se e solo se $\mcI \models_{\alpha'} X$.
+    \end{theorem}
+    \begin{block}{Osservazione}
+        Notare che ci interessa il valore della valutazione solo per le variabili \textbf{libere}. Per dererminare se $\mcI \models_\alpha \forall x Px$, il valore di $\alpha(x)$ non ci interessa, tanto verrà sostituito da un valore $d$ nel dominio $D$.
+    \end{block}
+    \begin{block}{Osservazione}
+        In particolare, il valore di verità delle formuke chiuse non dipende dalla valutazione!
+    \end{block}
+\end{frame}
+
+
+\begin{frame}{Altre definizioni}
+    Queste definizioni sono praticamente le stesse che abbiamo già visto, solo rifrasate usando i concetti di interpretazione e modello.
+
+    \begin{definition}[Tautologia e contraddizione]
+        Una \fbf $X$ è detta \emph{tautologia} se e solo se $\mcI \models_\alpha X$ per tutte le interpretazionie $\mcI$ e valutazioni $\alpha$. Una \fbf $X$ è detta \emph{contraddizione} se e solo se $\mcI \not\models_\alpha X$ per tutte le interpretazioni $\mcI$ e valutazioni $\alpha$.
+    \end{definition}
+
+    \begin{definition}[Equivalenza logica]
+        Due \fbf $X$ e $Y$ sono \emph{logicamente equivalenti} se e solo se hanno gli stessi modelli.
+    \end{definition}
+
+    \begin{definition}[Conseguenza logica]
+        Una formula \fbf $X$ è \emph{conseguenza logica} di un insieme $\mathcal{S}$ di \fbf se e solo tutti i modelli di $\mathcal{S}$ sono anche modelli di $X$. Scriviamo in questo caso \textbf{$\mathcal S \models X$}.
+    \end{definition}
+\end{frame}
+\end{document}

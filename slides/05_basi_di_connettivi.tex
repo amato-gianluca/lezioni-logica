@@ -1,0 +1,321 @@
+\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table,handout]{beamer}
+
+%\setbeameroption{show notes}
+
+\input{preamble.inc}
+
+\title{Basi di connettivi}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\section[fp da tavola di verità]{Determinare la fp di un tavola di verità}
+
+\begin{frame}{Determinare la fp di un tavola di verità (1)}
+    Consideriamo la seguente tavola di verità con una colonna non definita:
+
+    \medskip
+    \begin{quote}
+        \begin{tabular}{c|c|c||c}
+            $A$ & $B$ & $C$ & ? \\
+            \hline
+            F   & F   & F   & F \\
+            F   & F   & V   & F \\
+            F   & V   & F   & F \\
+            F   & V   & V   & F \\
+            V   & F   & F   & V \\
+            V   & F   & V   & V \\
+            V   & V   & F   & V \\
+            V   & V   & V   & F
+        \end{tabular}
+    \end{quote}
+
+    \medskip
+    Ci chiediamo se esiste una forma proposizionale che la genera.
+\end{frame}
+
+\begin{frame}[t]{Determinare la fp di un tavola di verità (2)}
+        Effettivamente, esiste una procedura sistematica per ottenere la fp cercata:
+        \begin{columns}[t]
+            \column{0.45\textwidth}
+            \begin{center}
+                \small
+                \begin{tabular}{c|c|c||c|l}
+                    $A$ & $B$ & $C$ & ? \\
+                    \hline
+                    F   & F   & F   & F \\
+                    F   & F   & V   & F \\
+                    F   & V   & F   & F \\
+                    F   & V   & V   & F \\
+                    \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}F & \only<2>{\cellcolor{red}}F & \only<2>{\cellcolor{red}}V & \uncover<3->{$A \wedge \neg B \wedge \neg C$} \\
+                    \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}F & \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}V & \uncover<3->{$A \wedge \neg B \wedge C$}\\
+                    \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}F & \only<2>{\cellcolor{red}}V & \uncover<3->{$A \wedge B \wedge \neg C$}\\
+                    V   & V   & V   & F
+                \end{tabular}
+            \end{center}%
+            \column{0.55\textwidth}
+            \begin{enumerate}
+                \item<2-> individuare le righe il cui risultato è V
+                \item<3-> per ogni riga, scrivere la congiunzione di tutte le variabili: quelle cha hanno valore V appaiono direttamente, quelle cha hanno valore F appaiono negate
+                \item<4-> scrivere la disgiunzione di tutte le congiunzioni ottenute al passo precedente, ottenendo
+                \small
+                \[
+                    (A \wedge \neg B \wedge \neg C) \vee (A \wedge \neg B \wedge C) \vee (A \wedge  B \wedge \neg C)
+                \]
+            \end{enumerate}
+        \end{columns}
+    \uncover<5>{
+    Una formula di questo tipo è detta in \emph{forma normale disgiuntiva} (FND). Questo esempio ci mostra anche che tutte le fp ne hanno una equivalente in FND.}
+\end{frame}
+
+\begin{frame}{Perché funziona?}
+    Ognuna delle tre congiunzioni è vera solo in corrispondenza della riga che l'ha generate (nell'esempio qui sotto, quella dello stesso colore).
+
+    \medskip
+    L'or di queste congiunzioni è vera in corrispondenza di tutte le righe in cui almeno una delle congiunzioni è vera, cioè in corrispondenza di tutte le righe in cui la colonna ? è V.
+    \begin{center}
+        \small
+        \begin{tabular}{c|c|c||c|c|c|c|c}
+            $A$ & $B$ & $C$ & ? & \cellcolor{red}{$P=A \wedge \neg B \wedge \neg C$} &  \cellcolor{blue}{$Q=A \wedge \neg B \wedge  C$} &  \cellcolor{green}{$R=A \wedge  B \wedge \neg C$} &  $P \vee Q \vee R$\\
+            \hline
+            F   & F   & F   & F & F & F & F & F \\
+            F   & F   & V   & F & F & F & F & F \\
+            F   & V   & F   & F & F & F & F & F \\
+            F   & V   & V   & F & F & F & F & F \\
+            \cellcolor{red}V  & \cellcolor{red}F   & \cellcolor{red}F   & \cellcolor{red}V & V & F & F & V \\
+            \cellcolor{blue}V   & \cellcolor{blue}F   & \cellcolor{blue}V   & \cellcolor{blue}V & F & V & F & V \\
+            \cellcolor{green}V   & \cellcolor{green}V   & \cellcolor{green}F   & \cellcolor{green}V & F & F & V & V \\
+            V   & V   & V   & F & F & F & F & F
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Semplificare la FND (1)}
+    La formula ottenuta in questo modo può essere notevolmente più complessa del necessario. Consideriamo la seguente tavola di verità.
+
+    \medskip
+    \begin{quote}
+        \begin{tabular}{c|c||c}
+            $A$ & $B$ & ? \\
+            \hline
+            F   & F  & V \\
+            F   & V  & V \\
+            V   & F  & V \\
+            V   & V  & F \\
+        \end{tabular}
+    \end{quote}
+
+    \pause
+    \medskip Guardando la tavola, è possibile vedere che la formula cercata è \pause $\neg (A \wedge B)$.
+
+    \pause
+    \medskip Ma applicando il meccanismo visto prima, otteniamo $(\neg A \wedge \neg B) \vee (\neg A \wedge B) \vee (A \wedge \neg B)$
+
+    \pause
+    \medskip Tuttavia, applicando le equivalenze logiche, possiamo semplificarla.
+\end{frame}
+
+\begin{frame}{Semplificare la FND (2)}
+    \[
+        \begin{array}{rl@{\hspace{0.8cm}}l}
+                          & (\neg A \wedge \neg B) \vee (\neg A \wedge B) \vee (A \wedge \neg B) & \pause \text{(raccoglimento)} \\
+            \pause \equiv & \left(\neg A \wedge (\neg B \vee B)\right) \vee (A \wedge \neg B)           & \pause \text{(terzo escluso)}            \\
+            \pause \equiv & \left(\neg A \wedge \top\right) \vee (A \wedge \neg B)           & \pause \text{(elemento neutro di $\wedge$)}            \\
+            \pause \equiv & \neg A \vee (A \wedge \neg B)                     & \pause \text{(prop. distributiva)}          \\
+            \pause \equiv & (\neg A \vee A) \wedge (\neg A \vee \neg B)        & \pause \text{(terzo escluso)}      \\
+            \pause \equiv & \top \wedge (\neg A \vee \neg B)        & \pause \text{(elemento neutro di $\wedge$)}      \\
+            \pause \equiv & \neg A \vee \neg B       & \pause \text{(De Morgan*)}      \\
+            \pause \equiv & \neg (A \wedge B)
+        \end{array}
+    \]
+    Nel passaggio marcato da $*$ è stata usata la legge di De Morgan $\neg (A \wedge B) \equiv \neg A \vee \neg B$ al contrario, da destra verso sinistra.
+\end{frame}
+
+\begin{frame}{Revisitare le equivalente notevoli}
+    Usando la provedura vista, possiamo facilmente di ottenere le equivalenze che ci consentono di riscrivere i connettivi $\to$, $\xor$  in termini di $\wedge$, $\vee$ a $\neg$. Si tratta di:
+    \begin{gather*}
+        A \to B \equiv \neg A \vee B \\
+        A \xor B \equiv (\neg A \wedge B) \vee (A \wedge \neg B)
+    \end{gather*}
+    che abbiamo già visto nella lezione sulle equivalenze notevoli.
+\end{frame}
+
+\section{Basi di connettivi}
+
+\begin{frame}{Basi di connettivi}
+    Abbiamo visto come qualunque fp abbia una equivalente forma normale disgiuntiva. Le FND usano solo i connettivi $\neg$, $\wedge$ e $\vee$. Dunque:
+    \begin{theorem}
+        Tutte le forme proposizionali ne hanno una equivalente che usa solo $\neg$, $\wedge$ e $\vee$.
+    \end{theorem}
+
+    \begin{definition}
+        Un insieme di connettvi che consentono di esprimere tutte le fp è detto \emph{base di connettivi}.
+    \end{definition}
+
+    Il teorema di sopra si può quindi riformulare nel modo seguente:
+    \begin{theorem}
+        $\{ \neg, \wedge, \vee\}$ è una base di connettivi.
+    \end{theorem}
+\end{frame}
+
+\begin{frame}{$\wedge$ e $\neg$ costituiscono una base di connettivi (1)}
+    In realtà, $\neg$ e $\wedge$ da soli sono sufficienti per avere una base di connettivi. Infatti è facile verificare che
+    \begin{theorem}
+    \[
+        A \vee B \equiv \neg(\neg A \wedge \neg B)
+    \]
+    \end{theorem}
+    \begin{proof}
+    Potremmo verificarlo con le tavole di verità, ma proviamo a farlo per via algebrica.
+    Dalla legge di De Morgan sappiamo che
+    \[
+        \neg(A \vee B) \equiv \neg A \wedge \neg B
+    \]
+    Applicando una negazione ad ambo i membri, si ottiene
+    \[
+        \neg \neg (A \vee B) \equiv \neg(\neg A \wedge \neg B)
+    \]
+    e per la legge di doppia negazione, si ottiene quanto voluto.
+    \end{proof}
+\end{frame}
+
+\begin{frame}{$\wedge$ e $\neg$ costituiscono una base di connettivi (2)}
+    Poiché
+    \[A \vee B \equiv \neg(\neg A \wedge \neg B)\]
+    quando abbiamo un \fp che contiene $\neg$, $\wedge$ e $\vee$, possiamo rimpiazzare tutte le $\vee$ usando la formula di sopra, ottenendo una formula che usa solo $\neg$ e $\wedge$.
+
+    \begin{example}
+        Sia data la \fp
+        \[
+            \neg A \vee (B \wedge C)
+        \]
+        Applicando l'equivalenza di prima, otteniamo:
+        \[
+            \neg (\neg \neg A \wedge \neg (B \wedge C))
+        \]
+        che volendo possiamo semplificare in
+        \[
+            \neg (A \wedge \neg (B \wedge C))
+        \]
+    \end{example}
+\end{frame}
+
+\begin{frame}{$\wedge$ e $\neg$ costituiscono una base di connettivi (2)}
+    Possiamo concludere con il seguente:
+    \begin{theorem}
+        $\{ \neg, \wedge\}$ è una una base di connettivi.
+    \end{theorem}
+    \begin{proof}
+        Quanlunque formula si può riscrivere in una equivalente che usa solo $\neg$, $\wedge$ e $\vee$. Ma poiché $A \vee B \equiv \neg(\neg A \wedge \neg B)$, possiamo rimpiazzare tutte le disgiunzioni con formule che usano solo $\neg$ e $\wedge$. Quindi $\{ \neg, \wedge\}$ è una base di connettivi.
+    \end{proof}
+    Ovviamente, in maniera analoga, usando il fatto che $A \vee B = \neg(\neg A \wedge \neg B)$, si dimostra anche
+    \begin{theorem}
+        $\{ \neg, \vee\}$ è una una base di connettivi.
+    \end{theorem}
+\end{frame}
+
+\begin{frame}{$\wedge$ e $\neg$ non costituiscono una base di connettivi}
+    Ci si potrebbe chiedere se $\wedge$ e $\vee$ costituiscono una base di connettivi, facendo a meno della negazione. La risposta è negativa.
+
+    \begin{theorem}
+        $\{ \wedge, \vee\}$ non è una base di connettivi.
+    \end{theorem}
+    \begin{proof}
+        Sia $X$ una \fp che usa solo i connettivi $\wedge$ e $\vee$. Poiché $F \vee F = F$ e $F \wedge F= F$, segue che se tutte le lettere proposizionali hanno valore di verità falso, la \fp X ha anch'essa valore di verità falso. Quindi $X$ non consente di esprimere tutte le \fp.
+    \end{proof}
+
+    Come conseguenza, ovviamente, neanche $\wedge$  o $\vee$ da soli costituiscono una base.
+\end{frame}
+
+\begin{frame}{$\to$ e $\bot$ costituiscono una base di connettivi}
+    \begin{theorem}
+        $\{ \to, \bot\}$ è una base di connettivi.
+    \end{theorem}
+    \begin{proof}
+    Basta trovare formule equivalenti a $\neg A$ ed a $A \vee B$ che usano solo $\to$ e $\bot$. È facile verificare che
+    \begin{gather*}
+        \neg A \equiv A \to \bot\\
+        A \vee B \equiv \neg A \to B \equiv (A \to \bot) \to B
+    \end{gather*}
+    \end{proof}
+
+    Invece $\to$ da sola non è sufficiente. Siccome $V \to V = V$, qualunque formula che usa solo $\to$ ha valore di verità V quando tutte le lettere proposizionali hanno valore di verità V. Quindi $\to$ da solo non è sufficiente per esprimere tutte le \fp.
+\end{frame}
+
+\begin{frame}{Il connettivo nand}
+    Un connettivo nuovo è il connettivo ``\alert{nand}'', abbreviazione di ``not and''. In italiano corrisponde al cosiddetto ``\alert{o incompatibile}''. Non esiste un simbolo universalmente accettto per il nand, ma spesso si usa $\uparrow$.
+
+    \medskip
+    La sua tavola di verità è la negazione della congiunzione:
+    \begin{center}
+        \begin{tabular}{c|c||c}
+            $A$ & $B$ & $A \uparrow B$ \\
+            \hline
+            F   & F   & V         \\
+            F   & V   & V         \\
+            V   & F   & V         \\
+            V   & V   & F
+        \end{tabular}
+    \end{center}
+
+    \begin{example}
+        A tavola vale la regola: ``o si mangia o si parla'', vuol dire che non si possono fare entrambe le cose, ma qualunque altra combinazione è ammessa (anche non fare nessuna delle due).
+    \end{example}
+\end{frame}
+
+\begin{frame}{$\uparrow$ costituisce da solo una base di connettivi}
+    \begin{theorem}
+        $\{ \uparrow \}$ è una base di connettivi.
+    \end{theorem}
+    \begin{proof}
+     Siccome sappiamo che $\{\neg, \wedge\}$ è una base, basa mostrare che sia $\neg$ che $\wedge$ si possono esprimere usando solo $\uparrow$.
+
+    \medskip
+    Si ottiene facilmente, con le tavole di verità:
+    \begin{gather*}
+        \neg A \equiv A \uparrow A\\
+        A \wedge B \equiv \neg(A \uparrow B) \equiv (A \uparrow B) \uparrow (A \uparrow B)
+    \end{gather*}
+    \end{proof}
+\end{frame}
+
+\begin{frame}{Il connettivo nor}
+    Un altro connettivo nuovo è il connettivo ``\alert{nor}'', abbreviazione di ``not or''. In italiano corrisponde a ``\alert{non è né \ldots né}'' (in inglese, appunto, ``neither \ldots nor''). Anche in questo caso non esiste un simbolo universalmente accettto per il nor, ma spesso si usa $\downarrow$. La sua tavola di verità è la negazione della disgiunzione:
+
+    \medskip
+    \begin{center}
+        \begin{tabular}{c|c||c}
+            $A$ & $B$ & $A \downarrow B$ \\
+            \hline
+            F   & F   & V         \\
+            F   & V   & F        \\
+            V   & F   & F         \\
+            V   & V   & F
+        \end{tabular}
+    \end{center}
+
+    \begin{example}
+        La proposizione ``Non è né sabato né domenica'' è vera solo se le proposizioni ``è sabato'' ed ``è domenica'' sono false.
+    \end{example}
+\end{frame}
+
+\begin{frame}{$\downarrow$ costituisce da solo una base di connettivi}
+    \begin{theorem}
+        $\{ \downarrow \}$ è una base di connettivi.
+    \end{theorem}
+    \begin{proof}
+     Siccome sappiamo che $\{\neg, \vee\}$ è una base, basa mostrare che sia $\neg$ che $\vee$ si possono esprimere usando solo $\downarrow$.
+
+    \medskip
+    Si ottiene facilmente, con le tavole di verità:
+    \begin{gather*}
+        \neg A \equiv A \downarrow A\\
+        A \vee B \equiv \neg(A \vee B) \equiv (A \downarrow B) \downarrow (A \downarrow B)
+    \end{gather*}
+    \end{proof}
+\end{frame}
+
+\end{document}

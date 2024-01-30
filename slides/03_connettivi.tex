@@ -1,0 +1,812 @@
+\documentclass[aspectratio=169,10pt,dvipsnames,handout]{beamer}
+
+%\setbeameroption{show notes}
+
+\input{preamble.inc}
+
+\title{Connettivi}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}{Connettivi}
+    \begin{columns}
+        \column{0.65\textwidth}
+        \begin{definition}[Connettivo]
+            Un \alert{connettivo} è un elemento grammaticale che collega un certo numero di proposizioni tra di loro per formare una nuova proposizione.
+        \end{definition}
+        \column{0.3\textwidth}
+        \begin{center}
+            \includegraphics[width=3cm,keepaspectratio]{puzzle.png}
+        \end{center}
+    \end{columns}
+    \begin{example}
+        \begin{itemize}
+            \item Roma è la capitale d'Italia \conn{e} Lione è la capitale della Francia
+            \item Roma è la capitale d'Italia \conn{oppure} Lione è la capitale della Francia
+            \item \conn{Se} Roma è la capitale d'Italia \conn{allora} Lione è la capitale della Francia
+            \item \conn{Non è vero} che Roma è la capitale d'Italia.
+        \end{itemize}
+    \end{example}
+\end{frame}
+
+\section{Negazione}
+
+\begin{frame}{Negazione}
+    La \alert{negazione} trasforma una proposizione vera in una falsa e viceversa.
+
+    \medskip
+    In italiano è di solito resa con:
+    \begin{itemize}
+        \item ``\conn{non è vero che}'' prima della proposizione da negare
+        \item ``\conn{non}'' prima del verbo della proposizione da negare
+    \end{itemize}
+    \begin{example}
+        Roma è la capitale d'Italia (\checkmark)
+        \uncover<2->{
+            \begin{itemize}
+                \item \conn{Non è vero che} Roma è la capitale d'Italia \uncover<3->{(\xmark)}
+                \item  Roma \conn{non} è la capitale d'Italia \uncover<3->{(\xmark)}
+            \end{itemize}
+        }
+        \medskip
+
+        \uncover<4->{
+            Dante Alighieri ha scritto ``I Promessi Sposi'' (\xmark)
+            \uncover<5->{
+                \begin{itemize}
+                    \item \conn{Non è vero che} Dante Alighieri ha scritto ``I Promessi Sposi'' \uncover<6->{(\checkmark)}
+                    \item  Dante Alighieri \conn{non} ha scritto ``I Promessi Sposi'' \uncover<6->{(\checkmark)}
+                \end{itemize}
+            }
+        }
+    \end{example}
+\end{frame}
+
+\begin{frame}{Dettagli sulla negazione}
+    Simboli usati per scrivere la negazione:
+    \begin{itemize}
+        \item \alert{not (in inglese e anche in Python)}
+        \item \alert{$\neg$ (in logica)}
+        \item $\texttt{!}$ (in C, C++, Java, \ldots)
+        \item un trattino sopra la proposizione da negare (reti logiche)
+    \end{itemize}
+
+    \uncover<2->{
+        \bigskip
+        È possibile descrivere il comportamento della negazione con una \alert{tavola di verità}.
+
+        \medskip
+        \centering
+        \begin{tabular}{c||c}
+            $A$           & $\neg A$      \\
+            \hline
+            \uncover<3->F & \uncover<4->V \\
+            \uncover<3->V & \uncover<5->F
+        \end{tabular}
+    }
+\end{frame}
+
+\section{Congiunzione}
+
+\begin{frame}{Congiunzione}
+    La \alert{congiunzione} collega due proposizioni tra di loro. La nuova proposizione risultante è vera quando entrambe le proposizioni di partenza sono vere. \medskip
+
+    In italiano è di solito resa con la parola ``\conn{e}''.
+    \begin{example}
+        Roma è la capitale d'Italia (\checkmark) \\
+        Parigi è la capitale della Francia (\checkmark)
+        \pause
+        \begin{itemize}
+            \item Roma è la capitale d'Italia \conn{e} Parigi è la capitale della Francia \pause (\checkmark)
+        \end{itemize}
+
+        \pause
+        \medskip
+        $2+2 = 4$ (\checkmark) \\
+        $3 \times 2= 5$  (\xmark)
+        \pause
+        \begin{itemize}
+            \item $2+2 = 4$ \conn{e} $3 \times  2= 5$ \pause (\xmark)
+        \end{itemize}
+    \end{example}
+\end{frame}
+
+\begin{frame}{Congiunzione nella lingua italiana (1)}
+    Talvolta in italiano si cerca di evitare le ripetizioni, e il connettivo \conn{e} non si trova più tra due proposizioni.
+
+    \begin{example}
+        Carlo \conn{e} Maria sono appassionati di baseball \medskip
+
+        \pause
+        \hspace{2cm} è una abbreviazione di\medskip
+
+        Carlo è appassionato di baseball \conn{e} Maria è appassionata di baseball
+    \end{example}
+
+    \pause
+    \begin{example}
+        La partita è avvincente \conn{e} combattuta \medskip
+
+        \pause
+        \hspace{2cm} è una abbreviazione di\medskip
+
+        La partita è avvincente \conn{e} la partita è combattuta
+    \end{example}
+\end{frame}
+
+\begin{frame}{Congiunzione nella lingua italiana (2)}
+    Ma attenzione!!! Non tutti gli usi della parola \conn{e} sono istanze della congiunzione.
+    \begin{example}
+        Carlo e Maria sono amici\medskip
+
+        \pause
+        \hspace{2cm} \textbf{non è} una abbreviazione di\medskip
+
+        Carlo è amico \conn{e} Maria è amica\medskip
+    \end{example}
+
+    \pause
+    \medskip
+    Di contro, talvolta la congiunzione è resa da parole diverse da \conn{e}, ad esempio da \conn{ma} (che non per nulla si chiama \alert{congiunzione avversativa})
+
+    \begin{example}
+        Roma è la capitale d'Italia \conn{ma} Parigi è la capitale della Francia
+    \end{example}
+\end{frame}
+
+\begin{frame}{Dettagli della congiunzione}
+    Simboli usati per scrivere la congiunzione sono:
+    \begin{itemize}
+        \item \alert{and (in inglese e anche in Python)}
+        \item \alert{$\wedge$ (in logica)}
+        \item $\texttt{\&\&}$ (in C, C++, Java, \ldots)
+        \item $\cdot$ (nelle reti logiche, spesso omesso come in algebra)
+    \end{itemize}
+
+    \uncover<2->{
+        \bigskip
+        Questa è la tavola di verità della congiunzione:
+
+        \medskip
+        \centering
+        \begin{tabular}{c|c||c}
+            $A$           & $B$           & $A \wedge B$  \\
+            \hline
+            \uncover<3->F & \uncover<3->F & \uncover<4->F \\
+            \uncover<3->F & \uncover<3->V & \uncover<5->F \\
+            \uncover<3->V & \uncover<3->F & \uncover<6->F \\
+            \uncover<3->V & \uncover<3->V & \uncover<7->V
+        \end{tabular}
+    }
+\end{frame}
+
+\begin{frame}{Doppia lettura della tavola di verità}
+    In realtà la tavola di verità la si può leggere in due modi:
+    \pause
+    \begin{itemize}
+        \item da sinistra a destra: se sappiamo il valore di verità delle proposizioni di base, possiamo determinare il valore di verità della proposizione risultante.
+
+              \medskip
+              A è vera e B è falsa $\longrightarrow$ $A \wedge B$ è falsa.
+              \pause
+
+        \item da destra a sinistra: se sappiamo il valore di verità della proposizione composta, possiamo determinare quasi sono le possibili combinazioni di valori di verità delle proposizioni di base.
+
+              \medskip
+              $A \wedge B$ è vera $\longrightarrow$ c'è una sola possibilità: \pause
+              \begin{itemize}
+                  \item $A$ vera, $B$ vera
+              \end{itemize}
+
+              \medskip
+              $A \wedge B$ è falsa $\longrightarrow$ ci sono tre possibilità: \pause
+              \begin{itemize}
+                  \item $A$ falsa, $B$ falsa
+                  \item $A$ falsa, $B$ vera
+                  \item $A$ vera, $B$ falsa
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Connettivi vero-funzionali}
+
+\begin{frame}{Connettivi vero funzionali}
+    \begin{definition}[Connettivi vero-funzionali]
+        Un connettivo si dice \alert{vero-funzionale} se il valore di verità della proposizione risultante dipende solo dal valore di verità delle proposizioni di partenza.
+    \end{definition}
+
+    \begin{itemize}
+        \item Se un connettivo è vero-funzionale, possiamo descriverlo con la sua tavola di verità, altrimenti no.
+        \item I connettivi visti finora sono tutti vero-funzionali.
+        \item I connettivi che vedremo in futuro saranno vero-funzionali.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Esempio di connettivo non vero-funzionale}
+    Consideriamo il connettivo \conn{mentre}, ad esempio nella proposizione:
+    \begin{itemize}
+        \item Lucia ha mangiato una mela mentre \conn{mentre} ha guardato la televisione.
+    \end{itemize}
+
+    \uncover<2->{
+        \medskip
+        Quale sarebbe la tavola di verità di questo connettivo ?
+
+        \medskip
+        \begin{center}
+            \begin{tabular}{c|c||c}
+                $A$           & $B$           & $A \conn{\ mentre\ } B$ \\
+                \hline
+                \uncover<3->F & \uncover<3->F & \uncover<4->F           \\
+                \uncover<3->F & \uncover<3->V & \uncover<5->F           \\
+                \uncover<3->V & \uncover<3->F & \uncover<6->F           \\
+                \uncover<3->V & \uncover<3->V & \uncover<7->{\alert{?}}
+            \end{tabular}
+        \end{center}
+
+        \medskip
+        \uncover<8->{
+            Non possiamo riempire l'ultima riga della tabella: Lucia ha guardato la TV e mangiato, ma lo ha fatto nello stesso momento o in momenti diversi ?
+        }
+    }
+\end{frame}
+
+\section{Disgiunzione}
+
+\begin{frame}{Disgiunzione}
+    La \alert{disgiunzione} collega due proposizioni tra di loro. La nuova proposizione risultante è vera quando una delle proposizioni di partenza è vera. \medskip
+
+    In italiano è di solito resa con ``\conn{o}'' ed ``\conn{oppure}''.
+    \begin{example}
+        Roma è la capitale d'Italia (\checkmark)\\
+        Roma è la capitale della Francia (\xmark)\\
+        \uncover<2->{
+            \begin{itemize}
+                \item Roma è la capitale d'Italia \conn{o} Roma è la capitale della Francia \uncover<3->{(\checkmark)}
+                \item Roma è la capitale d'Italia \conn{oppure} Roma è la capitale della Francia \uncover<3->{(\checkmark)}
+                \item \conn{O} Roma è la capitale d'Italia \conn{oppure} Roma è la capitale della Francia \uncover<3->{(\checkmark)}
+            \end{itemize}
+        }
+        \medskip
+
+        \uncover<4->{
+            $2+2 = 5$ (\xmark) \\
+            $3 \times 2= 7$  (\xmark) \pause
+            \uncover<5->{
+                \begin{itemize}
+                    \item  $2+2 = 5$ \conn{oppure} $3 \times 2= 7$ \uncover<6->{(\xmark)}
+                \end{itemize}
+            }
+        }
+    \end{example}
+\end{frame}
+
+\begin{frame}{Disgiunzione nella lingua italiana}
+    Consideriamo un esempio simile a quello di prima:\\
+    \begin{example}
+        Roma è la capitale d'Italia \conn{o} Lione è la capitale della Francia
+    \end{example}
+    \pause
+    È una proposizione piuttosto strana. Nella lingua italiana, utilizziamo la disgiunzione quasi sempre quando le due proposizioni sono strettamente correlate tra di loro, come in:
+    \begin{example}
+        Roma è la capitale d'Italia \conn{o} Roma è la capitale della Francia
+    \end{example}
+    Spesso, in questi casi, abbreviamo la frase, come già visto per la congiunzione
+    \begin{example}
+        Roma è la capitale d'Italia o della Francia
+    \end{example}
+\end{frame}
+
+\begin{frame}{Disgiunzione inclusiva ed esclusiva (1)}
+    Consideriamo ancora una proposizione un po' innaturale:
+    \begin{example}
+        Roma è la capitale d'Italia \conn{o} Parigi è la capitale della Francia
+    \end{example}
+    Cosa ne pensate ? È vera o falsa ?
+    \pause
+    \begin{itemize}
+        \item se per voi la frase è \textbf{vera}, vuol dire che considerate la ``\conn{o}'' in senso \alert{inclusivo}
+              \begin{itemize}
+                  \item se entrambe le proposizioni di base sono vere, la disgiunzione è vera;
+                  \item la disgiunzione inclusiva è vera quando \alert{almeno una} delle proposizioni di base è vera;
+              \end{itemize}
+              \pause
+        \item se per voi la frase è \textbf{falsa}, vuol dire che considerate la ``\conn{o}'' in  senso \alert{esclusivo}
+              \begin{itemize}
+                  \item se entrambe le proposizioni di base sono vere, la disgiunzione è falsa;
+                  \item per voi la ``\conn{o}'' introduce una alternativa tra due possibilità, una delle quali deve essere falsa;
+                  \item la disgiunzione esclusiva è vera quando \alert{esattamente una} delle proposizioni di base è vera.
+              \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Disgiunzione inclusiva ed esclusiva (2)}
+    Abbiamo detto prima che la \alert{disgiunzione} collega due proposizioni tra di loro. La nuova proposizione risultante è vera quando \textbf{una} delle proposizioni di partenza è vera.
+
+    \medskip
+    In realtà siamo stati imprecisi. Dovremmo dire:
+    \begin{definition}[Disgiunzione inclusiva]
+        La \alert{disgiunzione inclusiva} collega due proposizioni tra di loro. La nuova proposizione risultante è vera quando \textbf{almeno una} delle proposizioni di partenza è vera.
+    \end{definition}
+
+    \begin{definition}[Disgiunzione esclusiva]
+        La \alert{disgiunzione esclusiva} collega due proposizioni tra di loro. La nuova proposizione risultante è vera quando \textbf{esattamente una} delle proposizioni di partenza è vera.
+    \end{definition}
+\end{frame}
+
+\begin{frame}{Dettagli della disgiunzione}
+    Simboli usati per scrivere la disgiunzione sono:
+    \begin{itemize}
+        \item \alert{or (in inglese e anche in Python)}
+        \item \alert{$\vee$ (in logica)}
+        \item $\texttt{||}$ (in C, C++, Java, \ldots)
+        \item $+$ (nelle reti logiche)
+    \end{itemize}
+
+    \uncover<2->{
+        \bigskip
+        Questa è la tavola di verità della disgiunzione:
+
+        \medskip
+        \begin{center}
+            \begin{tabular}{c|c||c}
+                $A$           & $B$           & $A \vee B$    \\
+                \hline
+                \uncover<3->F & \uncover<3->F & \uncover<4->F \\
+                \uncover<3->F & \uncover<3->V & \uncover<5->V \\
+                \uncover<3->V & \uncover<3->F & \uncover<6->V \\
+                \uncover<3->V & \uncover<3->V & \uncover<7->{V\rlap{ (perché inclusiva)}}
+            \end{tabular}
+        \end{center}
+    }
+\end{frame}
+
+\begin{frame}{Dettagli della disgiunzione esclusiva}
+    Simboli usati per scrivere la disgiunzione esclusiva:
+    \begin{itemize}
+        \item \alert{xor (in gergo informatico)}
+        \item \alert{$\xor$ in queste slide e nel libro di testo}, ma non è una notazione standard
+        \item $\oplus$ (nelle reti logiche)
+    \end{itemize}
+
+    \uncover<2->{
+        \bigskip
+        Questa è la tavola di verità della disgiunzione esclusiva:
+
+        \medskip
+        \begin{center}
+            \begin{tabular}{c|c||c}
+                $A$           & $B$           & $A \xor B$              \\
+                \hline
+                \uncover<3->F & \uncover<3->F & \uncover<4->F           \\
+                \uncover<3->F & \uncover<3->V & \uncover<4->V           \\
+                \uncover<3->V & \uncover<3->F & \uncover<4->V           \\
+                \uncover<3->V & \uncover<3->V & \uncover<5->{\alert{F}\rlap{ (perché esclusiva)}}
+            \end{tabular}
+        \end{center}
+    }
+\end{frame}
+
+\begin{frame}{Disgiunzione inclusiva ed esclusiva nella lingua italiana (1)}
+    Ma la ``\conn{o}'' in italiano è inclusiva od esclusiva ?
+
+    \pause
+    \medskip
+    Spesso il problema non si pone perché, dal contesto, sappiamo che le due proposizioni non possono essere entrambe vere.
+    \begin{example}
+        Se sapete che
+        \begin{itemize}
+            \item La capitale della California è Sacramento \conn{o} Los Angeles.
+        \end{itemize}
+        vuol dire che possono essere entrambe capitali ?
+    \end{example}
+
+    \pause
+    Ovviamente no, perché sappiamo che uno stato non può avere due capitali, ma se questa  ``impossibilità'' dettata dal contesto viene meno ?
+
+\end{frame}
+
+\begin{frame}{Disgiunzione inclusiva ed esclusiva nella lingua italiana (2)}
+    \begin{example}
+        Se sapete che
+        \begin{itemize}
+            \item La bandiera della California contiene una stella \conn{o} un orso.
+        \end{itemize}
+        vuol dire che la bandiera può avere entrambe ?
+    \end{example}
+
+    \pause
+    \medskip
+    Dipende se la \conn{o} è stata usata in senso inclusivo o esclusivo.
+
+    \smallskip
+    In latino esistono due disgiunzioni, per distinguere i due casi: \conn{vel} per quella inclusiva e \conn{aut} per quella esclusiva. In italiano, se volete essere precisi, potete aggiungere
+    \begin{itemize}
+        \item \conn{o entrambi}, per indicare l'interpretazione inclusiva;
+        \item  \conn{ma non entrambi}, per indicare l'interpretazione esclusiva.
+    \end{itemize}
+    Ad esempio:
+    \begin{itemize}
+        \item La bandiera della California contiene una stella \conn{o} un orso \conn{o entrambi}.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Disgiunzione inclusiva ed esclusiva nella lingua italiana (3)}
+    In generale, nella lingua di tutti i giorni, non è chiaro se ``\conn{o}''  e ``\conn{oppure}'' vadano intesi in senso inclusivo o esclusivo.
+
+    \medskip
+    Tuttavia, in linea di massima:
+    \begin{itemize}
+        \item se la disgiunzione è l'unico connettivo, essa è tipicamente esclusiva.
+
+        \medskip
+        Se la mamma dice al figlio
+        \begin{itemize}
+            \item Puoi comprare un gelato \conn{o} un pasticcino
+        \end{itemize}
+        intende uno dei due, non entrambi.
+
+        \pause
+        \item se la disgiunzione appare nell'antecedente di una implicazione (vedremo dopo di cosa si tratta), è tipicamente inclusiva.
+
+            \medskip
+        Data la proposizione
+        \begin{itemize}
+            \item \conn{se} sono laureato in economia \conn{o} in informatica sono ammesso al concorso
+        \end{itemize}
+        ovviamente si intende che sono amemsso anche se ho entrambe le lauree.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Disgiunzione inclusiva ed esclusiva nei testi scientifici}
+    Alcune volte
+    In matematica, informatica e nelle scienze sperimentali, le parole ``\conn{o}'' e ``\conn{oppure}'' vanno sempre interpretate in maniera inclusiva. Pertanto:
+    \begin{itemize}
+        \item la proposizione ``$2 + 2 = 4$ \conn{oppure} $5$ è dispari'' è vera
+        \item da ora poi, in mancanza di ulteriore indicazioni, le parole ``\conn{o}'' e ``\conn{oppure}'' saranno sempre interpretate in maniera inclusiva.
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Domande dagli studenti}
+    Riporto una domanda che mi è stata fatta a lezione:
+
+    \medskip
+    \textit{Perché uno dovrebbe affermare ``$2 + 2 = 4$ \conn{oppure} $5$ è dispari'' invece di ``$2 + 2 = 4$ \conn{e} $5$ è dispari''?}
+
+    \medskip
+    Ovviamente in questo caso usare ``\conn{oppure}'' può sembrare stupido, ma solo perché sappiamo a priori che entrambe le proposizioni di base sono vere. Se introduciamo delle variabili, e scriviamo una funzione proposizionale del tipo
+    \begin{center}
+    $x < 4$ \conn{oppure} $x$ è pari
+    \end{center}
+    non possiamo rimpiazzare ``\conn{oppure}'' con ``\conn{e}'' perché il senso della frase cambierebbe completamente.
+
+    \smallskip
+    Il fatto che la disgiunzione in matematica è inclusiva vuol dire che per $x=2$ la funzione proposizionale di sopra è vera. Se la disgiunzione fosse interpretata in maneira esclusiba, per $x=2$ la funzione proposizionale sarebbe falsa.
+\end{frame}
+
+\section{Implicazione}
+
+\begin{frame}{Implicazione}
+    L'\alert{implicazione}, più correttamente chiamata \alert{implicazione materiale}, collega due proposizioni $A$ e $B$ tra di loro. La proposizione risultante è sempre vera, tranne quando la prima è vera e la seconda è falsa (ricorda la definizione di conseguenza logica).
+
+    \medskip
+    Viene di solito resa in italiano con ``\conn{se} $A$ \conn{allora} $B$''.
+    \begin{itemize}
+        \item $A$ è chiamato \alert{antecedente};
+        \item $B$ è chiamato \alert{conseguente}.
+    \end{itemize}
+
+    \medskip
+    Simboli usati per scrivere l'implicazione:
+    \begin{itemize}
+        \item \alert{$\to$ (in logica)} o altri simboli simili come $\Rightarrow$.
+    \end{itemize}
+
+    \pause
+    \medskip
+    Questa è la tavola di verità della implicazione
+
+    \medskip
+    \begin{center}
+        \begin{tabular}{c|c||c}
+            $A$ & $B$ & $A \to B$ \\
+            \hline
+            F   & F   & V         \\
+            F   & V   & V         \\
+            V   & F   & F         \\
+            V   & V   & V
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Interpretazione dell'implicazione in italiano (1)}
+    Per capire meglio l'implicazione, è utile leggere la sua tavola di verità ``da destra a sinistra''.
+
+    \begin{example}
+        Supponiamo di sapere per certo che
+        \begin{itemize}
+            \item \conn{se} Carla è alla festa \conn{allora} anche Luca è alla festa
+        \end{itemize}
+        Quali di queste condizioni si potranno verificare ?
+
+        \uncover<2->{
+            \begin{center}
+                \begin{tabular}{c|c||c}
+                    Carla è alla festa & Luca è alla festa & si può verificare ?\\
+                    \hline
+                    F                  & F                 & \only<4|handout:0>{?}\only<5->\checkmark                            \\
+                    F                  & V                 & \only<5|handout:0>{?}\only<6->{\checkmark\rlap{ (dubbi?)}}          \\
+                    V                  & F                 & \only<3|handout:0>{?}\only<4->\xmark                                \\
+                    V                  & V                 & \only<2|handout:0>{?}\only<3->\checkmark
+                \end{tabular}
+            \end{center}
+        }
+        \uncover<6->{Esattamente la tavola di verità dell'implicazione.}
+    \end{example}
+\end{frame}
+
+\begin{frame}{Interpretazione dell'implicazione in italiano (2)}
+    Se avete dubbi sulla seconda riga della tabella di prima è perché spesso in italiamo diciamo \conn{se \ldots allora} ma in realtà intendiamo \conn{se e solo se} (che è un altro connettivo).
+
+    \pause
+    \begin{example}
+        Supponiamo che un amico ci ha assicurato che:
+        \begin{itemize}
+            \item \conn{se} piove \conn{allora} vengo a prenderti in macchina
+        \end{itemize}
+        Quali di queste situazioni possono verificarsi (se l'amico mantiente la promessa, cioè se la proposizione di prima è vera) ?
+        \begin{center}
+            \begin{tabular}{c|c||c}
+                piove & vengo a prenderti & si può verificare ?      \\
+                \hline
+                F     & F                 & \only<4|handout:0>{?}\only<5->\checkmark                                      \\
+                F     & V                 & \only<5|handout:0>{?}\only<6->{\checkmark\rlap{ (sono comunque sorpreso)}} \\
+                V     & F                 & \only<3|handout:0>{?}\only<4->{\xmark\rlap{ (se accade ci resto male)}}       \\
+                V     & V                 & \only<2|handout:0>{?}\only<3->\checkmark
+            \end{tabular}
+        \end{center}
+    \end{example}
+\end{frame}
+
+\begin{frame}{Interpretazione dell'implicazione in italiano (3)}
+    Se proviamo a interpretare la tavola di verità della l'implicazione ``da sinistra verso destra'', otteniamo spesso qualcosa di poco sensato.
+
+    \begin{example}[Vero o falso?]
+        \begin{itemize}
+            \item \conn{se} Roma è la capitale d'Italia \conn{allora} 3+2=5 \pause (\checkmark)
+                  \pause
+            \item \conn{se} Roma è la capitale d'Italia \conn{allora} 3+2=0 \pause (\xmark)
+                  \pause
+            \item \conn{se} gli elefanti volano \conn{allora} 3+2=5 \pause (\checkmark)
+                  \pause
+            \item \conn{se} gli elefanti volano \conn{allora} 3+2=0 \pause (\checkmark)
+        \end{itemize}
+    \end{example}
+
+    Queste proposizioni sono abbastanza innaturali:
+    \begin{itemize}
+        \item non c'è nessuna relazione di causa-effetto tra antecedente e conseguente
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Implicazione e rapporti di causa-effetto (1)}
+    In italiano quasi sempre l'uso del \conn{se \ldots allora} suggerisce un rapporto di causa-effetto tra antecedente e conseguente.
+    \begin{example}
+        Quando diciamo ``\conn{se} Carla è alla festa \conn{allora} anche Luca è alla festa'' intendiamo che c'è qualche rapporto di causa-effetto tra le due cose.
+
+        \begin{itemize}
+            \item Come abbiamo visto, questo più o meno corrisponde all'implicazione materiale.
+        \end{itemize}
+
+        \smallskip
+        Se invece diciamo ``\conn{non è vero che} \conn{se} Carla è alla festa \conn{allora} anche Luca è alla festa'', stiamo essenzialmente negando l'esistenza di questo rapporto di causa-effetto, lasciando aperte tutte le possibiltà.
+
+        \begin{itemize}
+            \item È come non affermare nulla.
+        \end{itemize}
+    \end{example}
+\end{frame}
+
+\begin{frame}{Implicazione e rapporti di causa-effetto (2)}
+    La cosa è diversa se interpretiamo tutti i connettivi secondo il loro significato in logica delle proposizioni.
+
+    \begin{example}
+        Supponiamo di sapere per certo che
+        \begin{itemize}
+            \item \conn{non è vero che se} Carla è alla festa \conn{allora} anche Luca è alla festa;
+            \item ovvero che ``\conn{se} Carla è alla festa \conn{allora} anche Luca è alla festa'' non è vero;
+        \end{itemize}
+        \uncover<2->{
+            Quali di queste condizioni si potranno verificare ?
+            \begin{center}
+                \begin{tabular}{c|c||c}
+                    Carla è alla festa & Luca è alla festa & Carla è alla festa $\to$ Luca è alla festa \\
+                    \hline
+                    F                  & F                 & \only<3->F                                          \\
+                    F                  & V                 & \only<3->F                                          \\
+                    V                  & F                 & \only<3->V                                          \\
+                    V                  & V                 & \only<3->F
+                \end{tabular}
+            \end{center}
+        }
+        \only<4->{
+            Dunque, se ``\conn{se} Carla è alla festa \conn{allora} anche Luca è alla festa'' è falso, l'unica possibilità è che ``Carla è alla festa'' e ``Luca non è alla festa''.
+        }
+    \end{example}
+\end{frame}
+
+% \begin{frame}{Implicazione e quanrificazione implicita}
+%     In molti usi del \conn{se \ldots allora}, quando per esempio affermiamo una verità scientifica, c'è una quantificazione implicita.
+
+%     \medskip
+%     Dicendo ``\conn{se} il cielo è nuvoloso \conn{allora} piove'':
+%     \begin{itemize}
+%         \item quello che intendo è che ``in qualunque istante $t$, \conn{se} in $t$ c'è tempo nuvoloso \conn{allora} in $t$ piove'';
+%         \item pertanto, la proposizione è falsa, perché non è detto che se è nuvoloso deve per forza piovere;
+%         \item se volessimo ``spogliare'' la frase dal quantificatore implicito, la frase sarebbe vera in alcuni istanti e falsa in altri.
+%     \end{itemize}
+% \end{frame}
+
+\begin{frame}{Implicazione e linguaggio naturale (3)}
+    In conclusione,
+    \begin{itemize}
+        \item l'implicazione nel linguaggio naturale è spesso diversa dall'implicazione materiale;
+        \item l'implicazione materiale è molto usata in matematica, ma quasi sempre nel mondo della logica dei predicati:
+              \begin{itemize}
+                  \item è difficile trovare affermazioni del tipo ``\conn{se} 8 è divisibile per 4 \conn{allora} 8 è divisibile per 2'';
+                  \item è molto più normale trovare ``\conn{se} $x$ è divisibile per 4 \conn{allora} $x$ è divisibile per 2''.
+              \end{itemize}
+        \item non a caso in Python (e in altri linguaggi di programmazione) esistono gli operatori logici \texttt{and}, \texttt{or}, \texttt{not} ma non esiste una operazione per l'implicazione.
+    \end{itemize}
+    \pause
+    Ad ogni modo,
+    \begin{itemize}
+        \item nella logica, e quindi in tutto il resto del corso, tutte le volte in cui compare \conn{se \ldots allora} esso va interpretato come implicazione materiale;
+        \item anche quando la trasposizione in logica non è fedele al senso comune.
+    \end{itemize}
+\end{frame}
+
+% \begin{frame}[fragile]{Implicazione e linguaggio naturale (4)}
+%     Gli esempi di prima vi sono sembrati strani ?
+%     \begin{block}{Note}
+%         Quello che vi sto presentando è solo un tipo particolare di logica, chiamata \alert{logica classica proposizionale}. Il \conn{se \ldots allora} in italiano non è quasi mai corrispondente alla implicazione di questa logica.
+%     \end{block}
+%     \begin{example}
+%         \begin{itemize}
+%             \item \conn{se} sarai promosso a scuola, \conn{allora} ti comprerò la PlayStation 5
+%                   \begin{itemize}
+%                       \item coinvolge azioni che avverranno in futuro, non ora: è il reame della \alert{logica temporale};
+%                       \item la versione classica proposizionale  sarebbe:\\
+%                             ``\conn{se} sei stato promosso a scuola, \conn{allora} ti ho comprato la PlayStation 5''  \raisebox{-0.2\totalheight}{\includegraphics[width=0.5cm,keepaspectratio]{vomitosa.png}}
+%                   \end{itemize}
+%                   \pause
+%                   % \item \conn{se} un oggetto viene lanciato da una torre, \conn{allora} cade a terra
+%                   % \begin{itemize}
+%                   %     \item ``un oggetto viene lanciato da una torre'' non è un proposizione, perché non sta parlando né di un oggetto né di un momento specifico, è una affermazione ipotetica;
+%                   %     \item quello che intendiamo dire è che in ogni situazione possibile in cui un oggetto viene lanciato, necessariamente questo cadrà per terra;
+%                   %     \item necessità e possibilità sono il reame della \alert{logica modale}.
+%                   % \end{itemize}
+%             \item \conn{se} $n$ è divisibile per $4$ \conn{allora} $n$ è pari
+%                   \begin{itemize}
+%                       \item $n$ è divisibile per $4$ non è una proposizione, non possiamo dire se è vera è falsa perché ciò dipende dal valore di $n$: siamo nel reame della \alert{logica dei predicati};
+%                       \item la versione proposizionale sarebbe ``\conn{se} 8 è divisibile per $4$ \conn{allora} $8$ è pari'' \raisebox{-0.2\totalheight}{\includegraphics[width=0.5cm,keepaspectratio]{vomitosa.png}}
+%                       \item si potrebbe trovare forse in un testo matematico, ma non è certo così comune.
+%                   \end{itemize}
+%         \end{itemize}
+%     \end{example}
+% \end{frame}
+
+\begin{frame}{Altre forme dell'implicazione in linguaggio naturale (1)}
+    L'implicazione, nel linguaggio naturale, compare spesso in forme diverse rispetto al \conn{se \ldots allora}, non sempre immediate da interpretare.
+
+    \medskip
+    Nella tabella seguente, potete pensare ad $A$ come ``x è divisibile per 4'' ed B come ``x è divisibile per 2''. Stiamo un po' barando perché non si tratta di proposizioni bensì di funzioni proposizionali, ma in questo contesto non cambia nulla.
+
+    \begin{center}
+        \begin{tabular}{c|c}
+            proposizione in italiano                & proposizione in simboli \\
+            \hline
+            \conn{se} A \conn{allora} B                           & \pause A $\to$ B        \\
+            \pause A \conn{se} B                           & \pause B $\to$ A        \\
+            \pause A \conn{solo se} B                      & \pause A $\to$ B        \\
+            \pause \conn{da} A \conn{segue} B                     & \pause A $\to$ B        \\
+            \pause A \conn{implica} B                      & \pause A $\to$ B        \\
+            \pause A \conn{è condizione sufficiente per} B & \pause A $\to$ B        \\
+            \pause A \conn{è condizione necessaria per} B  & \pause B $\to$ A        \\
+            \pause \conn{condizione sufficiente per} A \conn{è} B & \pause B $\to$ A        \\
+            \pause \conn{condizione necessaria per} A \conn{è} B  & \pause A $\to$ B
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Altre forme dell'implicazione in linguaggio naturale (2)}
+    In generale, non dovete imparare la tabella a memoria, ma imparare a distinguere quale evento (antecedente) genera quale conseguenza (conseguente).
+
+    \medskip
+    Alcune osservazioni:
+    \begin{itemize}
+        \item A \conn{se} B: è solo un modo contorno di scrivere ``se B allora A'', ovvero $B \to A$.
+        \item A \conn{solo se} B: vuol dire che A si può verificare solo se si verifica anche B. Quindi, non appare sappiamo che A è vero, per forza dever essere vero anche B, ovvero $A \to B$.
+        \item A \conn{è condizione sufficiente per} B: vuol dire che il verificarsi di A è sufficiente, da solo senza nessun'altra informazione, a causare anche B, quindi $A \to B$.
+        \item A \conn{è condizione necessaria per} B: vuol dire che perché si verifichi B deve necessariamente verificarsi A. Quindi, non appiamo sappiamo che B è vero, A deve essere pure vero. In sostanza, $B \to A$.
+        \item  \conn{condizione sufficiente per} A \conn{è} B: è un modo un po' contorto di scrivere ``B \conn{è condizione sufficiente per} A'', quindi $B \to A$.
+        \item \conn{condizione necessaria per} A \conn{è} B: è un modo un po' contorto di scrivere ``B \conn{è condizione necessaria per} A'', ovvero $A \to B$
+    \end{itemize}
+\end{frame}
+
+\section{Doppia implicazione}
+
+\begin{frame}{Doppia implicazione}
+    La \alert{doppia implicazione} collega due proposizioni tra di loro, ed è vera quando le due proposizioni hanno lo stesso valore di verità.
+
+    \medskip
+    In italiano è di solito resa con \conn{se e solo se} o con \conn{è condizione necessaria e sufficiente per}.
+
+    \medskip
+    Simboli usati per scrivere la doppia implicazione:
+    \begin{itemize}
+        \item \alert{$\iff$ (in logica)} o simboli simili come $\Leftrightarrow$
+    \end{itemize}
+
+    \pause
+    \medskip
+    Questa è la tavola di verità della doppia implicazione
+
+    \medskip
+    \begin{center}
+        \begin{tabular}{c|c||c}
+            $A$ & $B$ & $A \iff B$ \\
+            \hline
+            F   & F   & V          \\
+            F   & V   & F          \\
+            V   & F   & F          \\
+            V   & V   & V
+        \end{tabular}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Interpretazione della doppia implicazione in italiano (1)}
+    Tutti i problemi di corrispondenza tra implicazione e linguaggio naturale continuano a valere per la doppia implicazione. Come sempre, l'interpretazione più semplice è con la lettura ``da destra a sinistra''.
+
+    \pause
+    \begin{example}
+        Supponiamo che un amico ci abbia assicurato che:
+        \begin{itemize}
+            \item vengo a prenderti in macchina \conn{se e solo se} piove
+        \end{itemize}
+        A parte il fatto che il vostro amico parla in maniera un po' strana\ldots quali di queste situazioni possono verificarsi (se l'amico mantiente la promessa, cioè se la proposizione di prima è vera) ?
+        \begin{center}
+            \begin{tabular}{c|c||c}
+                vengo a prenderti & piove & si può verificare ? \\
+                \hline
+                F                 & F     & \only<2|handout:0>{?}\only<3->\checkmark                                    \\
+                F                 & V     & \only<3|handout:0>{?}\only<4->\xmark                                        \\
+                V                 & F     & \only<4|handout:0>{?}\only<5->\xmark                                        \\
+                V                 & V     & \only<5|handout:0>{?}\only<6->\checkmark
+            \end{tabular}
+        \end{center}
+    \end{example}
+\end{frame}
+
+\begin{frame}{Interpretazione della doppia implicazione in italiano (2)}
+    Nella lettura ``da sinistra a destra'' si ottengono sempre cose bizzarre.
+    \begin{example}[Vero o falso?]
+        \begin{itemize}
+            \item Roma è la capitale d'Italia \conn{se e solo se} 3+2=5 \pause (\checkmark)
+                  \pause
+            \item Roma è la capitale d'Italia \conn{se e solo se} 3+2=0 \pause (\xmark)
+                  \pause
+            \item gli elefanti volano \conn{se e solo se} 3+2=5 \pause (\xmark)
+                  \pause
+            \item gli elefanti volano \conn{se e solo se} 3+2=0 \pause (\checkmark)
+        \end{itemize}
+    \end{example}
+\end{frame}
+
+\note{Esercizi 2.1, 2.2, 2.4, 2.6, 2.7}
+
+\end{document}
