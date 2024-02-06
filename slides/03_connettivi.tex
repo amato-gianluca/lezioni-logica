@@ -161,8 +161,8 @@
 \begin{frame}{Dettagli della congiunzione}
     Simboli usati per scrivere la congiunzione sono:
     \begin{itemize}
-        \item \alert{and (in inglese e anche in Python)}
         \item \alert{$\wedge$ (in logica)}
+        \item and (in inglese e anche in Python)
         \item $\texttt{\&\&}$ (in C, C++, Java, \ldots)
         \item $\cdot$ (nelle reti logiche, spesso omesso come in algebra)
     \end{itemize}
@@ -341,8 +341,8 @@
 \begin{frame}{Dettagli della disgiunzione}
     Simboli usati per scrivere la disgiunzione sono:
     \begin{itemize}
-        \item \alert{or (in inglese e anche in Python)}
         \item \alert{$\vee$ (in logica)}
+        \item or (in inglese e anche in Python)
         \item $\texttt{||}$ (in C, C++, Java, \ldots)
         \item $+$ (nelle reti logiche)
     \end{itemize}
@@ -368,8 +368,8 @@
 \begin{frame}{Dettagli della disgiunzione esclusiva}
     Simboli usati per scrivere la disgiunzione esclusiva:
     \begin{itemize}
-        \item \alert{xor (in gergo informatico)}
-        \item \alert{$\xor$ in queste slide e nel libro di testo}, ma non è una notazione standard
+        \item \alert{$\xor$ in queste slide}, ma non è una notazione standard
+        \item xor (in gergo informatico)
         \item $\oplus$ (nelle reti logiche)
     \end{itemize}
 
@@ -471,28 +471,27 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Domande dagli studenti}
-    Riporto una domanda che mi è stata fatta a lezione:
+% \begin{frame}{Domande dagli studenti}
+%     Riporto una domanda che mi è stata fatta a lezione:
 
-    \medskip
-    \textit{Perché uno dovrebbe affermare ``$2 + 2 = 4$ \conn{oppure} $5$ è dispari'' invece di ``$2 + 2 = 4$ \conn{e} $5$ è dispari''?}
+%     \medskip
+%     \textit{Perché uno dovrebbe affermare ``$2 + 2 = 4$ \conn{oppure} $5$ è dispari'' invece di ``$2 + 2 = 4$ \conn{e} $5$ è dispari''?}
 
-    \medskip
-    Ovviamente in questo caso usare ``\conn{oppure}'' può sembrare stupido, ma solo perché sappiamo a priori che entrambe le proposizioni di base sono vere. Se introduciamo delle variabili, e scriviamo una funzione proposizionale del tipo
-    \begin{center}
-    $x < 4$ \conn{oppure} $x$ è pari
-    \end{center}
-    non possiamo rimpiazzare ``\conn{oppure}'' con ``\conn{e}'' perché il senso della frase cambierebbe completamente.
+%     \medskip
+%     Ovviamente in questo caso usare ``\conn{oppure}'' può sembrare stupido, ma solo perché sappiamo a priori che entrambe le proposizioni di base sono vere. Se introduciamo delle variabili, e scriviamo una funzione proposizionale del tipo
+%     \begin{center}
+%     $x < 4$ \conn{oppure} $x$ è pari
+%     \end{center}
+%     non possiamo rimpiazzare ``\conn{oppure}'' con ``\conn{e}'' perché il senso della frase cambierebbe completamente.
 
-    \smallskip
-    Il fatto che la disgiunzione in matematica è inclusiva vuol dire che per $x=2$ la funzione proposizionale di sopra è vera. Se la disgiunzione fosse interpretata in maneira esclusiba, per $x=2$ la funzione proposizionale sarebbe falsa.
-\end{frame}
+%     \smallskip
+%     Il fatto che la disgiunzione in matematica è inclusiva vuol dire che per $x=2$ la funzione proposizionale di sopra è vera. Se la disgiunzione fosse interpretata in maneira esclusiba, per $x=2$ la funzione proposizionale sarebbe falsa.
+% \end{frame}
 
 \section{Implicazione}
 
 \begin{frame}{Implicazione}
-    L'\alert{implicazione}, più correttamente chiamata \alert{implicazione materiale}, collega due proposizioni $A$ e $B$ tra di loro. La proposizione risultante è sempre vera, tranne quando la prima è vera e la seconda è falsa (ricorda la definizione di conseguenza logica).
-
+    L'\alert{implicazione}, più correttamente chiamata \alert{implicazione materiale}, collega due proposizioni $A$ e $B$ tra di loro. La proposizione risultante è sempre vera, tranne quando la prima è vera e la seconda è falsa (ricorda la definizione di inferenza)
     \medskip
     Viene di solito resa in italiano con ``\conn{se} $A$ \conn{allora} $B$''.
     \begin{itemize}
@@ -660,12 +659,12 @@
                   \item è difficile trovare affermazioni del tipo ``\conn{se} 8 è divisibile per 4 \conn{allora} 8 è divisibile per 2'';
                   \item è molto più normale trovare ``\conn{se} $x$ è divisibile per 4 \conn{allora} $x$ è divisibile per 2''.
               \end{itemize}
-        \item non a caso in Python (e in altri linguaggi di programmazione) esistono gli operatori logici \texttt{and}, \texttt{or}, \texttt{not} ma non esiste una operazione per l'implicazione.
+        % \item non a caso in Python (e in altri linguaggi di programmazione) esistono gli operatori logici \texttt{and}, \texttt{or}, \texttt{not} ma non esiste una operazione per l'implicazione.
     \end{itemize}
     \pause
     Ad ogni modo,
     \begin{itemize}
-        \item nella logica, e quindi in tutto il resto del corso, tutte le volte in cui compare \conn{se \ldots allora} esso va interpretato come implicazione materiale;
+        \item nella logica, e quindi in tutto il resto delle lezioni, tutte le volte in cui compare \conn{se \ldots allora} esso va interpretato come implicazione materiale;
         \item anche quando la trasposizione in logica non è fedele al senso comune.
     \end{itemize}
 \end{frame}

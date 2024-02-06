@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169,10pt,dvipsnames,handout]{beamer}
+\documentclass[10pt,dvipsnames]{beamer}
 
 %\setbeameroption{show notes}
 
@@ -558,7 +558,7 @@
     \begin{example}
         Consideriamo la proposizione:
         \begin{quote}
-            Non è vero che Carlo studia informatica ed economia
+            Carlo non studia informatica ed economia
         \end{quote}
         abbreviazione di
         \begin{quote}
@@ -571,32 +571,32 @@
     \end{example}
 \end{frame}
 
-\begin{frame}[fragile]{Leggi di De Morgan (2)}
-    \begin{example}
-        Consideriamo un frammento di  programma per calcolare le spese di spedizione.
+% \begin{frame}[fragile]{Leggi di De Morgan (2)}
+%     \begin{example}
+%         Consideriamo un frammento di  programma per calcolare le spese di spedizione.
 
-        \begin{minted}[autogobble,xleftmargin=0.5cm]{python}
-        shipping_charge = 10
-        if not (state == "Italy" and region != "Sardegna"):
-            shipping_charge = 20
-    \end{minted}
+%         \begin{minted}[autogobble,xleftmargin=0.5cm]{python}
+%         shipping_charge = 10
+%         if not (state == "Italy" and region != "Sardegna"):
+%             shipping_charge = 20
+%     \end{minted}
 
-        C'è una tariffa base di 10 €, ma sotto certe condizioni la tariffa sale a 20 € Ma quali sono queste codizioni ? Non si capisce molto bene.
+%         C'è una tariffa base di 10 €, ma sotto certe condizioni la tariffa sale a 20 € Ma quali sono queste codizioni ? Non si capisce molto bene.
 
-        \pause \medskip
-        Applicando De Morgan, possiamo riscrivere la condizione come:
-        \begin{minted}[autogobble,xleftmargin=0.5cm]{python}
-       (not state == "Italy") or (not regione != "Sardegna")
-    \end{minted}
+%         \pause \medskip
+%         Applicando De Morgan, possiamo riscrivere la condizione come:
+%         \begin{minted}[autogobble,xleftmargin=0.5cm]{python}
+%        (not state == "Italy") or (not regione != "Sardegna")
+%     \end{minted}
 
-        \pause \medskip
-        E quindi
-        \begin{minted}[autogobble,xleftmargin=0.5cm]{python}
-        state != "Italy" or regione == "Sardegna"
-    \end{minted}
-        Le spese aggiuntive si pagane se la spedizione e all'estero, oppure in Sicilia o in Sardegna.
-    \end{example}
-\end{frame}
+%         \pause \medskip
+%         E quindi
+%         \begin{minted}[autogobble,xleftmargin=0.5cm]{python}
+%         state != "Italy" or regione == "Sardegna"
+%     \end{minted}
+%         Le spese aggiuntive si pagane se la spedizione e all'estero, oppure in Sicilia o in Sardegna.
+%     \end{example}
+% \end{frame}
 
 \begin{frame}{Il principio di dualità}
     Abbiamo visto che molte equivalenze logiche si possono ottenere scambiando $\wedge$ con $\vee$ e $\top$ con $\bot$.
@@ -688,7 +688,7 @@
 \end{frame}
 
 \begin{frame}{Contronomiale, modus ponens e modus tollens}
-    Nella parte introduttiva del corso abbiamo visto due regole di inferenza che abbiamo chiamato \emph{modus ponens} e \emph{modus tollens}:
+    Nella parte introduttiva delle lezioni di logica abbiamo visto due regole di inferenza che abbiamo chiamato \emph{modus ponens} e \emph{modus tollens}:
 
     \medskip
     \begin{center}
