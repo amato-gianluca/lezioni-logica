@@ -227,30 +227,30 @@
     \end{example}
 \end{frame}
 
-\begin{frame}{Enumerare tutte le possibili combinazioni (3)}
-    Un metodo alternativo per non dimenticare nessuna combinazione è quella di riempiere le righe una alla volta, contando in binario, ma con F al posto di 0 e V al posto di 1.
-    \begin{example}
-        \begin{columns}
-            \column{0.5\textwidth}
-            \small
-            \centering
-            \begin{tabular}{c|c|c|c}
-                A          & B          & C          & D          \\
-                \hline
-                \only<2->F & \only<2->F & \only<2->F & \only<2->F \\
-                \only<3->F & \only<3->F & \only<3->F & \only<3->V \\
-                \only<4->F & \only<4->F & \only<4->V & \only<4->F \\
-                \multicolumn{4}{c}{\ldots}
-            \end{tabular}
-            \column[b]{0.5\textwidth}
-            \begin{itemize}
-                \item<2-> prima riga: $0 = 0000_2$
-                \item<3-> seconda riga: $1 = 0001_2$
-                \item<4-> terza riga: $2 = 0010_2$
-            \end{itemize}
-        \end{columns}
-    \end{example}
-\end{frame}
+% \begin{frame}{Enumerare tutte le possibili combinazioni (3)}
+%     Un metodo alternativo per non dimenticare nessuna combinazione è quella di riempiere le righe una alla volta, contando in binario, ma con F al posto di 0 e V al posto di 1.
+%     \begin{example}
+%         \begin{columns}
+%             \column{0.5\textwidth}
+%             \small
+%             \centering
+%             \begin{tabular}{c|c|c|c}
+%                 A          & B          & C          & D          \\
+%                 \hline
+%                 \only<2->F & \only<2->F & \only<2->F & \only<2->F \\
+%                 \only<3->F & \only<3->F & \only<3->F & \only<3->V \\
+%                 \only<4->F & \only<4->F & \only<4->V & \only<4->F \\
+%                 \multicolumn{4}{c}{\ldots}
+%             \end{tabular}
+%             \column[b]{0.5\textwidth}
+%             \begin{itemize}
+%                 \item<2-> prima riga: $0 = 0000_2$
+%                 \item<3-> seconda riga: $1 = 0001_2$
+%                 \item<4-> terza riga: $2 = 0010_2$
+%             \end{itemize}
+%         \end{columns}
+%     \end{example}
+% \end{frame}
 
 \note{Esercizi 2.20, 2.23, 2.26, 3.2}
 
@@ -763,53 +763,17 @@
         \item $(B \wedge A) \xor (C \iff A) \equiv$ \pause $(A \wedge B) \xor (C \iff A)$
     \end{itemize}
 
-    \pause\medskip
-    Questo fatto si può formalizzare come segue:
-    \begin{theorem}
-        Sia $P$, $Q$ ed $R$ forme proposizionali, con $P \equiv Q$. Se $R'$ è ottenuta da $R$ rimpiazzando tute le occorrenze di $P$ con $Q$ o viceversa, allora $R \equiv R'$.
-    \end{theorem}
-\end{frame}
-
-\begin{frame}{Applicare una equivalenza ad una formula (2)}
+    \pause
+    \medskip
     Inoltre, in una equivalenza com $A \wedge B \equiv B \wedge A$, le lettere $A$ e $B$ possono essere rimpiazzate con qualsiasi altra formula proposizionale, ottenendo sempre una equivalenza:
     \begin{itemize}
         \item $C \wedge D \equiv$ \pause $D \wedge C$ \\
-                (abbiamo rimpiazzato $A$ con $C$ e $B$ con $D$)
-        \item $(A \to B) \wedge (A \vee C) \equiv$ \pause $(A \vee C) \wedge (A \to B)$\\
-            (abbiamo rimpiazzato $A$ con $A \to B$, e $B$ con $A \vee C$)
+        \item $(A \to B) \wedge (A \vee C) \equiv$ \pause $(A \vee C) \wedge (A \to B)$
     \end{itemize}
-
-    \pause\medskip
-    Questo fatto si può formalizzare come segue:
-    \begin{theorem}
-        Sia $P \equiv Q$. Se $P'$ e $Q'$ sono altre forme proposizionali ottenute da $P$ e $Q$ rimpiazzando le lettere proposizionali con forme proposizionali in maniera consistente (ovvero, la stessa lettera è sempre sostituita dalla stessa formula), allora $P' \equiv Q'$.
-    \end{theorem}
 \end{frame}
 
-% \begin{frame}{Applicare una equivalenza ad una formula (2)}
-%     Quando rimpiazzo una lettera proposizionale con una formula, devo sempre aggiungere delle parentesi attorno alla formula, altrimenti rischio di ottenere forme proposizionali ambigue o equivalenze errate.
-%     \begin{example}
-%         Dato $A \wedge B \equiv B \wedge A$, rimpiazziamo
-%         \begin{itemize}
-%             \item $A \Rightarrow A \to B$
-%             \item $B \Rightarrow A \vee C$
-%         \end{itemize}
-%         Senza parentesi, si ottiene \pause $A \to B \wedge A \vee C \equiv A \vee C \wedge A \to B$, che è ambiguo per l'alternarsi di $\wedge$ e $\vee$.
-
-%         \pause
-%         \medskip
-%         Peggio ancora, se rimpiazzo
-%         \begin{itemize}
-%             \item $A \Rightarrow A$
-%             \item $B \Rightarrow B \to C$
-%         \end{itemize}
-%         ottengo \pause $A \wedge B \to C \equiv B \to C \wedge A$ che si legge
-%         $(A \wedge B) \to C \equiv B \to (C \wedge A)$ che non è una equivalenza corretta!
-%     \end{example}
-% \end{frame}
-
-\begin{frame}{Applicare una equivalenza ad una formula (3)}
-    Ovviamente i due teoremi si possono combinare tra di loro. Siccome $A \wedge B \equiv B \wedge A$, abbiamo:
+\begin{frame}{Applicare una equivalenza ad una formula (2)}
+    Ovviamente le due osservazioni si possono combinare tra di loro. Siccome $A \wedge B \equiv B \wedge A$, abbiamo:
     \begin{itemize}
         \item $A \to (B \wedge (C \iff D))  \equiv$ \pause $A \to ((C \iff D) \wedge B)$ \pause
         \item $((A \vee B) \wedge (C \iff D)) \to D \equiv$ \pause $( (C \iff D) \wedge (A \vee B)) \to D$
