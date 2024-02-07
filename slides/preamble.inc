@@ -39,3 +39,4 @@
 }
 
 \author[Gianluca Amato]{prof.~Gianluca Amato}
+\date{}
