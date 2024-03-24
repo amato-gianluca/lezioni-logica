@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table,handout]{beamer}
+\documentclass[10pt,dvipsnames,xcolor=table,handout]{beamer}
 
 %\setbeameroption{show notes}
 
@@ -7,6 +7,8 @@
 \input{preamble.inc}
 
 \title{Logica dei predicati}
+
+\date{}
 
 \newcommand{\mcI}{\mathcal{I}}
 
@@ -463,12 +465,12 @@
     \begin{center}
         ``Tutti gli uomini sono mortali''\\
         ``Tutti i cetacei vivono in acqua''\\
-        ``Esiste un mammifero che vola''
+        ``Esiste un rettile che vola''
     \end{center}
-    L'universo del discorso potrebbe essere \textcolor{blue}{i mammiferi} o \textcolor{blue}{gli animali}. In ogni caso:
+    L'universo del discorso potrebbe essere l'insieme degli \textcolor{blue}{animali}. In ogni caso:
     \begin{itemize}
         \item  i quantificatori vanno intesi in senso limitato;
-        \item avremo bisogno dei predicati "essere uomo", "essere cetaceo", "essere mammifero" per poter scrivere le formule.
+        \item avremo bisogno dei predicati "essere uomo", "essere cetaceo", "essere rettile" per poter scrivere le formule.
     \end{itemize}
     \medskip
     In altri termini, l'universo del discorso è la versione in linguaggio naturale del concetto di dominio.
@@ -521,7 +523,7 @@
             \item $\neg \exists x X$ è ``non esiste un essere umano che sa volare''
             \item $\forall x \neg X$ è `tutti gli essere umani non sanno volare''
         \end{itemize}
-        ed entrambi vogliono dire la stessa cosa (sebbene il secondo in itaiano sia innaturale)
+        ed entrambi vogliono dire la stessa cosa (sebbene il secondo in italiano sia innaturale)
     \end{example}
     Questa equivalenza  ci consente quindi di spostare la negazione dentro o fuori un quantificatore, pur di cambiare il tipo del quantificatore.
 \end{frame}
