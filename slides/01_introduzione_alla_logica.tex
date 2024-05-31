@@ -4,6 +4,8 @@
 
 \input{preamble.inc}
 
+\setlength{\parskip}{3pt}
+
 \title{Introduzione alla logica}
 
 \begin{document}
@@ -28,14 +30,17 @@
 	\qrcode{https://www.carocci.it/prodotto/corso-di-logica-3}
 \end{frame}
 
-
 \section{Logica, inferenze e proposizioni}
 
-\begin{frame}{Cos'è la logica}
+\begin{frame}{Cos'è la logica (1)}
+	La parola \alert{logica} deriva dal greco \textit{logos}, che vuol dire ``parola'', ``pensiero'', ''ragionamento''.
+
+	Una prima definizione di logica potrebbe essere:
 	\begin{definition}[Logica]
-		La \alert{logica} (dal greco \textit{logos}, ovvero ``parola'', ``pensiero'') è lo studio del ragionamento.
+		La logica è lo studio dei ragionamenti.
 	\end{definition}
-	\begin{example}[Esempi di ragionamento]
+	\pause
+	\begin{example}[Esempi di ragionamenti]
 		\begin{columns}
 			\column{0.5\textwidth}
 			\centering
@@ -52,13 +57,40 @@
 			\alert{Sono ragionamenti corretti?}
 		\end{columns}
 	\end{example}
-	\begin{block}{Nota}
-		Esistono varie forme di ragionamento, qui siamo interessati al \alert{ragionamento deduttivo}.
+\end{frame}
+
+\begin{frame}{Cos'è la logica (2)}
+	Il termine \alert{ragionamento} è però ambiguo, perché indica sia un \emph{processo} che un \emph{prodotto}.
+	\begin{itemize}
+		\item il \emph{processo} del ragionamento è il modo in cui si giunge a una conclusione, ed è di pertinenza più dello psicologo o del neurobiologo che del logico;
+		\item il \emph{prodotto} del ragionamento è invece una discorso, come quelli visti nella diapositiva precedente; è chiamato anche \alert{argomentazione} o \alert{argomento}.
+	\end{itemize}
+	Le seguenti definizioni di logica sono quindi preferibili:
+
+	\begin{block}{Definizioni (Logica)}
+		La logica è:
+		\begin{itemize}
+			\item  lo studio dei metodi e dei principi usati per distinguere un ragionamento corretto da uno scorretto.\footnote{Irving M. Copi, Carl Cohen. Introduzione alla logica. Mulino}
+			\item lo studio delle argomentazioni.\footnote{Achielle Varzi, John Nolt, Dennis Rohatyn. Logica, 3° edizione. McGraw Hill}
+		\end{itemize}
 	\end{block}
 \end{frame}
 
+\begin{frame}{Ragionamenti e inferenze}
+	Noi useremo i termini ragionamento, argomentazione e argomento come sinonimi.
+
+	Vediamo altri esempi di ragionamenti:
+	\begin{itemize}
+		\item Tutti gli uomini sono mortali. Poichè Socrate è un uomo, ne segue che Socrate è mortale.
+		\item omissis di argomento induttivo
+		\item Tutti i numeri razionali sono esprimibili come frazioni di interi. Pi greco non è esprimibile come frazione di interi, quindi non è un numero razionale. Tuttavia pi greco è un numero. Ne segue che esiste almeno un numero irrazionale.
+	\end{itemize}
+
+	Noi restringeremo il nostro campo di studio a ragionamenti di un forma particolare: si tratta dei ragionamenti \alert{deduttivi} \alert{semplici} che chiameremo \alert{inferenze}.
+\end{frame}
+
 \begin{frame}{Inferenze}
-	La forma principale del ragionamento è quella dell'\alert{inferenza}.
+	%Ci occuperemo in particolare di forme di ragionamento molto specifiche che chiamiamo \alert{inferenze}.
 	\begin{definition}[Inferenza]
 		Una \alert{inferenza} è una sequenza di \alert{proposizioni} di cui l'ultima è ottenuta come \alert{conclusione} delle rimanenti, che si assumono come \alert{premesse}.
 	\end{definition}
@@ -996,7 +1028,6 @@
 		Questi fagioli vengono da questo sacchetto
 	\end{inference}
 	\only<4->{\qquad \textbf{Abduzione}}
-
 \end{frame}
 
 
