@@ -167,6 +167,23 @@
 	La logica si occupa anche dei casi in cui il principio di bivalenza non vale, ma non lo faremo in questo corso.
 \end{frame}
 
+\begin{frame}{Proposizioni ed enunciati}
+	Quando vorremo essere più precisi, distingueremo tra \alert{proposizioni} ed \alert{enunciati}:
+	\begin{itemize}
+		\item una proposizione è qualcosa che può essere valutata come vera o falsa;
+		\item un enunciato è una sequenza di parole che esprime una proposizione.
+	\end{itemize}
+
+	\medskip
+	Un esempio dovrebbe rendere evidente la differenza. Consideriamo le tre frasi:
+	\begin{itemize}
+	\item il gatto non è nero
+	\item non è vero che il gatto è nero
+	\item the cat is not black
+	\end{itemize}
+	Questi sono tre enunciati che però vogliono dire la stessa cosa, ovvero esprimono la stessa proposizione.
+\end{frame}
+
 %
 %\begin{frame}{Introduciamo qualche simbolo}
 %	\textbf{Variabili per proposizioni}\\
@@ -232,6 +249,30 @@
 	\begin{block}{Nota}
 		In alternativa, possiamo dire che l'inferenza è corretta quando è impossibile che le premesse siano vere e la conclusione falsa.
 	\end{block}
+\end{frame}
+
+
+\begin{frame}{Inferenze corrette e verità delle conclusioni}
+	Il fatto che una inferenza sia corretta non vuol dire che la conclusione è vera.
+	\begin{itemize}
+		\item  \alert{Se le premesse sono tutte vere}, una inferenza corretta garantisce che la conclusione è vera.
+		\item \alert{Se le premesse non sono tutte vere}, la conclusione può essere vera o falsa.
+	\end{itemize}
+
+	\medskip
+	Consideriamo ancora questa inferenza:
+
+	\begin{center}
+		\begin{inference}
+			Carlo è ligure o Stefano è piemontese\\
+			Stefano non è piemontese\\
+			\hline
+			Carlo è ligure
+		\end{inference}
+	\end{center}
+
+	\medskip
+	L'inferenza è corretta, ma se un giorno dovessimo scoprire che Carlo è nato a Roma e Stefano è di Pescara, la conclusione dell'inferenza sarebbe falsa. Ma ciò è normale, perché le premesse dell'inferenza non erano vere!
 \end{frame}
 
 \begin{frame}{Inferenze e contesto}
@@ -581,13 +622,15 @@
 
 	\pause
 	\medskip
-	Questa regola è falsa: pensate al caso in cui Fabio sia nato a Chieti.
+	Pensate al caso in cui Fabio sia nato a Chieti.
+
+	\only<6->{
+	\medskip
+	Le premesse sono vere, ma la conclusione è falsa, quindi l'inferenza \alert{non è corretta}. Abbiamo individuato un \alert{controesempio}, ovvero una situazione che rende evidente il fatto che l'inferenza non è corretta.
 
 	\medskip
-	Abbiamo trovato un \alert{controesempio}. L'inferenza non è corretta.
-
-	\medskip
-	Ed infatti, se ci pensiamo bene, non è corretta neanche la prima regola di inferenza: magari non sono un ladro, ma devo essere punito per qualche altro motivo.
+	Ed infatti, se ci pensiamo bene, non è corretta neanche la prima inferenza: magari non sono un ladro, ma devo essere punito per qualche altro motivo.
+	}
 \end{frame}
 
 \begin{frame}{Fallacia dell'affermazione del conseguente (1)}
@@ -627,13 +670,10 @@
 
 	\pause
 	\medskip
-	Questa regola è falsa: pensate di nuovo al caso in cui Fabio sia nato a Chieti.
+	Anche questa inferenza è falsa: pensate di nuovo al caso in cui Fabio sia nato a Chieti.
 
 	\medskip
-	Abbiamo trovato un \alert{controesempio}. L'inferenza non è corretta.
-
-	\medskip
-	Ed infatti, se ci pensiamo bene, non è corretta neanche la prima regola di inferenza: magari l'auto non parte perché è scarica la batteria.
+	Ed infatti, se ci pensiamo bene, non è corretta neanche la prima inferenza: magari l'auto non parte perché è scarica la batteria.
 \end{frame}
 
 \note{Esercizi Intro.1, Intro.4, Intro.7}
@@ -963,7 +1003,7 @@
 				\item gli assiomi di Euclide
 				\item gli assiomi dei numeri reali
 			\end{itemize}
-			\item se applicano inferenze corrette a premesse corrette per ottenere conclusioni corrette (teoremi)
+			\item si applicano inferenze corrette a premesse vere per ottenere conclusioni vere (teoremi);
 			\item in questo modo il teorema sarà vero per sempre:\\
 		      \medskip \textcolor{blue}{\url{https://youtu.be/LlED5V7EuFY?si=40FmAOQ4491dCbVQ&t=313}}
 		\end{itemize}
@@ -996,8 +1036,6 @@
 		Questi fagioli vengono da questo sacchetto
 	\end{inference}
 	\only<4->{\qquad \textbf{Abduzione}}
-
 \end{frame}
-
 
 \end{document}
