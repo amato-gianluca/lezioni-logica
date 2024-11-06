@@ -254,29 +254,72 @@
 
 \note{Esercizi 2.20, 2.23, 2.26, 3.2}
 
-\section{Tautologie ed equivalenze}
+\section{Tautologie, contraddizioni ed equivalenza logica}
 
-\begin{frame}{Tautologie}
+\begin{frame}{Tautologie(1)}
     \begin{definition}[Tautologia]
         Si chiama \alert{tautologia} una forma proposizionale che è sempre vera, indipendentemente dal valore di verità delle lettere proposizionali che in essa compaiono.
     \end{definition}
 
-    \begin{example}[Legge di Pierce]
-        $((A \to B) \to A) \to A$ è una tautologia.
+    \begin{example}
+        $A \wedge B \to A$ è una tautologia.
         \begin{center}
             \begin{tabular}{c|c||c|c|c}
-                $A$ & $B$ & $A \to B$  & $(A \to B) \to A$ & $((A \to B) \to A) \to A$ \\
+                $A$ & $B$ & $A \wedge B$  & $(A \wedge B) \to A$ \\
                 \hline
-                F   & F   & \only<2->V & \only<3->F        & \only<4->V                \\
-                F   & V   & \only<2->V & \only<3->F        & \only<4->V                \\
-                V   & F   & \only<2->F & \only<3->V        & \only<4->V                \\
-                V   & V   & \only<2->V & \only<3->V        & \only<4->V
+                F   & F   & \only<2->F & \only<3->V \\
+                F   & V   & \only<2->F & \only<3->V \\
+                V   & F   & \only<2->F & \only<3->V \\
+                V   & V   & \only<2->V & \only<3->V
             \end{tabular}
         \end{center}
     \end{example}
 \end{frame}
 
-\begin{frame}{Tautologie notevoli: non contraddizione}
+\begin{frame}{Tautologie (2)}
+    Se una proposizione ha la forma di una tatutologia sappiamo sicuramente che è vera, anche
+    senza conoscere il valore di verità delle proposizioni semplici che la compongono.
+    \begin{example}
+        ``\textit{Se Carla è italiana e laureata, allora è italiana.}'' è sicuramente una proposizione vera, anche se non sappiamo chi sia Carla.
+    \end{example}
+
+\end{frame}
+
+\begin{frame}{Contraddizione}
+    \begin{definition}[Contraddizione]
+        Si chiama \alert{contraddizione} una forma proposizionale che è sempre falsa, indipendentemente dal valore di verità delle lettere proposizionali che in essa compaiono.
+    \end{definition}
+    \begin{example}
+        $A \wedge \neg A$ è una contraddizione.
+        \begin{center}
+            \begin{tabular}{c||c|c}
+                $A$ & $A \wedge \neg A$ \\
+                \hline
+                F   & \only<2->F  \\
+                V   & \only<2->F  \\
+            \end{tabular}
+        \end{center}
+    \end{example}
+    Corrisponde a proposizioni in italiano che sono sicuramente false, come
+    \begin{example}
+        Carla è laureata ma non è laureata.
+    \end{example}
+\end{frame}
+
+
+\begin{frame}{Tautologie e contraddizioni}
+    Ovviamente, tautologie e contraddizioni sono strettamente correlate.
+
+    \begin{theorem}
+        $X$ è una tautologia se e solo se $\neg X$ è una contraddizione, e viceversa.
+    \end{theorem}
+
+    \begin{block}{Osservazione}
+        In futuro, useremo le lettere terminali dell'alfabeto come $X$, $Y$, $Z$ per indicare una forma proposizionale, mentre useremo le lettere iniziali per le lettere proposizionali.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Tautologie notevoli: principio di non contraddizione}
     Il \alert{principio di non contraddizione} afferma che non è possibile che una proposizione sia contemporaneamente vera e falsa.
 
     \begin{theorem}[Principio di non contraddizione]
@@ -291,15 +334,15 @@
         \end{center}
     \end{theorem}
     \begin{example}[in italiano]
-        ``\textit{Carlo è alto e non è alto}'' è sicuramente falsa, anche se non sappiamo chi è Carlo.
+        ``\textit{Carla è laureata e non è laureata }'' è sicuramente falsa, anche se non sappiamo chi è Carla. Pertanto la sua negazione .``\textit{Non è vero che Carla è laureata e non è laureata}'' è sicuramente vera.
     \end{example}
-
 
     \medskip
     \onslide<4->{
         Il principio di non contraddizione è un principio fondante di praticamente qualunque tipo di logica esistente.
     }
 \end{frame}
+
 
 \begin{frame}{Tautologie notevoli: terzo escluso}
     Il \alert{principio del terzo escluso}, noto anche col nome latino \emph{tertium non datur}, afferma sostanzialmente che ogni proposizione è vera o falsa.
@@ -316,26 +359,13 @@
         \end{center}
     \end{theorem}
     \begin{example}[in italiano]
-        ``\textit{Carlo è alto oppure non è alto}'' è sicuramente vera, anche se non sappiamo chi è Carlo.
+        ``\textit{Carla è laureata oppure non è laureata}'' è sicuramente vera, anche se non sappiamo chi è Carla.
     \end{example}
 
     \medskip
     \onslide<3->{
         Il principio del terzo escluso, a differenze di quello di non contraddizione, non è universalmente accettato: esistono molti sistemi logici in cui non vale, anche se noi non ce ne occupiamo.
     }
-\end{frame}
-
-\begin{frame}{Contraddizione}
-    \begin{definition}[Contraddizione]
-        Si chiama \alert{contraddizione} una forma proposizionale che è sempre falsa, indipendentemente dal valore di verità delle lettere proposizionali che in essa compaiono.
-    \end{definition}
-    \begin{example}[Contraddizioni]
-        Sono contraddizioni:
-        \[ A \wedge \neg A \qquad \qquad A \iff \neg A \qquad \qquad A \xor A \]
-    \end{example}
-    \begin{theorem}
-        $X$ è una tautologia se e solo se $\neg X$ è una contraddizione, e viceversa
-    \end{theorem}
 \end{frame}
 
 \begin{frame}{Equivalenza logica}
@@ -376,11 +406,11 @@
 
 \begin{frame}{Tautologie ed equivalenza logica (1)}
     \begin{theorem}
-        Due \fp $P$ e $Q$ sono logicamente equivalenti se e solo se la \fp $P \iff Q$ è una tautologia.
+        Due \fp $X$ e $Y$ sono logicamente equivalenti se e solo se la \fp $X \iff Y$ è una tautologia.
     \end{theorem}
 
     \begin{example}
-        Le \fp $P = \neg A \vee B$ e $Q = A \to B$ sono equivalenti. Infatti
+        Le \fp $X = \neg A \vee B$ e $Y = A \to B$ sono equivalenti. Infatti
         \begin{center}
             \begin{tabular}{c|c||c|c|c}
                 $A$ & $B$ & $\neg A$ & $\neg A \vee B$ & $A \to B$ \\
@@ -482,20 +512,17 @@
             $\neg \bot = \top$            &                         & $1- 0 = 1$
         \end{tabular}
     \end{center}
-
-    \medskip
-    Vediamo quindi che per alcune equivalenze logiche vale una equivalenza algebrica corrispondente, ma non per tutte. Una corrispondenza totale si potrebbe avere tra le equivalenze logiche e le equivalenze insiemistiche (con le operazioni di unione, intersezione e complemento), ma non approfondiamo questo argomento.
 \end{frame}
 
 \begin{frame}{Alcuni esempi in linguaggio naturale (1)}
-    Il vatto che quelle viste prime siano tatutologie segue dal calcolo della tavole di verità. Cerchiamo comunque di dare una qualche intuizione nel linguaggio naturale.
+    Il fatto che quelle viste prime siano tatutologie segue dal calcolo della tavole di verità. Cerchiamo comunque di dare una qualche intuizione nel linguaggio naturale.
     \begin{itemize}
         \item $A \wedge B \equiv B \wedge A$: cambiare l'ordine delle affermazioni, non cambia il significato.
         ``Carlo è alto e Mario è basso'' $\equiv$ ``Mario è basso e Carlo è alto''.
         \item $A \wedge (B \wedge C) \equiv (A \wedge B) \wedge C$: non è facile fare un esempio in italiano, dove non ci sono le parentesi. Tuttavia, possiamo ripetere il soggetto in modo diverso per dare una idea del raggruppamento. `Carlo è alto e biondo e Carlo è affabile'' $\equiv$ ``Carlo è alto e Carlo è biondo e affabile''.
         \item $A \wedge A \equiv A$: ripetere due voleta la stessa proposizione non ne cambia il significato.`Carlo è alto e Carlo è alto'' $\equiv$ ``Carlo è alto''.
         \item $A \wedge \top \equiv A$:  ``Michele è o non è alto'' è sicuramente vero, quindi non ha alcuna rilevanza. ``Carlo è alto e Michele è o non è alto'' $\equiv$ ``Carlo è alto''
-        \item $A \wedge \bot \equiv \bot$:``Carlo è alto e Michele è alto e non è alto'' è sicuramente falso.
+        \item $A \wedge \bot \equiv \bot$: ``Michele è alto e non è alto'' è sicuramente falso. Quindi ``Carlo è alto e Michele è alto e non è alto'' $\equiv$ ``Carlo è alto''.
     \end{itemize}
 \end{frame}
 
@@ -594,30 +621,35 @@
         \begin{minted}[autogobble,xleftmargin=0.5cm]{python}
         state != "Italy" or regione == "Sardegna"
     \end{minted}
-        Le spese aggiuntive si pagane se la spedizione e all'estero, oppure in Sicilia o in Sardegna.
+        Le spese aggiuntive si pagane se la spedizione e all'estero, oppure in Sardegna.
     \end{example}
 \end{frame}
 
 \begin{frame}{Il principio di dualità}
-    Abbiamo visto che molte equivalenze logiche si possono ottenere scambiando $\wedge$ con $\vee$ e $\top$ con $\bot$.
+    \smallskip
+    \begin{theorem}[Principio di dualità]
+        Sia $X, Y$ due fp tali che $X \equiv Y$, nessuna delle quali contiene $\rightarrow$. Se $X'$ e $Y'$ si ottengono da $X$ e $Y$ scambiando:
+        \begin{itemize}
+            \item $\wedge$ con $\vee$,
+            \item $\leftrightarrow$ con $\xor$,
+            \item $\top$ con $\bot$,
+        \end{itemize}
+        allora $X' \equiv Y'$.
+    \end{theorem}
 
     \begin{example}
-        $A \wedge \top \equiv A$ diventa $A \vee \bot \equiv A$.
+        Prendiamo ad esempio l'equivalenza
+        \[A \wedge \top \equiv A\]
+        Applicando ad ambo i membri dell'equivalenza gli scambi di prima, otteniamo \pause \[A \vee \bot \equiv A\]
     \end{example}
-
-    Questo fatto non è un caso, e si può formalizzare come segue:
-
-    \begin{theorem}[Principio di dualità]
-        Sia $X$ ed $Y$ due \fp logicamente equivalente. Se $X'$ e $Y'$ sono ottenute da $X$e ed $Y$ scambiando $\wedge$ con $\vee$ e $\top$ con $\bot$, allora $X' \equiv Y'$.
-    \end{theorem}
 \end{frame}
 
 \begin{frame}{Proprietà associativa e parentesi}
     Il fatto che $\wedge$ e $\vee$ godano della proprietà associativa, ci consente di risparmiare qualche parentesi.
     \begin{itemize}
     \item Consideriamo la formula $A \wedge B \wedge C$. La formula non va bene perché è ambigua, la si può interpretare come $(A \wedge B) \wedge C$ oppure $A \wedge (B \wedge C)$.
-    \item Le due possibile interpretazioni sono però equivalenti, per la proprietà associativa, quindi non ci crea nessun problema!
-    \item La stessa cosa vale anche per $\vee$, ma non se ci c'è una mescolanza di $\wedge$ e $\vee$:
+    \item Le due possibile interpretazioni sono però equivalenti, per la proprietà associativa, quindi l'ambiguità non ci crea nessun problema!
+    \item La stessa cosa vale anche per $\vee$, ma non se c'è una mescolanza di $\wedge$ e $\vee$:
     \begin{itemize}
         \item possiamo scrivere $A \vee B \vee C$ perché tanto le due alternative $(A \vee B) \vee C$ e $A \vee (B \vee C)$ sono equivalenti;
         \item non possiamo scrivere $A \wedge B \vee C$ perché le due alternative $(A \wedge B) \vee C$ e $A \wedge (B \vee C)$ \textbf{non} sono equivalenti.
@@ -630,7 +662,7 @@
     \[
         A \xor B \equiv (A \wedge \neg B) \vee (\neg A \wedge B)
     \]
-    La formula è complessa, ci torneremo dopo.
+    Notare che le due fp $A \wedge \neg B$ e $\neg A \wedge B$ corrispondono esattamente ai due casi in cui l'or esclusivo è vero (una delle due proposizioni è vera, l'altra è falsa).
 
     \pause \medskip Altre equivalenze notevoli:
     \begin{align*}
@@ -678,7 +710,7 @@
         A \to B \equiv \neg B \to \neg A
     \]
     \begin{example}
-        Data la funzione proposizionale ``se $x$ è divisibile per 4 allora x è pari'',  vera per tutti gli $x$:
+        Data la proposizione ``se $x$ è divisibile per 4 allora x è pari'',  vera per tutti gli $x$:
         \begin{itemize}
             \item l'inversa ``se $x$ è pari allora x è divisibile per 4'' è falsa per $x=2$;
             \item la contraria ``se $x$ non è divisibile per 4 allora x non è pari'' è falsa per $x=2$;
@@ -734,15 +766,16 @@
         A \iff B \equiv \neg (A \xor B)\\
         A \xor B \equiv \neg (A \iff B)
     \end{gather*}
-
-    \pause \medskip
-    Infine, la doppia implicazione è anche equivalente ad una formula che usa solo and, or e not:
-    \[
-        A \iff B \equiv (A \wedge B) \vee (\neg A \wedge \neg B)
-    \]
 \end{frame}
 
 \begin{frame}{La doppia implicazione (2)}
+    La doppia implicazione è anche equivalente ad una formula che usa solo and, or e not:
+    \[
+        A \iff B \equiv (A \wedge B) \vee (\neg A \wedge \neg B)
+    \]
+    dove $A \wedge B$ e $\neg A \wedge \neg B$ rappresentano i due casi per cui la doppia implicazione è vera.
+
+    \pause\medskip
     Altre equivalenze che coinvogono la doppia implicazione:
     \begin{align*}
         A \iff A      & \equiv \top     \\
@@ -757,16 +790,22 @@
 \section{Semplificare le \fp}
 
 \begin{frame}{Applicare una equivalenza ad una formula (1)}
-    Il fatto che $A \wedge B \equiv B \wedge A$ vuol dire che, ovunque in una fp compaia $A \wedge B$, è possibile rimpiazzarlo con $B \wedge A$ senza cambiare il significato della formula (e viceversa).
+    Il fatto che $A \wedge B \equiv B \wedge A$ vuol dire che, ovunque in una fp compare $A \wedge B$, è possibile rimpiazzarlo con $B \wedge A$ senza cambiare il significato della formula (e viceversa).
     \begin{itemize}
         \item $A \wedge B \to C \equiv$ \pause $B \wedge A \to C$ \pause\
         \item $(B \wedge A) \xor (C \iff A) \equiv$ \pause $(A \wedge B) \xor (C \iff A)$
     \end{itemize}
 
     \pause\medskip
+    Analogamente, in matematica sappiamo che $x+y=y+x$. Questo ci consente di rimpiazzare $x+y$ con $y+x$ ovunque in una formale. Ad esempio,
+    \begin{itemize}
+        \item $(a(x+y))^2 = (a(y+x))^2$.
+    \end{itemize}
+
+    \pause\medskip
     Questo fatto si può formalizzare come segue:
     \begin{theorem}
-        Sia $P$, $Q$ ed $R$ forme proposizionali, con $P \equiv Q$. Se $R'$ è ottenuta da $R$ rimpiazzando tute le occorrenze di $P$ con $Q$ o viceversa, allora $R \equiv R'$.
+        Sia $X$, $X'$ ed $Y$ forme proposizionali, con $X \equiv X'$. Se $Y'$ è ottenuta da $Y$ rimpiazzando tute le occorrenze di $X$ con $X'$ o viceversa, allora $Y \equiv Y'$.
     \end{theorem}
 \end{frame}
 
@@ -777,6 +816,13 @@
                 (abbiamo rimpiazzato $A$ con $C$ e $B$ con $D$)
         \item $(A \to B) \wedge (A \vee C) \equiv$ \pause $(A \vee C) \wedge (A \to B)$\\
             (abbiamo rimpiazzato $A$ con $A \to B$, e $B$ con $A \vee C$)
+    \end{itemize}
+
+
+    \pause\medskip
+    Analogamente, in matematica sappiamo che $x+y=y+x$. Questo ci consente di scambiare i due addendi in ogni espressione.
+    \begin{itemize}
+        \item $2xy^3 + \log z = \log z + 2xy^3$
     \end{itemize}
 
     \pause\medskip
@@ -809,19 +855,15 @@
 % \end{frame}
 
 \begin{frame}{Applicare una equivalenza ad una formula (3)}
-    Ovviamente i due teoremi si possono combinare tra di loro. Siccome $A \wedge B \equiv B \wedge A$, abbiamo:
-    \begin{itemize}
-        \item $A \to (B \wedge (C \iff D))  \equiv$ \pause $A \to ((C \iff D) \wedge B)$ \pause
-        \item $((A \vee B) \wedge (C \iff D)) \to D \equiv$ \pause $( (C \iff D) \wedge (A \vee B)) \to D$
-    \end{itemize}
+    In conclusione, il fatto che $A \wedge B \equiv B \wedge A$ vuol dire che:
 
-    \pause\medskip
-    Nella prima, ad esempio, considere la sottoformula $B \wedge (C \iff D)$ e applico la commutatività di $\wedge$ per scambiare $B$ con $(C \iff D)$.
+    \smallskip
+    \begin{quotation}
+        \noindent in una forma proposizionale, ogni volta che c'è un connettivo ``and'' è possibile cambiare l'ordine dei congiunti e ottenere una forma equivalente.
+    \end{quotation}
+    Analogamente per le altre equivalenze notevoli.
 
-    \pause\medskip
-    In conclusione, il fatto che $A \wedge B \equiv B \wedge A$ vuol dire che, in una forma proposizionale, ogna volta che c'è un connettivo ``and'' è possibile cambiare l'ordine dei congiunti e ottenere una forma equivalente. Analogamente per le altre equivalenze notevoli.
-
-    \medskip
+    \medskip \pause
     È possibile usare queste manipolazioni di tipo algebrico per
     \begin{itemize}
         \item verificare nuove equivalenze logiche in maniera più veloce non costruendo la tavola di verità;
@@ -829,8 +871,8 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{Verificare una equivalenza logica}
-    Vogliamo verificare l'equivalenza $P \equiv Q$.  Si parte dalla proposizione sul lato sinistro o destro (quella che sembra più comoda) e si applicano le equivalenze note fino ad ottenere l'altra proposizione.
+\begin{frame}{Verificare una equivalenza logica (1)}
+    Vogliamo verificare l'equivalenza $X \equiv Y$.  Si parte dalla proposizione sul lato sinistro o destro (quella che sembra più comoda) e si applicano le equivalenze note fino ad ottenere l'altra proposizione.
 
     \begin{example}
         Vogliamo verificare l'equivalenza $A \vee B \equiv \neg(\neg A \wedge \neg B)$. Partendo da destra:
@@ -845,15 +887,33 @@
     \end{example}
 \end{frame}
 
-\note{
-    Credo che serva dare una spiegazione un po' più dettagliata di come $\neg(\neg A \wedge \neg B)$ diventa $(\neg \neg A \vee \neg \neg B)$. Si potrebbe probabilmente scrivere la formula di De Morgan originaria come $\neg (X \wedge Y) = \neg X \vee \neg Y$ e far vedere graficamente che rimpiazziamo $X$ con $\neg A$ e $Y$ con $\neg B$.
-}
+\begin{frame}{Verificare una equivalenza logica (2)}
+    Spieghiamo più dettagliatamente il passaggio da $\neg(\neg A \wedge \neg B)$ a $\neg\neg A \vee \neg\neg B$.
+
+    \begin{itemize}[<+->]
+        \item Iniziamo a riscrivere la legge di De Morgan, ma per non fare confusione, usando le lettere $X$ e $Y$ invece di $A$ e $B$:
+        \[
+        \neg (X \wedge Y) = \neg X \vee \neg Y
+        \]
+        \item  Noi vogliamo applicare questa legge a  $\neg(\neg A \wedge \neg B)$: dobbiamo capire se è possibile sostiture $X$ e $Y$ nella legge di De Morgan con delle formule in maniera tale che
+        $\neg (X \wedge Y)$ diventi $\neg(\neg A \wedge \neg B)$.
+        \item Questo è possibile con la sostituzione $X \mapsto \neg A$ e $Y \mapsto \neg B$.
+        \item    Applicando queste sostituzioni alla legge di De Morgan, otteniamo
+        \[\neg(\neg A \wedge \neg B) \equiv \neg\neg A \vee \neg\neg B \]
+    \end{itemize}
+    \pause
+    \textbf{Questo vale anche per l'applicazione delle altre equivalenze notevoli, finché con la pratica il loro utilizzo diventa automatico.}
+\end{frame}
+
+% \note{
+%     Credo che serva dare una spiegazione un po' più dettagliata di come $\neg(\neg A \wedge \neg B)$ diventa $(\neg \neg A \vee \neg \neg B)$. Si potrebbe probabilmente scrivere la formula di De Morgan originaria come $\neg (X \wedge Y) = \neg X \vee \neg Y$ e far vedere graficamente che rimpiazziamo $X$ con $\neg A$ e $Y$ con $\neg B$.
+% }
 
 \begin{frame}{Semplificazione di una fp}
-    Vogliamo semplificare la forma proposizionale $P$. La tecnica è la stessa: si parte da $P$ e si applicano le equivalenze note fino ad ottenere una forma più semplice, ricordando che talvolta, per semplificare le cose, occorre prima complicarle !
+    Vogliamo semplificare la forma proposizionale $X$. La tecnica è la stessa: si parte da $X$ e si applicano le equivalenze note fino ad ottenere una forma più semplice, ricordando che talvolta, per semplificare le cose, occorre prima complicarle !
 
     \begin{example}
-        Vogliamo semplificare la fp. $(A \wedge B) \vee (A \wedge \neg B)$.
+        Vogliamo semplificare la fp $(A \wedge B) \vee (A \wedge \neg B)$.
         \[
             \begin{array}{rl@{\hspace{0.8cm}}l}
                               & (A \wedge B) \vee (A \wedge \neg B) & \pause \text{(prop. distributiva${}^*$)} \\
@@ -862,7 +922,7 @@
                 \pause \equiv & A
             \end{array}
         \]
-        Quello indicato con ${}^*$ è l'uso della proprietà distributiva $A \wedge (B \vee C) \equiv (A \wedge B) \vee (A \wedge C)$ ma da destra a sinistra. È l'operazione che nelle espressioni algebriche si chiama \emph{mettere in evidenza} o \emph{raccogliere}.
+        Quello indicato con ${}^*$ è l'uso della proprietà distributiva $X \wedge (Y \vee Z) \equiv (X \wedge Y) \vee (X \wedge Z)$ ma da destra a sinistra. È l'operazione che nelle espressioni algebriche si chiama \emph{mettere in evidenza} o \emph{raccogliere}.
     \end{example}
 \end{frame}
 
