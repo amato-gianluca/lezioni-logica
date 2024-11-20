@@ -135,10 +135,11 @@
 \end{frame}
 
 \begin{frame}{Revisitare le equivalente notevoli}
-    Usando la provedura vista, possiamo facilmente di ottenere le equivalenze che ci consentono di riscrivere i connettivi $\to$, $\xor$  in termini di $\wedge$, $\vee$ a $\neg$. Si tratta di:
+    Usando la provedura vista, possiamo facilmente ottenere le equivalenze che ci consentono di riscrivere i connettivi $\to$, $\xor$, $\iff$  in termini di $\wedge$, $\vee$ a $\neg$. Si tratta di:
     \begin{gather*}
         A \to B \equiv \neg A \vee B \\
-        A \xor B \equiv (\neg A \wedge B) \vee (A \wedge \neg B)
+        A \xor B \equiv (\neg A \wedge B) \vee (A \wedge \neg B)\\
+        A \iff B \equiv (A \wedge B) \vee (\neg A \wedge \neg B)
     \end{gather*}
     che abbiamo già visto nella lezione sulle equivalenze notevoli.
 \end{frame}
@@ -146,7 +147,7 @@
 \section{Basi di connettivi}
 
 \begin{frame}{Basi di connettivi}
-    Abbiamo visto come qualunque fp abbia una equivalente forma normale disgiuntiva. Le FND usano solo i connettivi $\neg$, $\wedge$ e $\vee$. Dunque:
+    Abbiamo visto come qualunque fp abbia una equivalente in forma normale disgiuntiva. Le FND usano solo i connettivi $\neg$, $\wedge$ e $\vee$. Dunque:
     \begin{theorem}
         Tutte le forme proposizionali ne hanno una equivalente che usa solo $\neg$, $\wedge$ e $\vee$.
     \end{theorem}
@@ -169,16 +170,15 @@
     \]
     \end{theorem}
     \begin{proof}
-    Potremmo verificarlo con le tavole di verità, ma proviamo a farlo per via algebrica.
-    Dalla legge di De Morgan sappiamo che
+    Potremmo verificarlo con le tavole di verità, ma proviamo a farlo per via algebrica. Partiamo dal secondo membro:
+
     \[
-        \neg(A \vee B) \equiv \neg A \wedge \neg B
+        \begin{array}{rl@{\hspace{0.8cm}}l}
+                          & \neg(\neg A \wedge \neg B)& \pause \text{(De Morgan)} \\
+            \pause \equiv & \neg \neg A \vee \neg \neg B  & \pause \text{(doppia negazione)}            \\
+            \pause \equiv & A \vee B
+        \end{array}
     \]
-    Applicando una negazione ad ambo i membri, si ottiene
-    \[
-        \neg \neg (A \vee B) \equiv \neg(\neg A \wedge \neg B)
-    \]
-    e per la legge di doppia negazione, si ottiene quanto voluto.
     \end{proof}
 \end{frame}
 
@@ -193,10 +193,12 @@
             \neg A \vee (B \wedge C)
         \]
         Applicando l'equivalenza di prima, otteniamo:
+        \pause
         \[
             \neg (\neg \neg A \wedge \neg (B \wedge C))
         \]
         che volendo possiamo semplificare in
+        \pause
         \[
             \neg (A \wedge \neg (B \wedge C))
         \]
@@ -217,14 +219,14 @@
     \end{theorem}
 \end{frame}
 
-\begin{frame}{$\wedge$ e $\neg$ non costituiscono una base di connettivi}
+\begin{frame}{$\wedge$ e $\vee$ non costituiscono una base di connettivi}
     Ci si potrebbe chiedere se $\wedge$ e $\vee$ costituiscono una base di connettivi, facendo a meno della negazione. La risposta è negativa.
 
     \begin{theorem}
         $\{ \wedge, \vee\}$ non è una base di connettivi.
     \end{theorem}
     \begin{proof}
-        Sia $X$ una \fp che usa solo i connettivi $\wedge$ e $\vee$. Poiché $F \vee F = F$ e $F \wedge F= F$, segue che se tutte le lettere proposizionali hanno valore di verità falso, la \fp X ha anch'essa valore di verità falso. Quindi $X$ non consente di esprimere tutte le \fp.
+        Sia $X$ una \fp che usa solo i connettivi $\wedge$ e $\vee$. Poiché $F \vee F = F$ e $F \wedge F= F$, segue che se tutte le lettere proposizionali hanno valore di verità falso, la \fp X ha anch'essa valore di verità falso. Quindi non è possibile esprimere con solo $\vee$ e $\wedge$ una fp che è sempre vera.
     \end{proof}
 
     Come conseguenza, ovviamente, neanche $\wedge$  o $\vee$ da soli costituiscono una base.
@@ -242,7 +244,7 @@
     \end{gather*}
     \end{proof}
 
-    Invece $\to$ da sola non è sufficiente. Siccome $V \to V = V$, qualunque formula che usa solo $\to$ ha valore di verità V quando tutte le lettere proposizionali hanno valore di verità V. Quindi $\to$ da solo non è sufficiente per esprimere tutte le \fp.
+    Invece $\to$ da sola non è sufficiente. Siccome $V \to V = V$, qualunque formula che usa solo $\to$ ha valore di verità V quando tutte le lettere proposizionali hanno valore di verità V. Quindi $\to$ da sola non può esprimere, ad esempio, una fp sempre falsa.
 \end{frame}
 
 \begin{frame}{Il connettivo nand}

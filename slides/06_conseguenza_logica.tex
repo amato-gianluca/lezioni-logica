@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table]{beamer}
+\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table,handout]{beamer}
 
 %\setbeameroption{show notes}
 
@@ -18,28 +18,51 @@
 
 \section{Conseguenza logica}
 
-\begin{frame}{Conseguenza logica}
-    Abbiamo già introdotto il concetto di \emph{equivalenza logica}: due formule sono equivalenti se hanno lo stesso valore di verità per ogni assegnamento di verità alle variabili proposizionali. Ovvero, se quando una di esse è vera, allora l'altra deve essere per forza vera, e viceversa.
+\begin{frame}{Conseguenza logica (1)}
+    \begin{block}{Ripasso: equivalenza logica}
+        Due fp $X$ ed $Y$ sono \alert{equivalenti} ($X \equiv Y$) quando hanno lo stesso valore di verità per ogni assegnamento di verità alle variabili proposizionali.
+    \end{block}
 
-    \medskip
-    La \alert{conseguenza logica} è una forma più debole dell'equivalenza:
-    \begin{definition}[Conseguenenza logica]
+    \pause
+    La \alert{conseguenza logica} è una forma più debole dell'equivalenza.
+
+    \begin{definition}[Conseguenza logica]
         Una \fp $Y$ è \alert{conseguenza logica} della \fp $X$ quando tutti gli assegnamenti di lettere a valori di verità che rendono vera $X$ rendono vera anche $Y$.
     \end{definition}
 
-    \medskip
+    \pause
     Pertanto, se $X$ è vera deve essere vera anche $Y$, ma non è detto il viceversa!
+
+    \pause
+    \begin{definition}[Simbolo per conseguenza logica]
+        Scriviamo \alert{$X \models Y$} per indicare $Y$ è conseguenza logica di $X$.
+    \end{definition}
+\end{frame}
+
+\begin{frame}{Conseguenenza logica (2)}
+    Ingrandimento del simbolo di conseguenza logica:
+
+    \smallskip
+    \begin{center}
+        \resizebox{2cm}{!}{$\models$}
+    \end{center}
+
+    \pause
+    \medskip
     In generale, il concetto di conseguenza logica si generalizza al caso di premesse multiple come segue:
     \begin{definition}[Conseguenenza logica]
         Una \fp $Y$ è \alert{conseguenza logica} delle \fp $X_1, \ldots, X_n$ quando tutti gli assegnamenti di lettere a valori di verità che rendono vere tutte le  $X_i$ contemporanamente, rendono vera anche $Y$.
+
+        \smallskip
+        In simboli: $X_1, \ldots, X_n \models Y$.
     \end{definition}
 \end{frame}
 
 \begin{frame}{Verificare una conseguenza logica}
-    Vogliamo verificare che $B$ è conseguenza logica di $A \to B$ ed $A$. Scriviamo la tavola di verità delle tre formule $A \to B$, $A$ e $B$:
+    Vogliamo verificare che \textcolor{blue}{$B$} è conseguenza logica di \textcolor{magenta}{$A \to B$} ed \textcolor{magenta}{$A$}. Scriviamo la tavola di verità delle tre formule $A \to B$, $A$ e $B$:
     \begin{center}
         \begin{tabular}{|c|c||c|c|c|}
-            $A$                         & $B$                         & $A \to B$                   & $A$                         & $B$                         \\
+            $A$                         & $B$                         & \color{magenta}$A \to B$                   & \color{magenta}$A$                         & \color{blue}$B$                         \\
             \hline
             F                           & F                           & V                           & F                           & F                           \\
             F                           & V                           & V                           & F                           & V                           \\
@@ -49,16 +72,16 @@
     \end{center}
     \begin{itemize}
         \item<2-> Evidenziamo quali sono gli assegnamenti che rendono vere entrambe le premesse ($A$ e $A \to B$)
-        \item<3-> Constatiamo che in tutte queste righe (che poi è una sola) anche la conclusione $B$ è vera
-        \item<4-> Quindi $B$ è conseguenza logica di $A \to B$ ed $A$
+        \item<4-> Constatiamo che in tutte queste righe (che poi è una sola) anche la conclusione $B$ è vera
+        \item<5-> Quindi $B$ è conseguenza logica di $A \to B$ ed $A$
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Un altro esempio}
-    Verifichiamo adesso che $\neg B$ \textbf{non è} conseguenza logica di $A \to B$ e $\neg A$.
+    Verifichiamo adesso che \textcolor{blue}{$\neg B$} \textbf{non è} conseguenza logica di \textcolor{magenta}{$A \to B$} e \textcolor{magenta}{$\neg A$}.
     \begin{center}
         \begin{tabular}{|c|c||c|c|c|}
-            $A$                         & $B$                         & $A \to B$                   & $\neg A$                    & $\neg B$                    \\
+            $A$                         & $B$                         & \color{magenta}$A \to B$                   & \color{magenta}$\neg A$                    & \color{blue}$\neg B$                    \\
             \hline
             \only<3->{\cellcolor{red}}F & \only<3->{\cellcolor{red}}F & \only<3->{\cellcolor{red}}V & \only<3->{\cellcolor{red}}V & \only<3->{\cellcolor{red}}V \\
             \only<3->{\cellcolor{red}}F & \only<3->{\cellcolor{red}}V & \only<3->{\cellcolor{red}}V & \only<3->{\cellcolor{red}}V & \only<3->{\cellcolor{red}}F \\
@@ -68,8 +91,8 @@
     \end{center}
     \begin{itemize}
         \item<2-> Evidenziamo quali sono gli assegnamenti che rendono vere entrambe le premesse ($A \to B$ e $\neg A$)
-        \item<3-> Constatiamo che nella seconda riga evidenziata, le premesse sono vere ma la conclusione ($\neg B$) è falsa
-        \item<4-> Quindi $\neg B$ \textbf{non è} conseguenza logica di $A \to B$ e $\neg A$
+        \item<4-> Constatiamo che nella seconda riga evidenziata, le premesse sono vere ma la conclusione ($\neg B$) è falsa
+        \item<5-> Quindi $\neg B$ \textbf{non è} conseguenza logica di $A \to B$ e $\neg A$
     \end{itemize}
 \end{frame}
 
@@ -82,28 +105,29 @@
 
     \medskip Non deve sorprendere quindi il seguente:
     \begin{theorem}[Conseguenza logica e implicazione]
-        La \fp $Y$ è conseguenza logica di $X_1, \ldots, X_n$ se e solo se $X_1 \land \cdots \land X_n \to Y$ è una tatutologia.
+        $X_1, \ldots, X_n \models Y$ se e solo se $X_1 \land \cdots \land X_n \to Y$ è una tatutologia.
     \end{theorem}
 \end{frame}
 
 \begin{frame}{Conseguenza logica e implicazione (2)}
     \begin{example}
-        Riprendiamo la tavola di verità usata per verificare che $B$ è coneguenza logica di $A \to B$ e $A$, a cui aggiungo un paio di colonne.
+        Riprendiamo la tavola di verità usata per verificare che $B$ è conseguenza logica di $A \to B$ e $A$, a cui aggiungo un paio di colonne.
         \begin{center}
             \begin{tabular}{|c|c||c|c|c|c|c|}
-                $A$ & $B$ & $A \to B$ & $A$ & $(A \to B) \land A$ & $B$ & $((A \to B) \land A) \to B$  \\
+                $A$ & $B$ & \color{magenta}$A \to B$ & \color{magenta}$A$ & \color{blue}$B$ & \only<1>{\phantom{$(A \to B) \land A$}}\only<2->{$(A \to B) \land A$} & \only<1-2>{\phantom{$((A \to B) \land A) \to B$}}\only<3->{$((A \to B) \land A) \to B$} \\
                 \hline
-                F   & F   & V         & F   & F & F & V  \\
-                F   & V   & V         & F   & F & V & V  \\
-                V   & F   & F         & V   & F & F & V  \\
-                \cellcolor{red}V   & \cellcolor{red}V   & \cellcolor{red}V         &\cellcolor{red}V   & \cellcolor{red}V & \cellcolor{red}V & \cellcolor{red}V
+                F   & F   & V         & F   & F & \only<2->{F} & \only<3->V  \\
+                F   & V   & V         & F   & V & \only<2->{F} & \only<3->V  \\
+                V   & F   & F         & V   & F & \only<2->{F} & \only<3->V  \\
+                \cellcolor{red}V   & \cellcolor{red}V   & \cellcolor{red}V         &\cellcolor{red}V   & \cellcolor{red}V & \only<2->{\cellcolor{red}V} & \only<3->{\cellcolor{red}V}
             \end{tabular}
         \end{center}
         \begin{itemize}
-            \item La \fp $(A \to B) \land A$  è vera solo quando entrambe le formule $A \to B$ ed $A$ sono vere, quindi solo per la riga precedentemente evidenziata in rosso.
-            \item Per la riga evidenzia, poiché $B$ è conseguenza logica di $A \to B$ ed $A$, anche $B$ è vera, e quindi $((A \to B) \land A) \to B$ è vera.
-            \item Per le righe non evidenziata, $(A \to B) \land A \to B$ è vera perché l'antecedente è falso.
-            \item Dunque $((A \to B) \land A) \to B$ è sempre vera.
+            \item<2-> Aggiungiamo una colonna con la congiunzione delle premesse. Sarà vera solo quando tutte le premesse sono vere, ovvero per la riga precedentemente evidenziata in rosso.
+            \item<3-> Aggiungiamo una colonna con l'implicazione tra congiunzione delle premesse e conseguenza.
+            \item<4-> Per le righe evidenziate,  $(A \to B) \land A \to B$  è vera perché perché il conseguente è vero.
+            \item<4-> Per le righe non evidenziate, $(A \to B) \land A \to B$ è vera perché l'antecedente è falso.
+            \item<5-> Dunque $((A \to B) \land A) \to B$ è sempre vera.
         \end{itemize}
 
     \end{example}
@@ -112,21 +136,90 @@
 
 \section{Inferenze corrette}
 
-\begin{frame}{Conseguenza logica e correttezza delle inferenze (1)}
-    Riguardiamo la definizione di \emph{inferenza corretta}.
+\begin{frame}{Inferenze e regole di inferenza}
+    \begin{block}{Ripasso: inferenza}
+        Ricordiamo la differenza tra inferenza
+        \begin{center}
+                \begin{inference}
+                    Se manca la benzina, allora l'auto non parte\\
+                    Manca la benzina\\
+                    \hline
+                    L'auto non parte
+                \end{inference}
+        \end{center}
+        dove premesse e conclusioni sono proposizioni\ldots
+    \end{block}
 
-    \begin{definition}[Inferenza  corretta]
-        Una inferenza è \alert{corretta} (o \alert{valida}) se ogni qualvolta le premesse sono vere, allora è necessariamente vera anche la conclusione.
+    \pause
+    \begin{block}{Ripasso: regola di inferenza}
+        \ldots e regola di inferenza
+        \begin{center}
+            \begin{inference}
+                $A \to \neg B$\\
+                $A$\\
+                \hline
+                $\neg B$
+            \end{inference}
+        \end{center}
+        dove premesse e conclusione sono fore proposizionali.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Conseguenza logica e correttezza delle inferenze (1)}
+    \begin{block}{Ripasso: inferenza corretta}
+		Una inferenza è \alert{corretta} (o \alert{valida}) se ogni qualvolta le premesse sono vere, allora è necessariamente vera anche la conclusione.
+    \end{block}
+
+    \pause Sappiamo anche che la correttezza di una inferenza dipende solo dalla sua forma logica, ovvero dalla regola di inferenza da cui deriva.
+
+    \pause
+    \begin{definition}[Regola di inferenza corretta]
+        Una regola di inferenza come
+        \begin{center}
+            \begin{inference}
+                $X_1$\\
+                $\vdots$\\
+                $X_n$\\
+                \hline
+                $Y$
+            \end{inference}
+        \end{center}
+        è \alert{corretta} (o \alert{valida}) se ogni qualvolta le premesse sono vere, allora è necessariamente vera anche la conclusione.
     \end{definition}
 
-    Ma questo non è altro che la definizione di conseguenza logica, scritta in un linguaggio più informale. Sappiamo anche che la correttezza di una inferenza dipende solo dalla sua forma logica, ovvero dalla regola di inferenza da cui deriva. Quindi:
-
+    \pause
     \begin{theorem}
         Una regola di inferenza è corretta quando la conclusione è conseguenza logica delle premesse.
     \end{theorem}
 \end{frame}
 
 \begin{frame}{Conseguenza logica e correttezza delle inferenze (2)}
+    \begin{definition}[Regola di inferenza corretta]
+        \begin{center}
+            \begin{inference}
+                $X_1$\\
+                $\vdots$\\
+                $X_n$\\
+                \hline
+                $Y$
+            \end{inference}
+        \end{center}
+        è \alert{corretta} se ogni qualvolta le premesse sono vere, allora è necessariamente vera anche la conclusione.
+    \end{definition}
+    \pause
+    Ma questa è esattamente la definizione di conseguenza logica
+    \[
+    X_1, \ldots, X_n \models Y
+    \]
+    solo espresso in termini un po' più informali.
+
+    \pause
+    \begin{theorem}
+        Una regola di inferenza è corretta quando la conclusione è conseguenza logica delle premesse.
+    \end{theorem}
+\end{frame}
+
+\begin{frame}{Conseguenza logica e correttezza delle inferenze (3)}
     \begin{example}[Modus ponens]
         Possiamo verificare formalmente che il \emph{modus ponens} è una inferenza corretta. Il modus ponens è
         \begin{center}
@@ -139,6 +232,8 @@
         \end{center}
         e abbiamo già visto nelle slide precedenti che $B$ è conseguenza logica di $A \to B$ e di $A$.
     \end{example}
+
+    \pause
     \begin{example}[Fallacia della negazione dell'antecedente]
         Possiamo verificare formalmente che la seguente regola di inferenza non è corretta:
         \begin{center}
@@ -151,7 +246,6 @@
         \end{center}
         Abbiamo già vistol che $\neg B$ non è conseguenza logica di $A \to B$ e di $\neg A$.
     \end{example}
-
 \end{frame}
 
 \begin{frame}{Ex falso quodlibet (1)}
@@ -164,8 +258,8 @@
             $B$
         \end{inference}
     \end{center}
-    Sarà corretta? Notare che è abbastanza strana, perché nelle premesse la lettera B non compare per niente. È possibile che da informazioni che riguardano solo una proposizione $A$ si possano ricavare informazioni su $B$ ?
 
+    \pause
     \medskip
     Una istanza di questa regola, ad esempio, è
     \begin{center}
@@ -176,7 +270,6 @@
             Michele è laureato
         \end{inference}
     \end{center}
-
 \end{frame}
 
 \begin{frame}{Ex falso quodlibet (2)}
@@ -193,25 +286,37 @@
         \end{tabular}
     \end{center}
 
-    \smallskip
-    Notare che non esistono righe in cui le premesse ($A$ e $\neg A$) sono contemporanamente vere! Quindi, \textbf{in tutte le righe in cui le premesse sono contemporanamente vere, anche la conclusione $B$ è vera}: $B$ è conseguenza logica di $A$ e $\neg A$ e quindi l'inferenza è corretta.
+    \only<2->{Constatiamo che:}
+    \begin{itemize}
+        \item<2-> Non esistono righe in cui le premesse ($A$ e $\neg A$) sono contemporanamente vere!
+        \item<3-> In tutte le righe in cui le premesse sono contemporanamente vere, anche la conclusione $B$ è vera
+        \item<4-> $B$ è conseguenza logica di $A$ e $\neg A$ e quindi l'inferenza è corretta
+    \end{itemize}
 
-    \medskip
-    Un modo intuitivo di interpretare questa inferenza è dire che da una premessa sicuramente falsa si può dedurre qualsiasi cosa. Per indicare questo fatto, si usa spesso la locuzione latina \emph{ex falso sequitur quodlibet} o la sua ellissi \emph{ex falso quodlibet}.
+    \only<5->{Intuitivamente:}
+    \begin{itemize}
+        \item<5-> Da una premessa sicuramente falsa si può dedurre qualsiasi cosa;
+        \item<6-> Si usa spesso la locuzione latina \alert{ex falso sequitur quodlibet} o la sua ellissi \alert{ex falso quodlibet}.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Impegno esistenziale}
-    \medskip
 
-    \medskip
-    Abbiamo affermato che \textbf{in tutte le righe in cui le premesse sono contemporanamente vere, anche la conclusione $B$ è vera}. Questo perché nella logica moderna il quantificatore universale non implica l'esistenza di ciò che si quantifica.
-
-    \medskip
-    La proposizione ``\emph{tutti gli elefanti volanti sono rosa}'' è vera. Non ci credete ? Vi sfido a trovarmi un elefante volante che non sia rosa !! In altre parola, la frase ``\emph{tutti gli elefanti volanti sono rosa}'' equivale a ``\emph{non esiste un elefante volante che non è rosa}''.
-
-
-    \medskip
-    Non la si è sempre pensato così in passato. Nella logica aristotelica, un frase del tipo "\emph{Tutti gli A sono B}" implica l'esistenza di almeno un $A$. Il vostro libro di testo discute questo fatto a pag.~186.
+    \begin{itemize}[<+->]
+        \item Abbiamo affermato che \textbf{in tutte le righe in cui le premesse sono contemporanamente vere, anche la conclusione è vera}.
+        \item Nella logica moderna il quantificatore universale non implica l'esistenza di ciò che si quantifica.
+        \item La proposizione ``\textbf{tutti gli elefanti volanti sono rosa}'' è vera.
+        \item L'idea è che non si può falsificare la proposizione con un controesempio. Se fosse falsa, dovrebbe esistere un elefante volante che non è rosa. Vi sfido a trovarne uno !
+        \item  In altre parola, la proposizione
+        \begin{center}
+            \emph{tutti gli elefanti volanti sono rosa}
+        \end{center}
+        equivale a \begin{center}
+            \emph{non esiste alcun elefante volante che non è rosa}
+        \end{center}
+        \item Non la si è sempre pensata così in passato. Nella \alert{logica aristotelica}, un frase del tipo ``\emph{Tutti gli A sono B}'' implica l'esistenza di almeno un $A$.
+        \item Si dice che nella logica aristotelica il quantificatore ``tutti'' ha un \alert{impegno esistenziale}. Il vostro libro di testo discute questo fatto a pag.~186.
+    \end{itemize}
 \end{frame}
 
 \end{document}
