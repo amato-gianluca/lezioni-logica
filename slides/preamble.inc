@@ -31,6 +31,8 @@
 \newcommand{\fbf}{fbf\xspace}
 \newcommand{\partof}{\mathscr{P}}
 
+\newcommand{\intro}{\mathrm{I}}
+\newcommand{\elim}{\mathrm{E}}
 \AtBeginSection[]
 {
   \begin{frame}
