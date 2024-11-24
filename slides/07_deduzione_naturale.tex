@@ -23,7 +23,7 @@
     \begin{itemize}
         \item meccanico (non richiede intuizione);
         \item generale (funziona per qualsiasi formula);
-        \item ma è molto lontano da quello che farebbe normalmente un essere umano per verificare la correttezza del ragionamento.
+        \item molto lontano da quello che farebbe normalmente un essere umano per verificare la correttezza del ragionamento.
     \end{itemize}
 \end{frame}
 
@@ -54,14 +54,14 @@
     Si verifica facilmente con le tavole di verità che l'inferenza è corretta.
 
     \medskip
-    Usare le tavole di verità corrisponde a considerare tutti i possibili ``universi alternativi'' in cui Carlo può o non può essere laureato in matematica, laureato in economia, fare il commercialista, e verificare che in tutti gli universi alternativi in cui le premesse sono vere, anche la conclusione è vera.
+    Usare le tavole di verità corrisponde a considerare tutti i possibili ``universi alternativi'' in cui Carlo è o non è laureato in matematica, laureato in economia, commercialista, e verificare che in tutti gli ``universi alternativi'' nei quali le premesse sono vere, anche la conclusione è vera.
 
     \medskip
-    Ma un persona non ragiona normalmente in questo modo. Una persona che non ha seguito un corso di logica, per convincersi che l'inferenza è corretta, seguirebbe un argomento di questo tipo:
+    Ma un persona non ragiona normalmente in questo modo. Piuttosto, per convincersi che l'inferenza è corretta, seguirebbe un argomento di questo tipo:
 
     \smallskip
     \begin{quote}
-        So che se Carlo è laureato in economia allora fa il commercialista. Ma siccome non fa il commercialista, ne segue che non può essere laureato in economia (\textit{regola del modus tollens}) Tuttavia, sappiamo anche che Carlo è laureato o in matematica o in economia, e non essendo laureato in economia non può che essere laureato in matematica (\textit{regola del sillogismo disgiuntivo}).
+        So che se Carlo è laureato in economia allora fa il commercialista. Ma siccome non fa il commercialista, ne segue che non può essere laureato in economia (\textit{regola del modus tollens}). Tuttavia, sappiamo anche che Carlo è laureato o in matematica o in economia, e non essendo laureato in economia non può che essere laureato in matematica (\textit{regola del sillogismo disgiuntivo}).
     \end{quote}
 \end{frame}
 
@@ -75,18 +75,18 @@
     I dettagli però di quali regole di inferenza siano valide e come si possano combinare per ottenere nuove inferenze non sono ovvi. Scelte diverse danno luogo a \alert{calcoli logici} diversi.
 
     \begin{definition}[Calcolo logico]
-        Un \alert{calcolo logico} è un insieme di regole che permettono di derivare nuove formule proposizionali a partire da formule date.
+        Un \alert{calcolo logico} è un insieme di regole che permettono di derivare nuove formule logiche a partire da formule date.
 
         \smallskip
-        Altri termini che sono più o meno sinonimi sono \alert{sistema deduttivo} o \alert{sistema di prova}.
+        Altri termini che sono più o meno sinonimi di calcolo logico sono \alert{sistema deduttivo} o \alert{sistema di prova}.
     \end{definition}
 \end{frame}
 
 \begin{frame}{Deduzione naturale}
     Il calcolo logico che ci interessa in questo corso è chiamato \alert{deduzione naturale}.
     \begin{itemize}
-        \item Introdotto dal logico Gerhard Gentzen nella prima metà degli anni '30.
-        \item È un calcolo molto vicino a quello che farebbe una persona per dimostrare la correttezza di un argomento.
+        \item Introdotta dal logico Gerhard Gentzen nella prima metà degli anni '30.
+        \item È un calcolo molto vicino a quello che farebbe una persona per dimostrare la correttezza di una inferenza.
         \item È molto usato in logica e in informatica teorica.
     \end{itemize}
 \end{frame}
@@ -109,7 +109,7 @@
 \begin{frame}{Regole di inferenza}
     Le regole di inferenza della deduzione naturale hanno alcune differenze rispetto a quelle viste finora:
     \begin{itemize}
-    \item le premesse si scrivono in una unica riga sopra la linea orizzontale, e non in più righe. Ad esempio, si scrive
+    \item le premesse si scrivono in una unica riga sopra la linea orizzontale, invece che su più righe. Ad esempio, si scrive
     \begin{center}
         \begin{inference}
             $A$ \qquad $B$\\
@@ -178,17 +178,17 @@
     Le regole di inferenza si possono combinare per ottenere una dimostrazione:
     \begin{itemize}
             \item Una \alert{dimostrazione} (o \alert{derivazione}) si ottiene combinando tra loro le regole di inferenza in un unica \emph{struttura ad albero}, dove la conclusione di una inferenza può essere la premessa di un'altra.
-        \item Le formule che non sono conclusioni di alcuna inferenza si chiamano \alert{premesse} della dimostrazione
-        \item Le formule che non sono premesse di alcuna inferenza si chiamano \alert{conclusioni} della dimostrazione.
+        \item Le formule che non sono conclusioni di alcuna inferenza, ovvero che non hanno nessuna linea orizzontale sopra di loro, si chiamano \alert{premesse della dimostrazione}
+        \item Le formule che non sono premesse di alcuna inferenza, ovvero che non hanno nessuna linea orizzontale sotto di loro, si chiamano \alert{conclusioni della dimostrazione}.
         \item In una dimostrazione può esserci una sola conclusione.
     \end{itemize}
 
     Se esiste una dimostrazione che ha
     \begin{itemize}
         \item $Y$ come conclusione;
-        \item $X_1, \ldots, X_n$ come premesse (nessuna esclusa);
+        \item $X_1, \ldots, X_n$ come premesse (nessuna esclusa, tranne quelle scaricate, di cui parleremo tra un po')
     \end{itemize}
-    si dice che $Y$ è dimostrabile a partire da $X_1, \ldots, X_n$ e si scrive
+    si dice che $Y$ è dimostrabile da $X_1, \ldots, X_n$ e si scrive
     \[
     X_1, \ldots, X_n \vdash Y
     \]
@@ -208,12 +208,12 @@
         \RightLabel{($\intro\land$)}
         \BIC{$\color{blue}B \land C$}
     \end{prooftree}
-    Le premesse sono evidenziate in \textcolor{red}{rosso}, la conclusione in \textcolor{blue}{blu}.
+    Le premesse della dimostrazione sono evidenziate in \textcolor{red}{rosso}, la conclusione in \textcolor{blue}{blu}.
 
     \medskip
-    Dunque questa è una dimostrazione che da $(A \land B) \land C$ deriva $B \land C$. In simboli:
+    Dunque questa è una dimostrazione di $B \land C$ a partire da $(A \land B) \land C$. In simboli:
     \[
-    (A \land B) \land C \vdash B \land C \enspace .
+    (A \land B) \land C \vdash B \land C
     \]
 \end{frame}
 
@@ -222,14 +222,14 @@
         \item \textbf{introduzione}:
         \begin{center}
             \AXC{$[X]$}
-            \noLine
+            \dottedLine
             \UIC{$Y$}
-            \RightLabel{($\intro\to$)}
+            \RightLabel{($\intro{\to}$)}
             \UIC{$X \to Y$}
             \DP
         \end{center}
         \smallskip
-        La $[X]$ indica che è possibile \alert{scaricare} la premessa $X$ nella dimostrazione che porta a $Y$. Questo significa che anche se $X$ compare come premessa della dimostrazione, possiamo far finta che non ci sia.
+        La $[X]$ indica che è possibile \alert{scaricare} la premessa $X$ nella dimostrazione che porta a $Y$. Questo significa che anche se $X$ compare come premessa della dimostrazione, possiamo far finta che non ci sia. La linea tratteggiata indica che lì in mezzo c'è una dimostrazione anche molto complessa, ma non compare effettivamente in una dimostrazione.
 
         \smallskip
         Questa regola corrisponde alla classica modalità con cui si dimostra un'implicazione: si assume l'antecedente e si dimostra il conseguente.
@@ -238,7 +238,7 @@
         \begin{center}
             \AXC{$X \to Y$}
             \AXC{$X$}
-            \RightLabel{($\elim\to$)}
+            \RightLabel{($\elim{\to}$)}
             \BIC{$Y$}
             \DP
         \end{center}
@@ -257,16 +257,16 @@
         \AXC{$\color{red}B \to C$}
         \AXC{$\color{red}A \to B$}
         \AXC{$\color{green}[A]$}
-        \RightLabel{($\elim\to$)}
+        \RightLabel{($\elim{\to}$)}
         \BIC{$B$}
-        \RightLabel{($\elim\to$)}
+        \RightLabel{($\elim{\to}$)}
         \BIC{$C$}
-        \RightLabel{($\intro\to$)}
+        \RightLabel{($\intro{\to}$)}
         \UIC{$\color{blue}A \to C$}
     \end{prooftree}
 
     \smallskip
-    Le premesse \textbf{non scaricate} sono evidenziate in \textcolor{red}{rosso}, la conclusione in \textcolor{blue}{blu}. La formula in \textcolor{green}{verde} $A$ è stata \alert{scaricata}, quindi è come se non ci fosse ai fini di determinare quali sono le premesse della dimostrazione.
+    Le premesse della dimostrazione \textbf{non scaricate} sono evidenziate in \textcolor{red}{rosso}, la conclusione in \textcolor{blue}{blu}. La formula in \textcolor{green}{verde} $A$ è stata \alert{scaricata}, quindi è come se non ci fosse ai fini di determinare quali sono le premesse della dimostrazione.
 \end{frame}
 
 \begin{frame}{Regole per la disgiunzione}
@@ -287,10 +287,10 @@
     \begin{center}
         \AXC{$X \lor Y$}
         \AXC{$[X]$}
-        \noLine
+        \dottedLine
         \UIC{$Z$}
         \AXC{$[Y]$}
-        \noLine
+        \dottedLine
         \UIC{$Z$}
         \RightLabel{($\elim\lor$)}
         \TIC{$Z$}
@@ -298,7 +298,7 @@
     \end{center}
 
     \smallskip
-    Questa regola corrisponde al \alert{ragionamento per casi}. Se so che $X \vee Y$, mi basta considerare separatamente i casi in cui vale $X$ ed in cui vale $Y$ (sono le assunzioni da scaricare). Se in entrambi i casi riesco a dimostrare $Z$, allora $Z$ segue da $X \vee Y$.
+    Questa regola corrisponde al \alert{ragionamento per casi}. Se so che $X \vee Y$, mi basta considerare separatamente i casi per cui vale $X$ ed per cui vale $Y$ (sono le assunzioni da scaricare). Se in entrambi i casi riesco a dimostrare $Z$, allora $Z$ segue da $X \vee Y$.
 \end{itemize}
 \end{frame}
 
@@ -311,23 +311,23 @@
     \begin{prooftree}
         \AXC{$\color{red}A \vee B$}
             \AXC{$\color{red}A \to C$}
-            \AXC{$\color{green}[A]$}
-            \RightLabel{($\elim\to$)}
+            \AXC{$[A]$}
+            \RightLabel{($\elim{\to}$)}
         \BIC{$C$}
             \AXC{$\color{red}B \to C$}
-            \AXC{$\color{green}[B]$}
-            \RightLabel{($\elim\to$)}
+            \AXC{$[B]$}
+            \RightLabel{($\elim{\to}$)}
         \BIC{$C$}
         \RightLabel{($\elim\lor$)}
         \TIC{$\color{blue}C$}
     \end{prooftree}
 
     \smallskip
-    Le premesse \textbf{non scaricate} sono evidenziate in \textcolor{red}{rosso}, la conclusione in \textcolor{blue}{blu}. La formula in \textcolor{green}{verde} $A$ è stata \alert{scaricata}, quindi è come se non ci fosse ai fini di determinare quali sono le premesse della dimostrazione.
+    Le premesse \textbf{non scaricate} sono evidenziate in \textcolor{red}{rosso}, la conclusione in \textcolor{blue}{blu}. Le formule $A$ e $B$ sono state scaricate, quindi è come se non ci fossero ai fini di determinare quali sono le premesse della dimostrazione.
 \end{frame}
 
 \begin{frame}{Regole per il falso}
-    Per il simbolo $\bot$ perdiamo la simmetria tra introduzione ed eliminazione, perché in questo caso abbiamo solo la regola di eliminazione.
+    Per il simbolo $\bot$ perdiamo la simmetria tra introduzione ed eliminazione, perché abbiamo solo la regola di eliminazione.
     \begin{itemize}
         \item \textbf{eliminazione}:
         \begin{center}
@@ -338,7 +338,7 @@
         \end{center}
 
         \smallskip
-        Questa regola corrisponde a quello che abbiamo chiamato \emph{ex falso quodlibet}, ovvero il fatto che da una contraddizione si può dedurre qualsiasi cosa.
+        Questa è una variante della regola che abbiamo chiamato ``\emph{ex falso quodlibet}'', ovvero il fatto che da una contraddizione si può dedurre qualsiasi cosa.
     \end{itemize}
 \end{frame}
 
@@ -350,13 +350,13 @@
     Siccome non trattiamo direttamente la negazione, riscriviamola nel suo equivalente $C \to \bot$.
     \begin{prooftree}
             \AXC{$\color{red}A \vee B$}
-            \AXC{$\color{green}[A]$}
+            \AXC{$[A]$}
                     \AXC{$\color{red}C \to \bot$}
                         \AXC{$\color{red}B \to C$}
-                        \AXC{$\color{green}[B]$}
-                        \RightLabel{($\elim\to$)}
+                        \AXC{$[B]$}
+                        \RightLabel{($\elim{\to}$)}
                     \BIC{$C$}
-                    \RightLabel{($\elim\to$)}
+                    \RightLabel{($\elim{\to}$)}
                 \BIC{$\bot$}
                 \RightLabel{($\elim\bot$)}
             \UIC{$A$}
@@ -365,7 +365,7 @@
     \end{prooftree}
 
     \smallskip
-    Notare che qui l'uso di ($\elim\bot$) è essenziale. Nel ragionamento per casi, quando assumiamo che $B$ è vero arriviamo ad una contraddizione ($\bot$). Noi diremmo informalmente che il caso $B$ vero non è valido e dobbiamo considerare solo il caso $A$, ma nella deduzione naturale il ragionamento si esplicita in maniera leggermente diversa: diciamo che siccome siamo arrivati ad una contraddizione, allora anche nel caso $B$ vero possiamo concludere $A$.
+    Notare che qui l'uso di ($\elim\bot$) è essenziale. Nel ragionamento per casi, quando assumiamo che $B$ è vero arriviamo ad una contraddizione ($\bot$). Noi diremmo informalmente che il caso $B$ non è valido e dobbiamo considerare solo il caso $A$, ma nella deduzione naturale il ragionamento si esplicita in maniera leggermente diversa: diciamo che siccome siamo arrivati ad una contraddizione, allora anche nel caso $B$ possiamo comunque concludere $A$.
 \end{frame}
 
 \begin{frame}{Terzo escluso}
@@ -382,7 +382,7 @@
     Ci sono vari modi per farlo. Uno di questi è aggiungere direttamente il terzo escluso come regola di inferenza:
     \begin{center}
         \AXC{}
-        \RightLabel{(EM)}
+        \RightLabel{(TE)}
         \UIC{$X \vee (X \to \bot)$}
         \DP
     \end{center}
@@ -392,16 +392,16 @@
 \end{frame}
 
 \begin{frame}{Esempio: doppia negazione}
-    Verifichiamo che $\neg \neg A \vdash A$.
+    Verifichiamo adesso che $\neg \neg A \vdash A$.
     Ricordiamo che $\neg \neg A \equiv (A \to \bot) \to \bot$.
     \begin{prooftree}
             \AXC{}
             \RightLabel{(EM)}
         \UIC{$A \vee (A \to \bot)$}
-        \AXC{$\color{green}[A]$}
+        \AXC{$[A]$}
                 \AXC{$\color{red}(A \to \bot) \to \bot$}
-                \AXC{$\color{green}[A \to \bot]$}
-                \RightLabel{($\elim\to$)}
+                \AXC{$[A \to \bot]$}
+                \RightLabel{($\elim{\to}$)}
             \BIC{$\bot$}
             \RightLabel{($\elim\bot$)}
         \UIC{$A$}
@@ -410,14 +410,14 @@
     \end{prooftree}
 
     \medskip
-    Notare che il contrario $A \vdash \neg \neg A$ si può dimostrare anche senza il principio del terzo escluso. Da qui in poi convertiremo al volo tra negazione e implicazione al falso.
+    Notare che il contrario $A \vdash \neg \neg A$ si può dimostrare anche senza il principio del terzo escluso.
     \begin{prooftree}
         \AXC{$\color{red}A$}
-            \AXC{$\color{green}[\neg A]$}
-            \RightLabel{($\elim\to$)}
+            \AXC{$[A \to \bot]$}
+            \RightLabel{($\elim{\to}$)}
         \BIC{$\bot$}
-        \RightLabel{($\intro\to$)}
-        \UIC{$\neg \neg A$}
+        \RightLabel{($\intro{\to}$)}
+        \UIC{$(A \to \bot) \to \bot$}
     \end{prooftree}
 \end{frame}
 
@@ -512,10 +512,10 @@
 \end{frame}
 
 \begin{frame}{Deduzione naturale e conseguenza logica}
-    Cosa lega le dimostrazioni della deduzione naturale con la conseguenza logica? Noi l'abbiamo introdotta come un modo di stabilire se una inferenza è corretta o no, ma per far ciò ci intereresserebbe sapere se:
+    Cosa lega le dimostrazioni della deduzione naturale con la conseguenza logica? Noi l'abbiamo presentata come un modo di stabilire se una inferenza è corretta o no, ma per far ciò ci intereresserebbe sapere se:
     \begin{enumerate}
         \item \textbf{(essenziale, altrimenti la deduzione naturale non serve a nulla)}:\\
-        è vero che se c'è una dimostrazione di $Y$ a partire da $X_1, \ldots, X_n$ (ovvero $X_1, \ldots, X_n \vdash Y$) allora $Y$ è conseguenza logica di $X_1, \ldots, X_n$?
+        è vero che se c'è una dimostrazione di $Y$ a partire da $X_1, \ldots, X_n$ (ovvero $X_1, \ldots, X_n \vdash Y$) allora $Y$ è conseguenza logica di $X_1, \ldots, X_n$ (ovvero $X_1, \ldots, X_n \models Y$) ?
         \item \textbf{(opzionale, ma sarebbe comodo)}:\\
         è vero che se $Y$ è conseguenza logica di $X_1, \ldots, X_n$ allora esiste una dimostrazione di $Y$ a partire da $X_1, \ldots, X_n$?
     \end{enumerate}
@@ -533,7 +533,7 @@
     \end{theorem}
 
     \medskip
-    Le dimostrazioni di questo teoremi esulano dal programma del corso. Direi solo che dimostrare il teorema di correttezza è relativamente semplice, mentre dimostrare il teorema di completezza è abbastanza difficile.
+    Le dimostrazioni di questo teoremi esulano dal programma del corso. Accenno solo al fatto che dimostrare il teorema di correttezza è relativamente semplice, mentre dimostrare il teorema di completezza è abbastanza difficile.
 \end{frame}
 
 \end{document}
