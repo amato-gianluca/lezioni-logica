@@ -421,6 +421,96 @@
     \end{prooftree}
 \end{frame}
 
+
+\newcolumntype{M}[1]{>{\centering\arraybackslash}m{#1}}
+\newcolumntype{N}{@{}m{0pt}@{}}
+
+\begin{frame}{Tutte le regole}
+    \begin{center}
+    \begin{tabular}{r|M{6cm}|M{6cm}}
+        & introduzione & eliminazione\\
+        \hline
+        $\land$ &
+        \smallskip
+        \AXC{$X$}
+        \AXC{$Y$}
+        \RightLabel{($\intro\land$)}
+        \BIC{{$X \land Y$}}
+        \DP \smallskip &
+        \smallskip
+        \AXC{$X \wedge Y$}
+        \RightLabel{($\elim_1\land$)}
+        \UIC{{$X$}}
+        \DP \qquad
+        \AXC{$X \wedge Y$}
+        \RightLabel{($\elim_2\land$)}
+        \UIC{{$Y$}}
+        \DP \smallskip \\
+        \hline
+        $\lor$ &
+        \smallskip
+        \AXC{$X$}
+        \RightLabel{($\intro_1\lor$)}
+        \UIC{$X \lor Y$}
+        \DP \qquad
+        \AXC{$Y$}
+        \RightLabel{($\intro_2\lor$)}
+        \UIC{$X \lor Y$}
+        \DP\smallskip &
+        \smallskip
+        \AXC{$X \lor Y$}
+        \AXC{$[X]$}
+        \dottedLine
+        \UIC{$Z$}
+        \AXC{$[Y]$}
+        \dottedLine
+        \UIC{$Z$}
+        \RightLabel{($\elim\lor$)}
+        \TIC{$Z$}
+        \DP
+        \smallskip
+        \\
+        \hline
+        $\to$ &
+        \smallskip
+        \AXC{$[X]$}
+        \dottedLine
+        \UIC{$Y$}
+        \RightLabel{($\intro{\to}$)}
+        \UIC{$Y$}
+        \DP
+        \smallskip &
+        \smallskip
+        \AXC{$X \to Y$}
+        \AXC{$X$}
+        \RightLabel{($\elim{\to}$)}
+        \BIC{$Y$}
+        \DP
+        \smallskip
+        \\
+        \hline
+        $\bot$ &
+        &
+        \smallskip
+        \AXC{$\bot$}
+        \RightLabel{($\elim\bot$)}
+        \UIC{$X$}
+        \DP
+        \smallskip
+        \\
+        \hline
+        EM &
+        \multicolumn{2}{c}{
+            \AXC{\phantom{$Y^2$}}
+            \RightLabel{(EM)}
+            \UIC{$X \vee (X \to \bot)$}
+            \DP
+            \smallskip
+        }\\
+    \end{tabular}
+    \end{center}
+\end{frame}
+
 \begin{frame}{Deduzione naturale e conseguenza logica}
     Cosa lega le dimostrazioni della deduzione naturale con la conseguenza logica? Noi l'abbiamo introdotta come un modo di stabilire se una inferenza è corretta o no, ma per far ciò ci intereresserebbe sapere se:
     \begin{enumerate}
