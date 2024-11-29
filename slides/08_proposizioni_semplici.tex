@@ -1,10 +1,10 @@
-\documentclass[aspectratio=169,10pt,dvipsnames,handout]{beamer}
+\documentclass[aspectratio=169,10pt,dvipsnames]{beamer}
 
-%\setbeameroption{show notes}
+\setbeameroption{show notes}
 
 \input{preamble.inc}
 
-\title{Proposizioni semplici}
+\title{La struttura delle proposizioni semplici}
 
 \begin{document}
 
@@ -12,33 +12,37 @@
 \titlepage
 \end{frame}
 
-\begin{frame}{Proposizioni semplici e composte}
-Abbiamo visto nella lezione introduttiva che per studiare le inferenze dobbiamo rendere esplicita la \alert{forma logica} delle proposizioni, ovvero ciò che è rilevante per riconoscere il nesso tra premesse e conclusione.
+\begin{frame}{Inferenze a livello predicativo}
+    Fino ad ora abbiamo trattato la \emph{logica proposizionale}. Nella logica proposizionale il costrutto di base è la proposizione, e proposizioni più complesse si ottengono tramite connettivi logici.
 
-\medskip Studieremo quindi più in dettaglio la stuttura di una proposizione.
+    \medskip
+    Quando entrano in gioco i \emph{quantificatori}, la logica proposizionale non è più sufficiente per determinare la validità di una inferenza.
 
-\pause
-\begin{definition}[Proposizioni semplici e composte]
-	Una proposizione si dice \alert{semplice} se non contiene al suo interno una parte che è a sua volta una proposizione; in caso contrario si dice \alert{composta}.
-\end{definition}
-
-\vspace*{-0.5cm}
-\begin{columns}[t]
-	\column{0.45\textwidth}
-\begin{example}[Proposizioni semplici]
-	\itshape
-	Carlo è ligure\\
-	Carlo è più alto di Mario\\
-	Tutti gli uomini sono mortali
-\end{example}
-	\column{0.50\textwidth}
-	\begin{example}[Proposizioni composte]
-		\itshape
-		Non è vero che Carlo è ligure\\
-		Marcello è matematico o fisico\\
-		Se manca la benzina, l'auto non parte
-	\end{example}
-\end{columns}
+    \begin{center}
+        \begin{inference}
+            Napoleone è corso\\
+            Tutti i corsi sono francesi\\
+            \hline
+            Napoleone è francese
+        \end{inference}
+        \qquad
+        \begin{inference}
+            Socrate è un uomo\\
+            Tutti gli uomini sono mortali\\
+            \hline
+            Socrate è mortale
+        \end{inference}
+    \end{center}
+    Se analizzate come fatto fin'ora, corrispondo alla regola di inferenza:
+    \begin{center}
+        \begin{inference}
+            A\\
+            B\\
+            \hline
+            C
+        \end{inference}
+    \end{center}
+    che non è corretta! Bisogna passare alla \alert{logica dei predicati}.
 \end{frame}
 
 \section{Proposizioni semplici del 1° tipo}
@@ -100,7 +104,7 @@ Abbiamo visto nella lezione introduttiva che per studiare le inferenze dobbiamo 
 \section{Proposizioni semplici del 2° tipo}
 
 \begin{frame}{Quantificatori}
-	Consideriamo questo proposizioni semplici:
+	Consideriamo queste proposizioni semplici:
 	\begin{center}
 		\itshape
 		Tutti gli uomini sono mortali\\
