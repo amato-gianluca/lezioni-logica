@@ -4,6 +4,8 @@
 
 \input{preamble.inc}
 
+\newcommand{\myfbox}[2]{\tikz[baseline=(n.base)]\node(n)[alt=<1>{fill=#1!50}]{#2};}
+
 \title{La struttura delle proposizioni semplici}
 
 \begin{document}
@@ -42,7 +44,7 @@
             C
         \end{inference}
     \end{center}
-    che non è corretta! Bisogna passare alla \alert{logica dei predicati}.
+    che non è corretta! Bisogna passare alla \alert{logica dei predicati} e iniziare ad indagare la \alert{struttura delle proposizioni semplici}.
 \end{frame}
 
 \section{Proposizioni semplici del 1° tipo}
@@ -300,7 +302,7 @@
 		\item L'autore della prima storia presente in Topolino n. 1374
 	\end{itemize}
 	\end{example}
-    I termini aperti sono molto usate in matematica: $x+1$, $2x+5$, sono tutti termini aperti.
+    I termini aperti sono molto usati in matematica: $x+1$, $2x+5$, sono tutti termini aperti.
     \begin{example}
         \itshape\centering
         Il quadrato di un numero è un numero.\\
@@ -333,4 +335,102 @@ Nella logica si può fare a meno di termini aperti e descrizioni definite, rimpi
 
 \fi
 
+\section{Valore di verità di una proposizione}
+
+\begin{frame}{Valore di verità di una proposizione}
+	Nella logica delle proposizioni, per stabilire il valore di verità di una proposizione è sufficiente essere in grado di stabilire il valore di verità delle proposizioni semplici, e applicare le regole dei connettivi.
+
+	\pause\medskip
+	Nella logica dei predicati dobbiamo:
+	\begin{itemize}
+		\item stabilire il valore di verità delle proposizioni semplici del primo tipo;
+		\item applicare le regole dei connettivi;
+		\item applicare le regole dei quantificatori.
+	\end{itemize}
+
+	\pause\medskip
+	Vedremo ora questo aspetto in maniera informale e rimandiamo un trattamento più formale ad una lezione successiva.
+\end{frame}
+
+\begin{frame}{Il quantificatore universale}
+	Cosa vuol dire che una proposizione del tipo
+	\begin{center}
+		Per ogni x, se x è un numero primo allora x è minore di 10
+	\end{center}
+	è vera ?
+
+	\pause\medskip
+	Vuol dire che se rimpiazzo $x$ con un numero qualunque, la proposizione che ottengo è sempre vera. Cioè vuol dire che le seguenti proposizioni sono vere:
+	\begin{itemize}
+		\item se 1 è un numero primo allora 1 è minore di 10
+		\item se 2 è un numero primo allora 2 è minore di 10
+		\item se 3 è un numero primo allora 3 è minore di 10
+		\item \ldots
+		\item se 12384 è un numero primo allora 12384 è minore di 100
+		\item \ldots
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Dominio di quantificazione}
+	Possiamo notare due problemi qui:
+	\begin{itemize}
+		\item quali valori ha senso mettere al posto di $x$ ? Chiaramente non ha particolarmente senso mettere il pianeta Giove al posto di $x$, l'unica cosa sensata sono i numeri.
+
+		\smallskip
+		Il \alert{dominio di quantificazione} è l'insieme di valori che intendiamo  mettere al posto delle variabili quantificate $x$, ed è di solito implicitamente definito dal contesto.
+
+		\item in questo caso, il dominio di quantificazione è \alert{infinito}. Non è quindi veramente possibile determinare il valore di verità in questo modo, è solo una definizione teorica. Nella pratica, dovremo trovare altri modi di determinare se una proposizione è vera o falsa (dimostrazioni).
+		\begin{itemize}
+			\item in questo caso specifico, in realtà, possiamo ottenere che la proposizione è falsa\ldots basta provare con $x=11$.
+			\item ma ci sono tante proposizioni sui numeri che non sappiamo se sono vere o fale, come la \emph{congettura di Goldbach}
+			\begin{center}
+				Ognu numeri pari maggiore di 2 è la somma di due numeri primi
+			\end{center}
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+\begin{frame}{Grafi}
+	Per evitare  i problemi che abbiamo con i domini di quantificazione infiniti, faremo molti esempi usando i \alert{grafi}.
+
+	\pause\medskip
+	Un grafo è un disegno costituito da \alert{nodi} collegati da linee, chiamate \alert{archi}. Ad esempio, questo è un grafo:
+	\[
+	\begin{tikzpicture}[
+		every node/.style={draw,circle},
+		minimum size=10mm,
+		node distance=2cm
+	]
+		\node[fill=pink] (a) at (0,0) {a};
+		\node[fill=yellow] (b) at (2cm,0.75cm) {b};
+		\node[fill=green] (c) at (2cm,-0.75cm) {c};
+		\node[fill=green, right of=c] (d) {d};
+		\node[fill=green, right of=b] (e) {e};
+		\draw (a) -- (b);
+		\draw (b) -- (e);
+		\draw (e) -- (c);
+		\draw (c) -- (d);
+		\draw (a) -- (c);
+	\end{tikzpicture}
+	\]
+
+	Possiamo chiederci come calcolare il valore di verità di
+	\begin{center}
+		Per ogni nodo $x$, se $x$ è verde allora $x$ è connesso al nodo $c$
+	\end{center}
+\end{frame}
+
+\begin{frame}{Quantificatore esistenziale}
+	La proposizione
+	\begin{center}
+		Esiste $x$ tale che bla bla blah
+	\end{center}
+	è vera se esiste almeno un valore che possiamo rimpiazzare in $x$ che rende vera la proposizione bla bla blah.
+
+	Ad esempio, nel grafo di prima, la proposizione
+	\begin{center}
+		Esiste un nodo che non è connesso a nessun nodo verde
+	\end{center}
+	è falsa.
+\end{frame}
 \end{document}

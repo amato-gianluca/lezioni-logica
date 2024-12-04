@@ -6,7 +6,7 @@
 
 \input{preamble.inc}
 
-\title{Logica dei predicati}
+\title{Inferenze nella logica dei predicati}
 
 \newcommand{\mcI}{\mathcal{I}}
 
@@ -102,6 +102,38 @@
             $Q a$
         \end{inference}
     \end{center}
+\end{frame}
+
+
+\begin{frame}{Costanti individuali, simboli di connettivi e quantificatori}
+	Per i \alert{simboli dei connettivi} usiamo gli stessi della logica delle proposizioni: $\land$, $\lor$, $\lnot$, $\to$, $\leftrightarrow$, $\xor$.
+
+	\pause\medskip
+	Per i \alert{simboli dei quantificatori} usiamo:
+	\begin{itemize}
+		\item ``per ogni x,'' si scrive $\forall x$
+		\item ``esiste x tale che,'' si scrive $\exists x$
+	\end{itemize}
+
+	\pause\medskip
+	Le \alert{costanti individuali} rappresentano un individuo. Si scrivono di solito in lettere minuscole. In particolare noi useremo $a$, $b$, $c$, \ldots
+\end{frame}
+
+\begin{frame}{Costanti predicative}
+	Le \alert{costanti predicative} rappresentano un predicato. Si scrivono di solito in lettere maiuscole, in particolare noi useremo $P$, $Q$, $R$, $S$, etc\ldots
+
+	\pause\medskip
+	Ad ogni costante predicativa sarà associatà una \alert{arità} che dipende dal tipo di relazione che essa rappresenta.
+	\begin{itemize}
+		\item Ad esempio se $P$ rappresenta il predicato ``essere francese'' (che si applica ad un solo individuo) allora $P$ sarà di arità uno.
+		\item Come ulteriore esempio, se $P$ rappresenta il predicato ``essere più grande di'' (che si applica a due individui) allora $P$ sarà di arità due.
+	\end{itemize}
+
+	\pause\medskip
+	A seconda dell'arità della costante predicativa, essa accetterà un certo numero di argomenti. Ad esempio, se $P$ è una costante di arità 2, vuol dire che $P$ accetta due argomenti, per cui nelle formule comparità come $Pxy$, $Pab$, \ldots
+
+	\pause\medskip
+	Tavolta si usa per le costanti predicative la stessa notazione che si usa per le funzioni Python, con gli argomenti tra parentesi e separate da virgole: $P(x,y)$, $P(a,b)$, \ldots
 \end{frame}
 
 \begin{frame}{Formule e inferenze}
