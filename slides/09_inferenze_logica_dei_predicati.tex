@@ -1,6 +1,8 @@
-\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table,handout]{beamer}
+\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table]{beamer}
 
-%\setbeameroption{show notes}
+\usepackage{bussproofs}
+\EnableBpAbbreviations
+\setbeameroption{show notes}
 
 \newcommand{\myfbox}[2]{\tikz[baseline=(n.base)]\node(n)[alt=<1>{fill=#1!50}]{#2};}
 
@@ -231,7 +233,7 @@
     e vediamo un paio di interpretazoni, completamente diverse, per queste formule.
 
     \medskip
-    Si noti come il dominio influenzi il tipo di predicati che possiamo scegliere per $P$, $Q$ ed $R$. Se il dominio sono le regioni italiane, il predicato $P$ non può essere ``essere pari'' perché non ha senso chiersi se una regione è pari o dispari.
+    Si noti come il dominio influenzi il tipo di predicati che possiamo scegliere per $P$, $Q$ ed $R$. Se il dominio sono le regioni italiane, il predicato $P$ non può essere ``essere pari'' perché non ha senso chiedersi se una regione è pari o dispari.
 \end{frame}
 
 \begin{frame}{Esempi di interpretazione (2)}
@@ -394,17 +396,18 @@
     \end{example}
 \end{frame}
 
-\note{Forse sarebbe meglio fare qualcosa di più dettagliato in cui si spiega come interpretare per ogni ed esiste, ma sempre in maniera informale. In questo modo potremmo evitare la formalizzazione vera e propria che è un po' pesante.}
-
 \begin{frame}{Equivalenza e conseguenza logica}
     Infine, il concetto di equivalenza e di conseguenza logica si trasporta in maniera naturale alla logica dei predicati.
     \begin{definition}[Equivalenza logica]
-        Due formule $X$ e $Y$ di dicono \alert{equivalenti} se e solo se sono vere nelle stesse interpretazioni.
+        Due formule si dicono \alert{equivalenti} se e solo se sono vere nelle stesse interpretazioni.
     \end{definition}
 
     \begin{definition}[Conseguenza logica]
-        Una formula $X$ è \alert{conseguenza logica} delle formule $X_1, \ldots, X_n$ se e solo se in ogni interpretazione in cui sono vere $X_1, \ldots, X_n$ è vera anche $X$.
+        Una formula $\phi$ è \alert{conseguenza logica} delle formule $\phi_1, \ldots, \phi_n$ se e solo se in ogni interpretazione in cui sono vere $\phi_1, \ldots, \phi_n$ è vera anche $\phi$.
     \end{definition}
+
+    \medskip
+    Notare che indichiamo una generica formula con le lettere greche $\phi$, $\psi$ e simili. Non usiamo $X$, $Y$ e $Z$ come nella logica proposizionale perché si confonderebbero con le variabili individuali $x$, $y$ e $z$.
 \end{frame}
 
 \section{Quantificatori limitati}
@@ -420,7 +423,7 @@
     Il quantificatore limitato si può ottenere dal quantificatore illimitato in questo modo. Se:
     \begin{itemize}
         \item $Mx$ sta per ``$x$ è mortale''
-        \item $Ux$ sta per ``$x$ è un uomo''
+        \item $Ux$ sta per ``$x$ è un essere umano''
     \end{itemize}
     la forma logica di ``Tutti gli uomini sono mortali'' diventa
     \[
@@ -459,13 +462,13 @@
     Il quantificatore limitato, anche in questo caso, lo si può ottenere da quello standard. Se
     \begin{itemize}
         \item $Mx$ sta per ``$x$ è mortale''
-        \item $Ax$ sta per ``$x$ sa volare''
+        \item $Vx$ sta per ``$x$ sa volare''
     \end{itemize}
     allora la forma logica della proposizione è
     \[
-        \exists x (Mx \wedge Ax)
+        \exists x (Mx \wedge Vx)
     \]
-    \textcolor{Blue}{Attenzione!} La formula corretta $\exists x (Mx \land Ax)$ con l'uso della \alert{congiunzione} e non  $\exists x (Mx \to Ax)$ che vorrebbe dire tutt'altro!
+    \textcolor{Blue}{Attenzione!} La formula corretta $\exists x (Mx \land Vx)$ con l'uso della \alert{congiunzione} e non  $\exists x (Mx \to Vx)$ che vorrebbe dire tutt'altro!
 \end{frame}
 
 \begin{frame}{Quantificatore esistenziale limitato (2)}
@@ -663,7 +666,7 @@
 \end{frame}
 
 \begin{frame}{Quantificatore universale e congiunzione (2)}
-    È possibile trovare un insieme di tessere che soddisfi $\forall x (Rx \wedge Gx)$  ma non $(\forall x Rx) \wedge (\forall x Gx)$, o viceversa ?
+    Esiste una configurazione di tessere che soddisfi $\forall x (Rx \wedge Gx)$  ma non $(\forall x Rx) \wedge (\forall x Gx)$, o viceversa ?
     \pause
 
     \medskip
@@ -673,7 +676,7 @@
     \medskip
     Pià in generale, è vera la seguente equivalenza, che è un sorta di proprietà distributiva del quantificatore universale rispetto alla congiunzione:
     \[
-        \forall x (X \wedge Y) \equiv (\forall x X) \wedge (\forall x Y)
+        \forall x (\phi_1 \wedge \phi_2) \equiv (\forall x \phi_1) \wedge (\forall x \phi_2)
     \]
 \end{frame}
 
@@ -717,7 +720,7 @@
 
     \medskip In generale è vero che:
     \[
-        \forall x (X \vee Y) \text{ è conseguenza logica di } (\forall x X) \vee (\forall x Y)
+        \forall x (\phi_1 \vee \phi_2) \text{ è conseguenza logica di } (\forall x \phi_1) \vee (\forall x \phi_2)
     \]
 \end{frame}
 
@@ -734,7 +737,7 @@
     \end{center}
     In generale è vero
     \[
-        \forall x (X \vee Y) \equiv (\forall x X) \vee (\forall x Y)
+        \forall x (\phi_1 \vee \phi_2) \equiv (\forall x \phi_1) \vee (\forall x \phi_2)
     \]
 \end{frame}
 
@@ -774,61 +777,179 @@
 
     \medskip In generale è vero che:
     \[
-        (\exists x X) \land (\exists x Y) \text{ è conseguenza logica di }\exists x (X \land Y)
+        (\exists x \phi_1) \land (\exists x \phi_2) \text{ è conseguenza logica di } \exists x (\phi_1 \land \phi_2)
     \]
 \end{frame}
 
+\section{Deduzione naturale per la logica dei predicati}
+
+\begin{frame}{Deduzione naturale}
+    \begin{itemize}
+        \item Il calcolo logico della deduzione naturale che abbiamo introdotto per la logica proposizionale si può estendere alla logica dei predicati.
+        \item In questo caso è ancora più importante, perché non c'è un metodo sistematico per capire se una regola di inferenza è corretta o no come quello delle tavole di verità.
+        \item Le regole della deduzione naturale sono le stesse di prima, con l'aggiunta di quattro nuove regole:
+        \begin{itemize}
+            \item introduzione del quantificatore universale;
+            \item eliminazione del quantificatore universale;
+            \item introduzione del quantificatore esistenziale;
+            \item eliminazione del quantificatore esistenziale.
+        \end{itemize}
+
+    \end{itemize}
+\end{frame}
+
 \begin{frame}{Eliminazione del quantificatore universale}
-    Una regola di inferenza molto importante, perché rappresenta il concetto stesso di quantificatore universale, è la seguente:
-    \begin{center}
-        \begin{inference}
-            $\forall x Px$\\
-            \hline
-            $Pa$
-        \end{inference}
-    \end{center}
-    detta regola di \alert{eliminazione del quantificatore universale}.
+    \begin{prooftree}
+        \AXC{$\forall x \phi(x)$}
+        \RightLabel{($\elim\forall$)}
+        \UIC{$\phi(t)$}
+    \end{prooftree}
+    dove
+    \begin{itemize}
+        \item $\phi(x)$ indica una qualunque formula potenzialmente contenente $x$;
+        \item $t$ è un termine (costante individuale o variabile libera) qualunque;
+        \item $\phi(t)$ è ottenuta rimpiazzando le occorrenze libere di $x$ con $t$.
+    \end{itemize}
 
     \medskip
-    Informalmente, vuol dire che se so che $P$ è vero per tutti gli individui, allora sarà sicuramente vero per $a$, chiunque sia $a$.
-
-    \medskip
-    Ovviamente il contrario è in generale sbagliato:
-    \begin{center}
-        \begin{inference}
-            $Pa$\\
-            \hline
-            $\forall x Px$
-        \end{inference}
-    \end{center}
-    Se sappiamo che $P$ è vero per un certo elemento $a$, non possiamo concludere che $P$ è vero per tutti gli individui.
+    Informalmente, vuol dire che se so che $Y$ è vera per tutti gli individui, allora sarà sicuramente vero per $t$, chiunque sia $t$.
+    \begin{example}[$\forall x (Px \to Qx), Pa \vdash Qa$]
+        \begin{prooftree}
+            \AXC{$\forall x (Px \to Qx)$}
+            \RightLabel{($\elim\forall$)}
+            \UIC{$Pa \to Qa$}
+            \AXC{$Pa$}
+            \RightLabel{($\elim\to$)}
+            \BIC{$Qa$}
+        \end{prooftree}
+    \end{example}
 \end{frame}
 
 \begin{frame}{Introduzione del quantificatore esistenziale}
-    Il quantificatore esistenziale ha una regola corrispondente che è:
-    \begin{center}
-        \begin{inference}
-            $Pa$\\
-            \hline
-            $\exists x Px$
-        \end{inference}
-    \end{center}
-    detta regola di \alert{introduzione del quantificatore esistenziale}.
-
+    \begin{prooftree}
+        \AXC{$\phi(t)$}
+        \RightLabel{($\intro\exists$)}
+        \UIC{$\exists x \phi(x)$}
+    \end{prooftree}
     \medskip
-    Informalmente, vuol dire che se so che $P$ è vera per un certo individuo $a$, posso concludere che esiste un individuo $x$ che rende vera $Px$ (l'individuo in questione è proprio $a$!!).
-
-    \medskip
-    Ovviamente il contrario è in generale sbagliato:
-    \begin{center}
-        \begin{inference}
-            $\exists x Px$\\
-            \hline
-            $Pa$
-        \end{inference}
-    \end{center}
-    Se sappiamo che c'è un individuo per cui vale $P$, non possiamo concludere questo individuo sia proprio $a$.
+    Informalmente, vuol dire che se so che $\phi$ è vera per un certo individuo  specifico $t$, posso concludere che esiste un individuo $x$ che rende vera $\phi$ (l'individuo in questione è proprio $t$!!).
+    \begin{example}[$\forall x Px \vdash \exists x Px$]
+        \begin{prooftree}
+            \AXC{$\forall x Px$}
+            \RightLabel{($\elim\forall$)}
+            \UIC{$Pa$}
+            \RightLabel{($\intro\exists$)}
+            \UIC{$\exists x Px$}
+        \end{prooftree}
+    \end{example}
 \end{frame}
+
+\begin{frame}{Introduzione del quantificatore universale}
+    Come posso concludere una formula del tipo $\forall x Px$ ?
+
+    \medskip
+    Dimostrando che $Px$ è vera per un individuo $x$ qualsiasi, di cui non so nulla.
+
+    \begin{center}
+            \framebox{\begin{minipage}{0.8\textwidth}
+                \begin{prooftree}
+                    \AXC{$\phi(t)$}
+                    \RightLabel{($\intro\forall$)}
+                    \UIC{$\forall x \phi(x)$}
+                \end{prooftree}
+                \begin{center}
+                    se $t$ non appare in nessuna ipotesi non cancellata
+                \end{center}
+            \end{minipage}}
+    \end{center}
+
+    \begin{example}[$\forall x (Px \to Qx), \forall x Px \to \forall x Qx$]
+        \begin{prooftree}
+            \AXC{$\forall x (Px \to Qx)$}
+            \RightLabel{($\elim\forall$)}
+            \UIC{$\forall a (Pa \to Qa)$}
+            \AXC{$\forall x Px$}
+            \RightLabel{($\elim\forall$)}
+            \UIC{$Pa$}
+            \RightLabel{($\elim\to$)}
+            \BIC{$Qa$}
+            \RightLabel{($\intro\forall$)}
+            \UIC{$\forall x Qx$}
+        \end{prooftree}
+    \end{example}
+\end{frame}
+
+\begin{frame}{Cosa accade se dimentico la condizione a latere ?}
+    La regola di inferenza è falsa. Ad esempio, si può dimostrare che $Pa \vdash \forall Px$ con un singolo passo:
+    \begin{prooftree}
+        \AXC{$Pa$}
+        \RightLabel{($\intro\forall$)}
+        \UIC{$\forall x Px$}
+    \end{prooftree}
+
+    \medskip
+    Come dire che
+    \begin{center}
+        \begin{inference}
+            Carlo studia matematica\\
+            \hline
+            Tutti studiano matematica
+        \end{inference}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Eliminazione del quantificatore esistenziale}
+    Come posso usare il fatto di sapere che $\exists x Px$ ? Ricordiamo che $\exists$ è una specie di disgiunzione infinita.
+
+    \begin{center}
+        \framebox{\begin{minipage}{0.8\textwidth}
+            \begin{prooftree}
+                \AXC{$\exists x \phi(x)$}
+                \AXC{$[\phi(t)]$}
+                \dottedLine
+                \UIC{$\psi$}
+                \RightLabel{($\elim\exists$)}
+                \BIC{$\psi$}
+            \end{prooftree}
+            \begin{center}
+                se $t$ non compare in $\psi$ e in nessuna ipotesi non cancellata di $\psi$
+            \end{center}
+        \end{minipage}}
+    \end{center}
+
+    \begin{example}[$\forall x (Px \to Qx), \exists x Px \vdash \exists x Qx$]
+        \begin{prooftree}
+            \AXC{$\exists x Px$}
+            \AXC{$\forall x (Px \to Qx)$}
+            \RightLabel{($\elim\forall$)}
+            \UIC{$Pa \to Qa$}
+            \AXC{$[Pa]_1$}
+            \RightLabel{($\elim\to$)}
+            \BIC{$Qa$}
+            \RightLabel{($\intro\exists$)}
+            \UIC{$\exists x Qx$}
+            \BIC{$\exists x Qx$}
+        \end{prooftree}
+    \end{example}
+
+\end{frame}
+
+\begin{frame}{Teoremi di correttezza e completezza}
+    Ovviamente, anche per la logica dei predicati valgono i teoremi di correttezzae e completezza.
+
+    \begin{theorem}[Correttezza (forte) della deduzione naturale]
+        Se $\phi_1, \ldots, \phi_n \vdash \phi$, allora $\phi_1, \ldots, \phi_n \models \phi_n$.
+    \end{theorem}
+
+    \begin{theorem}[Completezza (forte) della deduzione naturale]
+        Se $\phi_1, \ldots, \phi_n \models \phi$, allora $\phi_1, \ldots, \phi_n \vdash \phi$.
+    \end{theorem}
+
+    \medskip
+    Le dimostrazioni di questo teoremi esulano dal programma del corso.
+\end{frame}
+
+\end{document}
 
 \section{Combinare le regole di inferenza}
 
@@ -892,5 +1013,7 @@
     \medskip
     L'argomento è molto complesso ed esula completamente dagli obiettivi di questo insegnamento.
 \end{frame}
+
+
 
 \end{document}
