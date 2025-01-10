@@ -378,10 +378,11 @@ Nella logica si può fare a meno di termini aperti e descrizioni definite, rimpi
 
 		\smallskip
 		Il \alert{dominio di quantificazione} è l'insieme di valori che intendiamo  mettere al posto delle variabili quantificate $x$, ed è di solito implicitamente definito dal contesto.
+		\pause
 
 		\item in questo caso, il dominio di quantificazione è \alert{infinito}. Non è quindi veramente possibile determinare il valore di verità in questo modo, è solo una definizione teorica. Nella pratica, dovremo trovare altri modi di determinare se una proposizione è vera o falsa (dimostrazioni).
 		\begin{itemize}
-			\item in questo caso specifico, in realtà, possiamo ottenere che la proposizione è falsa\ldots basta provare con $x=11$.
+			\item in questo caso specifico, in realtà, se proviamo con $x=11$ scopriamo che la proposizione è falsa;
 			\item ma ci sono tante proposizioni sui numeri che non sappiamo se sono vere o fale, come la \emph{congettura di Goldbach}
 			\begin{center}
 				Ognu numeri pari maggiore di 2 è la somma di due numeri primi
@@ -423,14 +424,43 @@ Nella logica si può fare a meno di termini aperti e descrizioni definite, rimpi
 \begin{frame}{Quantificatore esistenziale}
 	La proposizione
 	\begin{center}
-		Esiste $x$ tale che bla bla blah
+		Esiste $x$ tale ``\emph{funzione proposizionale contenente x}''
 	\end{center}
-	è vera se esiste almeno un valore che possiamo rimpiazzare in $x$ che rende vera la proposizione bla bla blah.
+	è vera se esiste almeno un individuo che possiamo rimpiazzare al posto di $x$ che rende vera la proposizione \emph{funzione proposizionale contenente x}.
 
+	\pause \medskip
 	Ad esempio, nel grafo di prima, la proposizione
 	\begin{center}
-		Esiste un nodo che non è connesso a nessun nodo verde
+		Esiste $x$ tale che $x$ è verde.
 	\end{center}
-	è falsa.
+	è vera, perché se al posto $x$ metto il nodo $c$ ottengo
+	\begin{center}
+		Il nodo $c$ è verde
+	\end{center}
+	che è una proposizione vera.
+\end{frame}
+
+
+\begin{frame}{Quantificatore universale}
+	La proposizione
+	\begin{center}
+		Per ogni $x$ ``\emph{funzione proposizionale contenente x}''
+	\end{center}
+	è vera se qualunque individuo del dominio di quantificazione metto al posto di $x$, ottengo sempre una proposizione vera.
+
+	\pause \medskip
+	Ad esempio, nel grafo di prima, la proposizione
+	\begin{center}
+		Per ogni $x$, $x$ è verde.
+	\end{center}
+	è vera. Infatti se, rimpiazzo $x$ con i nodi del grafo ottengo:
+	\begin{itemize}
+		\item il nodo $a$ è verde
+		\item il nodo $b$ è verde
+		\item il nodo $c$ è verde
+		\item il nodo $d$ è verde
+		\item il nodo $e$ è verde
+	\end{itemize}
+	ma queste proposizioni non sono tutte vere.
 \end{frame}
 \end{document}
