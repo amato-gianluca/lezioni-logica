@@ -30,7 +30,7 @@
 
 ## Specific notational conventions
 - Operators ∧ and ∨ have the same precedence.
-- Use LaTeX macros `\land`, `\ldor` and `\to` instead of `\wedge`, `\vee` and `\rightarrow`.
+- Use LaTeX macros `\land`, `\lor` and `\to` instead of `\wedge`, `\vee` and `\rightarrow`.
 - Use the Italian spelling "monotòno" instead of "monotono". The same for derived words.
 - A proposition in natural language is typeset using the `\prop` macro.
 
