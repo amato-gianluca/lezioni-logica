@@ -1,5 +1,6 @@
 \documentclass[aspectratio=169,10pt]{beamer}
 \usepackage[T1]{fontenc}
+\usepackage{lmodern} % Latin Modern fonts provide bold sans shapes in T1
 \usepackage[italian]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{pifont}
@@ -170,7 +171,7 @@
             \item $4 + 2 = 6$
                   \only<5-10>{\makebox(0,0)[l]{\hspace{7cm}\vspace{-1.5cm}\raisebox{-1\totalheight}{\includegraphics[width=3cm,keepaspectratio]{calcolatrice2.png}}}} \pause  \checkmark
                   \pause
-            \item $4 + 2 = 5$ \pause \checkmark (è falsa, ma è comunque una proposizione)
+            \item $4 + 2 = 5$ \pause \ \checkmark \ (è falsa, ma è comunque una proposizione)
                   \pause
             \item $3 + 5^2$ \pause \ \xmark \ (è una \emph{descrizione})
                   \pause
@@ -402,7 +403,7 @@
             \conn{Se} sono un ladro \conn{allora} devo essere punito\\
             \conn{Non} sono un ladro\\
             \hline
-            Non devo essere punito
+            \conn{Non} devo essere punito
         \end{inference}
     \end{center}
     \only<1-1>{\makebox(0,0)[l]{\hspace{5cm}\vspace{-3.5cm}\raisebox{-1\totalheight}{\includegraphics[width=4.5cm,keepaspectratio]{lupin.png}}}}
@@ -929,7 +930,7 @@
 \begin{frame}[fragile]{Implicazione e linguaggio naturale}
     Gli esempi di prima vi sono sembrati strani?
     \begin{block}{Note}
-        Quello che vi sto presentando è solo un tipo particolare di logica, chiamata \alert{logica classica proposizionale}. Il \conn{se \ldots allora} in italiano non è quasi mai corrispondente alla implicazione di questa logica.
+        Quello che vi sto presentando è solo un tipo particolare di logica, chiamata \alert{logica classica proposizionale}. Il \conn{se \ldots allora} in italiano spesso non corrisponde alla implicazione di questa logica.
     \end{block}
     \begin{example}
         \begin{itemize}
@@ -1063,7 +1064,7 @@
 
     Se rimpiazziamo le variabili con dei \alert{termini}, torniamo ad avere delle proposizioni:
     \begin{itemize}
-        \item \textbf{Pescara} è la capitale d'Italia
+        \item Pescara è la capitale d'Italia
         \item $0 \cdot \mathbf{2} = 3$
         \item $\mathbf{3}^2 \geq 1$
     \end{itemize}
@@ -1188,7 +1189,7 @@
     \begin{itemize}
         \item In italiano non si usano le variabili!! Al loro posto usiamo nomi e pronomi.
         \item L'uso di ``\quant{per ogni}'' in italiano è raro. Sono più comuni \quant{tutti}, \quant{qualunque}, ecc.
-        \item Anche per ``\quant{esiste}'' in italiano ci sono molte alternative \quant{C'è}, \quant{C'è almeno un}, ecc.
+        \item Anche per ``\quant{esiste}'' in italiano ci sono molte alternative come \quant{c'è}, \quant{c'è almeno un}, ecc.
     \end{itemize}
 
     Proposizioni quantificate in italiano si possono comunque ``tradurre'' con ``\quant{per ogni}'' ed ``\quant{esiste}''.
@@ -1241,7 +1242,7 @@
         \hspace{1cm}$\equiv$\\
         \medskip
         Esiste un gatto che non è nero\\
-        Esiste $x$ tale che $G(x)$ e non $N(x)$\\[0cm]
+        Esiste $x$ tale che $x$ è un gatto ma $x$ non è nero\\[0cm]
         [\alert{$\exists x, G(x) \land \neg N(x)$}]
     \end{example}
 
