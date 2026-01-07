@@ -12,22 +12,13 @@
 	\titlepage
 \end{frame}
 
-\begin{frame}{}
-	Queste slide sono basate sul libro:
-	\bigskip
-
-	\hrule
-	\medskip
-	Dario Palladino\\
-	\textcolor{blue}{\href{https://www.carocci.it/prodotto/corso-di-logica-3}{Corso di logica: introduzione elementare al calcolo dei predicati (terza edizione)}}\\
-	Carocci editore\\
-	\hrule
-
-	\bigskip
-	\centering
-	\qrcode{https://www.carocci.it/prodotto/corso-di-logica-3}
+\begin{frame}
+	\copyrightpage
 \end{frame}
 
+\begin{frame}
+	\bookpage{sul capitolo \emph{Introduzione}}
+\end{frame}
 
 \section{Logica, inferenze e proposizioni}
 
@@ -38,7 +29,7 @@
 	\begin{example}[Esempi di ragionamento]
 		\begin{columns}
 			\column{0.5\textwidth}
-			\centering
+			\centering\propshape
 
 			Tutti gli uomini sono mortali.\\
 			Socrate è un uomo.\\
@@ -53,7 +44,7 @@
 		\end{columns}
 	\end{example}
 	\begin{block}{Nota}
-		Esistono varie forme di ragionamento, qui siamo interessati al \alert{ragionamento deduttivo}.
+		Esistono varie forme di ragionamento, qui siamo interessati solo al \alert{ragionamento deduttivo}.
 	\end{block}
 \end{frame}
 
@@ -74,9 +65,9 @@
 					yellowstyle/.style={fillstyle,fill=yellow!50}
 				}
 				\clip (-6cm, -3cm) rectangle (6cm, 0.5cm);
-				\node (p1) {Tutti gli uomini sono mortali.};
-				\node (p2) [below of=p1] {Socrate è un uomo.};
-				\node (c) [below of=p2] {Socrate è mortale.};
+				\node (p1) {\prop{Tutti gli uomini sono mortali}.};
+				\node (p2) [below of=p1] {\prop{Socrate è un uomo}.};
+				\node (c) [below of=p2] {\prop{Socrate è mortale}.};
 				\begin{scope}[on background layer]
 					\only<2->{\node (inf) [greenstyle, fit={(p1) (p2) (c)}, inner sep=0.5cm] {};}
 					\only<4->{\node (premises) [redstyle, fit={(p1) (p2)},  inner sep=0.2cm] {};}
@@ -115,14 +106,14 @@
 	\end{definition}
 	\begin{example}[Proposizioni \checkmark o no? \xmark]
 		\begin{itemize}
-			\item Elisa ama Massimo \pause \checkmark
-			\item Elisa ama Massimo? \pause \xmark\ (è una \emph{domanda})
-			\item $4 + 2 = 6$ \pause  \checkmark
-			\item $4 + 2 = 5$ \pause \checkmark (è falsa, ma è comunque una proposizione)
-			\item $3 + 5^2$ \pause \ \xmark \ (è una \emph{descrizione})
-			\item Tutti gli uomini sono mortali \pause \checkmark
-			\item Lazzaro, alzati e cammina! \pause \xmark \ (è un \emph{ordine})
-			\item Quel ramo del lago di Como che volge a mezzogiorno \pause \xmark \ (è una \emph{descrizione})
+			\item \prop{Elisa ama Massimo} \pause \checkmark
+			\item \prop{Elisa ama Massimo?} \pause \xmark\ (è una \emph{domanda})
+			\item \prop{$4 + 2 = 6$} \pause  \checkmark
+			\item \prop{$4 + 2 = 5$} \pause \checkmark (è falsa, ma è comunque una proposizione)
+			\item \prop{$3 + 5^2$} \pause \ \xmark \ (è una \emph{descrizione})
+			\item \prop{Tutti gli uomini sono mortali} \pause \checkmark
+			\item \prop{Lazzaro, alzati e cammina!} \pause \xmark \ (è un \emph{ordine})
+			\item \prop{Quel ramo del lago di Como che volge a mezzogiorno} \pause \xmark \ (è una \emph{descrizione})
 		\end{itemize}
 	\end{example}
 \end{frame}
@@ -148,9 +139,7 @@
 % 	\end{example}
 % \end{frame}
 
-
 \begin{frame}{Valori di verità}
-	% Se una proposizione è vera, diciamo anche che assume il \alert{valore di verità} vero (\alert{V}). Analogamente, se una proposizione è falsa, diciamo anche che assume il \alert{valore di verità} falso (\alert{F}).
 	\begin{definition}[Principio di bivalenza]
 		Una proposizione può assumere uno e uno solo dei due \alert{valori di verità}:
 		\begin{itemize}
@@ -177,9 +166,9 @@
 	\medskip
 	Un esempio dovrebbe rendere evidente la differenza. Consideriamo le tre frasi:
 	\begin{itemize}
-	\item il gatto non è nero
-	\item non è vero che il gatto è nero
-	\item the cat is not black
+	\item \prop{il gatto non è nero}
+	\item \prop{non è vero che il gatto è nero}
+	\item \prop{the cat is not black}
 	\end{itemize}
 	Questi sono tre enunciati che però vogliono dire la stessa cosa, ovvero esprimono la stessa proposizione.
 \end{frame}
@@ -227,16 +216,6 @@
 		vera anche la conclusione.
 	\end{definition}
 	\begin{example}[Inferenza corretta]
-		% \begin{inference}
-		% 	Carlo è ligure o Stefano è piemontese\\
-		% 	Stefano non è piemontese\\
-		% 	Dunque, Carlo è ligure
-		% \end{inference}
-
-		% \medskip
-		% $\Big\Downarrow$\rlap{ che in futuro scriveremo come}
-
-		% \medskip
 		\begin{center}
 			\begin{inference}
 				Carlo è ligure o Stefano è piemontese\\
@@ -366,26 +345,6 @@
 	%\small Per l'ultima inferenza, notate che dire ``Marcello è matematico o fisico'' è solo un modo compatto per dire ``Marcello è matematico o Marcello è fisico''.
 \end{frame}
 
-% \begin{frame}{Inferenze e struttura sintattica (2)}
-% 	Un esempio ancora più complesso:
-% 	\begin{example}
-% 		\begin{inference}
-% 			O due buchi neri si sono scontrati,\hspace{6cm}\hfill\\ \hfill oppure il rivelatore di onde gravitazionali è rotto.\\
-% 			Il rivelatore di onde gravitazionali non è rotto.\\
-% 			\hline
-% 			Due buchi neri si sono scontrati.
-% 		\end{inference}
-% 	\end{example}
-% 	Se un fisico vi desse questa spiegazione del suo esperimento, potreste anche
-% 	domandarvi perplessi cosa siano le onde gravitazionali, ma non avreste difficoltà
-% 	a seguire la logica del suo ragionamento.
-
-% 	\pause
-% 	\begin{block}{Osservazione}
-% 		La correttezza di una inferenza non dipende dalla verità delle proposizioni che la compongono, ma dalla sua ``forma logica''.
-% 	\end{block}
-% \end{frame}
-
 \begin{frame}{Regole di inferenza}
 	Mettiamo in evidenza la \alert{forma logica} dell'inferenza.
 	\begin{itemize}
@@ -459,7 +418,7 @@
 
 \begin{frame}{Inferenze corrette e verità delle conclusioni}
 	\medskip
-	Bisogna distinguere la correttezza della inferenze dalla verità della conclusione!
+	Ribadiamo che bisogna distinguere la correttezza della inferenze dalla verità della conclusione!
 
 	\medskip
 	Consideriamo alcune istanze della regola vista prima:
@@ -521,7 +480,6 @@
 \end{frame}
 
 \section{Esempi di regole di inferenza}
-
 \begin{frame}{Un'altra regola corretta: modus ponens}
 	Consideriamo l'inferenza
 	\begin{center}
@@ -584,8 +542,6 @@
 	\end{center}
 \end{frame}
 
-\section{Esempi di ragionamenti fallaci}
-
 \begin{frame}{Fallacia della negazione dell'antecedente (1)}
 	Consideriamo l'inferenza
 	\begin{center}
@@ -609,7 +565,7 @@
 \end{frame}
 
 \begin{frame}{Fallacia della negazione dell'antecedente (2)}
-	All'apparenza lo sembra, ma consideriamo un'altra istanza della regola.
+	All'apparenza potrebbe sembrare corretta, ma consideriamo un'altra istanza della regola.
 	\begin{center}
 		\begin{inference}
 			Se Fabio è pecarese, allora Fabio è abruzzese \only<3->{\checkmark}\\
@@ -657,7 +613,7 @@
 \end{frame}
 
 \begin{frame}{Fallacia della affermazione del conseguente (2)}
-	All'apparenza lo sembra, ma consideriamo un'altra istanza della regola.
+	All'apparenza potrebbe sembrare corretta, ma consideriamo un'altra istanza della regola.
 	\begin{center}
 		\begin{inference}
 			Se Fabio è pescarese, allora Fabio è abruzzese\\
@@ -670,47 +626,22 @@
 
 	\pause
 	\medskip
-	Anche questa inferenza è falsa: pensate di nuovo al caso in cui Fabio sia nato a Chieti.
+	Anche questa inferenza \alert{non è corretta}: pensate di nuovo al caso in cui Fabio sia nato a Chieti.
 
 	\medskip
 	Ed infatti, se ci pensiamo bene, non è corretta neanche la prima inferenza: magari l'auto non parte perché è scarica la batteria.
 \end{frame}
 
-\note{Esercizi Intro.1, Intro.4, Intro.7}
+\begin{frame}{Esercizi consigliati}
+	Esercizio 1 del Capitolo 1.
+
+	\medskip
+	Esercizi da 1 a 7 del capitolo \emph{Introduzione}.
+\end{frame}
+
+\note{Esercizi 1.1, Intro.1, Intro.4, Intro.7}
 
 \section{Logica dei predicati}
-
-% \begin{frame}{Regole di inferenza a livello predicativo}
-% 	Negli esempi visti prima, le regole di inferenza sono a livello \alert{proposizionale}: la loro verità dipende dai legami tra le proposizioni.
-
-% 	\medskip
-% 	Queste inferenze sono più complesse:
-% 	\begin{center}
-% 		\begin{inference}
-% 			2 è minore di 5\\
-% 			Se un numero è minore di un altro, allora il secondo è maggiore del primo\\
-% 			\hline
-% 			5 è maggiore di 2
-% 		\end{inference}
-
-% 		\medskip\medskip
-% 		\begin{inference}
-% 			La retta $r$ è perpendicolare alla retta $s$\\
-% 			Se una retta è perpendicolare a un'altra, la seconda interseca la prima\\
-% 			\hline
-% 			$s$ interseca $r$
-% 		\end{inference}
-
-% 		\medskip\medskip
-% 		\begin{inference}
-% 			Maria è moglie di Aldo\\
-% 			Se una persona è moglie di un'altra, allora quest'ultima è marito della prima\\
-% 			\hline
-% 			Aldo è marito di Maria
-% 		\end{inference}
-% 	\end{center}
-% 	Hanno la stessa \alert{forma logica}.
-% \end{frame}
 
 \newcommand{\myfbox}[2]{\tikz[baseline=(n.base)]\node(n)[alt=<1>{fill=#1!50}]{#2};}
 \newcommand{\myfboxbis}[2]{\tikz[baseline=(n.base)]\node(n)[alt=<2>{fill=#1!50}]{#2};}
@@ -923,7 +854,7 @@
 % \end{frame}
 
 \begin{frame}{Ragionamento induttivo e abduttivo}
-	Esistono altre forme di ``ragionamento'', oltre a quello deduttivo visto finora.
+	Esistono altre forme di ``ragionamento'', oltre a quello deduttivo.
 
 	\medskip \textbf{Ragionamento induttivo}: \uncover<2->{\textcolor{blue}{dal caso particolare al generale}}
 
@@ -950,7 +881,7 @@
 
 	\uncover<4->{
 	\begin{block}{Nota}
-		Dal punto di visto deduttivo, queste inferenze non sono corrette. L'ultima, in particolare, è propria quella che abbiamo chiamato ``fallacia dell'affermazione del conseguente''.
+		Dal punto di visto deduttivo, queste inferenze non sono corrette. L'ultima, in particolare, è proprio quella che abbiamo chiamato ``fallacia dell'affermazione del conseguente''.
 	\end{block}
 	}
 	% \textbf{Ragionamento per default (o per difetto)}
@@ -962,7 +893,6 @@
 	% 	Karol non sa parlare italiano
 	% \end{inference}
 \end{frame}
-
 
 % \begin{frame}{Inferenze e monot\`onia}
 % 	Tutti i tipi di ragionamento visti pocanzi \alert{non sono monot\`oni}: nuove premesse possono trasformare la conclusione del ragionamento.
@@ -996,16 +926,17 @@
 			      \end{inference}
 		      \end{center}
 
-		\item Invece il ragionamento deduttivio \alert{è monot\`ono}: se aggiungo nuove premesse, un'inferenza rimane corretta. Per questo il ragionamento deduttivo è il meccanismo principale delle \alert{dimostrazioni matematiche}.
+		\item Invece il ragionamento deduttivio \alert{è monot\`ono}: se aggiungo nuove premesse, un'inferenza rimane corretta. Per questo il ragionamento deduttivo è il meccanismo principale delle \alert{dimostrazioni matematiche}:
 		\begin{itemize}
-			\item si parte da proposizioni assunte vere per principio;
+			\item si parte da proposizioni assunte vere per principio, chiamate \alert{assiomi};
 			\begin{itemize}
-				\item gli assiomi di Euclide
-				\item gli assiomi dei numeri reali
+				\item assiomi di Euclide, assiomi dei numeri reali, etc\ldots
 			\end{itemize}
-			\item si applicano inferenze corrette a premesse vere per ottenere conclusioni vere (teoremi);
-			\item in questo modo il teorema sarà vero per sempre:\\
-		      \medskip \textcolor{blue}{\url{https://youtu.be/LlED5V7EuFY?si=40FmAOQ4491dCbVQ&t=313}}
+			\item si applicano inferenze corrette a premesse vere per ottenere conclusioni vere (\alert{teoremi});
+			\item in questo modo il teorema sarà vero per sempre:
+				\begin{itemize}
+					\item \link{\url{https://youtu.be/LlED5V7EuFY?si=40FmAOQ4491dCbVQ&t=313}}
+				\end{itemize}
 		\end{itemize}
 	\end{itemize}
 \end{frame}

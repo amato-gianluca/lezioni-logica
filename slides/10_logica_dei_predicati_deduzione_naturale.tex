@@ -1,0 +1,258 @@
+\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table,handout]{beamer}
+
+\usepackage{bussproofs}
+\EnableBpAbbreviations
+
+%\setbeameroption{show notes}
+
+\input{preamble.inc}
+
+\title{Deduzione naturale nella logica dei predicati}
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \copyrightpage
+\end{frame}
+
+\begin{frame}
+    \bookpage{sulla sezioni 10.4}
+\end{frame}
+
+\begin{frame}{Deduzione naturale}
+    \begin{itemize}
+        \item Il calcolo logico della deduzione naturale che abbiamo introdotto per la logica proposizionale si può estendere alla logica dei predicati.
+        \item In questo caso è ancora più importante, perché non c'è un metodo sistematico per capire se una regola di inferenza è corretta o no come quello delle tavole di verità.
+        \item Le regole della deduzione naturale sono le stesse di prima, con l'aggiunta di quattro nuove regole:
+        \begin{itemize}
+            \item introduzione del quantificatore universale;
+            \item eliminazione del quantificatore universale;
+            \item introduzione del quantificatore esistenziale;
+            \item eliminazione del quantificatore esistenziale.
+        \end{itemize}
+
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Eliminazione del quantificatore universale}
+    \begin{prooftree}
+        \AXC{$\forall x \phi(x)$}
+        \RightLabel{($\elim\forall$)}
+        \UIC{$\phi(t)$}
+    \end{prooftree}
+    dove
+    \begin{itemize}
+        \item $\phi(x)$ indica una qualunque formula potenzialmente contenente $x$;
+        \item $t$ è un termine (costante individuale o variabile libera) qualunque;
+        \item $\phi(t)$ è ottenuta rimpiazzando le occorrenze libere di $x$ con $t$.
+    \end{itemize}
+
+    \medskip
+    Informalmente, vuol dire che se so che $Y$ è vera per tutti gli individui, allora sarà sicuramente vero per $t$, chiunque sia $t$.
+    \begin{example}[$\forall x (Px \to Qx), Pa \vdash Qa$]
+        \begin{prooftree}
+            \AXC{$\forall x (Px \to Qx)$}
+            \RightLabel{($\elim\forall$)}
+            \UIC{$Pa \to Qa$}
+            \AXC{$Pa$}
+            \RightLabel{($\elim\to$)}
+            \BIC{$Qa$}
+        \end{prooftree}
+    \end{example}
+\end{frame}
+
+\begin{frame}{Introduzione del quantificatore esistenziale}
+    \begin{prooftree}
+        \AXC{$\phi(t)$}
+        \RightLabel{($\intro\exists$)}
+        \UIC{$\exists x \phi(x)$}
+    \end{prooftree}
+    \medskip
+    Informalmente, vuol dire che se so che $\phi$ è vera per un certo individuo  specifico $t$, posso concludere che esiste un individuo $x$ che rende vera $\phi$ (l'individuo in questione è proprio $t$!!).
+    \begin{example}[$\forall x Px \vdash \exists x Px$]
+        \begin{prooftree}
+            \AXC{$\forall x Px$}
+            \RightLabel{($\elim\forall$)}
+            \UIC{$Pa$}
+            \RightLabel{($\intro\exists$)}
+            \UIC{$\exists x Px$}
+        \end{prooftree}
+    \end{example}
+\end{frame}
+
+\begin{frame}{Introduzione del quantificatore universale}
+    Come posso concludere una formula del tipo $\forall x Px$ ?
+
+    \medskip
+    Dimostrando che $Px$ è vera per un individuo $x$ qualsiasi, di cui non so nulla.
+
+    \begin{center}
+            \framebox{\begin{minipage}{0.8\textwidth}
+                \begin{prooftree}
+                    \AXC{$\phi(t)$}
+                    \RightLabel{($\intro\forall$)}
+                    \UIC{$\forall x \phi(x)$}
+                \end{prooftree}
+                \begin{center}
+                    se $t$ non appare in nessuna ipotesi non cancellata
+                \end{center}
+            \end{minipage}}
+    \end{center}
+
+    \begin{example}[$\forall x (Px \to Qx), \forall x Px \to \forall x Qx$]
+        \begin{prooftree}
+            \AXC{$\forall x (Px \to Qx)$}
+            \RightLabel{($\elim\forall$)}
+            \UIC{$\forall a (Pa \to Qa)$}
+            \AXC{$\forall x Px$}
+            \RightLabel{($\elim\forall$)}
+            \UIC{$Pa$}
+            \RightLabel{($\elim\to$)}
+            \BIC{$Qa$}
+            \RightLabel{($\intro\forall$)}
+            \UIC{$\forall x Qx$}
+        \end{prooftree}
+    \end{example}
+\end{frame}
+
+\begin{frame}{Cosa accade se dimentico la condizione a latere ?}
+    La regola di inferenza è falsa. Ad esempio, si può dimostrare che $Pa \vdash \forall Px$ con un singolo passo:
+    \begin{prooftree}
+        \AXC{$Pa$}
+        \RightLabel{($\intro\forall$)}
+        \UIC{$\forall x Px$}
+    \end{prooftree}
+
+    \medskip
+    Come dire che
+    \begin{center}
+        \begin{inference}
+            Carlo studia matematica\\
+            \hline
+            Tutti studiano matematica
+        \end{inference}
+    \end{center}
+\end{frame}
+
+\begin{frame}{Eliminazione del quantificatore esistenziale}
+    Come posso usare il fatto di sapere che $\exists x Px$ ? Ricordiamo che $\exists$ è una specie di disgiunzione infinita.
+
+    \begin{center}
+        \framebox{\begin{minipage}{0.8\textwidth}
+            \begin{prooftree}
+                \AXC{$\exists x \phi(x)$}
+                \AXC{$[\phi(t)]$}
+                \dottedLine
+                \UIC{$\psi$}
+                \RightLabel{($\elim\exists$)}
+                \BIC{$\psi$}
+            \end{prooftree}
+            \begin{center}
+                se $t$ non compare in $\psi$ e in nessuna ipotesi non cancellata di $\psi$
+            \end{center}
+        \end{minipage}}
+    \end{center}
+
+    \begin{example}[$\forall x (Px \to Qx), \exists x Px \vdash \exists x Qx$]
+        \begin{prooftree}
+            \AXC{$\exists x Px$}
+            \AXC{$\forall x (Px \to Qx)$}
+            \RightLabel{($\elim\forall$)}
+            \UIC{$Pa \to Qa$}
+            \AXC{$[Pa]_1$}
+            \RightLabel{($\elim\to$)}
+            \BIC{$Qa$}
+            \RightLabel{($\intro\exists$)}
+            \UIC{$\exists x Qx$}
+            \BIC{$\exists x Qx$}
+        \end{prooftree}
+    \end{example}
+
+\end{frame}
+
+\begin{frame}{Teoremi di correttezza e completezza}
+    Ovviamente, anche per la logica dei predicati valgono i teoremi di correttezzae e completezza forte.
+
+    \begin{theorem}[Correttezza (forte) della deduzione naturale]
+        Se $\phi_1, \ldots, \phi_n \vdash \phi$, allora $\phi_1, \ldots, \phi_n \models \phi_n$.
+    \end{theorem}
+
+    \begin{theorem}[Completezza (forte) della deduzione naturale]
+        Se $\phi_1, \ldots, \phi_n \models \phi$, allora $\phi_1, \ldots, \phi_n \vdash \phi$.
+    \end{theorem}
+
+    \medskip
+    Le dimostrazioni di questo teoremi esulano dal programma del corso.
+\end{frame}
+
+\end{document}
+
+\section{Combinare le regole di inferenza}
+
+\begin{frame}{Combinare le regole di inferenza}
+    C'è una differenza enorme di complessità tra logica delle proposizioni e dei predicati:
+    \begin{itemize}
+        \item nella logica delle proposizioni, c'è un metodo sistematico per capire se una regola di inferenza è corretta o no (le tavole di verità);
+        \item nella logica dei predicati non esiste un metodo simile;
+        \item nella logica dei predicati anche capire se una formula è vera in una data interpretazione è difficile.
+    \end{itemize}
+
+    \medskip
+    Un modo per determinare se una regola di inferenza è corretta consista nel capire se è possibile ottenerla \alert{combinando regole di inferenza note}.
+\end{frame}
+
+\begin{frame}{Dimostrazioni formali (1)}
+    Verifichiamo che la seguente regola di inferenza è corretta:
+    \begin{center}
+        \begin{inference}
+            $\forall x (Px \to Qx)$\\
+            $Pa$\\
+            \hline
+            $Qa$
+        \end{inference}
+    \end{center}
+    Si procede come segue:
+    \begin{itemize}
+        \item diamo dei numeri alle formule delle premesse della regola;
+        \item ad ogni passo applichiamo una regola di inferenza nota a due formule che abbiamo numerato, ottenendo una nuova formula che numeriamo con un numero più grande;
+        \item se riusciamo ad ottenere in questo modo la conseguenza della regola, vuol dire che la regola è corretta.
+    \end{itemize}
+    Quella che otteniamo è una \alert{dimostrazione formale} della correttezza della regola.
+\end{frame}
+
+\begin{frame}{Dimostrazioni formali (2)}
+    Verifichiamo che la seguente regola di inferenza è corretta:
+    \begin{center}
+        \begin{inference}
+            $\forall x (Px \to Qx)$\\
+            $Pa$\\
+            \hline
+            $Qa$
+        \end{inference}
+    \end{center}
+    Dimostrazione:
+    \begin{enumerate}
+        \item $\forall x (Px \to Qx)$\\
+        \item $Pa$\\
+        \item $Pa \to Qa$ \hfill (1, eliminazione del quantificatore universale)\\
+        \item $Qa$ \hfill (2, 3, modus ponens)
+    \end{enumerate}
+    Dunque la regola di inferenza è corretta.
+\end{frame}
+
+\begin{frame}{Sistemi di prova}
+    Questo metodo di dimostrazione delle regole di inferenza, così com'è, non è sufficiente a verificare tutte le regole di inferenza corrette. Tuttavia, ne esistono vari miglioramenti, chiamati \alert{sistemi di prova}, che consentono di dimostrare qualunque inferenza corretta.
+
+    \medskip
+    Questi sistemi di prova sono almeno in parte meccanizzabili, per cui è possibile scrivere programmi che, data una regola di inferenza, provano a dimostrarne la correttezza. Si tratta dei \alert{dimostratori automatici di teoremi}, come ad esempio \href{https://vprover.github.io/}{Vampire}.
+
+    \medskip
+    L'argomento è molto complesso ed esula completamente dagli obiettivi di questo insegnamento.
+\end{frame}
+
+
+\end{document}

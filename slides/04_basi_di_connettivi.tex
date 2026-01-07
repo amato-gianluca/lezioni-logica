@@ -1,6 +1,6 @@
-\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table,handout]{beamer}
+\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table]{beamer}
 
-%\setbeameroption{show notes}
+\setbeameroption{show notes}
 
 \input{preamble.inc}
 
@@ -10,6 +10,14 @@
 
 \begin{frame}
     \titlepage
+\end{frame}
+
+\begin{frame}
+    \copyrightpage
+\end{frame}
+
+\begin{frame}
+    \bookpage{sul \emph{Riquadro 3} e \emph{Riquadro 4}}
 \end{frame}
 
 \section{Determinare la fp di un tavola di verità}
@@ -68,7 +76,7 @@
             \end{enumerate}
         \end{columns}
     \uncover<5>{
-    Una formula di questo tipo è detta in \emph{forma normale disgiuntiva} (FND). Questo esempio ci mostra anche che tutte le fp ne hanno una equivalente in FND.}
+    Una formula di questo tipo è detta in \alert{forma normale disgiuntiva} (FND). Questo esempio ci mostra anche che tutte le fp ne hanno una equivalente in FND.}
 \end{frame}
 
 \begin{frame}{Perché funziona?}
@@ -153,7 +161,7 @@
     \end{theorem}
 
     \begin{definition}
-        Un insieme di connettvi che consentono di esprimere tutte le fp è detto \emph{base di connettivi}.
+        Un insieme di connettvi che consentono di esprimere tutte le fp è detto \alert{base di connettivi}.
     \end{definition}
 
     Il teorema di sopra si può quindi riformulare nel modo seguente:
@@ -319,5 +327,10 @@
     \end{gather*}
     \end{proof}
 \end{frame}
+
+\begin{frame}{Esercizi consigliati}
+    Esercizi da 7 ed 11 del Capitolo 4.
+\end{frame}
+
 
 \end{document}

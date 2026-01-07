@@ -1,6 +1,6 @@
-\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table,handout]{beamer}
+\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table]{beamer}
 
-%\setbeameroption{show notes}
+\setbeameroption{show notes}
 
 \input{preamble.inc}
 
@@ -10,6 +10,14 @@
 
 \begin{frame}
     \titlepage
+\end{frame}
+
+\begin{frame}
+    \copyrightpage
+\end{frame}
+
+\begin{frame}
+    \bookpage{sulle sezioni 4.2 e 4.3}
 \end{frame}
 
 \begin{frame}
@@ -125,7 +133,7 @@
         \begin{itemize}
             \item<2-> Aggiungiamo una colonna con la congiunzione delle premesse. Sarà vera solo quando tutte le premesse sono vere, ovvero per la riga precedentemente evidenziata in rosso.
             \item<3-> Aggiungiamo una colonna con l'implicazione tra congiunzione delle premesse e conseguenza.
-            \item<4-> Per le righe evidenziate,  $(A \to B) \land A \to B$  è vera perché perché il conseguente è vero.
+            \item<4-> Per le righe evidenziate,  $(A \to B) \land A \to B$  è vera perché il conseguente è vero.
             \item<4-> Per le righe non evidenziate, $(A \to B) \land A \to B$ è vera perché l'antecedente è falso.
             \item<5-> Dunque $((A \to B) \land A) \to B$ è sempre vera.
         \end{itemize}
@@ -161,7 +169,7 @@
                 $\neg B$
             \end{inference}
         \end{center}
-        dove premesse e conclusione sono fore proposizionali.
+        dove premesse e conclusione sono forme proposizionali.
     \end{block}
 \end{frame}
 
@@ -186,11 +194,6 @@
         \end{center}
         è \alert{corretta} (o \alert{valida}) se ogni qualvolta le premesse sono vere, allora è necessariamente vera anche la conclusione.
     \end{definition}
-
-    \pause
-    \begin{theorem}
-        Una regola di inferenza è corretta quando la conclusione è conseguenza logica delle premesse.
-    \end{theorem}
 \end{frame}
 
 \begin{frame}{Conseguenza logica e correttezza delle inferenze (2)}
@@ -211,7 +214,7 @@
     \[
     X_1, \ldots, X_n \models Y
     \]
-    solo espresso in termini un po' più informali.
+    solo espressa in termini un po' più informali.
 
     \pause
     \begin{theorem}
@@ -289,8 +292,8 @@
     \only<2->{Constatiamo che:}
     \begin{itemize}
         \item<2-> Non esistono righe in cui le premesse ($A$ e $\neg A$) sono contemporanamente vere!
-        \item<3-> In tutte le righe in cui le premesse sono contemporanamente vere, anche la conclusione $B$ è vera
-        \item<4-> $B$ è conseguenza logica di $A$ e $\neg A$ e quindi l'inferenza è corretta
+        \item<3-> Peranto, possiamo affermare senza timori di smentita che in tutte le righe in cui le premesse sono contemporanamente vere, anche la conclusione $B$ è vera.
+        \item<4-> $B$ è conseguenza logica di $A$ e $\neg A$ e quindi l'inferenza è corretta.
     \end{itemize}
 
     \only<5->{Intuitivamente:}
@@ -314,9 +317,13 @@
         equivale a \begin{center}
             \emph{non esiste alcun elefante volante che non è rosa}
         \end{center}
-        \item Non la si è sempre pensata così in passato. Nella \alert{logica aristotelica}, un frase del tipo ``\emph{Tutti gli A sono B}'' implica l'esistenza di almeno un $A$.
-        \item Si dice che nella logica aristotelica il quantificatore ``tutti'' ha un \alert{impegno esistenziale}. Il vostro libro di testo discute questo fatto a pag.~186.
+        \item Non la si è sempre pensata così in passato. Nella \alert{logica aristotelica}, un frase del tipo \emph{``Tutti gli A sono B''} implica l'esistenza di almeno un $A$.
+        \item Si dice che nella logica aristotelica il quantificatore ``tutti'' ha un \alert{impegno esistenziale}. Il vostro libro di testo discute questo fatto a pag.~186 nel \emph{Riquadro 9}.
     \end{itemize}
+\end{frame}
+
+\begin{frame}{Esercizi consigliati}
+    Esercizi da 12 a 50 del Capitolo 4.
 \end{frame}
 
 \end{document}

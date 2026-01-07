@@ -11,6 +11,15 @@
 \begin{frame}
     \titlepage
 \end{frame}
+
+\begin{frame}
+    \copyrightpage
+\end{frame}
+
+\begin{frame}
+    \bookpage{sui capitoli 1 (solo la prima pagina) e 2 (esclusa sezione 2.3)}
+\end{frame}
+
 \begin{frame}{Proposizioni semplici e composte}
     Abbiamo visto nella lezione introduttiva che per studiare le inferenze dobbiamo rendere esplicita la \alert{forma logica} delle proposizioni, ovvero ciò che è rilevante per riconoscere il nesso tra premesse e conclusione.
 
@@ -25,14 +34,14 @@
     \begin{columns}[t]
         \column{0.45\textwidth}
     \begin{example}[Proposizioni semplici]
-        \itshape
+        \propshape
         Carlo è ligure\\
         Carlo è più alto di Mario\\
         Tutti gli uomini sono mortali
     \end{example}
         \column{0.50\textwidth}
         \begin{example}[Proposizioni composte]
-            \itshape
+            \propshape
             Non è vero che Carlo è ligure\\
             Marcello è matematico o fisico\\
             Se manca la benzina, l'auto non parte
@@ -52,6 +61,7 @@
         \end{center}
     \end{columns}
     \begin{example}
+        \propshape
         \begin{itemize}
             \item Roma è la capitale d'Italia \conn{e} Lione è la capitale della Francia
             \item Roma è la capitale d'Italia \conn{oppure} Lione è la capitale della Francia
@@ -62,11 +72,11 @@
 \end{frame}
 
 \begin{frame}{Logica delle proposizioni}
-    Le proposizioni interne hanno una loro struttura interna:
+    Le proposizioni semplici hanno una loro struttura interna:
     \begin{itemize}
-        \item \text{Carlo è ligure} afferma che un certo \emph{indiviuduo} (Carlo) gode di una certa proprietà (essere ligure).
-        \item \text{Carlo è più alto di Mario} afferma che c'è una \emph{relazione} (essere più alto di) tra Carlo e Mario.
-        \item \text{Tutti gli uomini sono mortali} ha una struttura complessa e contiene il quantificatore \emph{tutti}.
+        \item \prop{Carlo è ligure} afferma che un certo \emph{indiviuduo} (Carlo) gode di una certa proprietà (essere ligure).
+        \item \prop{Carlo è più alto di Mario} afferma che c'è una \emph{relazione} (essere più alto di) tra Carlo e Mario.
+        \item \prop{Tutti gli uomini sono mortali} ha una struttura complessa e contiene il quantificatore \emph{tutti}.
     \end{itemize}
 
     \pause
@@ -74,14 +84,13 @@
     Nella prima parte del corso ci occuperemo della \alert{logica delle proposizioni}, detta anche \alert{logica proposizionale} o \alert{logica enunciativa}:
     \begin{itemize}
         \item studia la relazione che intercorre tra le proposizioni;
-        \item ma ignore la struttura interna delle proposizioni semplici.
+        \item ignora la struttura interna delle proposizioni semplici.
     \end{itemize}
 
     \pause
     \medskip
     Nella seconda parte del corso ci occuperemo della \alert{logica dei predicati}, che si occupa di indagare anche la struttura interna delle proposizioni semplici.
 \end{frame}
-
 
 \section{Negazione}
 
@@ -95,6 +104,7 @@
         \item ``\conn{non}'' prima del verbo della proposizione da negare
     \end{itemize}
     \begin{example}
+        \propshape
         Roma è la capitale d'Italia (\checkmark)
         \uncover<2->{
             \begin{itemize}
@@ -147,6 +157,7 @@
 
     In italiano è di solito resa con la parola ``\conn{e}''.
     \begin{example}
+        \propshape
         Roma è la capitale d'Italia (\checkmark) \\
         Parigi è la capitale della Francia (\checkmark)
         \pause
@@ -166,37 +177,37 @@
 \end{frame}
 
 \begin{frame}{Congiunzione nella lingua italiana (1)}
-    Talvolta in italiano si cerca di evitare le ripetizioni, e il connettivo \conn{e} non si trova più tra due proposizioni.
+    Talvolta in italiano si cerca di evitare le ripetizioni, e il connettivo ``\conn{e}'' non si trova più tra due proposizioni.
 
     \begin{example}
-        Carlo \conn{e} Maria sono appassionati di baseball \medskip
+        \prop{Carlo \conn{e} Maria sono appassionati di baseball}\medskip
 
         \pause
         \hspace{2cm} è una abbreviazione di\medskip
 
-        Carlo è appassionato di baseball \conn{e} Maria è appassionata di baseball
+        \prop{Carlo è appassionato di baseball \conn{e} Maria è appassionata di baseball}
     \end{example}
 
     \pause
     \begin{example}
-        La partita è avvincente \conn{e} combattuta \medskip
+        \prop{La partita è avvincente \conn{e} combattuta}\medskip
 
         \pause
         \hspace{2cm} è una abbreviazione di\medskip
 
-        La partita è avvincente \conn{e} la partita è combattuta
+        \prop{La partita è avvincente \conn{e} la partita è combattuta}
     \end{example}
 \end{frame}
 
 \begin{frame}{Congiunzione nella lingua italiana (2)}
-    Ma attenzione!!! Non tutti gli usi della parola \conn{e} sono istanze della congiunzione.
+    Ma attenzione!!! Non tutti gli usi della parola ``\conn{e}'' sono istanze della congiunzione.
     \begin{example}
-        Carlo e Maria sono amici\medskip
+        \prop{Carlo e Maria sono amici}\medskip
 
         \pause
         \hspace{2cm} \textbf{non è} una abbreviazione di\medskip
 
-        Carlo è amico \conn{e} Maria è amica\medskip
+        \prop{Carlo è amico \conn{e} Maria è amica}\medskip
     \end{example}
 
     \pause
@@ -204,7 +215,7 @@
     Di contro, talvolta la congiunzione è resa da parole diverse da \conn{e}, ad esempio da \conn{ma} (che non per nulla si chiama \alert{congiunzione avversativa})
 
     \begin{example}
-        Roma è la capitale d'Italia \conn{ma} Parigi è la capitale della Francia
+        \prop{Roma è la capitale d'Italia \conn{ma} Parigi è la capitale della Francia}
     \end{example}
 \end{frame}
 
@@ -235,8 +246,19 @@
 \end{frame}
 
 \begin{frame}{Doppia lettura della tavola di verità}
+    \begin{tikz}[overlay]
+        \node at (12,-4.5) {        \begin{tabular}{c|c||c}
+            $A$           & $B$           & $A \wedge B$  \\
+            \hline
+            F & F & F \\
+            F & V & F \\
+            V & F & F \\
+            V & V & V
+        \end{tabular}};
+    \end{tikz}
     In realtà la tavola di verità la si può leggere in due modi:
     \pause
+
     \begin{itemize}
         \item da sinistra a destra: se sappiamo il valore di verità delle proposizioni di base, possiamo determinare il valore di verità della proposizione risultante.
 
@@ -279,14 +301,17 @@
 \begin{frame}{Esempio di connettivo non vero-funzionale}
     Consideriamo il connettivo \conn{mentre}, ad esempio nella proposizione:
     \begin{itemize}
-        \item Lucia ha mangiato una mela mentre \conn{mentre} ha guardato la televisione.
+        \item \prop{Lucia ha mangiato una mela mentre \conn{mentre} ha guardato la televisione.}
     \end{itemize}
 
     \uncover<2->{
         \medskip
         Quale sarebbe la tavola di verità di questo connettivo ?
 
-        \medskip
+        \[
+        A \equiv \text{\prop{Lucia ha mangiato una mela}} \qquad B \equiv \text{\prop{Lucia ha guardato la televisione}}
+        \]
+
         \begin{center}
             \begin{tabular}{c|c||c}
                 $A$           & $B$           & $A \conn{\ mentre\ } B$ \\
@@ -312,6 +337,7 @@
 
     In italiano è di solito resa con ``\conn{o}'' ed ``\conn{oppure}''.
     \begin{example}
+        \propshape
         Roma è la capitale d'Italia (\checkmark)\\
         Roma è la capitale della Francia (\xmark)\\
         \uncover<2->{
@@ -336,25 +362,25 @@
 \end{frame}
 
 \begin{frame}{Disgiunzione nella lingua italiana}
-    Consideriamo un esempio simile a quello di prima:\\
+    Consideriamo un esempio simile a quello di prima:
     \begin{example}
-        Roma è la capitale d'Italia \conn{o} Lione è la capitale della Francia
+        \prop{Roma è la capitale d'Italia \conn{o} Lione è la capitale della Francia}
     \end{example}
     \pause
     È una proposizione piuttosto strana. Nella lingua italiana, utilizziamo la disgiunzione quasi sempre quando le due proposizioni sono strettamente correlate tra di loro, come in:
     \begin{example}
-        Roma è la capitale d'Italia \conn{o} Roma è la capitale della Francia
+        \prop{Roma è la capitale d'Italia \conn{o} Roma è la capitale della Francia}
     \end{example}
     Spesso, in questi casi, abbreviamo la frase, come già visto per la congiunzione
     \begin{example}
-        Roma è la capitale d'Italia o della Francia
+        \prop{Roma è la capitale d'Italia o della Francia}
     \end{example}
 \end{frame}
 
 \begin{frame}{Disgiunzione inclusiva ed esclusiva (1)}
     Consideriamo ancora una proposizione un po' innaturale:
     \begin{example}
-        Roma è la capitale d'Italia \conn{o} Parigi è la capitale della Francia
+        \prop{Roma è la capitale d'Italia \conn{o} Parigi è la capitale della Francia}
     \end{example}
     Cosa ne pensate ? È vera o falsa ?
     \pause
@@ -389,7 +415,7 @@
 \end{frame}
 
 \begin{frame}{Dettagli della disgiunzione inclusiva}
-    Simboli usati per scrivere la disgiunzione sono:
+    Simboli usati per scrivere la disgiunzione inclusiva sono:
     \begin{itemize}
         \item \alert{$\vee$ (in logica)}
         \item \alert{or (in inglese, Python e C++)}
@@ -399,7 +425,7 @@
 
     \uncover<2->{
         \bigskip
-        Questa è la tavola di verità della disgiunzione:
+        Questa è la tavola di verità della disgiunzione inclusiva:
 
         \medskip
         \begin{center}
@@ -449,9 +475,9 @@
     \medskip
     Spesso il problema non si pone perché, dal contesto, sappiamo che le due proposizioni non possono essere entrambe vere.
     \begin{example}
-        Se sapete che
+        Se qualcuno vi dice che
         \begin{itemize}
-            \item La capitale della California è Sacramento \conn{o} Los Angeles.
+            \item \prop{La capitale della California è Sacramento \conn{o} Los Angeles}
         \end{itemize}
         vuol dire che possono essere entrambe capitali ?
     \end{example}
@@ -465,7 +491,7 @@
     \begin{example}
         Se sapete che
         \begin{itemize}
-            \item La bandiera della California contiene una stella \conn{o} un orso.
+            \item \prop{La bandiera della California contiene una stella \conn{o} un orso}
         \end{itemize}
         vuol dire che la bandiera può avere entrambe ?
     \end{example}
@@ -477,12 +503,12 @@
     \smallskip
     In latino esistono due disgiunzioni, per distinguere i due casi: \conn{vel} per quella inclusiva e \conn{aut} per quella esclusiva. In italiano, se volete essere precisi, potete aggiungere
     \begin{itemize}
-        \item \conn{o entrambi}, per indicare l'interpretazione inclusiva;
-        \item  \conn{ma non entrambi}, per indicare l'interpretazione esclusiva.
+        \item ``\conn{o entrambi}'', per indicare l'interpretazione inclusiva;
+        \item ``\conn{ma non entrambi}'', per indicare l'interpretazione esclusiva.
     \end{itemize}
     Ad esempio:
     \begin{itemize}
-        \item La bandiera della California contiene una stella \conn{o} un orso \conn{o entrambi}.
+        \item \prop{La bandiera della California contiene una stella \conn{o} un orso \conn{o entrambi}}.
     \end{itemize}
 \end{frame}
 
@@ -492,22 +518,22 @@
     \medskip
     Tuttavia, in linea di massima:
     \begin{itemize}
-        \item se la disgiunzione è l'unico connettivo, essa è tipicamente esclusiva.
+        \item Se la disgiunzione è l'unico connettivo, essa è tipicamente esclusiva.
 
         \medskip
         Se la mamma dice al figlio
         \begin{itemize}
-            \item Puoi comprare un gelato \conn{o} un pasticcino
+            \item \prop{puoi comprare un gelato \conn{o} un pasticcino}
         \end{itemize}
         intende uno dei due, non entrambi.
 
         \pause
-        \item se la disgiunzione appare nell'antecedente di una implicazione (vedremo dopo di cosa si tratta), è tipicamente inclusiva.
+        \item Se la disgiunzione appare nell'antecedente di una implicazione (vedremo dopo di cosa si tratta), è tipicamente inclusiva.
 
             \medskip
         Data la proposizione
         \begin{itemize}
-            \item \conn{se} sono laureato in economia \conn{o} in informatica sono ammesso al concorso
+            \item \prop{\conn{se} sono laureato in economia \conn{o} in informatica sono ammesso al concorso}
         \end{itemize}
         ovviamente si intende che sono amemsso anche se ho entrambe le lauree.
     \end{itemize}
@@ -516,7 +542,7 @@
 \begin{frame}{Disgiunzione inclusiva ed esclusiva nei testi scientifici}
     In matematica, informatica e nelle scienze sperimentali, le parole ``\conn{o}'' e ``\conn{oppure}'' vanno sempre interpretate in maniera inclusiva. Pertanto:
     \begin{itemize}
-        \item la proposizione ``$2 + 2 = 4$ \conn{oppure} $5$ è dispari'' è vera
+        \item la proposizione ``$2 + 2 = 4$ \conn{oppure} $5$ è dispari'' è vera;
         \item da ora poi, in mancanza di ulteriore indicazioni, le parole ``\conn{o}'' e ``\conn{oppure}'' saranno sempre interpretate in maniera inclusiva.
     \end{itemize}
 \end{frame}
@@ -525,7 +551,7 @@
     Riporto una domanda che mi è stata fatta a lezione:
 
     \medskip
-    \textit{Perché uno dovrebbe affermare ``$2 + 2 = 4$ \conn{oppure} $5$ è dispari'' invece di ``$2 + 2 = 4$ \conn{e} $5$ è dispari''?}
+    \emph{Perché uno dovrebbe affermare ``$2 + 2 = 4$ \conn{oppure} $5$ è dispari'' invece di ``$2 + 2 = 4$ \conn{e} $5$ è dispari''?}
 
     \medskip
     Ovviamente in questo caso usare ``\conn{oppure}'' può sembrare stupido, ma solo perché sappiamo a priori che entrambe le proposizioni di base sono vere. Se introduciamo delle variabili, e scriviamo una proposizione del tipo
@@ -576,13 +602,13 @@
     \end{center}
 \end{frame}
 
-\begin{frame}{Interpretazione dell'implicazione in italiano (1)}
+\begin{frame}{Interpretazione dell'implicazione (1)}
     Per capire meglio l'implicazione, è utile leggere la sua tavola di verità ``da destra a sinistra''.
 
     \begin{example}
         Supponiamo di sapere per certo che
         \begin{itemize}
-            \item \conn{se} Carla è alla festa \conn{allora} anche Luca è alla festa
+            \item  \prop{\conn{se} Carla è alla festa \conn{allora} anche Luca è alla festa}
         \end{itemize}
         Quali di queste condizioni si potranno verificare ?
 
@@ -602,14 +628,14 @@
     \end{example}
 \end{frame}
 
-\begin{frame}{Interpretazione dell'implicazione in italiano (2)}
+\begin{frame}{Interpretazione dell'implicazione (3)}
     Se avete dubbi sulla seconda riga della tabella di prima è perché spesso in italiamo diciamo \conn{se \ldots allora} ma in realtà intendiamo \conn{se e solo se} (che è un altro connettivo).
 
     \pause
     \begin{example}
         Supponiamo che un amico ci ha assicurato che:
         \begin{itemize}
-            \item \conn{se} piove \conn{allora} vengo a prenderti in macchina
+            \item \prop{\conn{se} piove \conn{allora} vengo a prenderti in macchina}
         \end{itemize}
         Quali di queste situazioni possono verificarsi (se l'amico mantiente la promessa, cioè se la proposizione di prima è vera) ?
         \begin{center}
@@ -625,11 +651,13 @@
     \end{example}
 \end{frame}
 
-\begin{frame}{Interpretazione dell'implicazione in italiano (3)}
+\begin{frame}{Interpretazione dell'implicazione in italiano (2)}
     Se proviamo a interpretare la tavola di verità della l'implicazione ``da sinistra verso destra'', otteniamo spesso qualcosa di poco sensato.
 
+    \medskip
     \begin{example}[Vero o falso?]
         \begin{itemize}
+            \propshape
             \item \conn{se} Roma è la capitale d'Italia \conn{allora} 3+2=5 \pause (\checkmark)
                   \pause
             \item \conn{se} Roma è la capitale d'Italia \conn{allora} 3+2=0 \pause (\xmark)
@@ -640,21 +668,30 @@
         \end{itemize}
     \end{example}
 
-    % Queste proposizioni sono abbastanza innaturali:
-    % \begin{itemize}
-    %     \item non c'è nessuna relazione di causa-effetto tra antecedente e conseguente
-    % \end{itemize}
+    \medskip\pause
+    Davvero direste nella vita di tutti i giorni che l'affermazione
+    \begin{center}
+        \prop{\conn{se} gli elefanti volano \conn{allora} 3+2=0}
+    \end{center}
+    è vera?
 \end{frame}
 
 \begin{frame}{Implicazione e rapporti di causa-effetto}
-    Queste proposizioni sono abbastanza innaturali. Questo perché
-    in italiano quasi sempre l'uso del \conn{se \ldots allora} suggerisce un rapporto di causa-effetto tra antecedente e conseguente.
+    Queste proposizioni sono abbastanza innaturali. Questo perché nel linguaggio naturale quasi sempre l'uso del \conn{se \ldots allora} suggerisce un rapporto di causa-effetto tra antecedente e conseguente.
     \begin{example}
-        Quando diciamo ``\conn{se} Carla è alla festa \conn{allora} anche Luca è alla festa'' intendiamo che c'è qualche rapporto di causa-effetto tra le due cose.
+        Quando diciamo\\
+        \begin{center}
+        \prop{\conn{se} Carla è alla festa \conn{allora} anche Luca è alla festa}
+        \end{center}
+        intendiamo che c'è qualche rapporto di causa-effetto tra le due cose.
     \end{example}
 
     \medskip
-    L'implicazione che trattiamo noi prescinde da ogni rapporto di causa-effetto ed analizza solo lo stato delle cose. Per questo, per distinguerla da altri usi dell'implicazione, la chiamiamo \emph{implicazione materiale}.
+    L'implicazione che trattiamo noi:
+    \begin{itemize}
+        \item prescinde da ogni rapporto di causa-effetto ed analizza solo lo stato delle cose;
+        \item per distinguerla da altri usi dell'implicazione, la chiamiamo appunto \alert{implicazione materiale}.
+    \end{itemize}
 \end{frame}
 
 % \begin{frame}{Implicazione e rapporti di causa-effetto (1)}
@@ -703,28 +740,27 @@
 %     \end{example}
 % \end{frame}
 
-\begin{frame}{Implicazione e quantificazione implicita}
-    In molti usi del \conn{se \ldots allora} c'è una quantificazione implicita.
+% \begin{frame}{Implicazione e quantificazione implicita}
+%     In molti usi del \conn{se \ldots allora} nel linguaggio naturale c'è una quantificazione implicita.
 
-    \medskip
-    Dicendo ``\conn{se} il cielo è nuvoloso \conn{allora} piove'':
-    \begin{itemize}
-        \item quello che intendo è che ``in qualunque istante $t$, \conn{se} in $t$ c'è tempo nuvoloso \conn{allora} in $t$ piove'';
-        \item pertanto, la proposizione è falsa, perché non è detto che se è nuvoloso deve per forza piovere;
-        \item se volessimo ``spogliare'' la frase dal quantificatore implicito, la frase sarebbe vera in alcuni istanti e falsa in altri.
-    \end{itemize}
-\end{frame}
+%     \medskip
+%     Dicendo ``\conn{se} il cielo è nuvoloso \conn{allora} piove'':
+%     \begin{itemize}
+%         \item quello che intendo è che ``in qualunque istante $t$, \conn{se} in $t$ c'è tempo nuvoloso \conn{allora} in $t$ piove'';
+%         \item pertanto, la proposizione è falsa, perché non è detto che se è nuvoloso deve per forza debba piovere;
+%         \item se volessimo ``spogliare'' la frase dal quantificatore implicito, la frase sarebbe vera in alcuni istanti e falsa in altri.
+%     \end{itemize}
+% \end{frame}
 
-\begin{frame}{Implicazione e linguaggio naturale (2)}
+\begin{frame}{Implicazione e linguaggio naturale}
     In conclusione,
     \begin{itemize}
-        \item l'implicazione nel linguaggio naturale è spesso diversa dall'implicazione materiale;
-        \item non a caso in Python (e in altri linguaggi di programmazione) esistono gli operatori logici \texttt{and}, \texttt{or}, \texttt{not} ma non esiste una operazione per l'implicazione.
-        \medskip
+        \item l'implicazione nel linguaggio naturale è spesso diversa dall'implicazione materiale in logica;
+        \item non a caso in Python (e in altri linguaggi di programmazione) esistono gli operatori logici \texttt{and}, \texttt{or}, \texttt{not} ma non esiste una operazione per l'implicazione;
         \item l'implicazione materiale è molto usata in matematica, ma quasi sempre in presenza di variabili:
         \begin{itemize}
-            \item è difficile trovare affermazioni del tipo ``\conn{se} 8 è divisibile per 4 \conn{allora} 8 è divisibile per 2'';
-            \item è molto più normale trovare ``\conn{se} $x$ è divisibile per 4 \conn{allora} $x$ è divisibile per 2''.
+            \item è difficile trovare affermazioni del tipo ``\prop{\conn{se} 8 è divisibile per 4 \conn{allora} 8 è divisibile per 2}\/'';
+            \item è molto più normale trovare ``\prop{\conn{se} $x$ è divisibile per 4 \conn{allora} $x$ è divisibile per 2}\/''.
         \end{itemize}
     \end{itemize}
     \pause
@@ -836,13 +872,13 @@
 \end{frame}
 
 \begin{frame}{Interpretazione della doppia implicazione in italiano (1)}
-    Tutti i problemi di corrispondenza tra implicazione e linguaggio naturale continuano a valere per la doppia implicazione. Come sempre, l'interpretazione più semplice è con la lettura ``da destra a sinistra''.
+    Molti dei problemi di corrispondenza tra implicazione e linguaggio naturale continuano a valere per la doppia implicazione. Come sempre, l'interpretazione più semplice è con la lettura ``da destra a sinistra''.
 
     \pause
     \begin{example}
         Supponiamo che un amico ci abbia assicurato che:
         \begin{itemize}
-            \item vengo a prenderti in macchina \conn{se e solo se} piove
+            \item \prop{vengo a prenderti in macchina \conn{se e solo se} piove}
         \end{itemize}
         A parte il fatto che il vostro amico parla in maniera un po' strana\ldots quali di queste situazioni possono verificarsi (se l'amico mantiente la promessa, cioè se la proposizione di prima è vera) ?
         \begin{center}
@@ -861,6 +897,7 @@
 \begin{frame}{Interpretazione della doppia implicazione in italiano (2)}
     Nella lettura ``da sinistra a destra'' si ottengono sempre cose bizzarre.
     \begin{example}[Vero o falso?]
+        \propshape
         \begin{itemize}
             \item Roma è la capitale d'Italia \conn{se e solo se} 3+2=5 \pause (\checkmark)
                   \pause
@@ -873,6 +910,10 @@
     \end{example}
 \end{frame}
 
-\note{Esercizi 2.1, 2.2, 2.3, 2.4, 2.6, 2.7}
+\begin{frame}{Esercizi consigliati}
+    Esercizi da 1 a 9 del Capitolo 2.
+\end{frame}
+
+\note{Esercizi 2.1, 2.2, 2.3, 2.4, 2.6, 2.7, 2.8}
 
 \end{document}

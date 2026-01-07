@@ -9,6 +9,11 @@
 \usepackage{qrcode}
 \usepackage{array}
 \usepackage{mathrsfs}
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={4.0}
+]{doclicense}
 \usetikzlibrary{backgrounds, fit, calc, positioning, arrows.meta, shadows, decorations.pathreplacing}
 \usetikzlibrary{overlay-beamer-styles, tikzmark, shapes}
 
@@ -24,12 +29,17 @@
 \renewcommand{\checkmark}{{\color{OliveGreen}{\oldcheckmark}}}
 \newcommand{\conn}[1]{\textcolor{blue}{#1}}
 \newcommand{\quant}[1]{\textcolor{blue}{#1}}
-\newenvironment{inference}{\itshape\begin{tabular}{c}}{\end{tabular}}
+\newcommand{\prop}[1]{\emph{#1}}
+\newcommand{\link}[1]{\textcolor{blue}{#1}}
+\newcommand{\propshape}{\itshape}
 \newcommand{\xor}{\mathbin{\underbar{$\vee$}}}
 \renewcommand{\iff}{\mathbin{\leftrightarrow}}
 \newcommand{\fp}{fp\xspace}
 \newcommand{\fbf}{fbf\xspace}
 \newcommand{\partof}{\mathscr{P}}
+
+\newenvironment{inference}{\propshape\begin{tabular}{c}}{\end{tabular}}
+\newenvironment{proposition}{\begin{center}\propshape}{\end{center}}
 
 \newcommand{\intro}{\mathrm{I}}
 \newcommand{\elim}{\mathrm{E}}
@@ -42,3 +52,34 @@
 }
 
 \author[Gianluca Amato]{prof.~Gianluca Amato}
+
+\newcommand{\copyrightpage}{
+	\centering
+	\begin{minipage}{15cm}
+		\doclicenseThis
+
+		\medskip
+		\link{\href{\doclicenseURL}{\doclicenseURL}}
+  \end{minipage}
+}
+
+\newcommand{\bookpage}[1]{
+  Queste slide sono basate #1 del libro:
+	\bigskip
+
+	\hrule
+	\medskip
+	Dario Palladino\\
+	\textcolor{blue}{\href{https://www.carocci.it/prodotto/corso-di-logica-3}{Corso di logica: introduzione elementare al calcolo dei predicati (terza edizione)}}\\
+	Carocci editore\\
+	\hrule
+
+	\bigskip
+	\centering
+	\qrcode[height=4cm]{https://www.carocci.it/prodotto/corso-di-logica-3}
+}
+
+\hypersetup{pdfinfo={
+	Subject={Logica},
+	Author={Gianluca Amato, Università di Chieti-Pescara}
+}}

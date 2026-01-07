@@ -12,6 +12,10 @@
     \titlepage
 \end{frame}
 
+\begin{frame}
+    \copyrightpage
+\end{frame}
+
 \begin{frame}{Logica e progettazione di calcolatori}
     Questa lezione è un po' una digressione rispetto all'argomento principale del corso, ma ritengo interessante vedere come i concetti della logica si utilizzano in ambiti applicativi completamente diversi.
 
@@ -129,7 +133,7 @@
         \item $S$ e $C_{out}$ sono il risultato. In particolare:
         \begin{itemize}
             \item $S$ è il bit meno significativo del risultato;
-            \item $C_{out}$ è il bit più significativo del risultato, chiamato \emph{riporto} (o \emph{carry} in inglese).
+            \item $C_{out}$ è il bit più significativo del risultato, chiamato \alert{riporto} (o \alert{carry} in inglese).
         \end{itemize}
     \end{itemize}
     \vfill
@@ -179,7 +183,7 @@
 \begin{frame}{Il connettivo AND}
     Ecco come realizzare il connettivo AND con una coppia di transistor:
     \begin{center}
-        \includegraphics[height=0.5\textheight]{TransistorANDgate.png}
+        \includegraphics[height=0.45\textheight]{TransistorANDgate.png}
     \end{center}
     \begin{itemize}
         \item se $A$ e $B$ sono entrambi veri, i due transistor fanno passare la corrente, e nel punto \textit{Out} si misura la tensione $V$ (+5 V);

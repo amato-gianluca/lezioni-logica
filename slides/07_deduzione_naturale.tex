@@ -2,6 +2,7 @@
 
 \usepackage{bussproofs}
 \EnableBpAbbreviations
+
 %\setbeameroption{show notes}
 
 \input{preamble.inc}
@@ -14,9 +15,16 @@
     \titlepage
 \end{frame}
 
+\begin{frame}
+    \copyrightpage
+\end{frame}
+
+\begin{frame}
+    \bookpage{sulle sezioni 10.1, 10.2 e 10.3}
+\end{frame}
+
 \begin{frame}{Conseguenza logica (1)}
     Nella lezione precedente abbiamo introdotto  il concetto di \alert{conseguenza logica} che ci permette di stabilire se una inferenza è corretta o no.
-
 
     \medskip
     Verificare se $Y$ è conseguenza logica di $X_1, \ldots, X_n$ con le tavole di verità è un metodo:
@@ -232,7 +240,7 @@
         La $[X]$ indica che è possibile \alert{scaricare} la premessa $X$ nella dimostrazione che porta a $Y$. Questo significa che anche se $X$ compare come premessa della dimostrazione, possiamo far finta che non ci sia. La linea tratteggiata indica che lì in mezzo c'è una dimostrazione anche molto complessa, ma non compare effettivamente in una dimostrazione.
 
         \smallskip
-        Questa regola corrisponde alla classica modalità con cui si dimostra un'implicazione: si assume l'antecedente e si dimostra il conseguente.
+        Questa regola corrisponde alla classica modalità con cui si dimostra un'implicazione: si assume l'antecedente e si dimostra il conseguente.\\[0.2cm]
 
         \item \textbf{eliminazione}:
         \begin{center}
@@ -251,8 +259,9 @@
 \begin{frame}{example}
     Verifichiamo che
     \[
-    A \to B, B \to C \vdash A \to C
+    A \to B, B \to C \vdash A \to C \enspace .
     \]
+    Questa è una possibile dimostrazione:
     \begin{prooftree}
         \AXC{$\color{red}B \to C$}
         \AXC{$\color{red}A \to B$}
@@ -298,7 +307,7 @@
     \end{center}
 
     \smallskip
-    Questa regola corrisponde al \alert{ragionamento per casi}. Se so che $X \vee Y$, mi basta considerare separatamente i casi per cui vale $X$ ed per cui vale $Y$ (sono le assunzioni da scaricare). Se in entrambi i casi riesco a dimostrare $Z$, allora $Z$ segue da $X \vee Y$.
+    Questa regola corrisponde al \alert{ragionamento per casi}. Se so che $X \vee Y$, mi basta considerare separatamente i casi per cui vale $X$ e per cui vale $Y$ (sono le assunzioni da scaricare). Se in entrambi i casi riesco a dimostrare $Z$, allora $Z$ segue da $X \vee Y$.
 \end{itemize}
 \end{frame}
 
@@ -307,7 +316,7 @@
     \[
     A \vee B, A \to C, B \to C \vdash C
     \]
-
+    data di seguito:
     \begin{prooftree}
         \AXC{$\color{red}A \vee B$}
             \AXC{$\color{red}A \to C$}
@@ -338,7 +347,7 @@
         \end{center}
 
         \smallskip
-        Questa è una variante della regola che abbiamo chiamato ``\emph{ex falso quodlibet}'', ovvero il fatto che da una contraddizione si può dedurre qualsiasi cosa.
+        Questa è una variante della regola che abbiamo chiamato ``\emph{ex falso quodlibet}\/'', ovvero il fatto che da una contraddizione si può dedurre qualsiasi cosa.
     \end{itemize}
 \end{frame}
 
@@ -365,7 +374,7 @@
     \end{prooftree}
 
     \smallskip
-    Notare che qui l'uso di ($\elim\bot$) è essenziale. Nel ragionamento per casi, quando assumiamo che $B$ è vero arriviamo ad una contraddizione ($\bot$). Noi diremmo informalmente che il caso $B$ non è valido e dobbiamo considerare solo il caso $A$, ma nella deduzione naturale il ragionamento si esplicita in maniera leggermente diversa: diciamo che siccome siamo arrivati ad una contraddizione, allora anche nel caso $B$ possiamo comunque concludere $A$.
+    Notare che qui l'uso di ($\elim\bot$) è essenziale. Nel ragionamento per casi, quando assumiamo che $B$ è vero arriviamo ad una contraddizione ($\bot$). Nella pratica matematica si direbbe semplicemente che il caso $B$ non è valido e dobbiamo considerare solo il caso $A$, ma nella deduzione naturale il ragionamento si esplicita in maniera leggermente diversa: diciamo che siccome siamo arrivati ad una contraddizione, allora anche nel caso $B$ possiamo comunque concludere $A$.
 \end{frame}
 
 \begin{frame}{Terzo escluso}
@@ -396,7 +405,7 @@
     Ricordiamo che $\neg \neg A \equiv (A \to \bot) \to \bot$.
     \begin{prooftree}
             \AXC{}
-            \RightLabel{(EM)}
+            \RightLabel{(TE)}
         \UIC{$A \vee (A \to \bot)$}
         \AXC{$[A]$}
                 \AXC{$\color{red}(A \to \bot) \to \bot$}
@@ -499,10 +508,10 @@
         \smallskip
         \\
         \hline
-        EM &
+        TE &
         \multicolumn{2}{c}{
             \AXC{\phantom{$Y^2$}}
-            \RightLabel{(EM)}
+            \RightLabel{(TE)}
             \UIC{$X \vee (X \to \bot)$}
             \DP
             \smallskip
@@ -534,7 +543,7 @@
     \end{theorem}
 
     \medskip
-    Le dimostrazioni di questo teoremi esulano dal programma del corso. Accenno solo al fatto che dimostrare il teorema di correttezza è relativamente semplice, mentre dimostrare il teorema di completezza è abbastanza difficile.
+    Le dimostrazioni di questi teoremi esulano dal programma del corso. Accenno solo al fatto che dimostrare il teorema di correttezza è relativamente semplice, mentre dimostrare il teorema di completezza è abbastanza difficile.
 \end{frame}
 
 \end{document}

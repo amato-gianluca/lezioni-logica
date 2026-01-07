@@ -12,10 +12,19 @@
     \titlepage
 \end{frame}
 
+\begin{frame}
+    \copyrightpage
+\end{frame}
+
+\begin{frame}
+    \bookpage{sulle sezioni 2.3, 3.1, 3.2, 4.1}
+\end{frame}
+
 \section{Forme proposizionali}
 
 \begin{frame}{Forme proposizionali}
-    Usando le lettere $A$, $B$, $C$ etc..., i connettivi $\neg$, $\wedge$, $\vee$, $\xor$, $\to$, $\iff$ e le parentesi tonde, è possibile costruire delle espressioni chiamate \alert{forme proposizionali} (abbreviata in fp) o anche \alert{formule proposizionali}  Indicheremo le fp con le lettere $X$, $Y$, etc\ldots
+    Usando le lettere $A$, $B$, $C$ etc..., i connettivi $\neg$, $\wedge$, $\vee$, $\xor$, $\to$, $\iff$ e le parentesi tonde, è possibile costruire delle espressioni chiamate \alert{forme proposizionali} (abbreviata in fp) o anche \alert{formule proposizionali}.
+    \pause
     \begin{example}[Forme proposizionali]
         \centering
         $\neg(A \wedge \neg B)$ \qquad \qquad
@@ -27,13 +36,14 @@
     \begin{example}[dalle forme proposizionali alle proposizioni]
         Considerate la forma proposizionale $(A \vee B) \to C$. Allora se
         \begin{itemize}
-            \item $A={}$ Carlo è laureato in economia
-            \item $B={}$ Carlo è laureato in informatica
-            \item $C={}$ Carlo è ammesso al concorso
+            \item $A{}={}$ \prop{Carlo è laureato in economia}
+            \item $B{}={}$ \prop{Carlo è laureato in informatica}
+            \item $C{}={}$ \prop{Carlo è ammesso al concorso}
         \end{itemize}
         otteniamo
+        \pause
         \begin{itemize}
-            \item Se Carlo è laureato in economia o in informatica, allora è ammesso al concorso.
+            \item \prop{Se Carlo è laureato in economia o in informatica, allora è ammesso al concorso}.
         \end{itemize}
     \end{example}
 \end{frame}
@@ -78,13 +88,14 @@
         \item $\wedge$, $\vee$ e $\xor$ hanno precedenza intermedia
         \item $\to$ e $\iff$ hanno precedenza più bassa
     \end{itemize}
+    \pause
     \begin{example}[Precedenze]
         \begin{itemize}
-            \item $A \to B \wedge C$  si legge $A \to (B \wedge C)$
-            \item $\neg A \wedge B \to C$ si legge $((\neg A) \wedge B) \to C$.
+            \item $A \to B \wedge C$  si legge \pause $A \to (B \wedge C)$
+            \item $\neg A \wedge B \to C$ si legge \pause$((\neg A) \wedge B) \to C$.
         \end{itemize}
     \end{example}
-
+    \pause
     \medskip
     Alcune parentesi sono comunque necessarie:
     \begin{itemize}
@@ -184,7 +195,7 @@
     Come si fa a non dimenticarsi nessuna delle possibili combinazioni di valori di verità per le lettere proposizionali?
     \begin{itemize}
         \item con $n$ lettere proposizionali, ci sono $2^n$ combinazioni possibili;
-        \item partendo dalla colonna più a destra, si alternano una ($2^0$) F ed una V vino ad arrivare a $2^n$ righe;
+        \item partendo dalla colonna più a destra, si alternano una ($2^0$) F ed una V, fino ad arrivare a $2^n$ righe;
         \item quindi si passa alla colonna immediatamente a sinistra, alternando due ($2^1$) V e due F;
         \item quindi, passando alle colonne sempre più a sinistra si alternato 4 ($2^2$), 8 ($2^3$), \ldots V ed altrettante F fino a riempire tutte le colonne delle lettere proposizionali.
     \end{itemize}
@@ -252,11 +263,18 @@
     \end{example}
 \end{frame}
 
+\begin{frame}{Esercizi consigliati}
+    Esercizi da 16 a 26 del Capitolo 2.
+
+    \medskip
+    Esercizi da 1 a 4 del Capitolo 3.
+\end{frame}
+
 \note{Esercizi 2.20, 2.23, 2.26, 3.2}
 
 \section{Tautologie, contraddizioni ed equivalenza logica}
 
-\begin{frame}{Tautologie(1)}
+\begin{frame}{Tautologie (1)}
     \begin{definition}[Tautologia]
         Si chiama \alert{tautologia} una forma proposizionale che è sempre vera, indipendentemente dal valore di verità delle lettere proposizionali che in essa compaiono.
     \end{definition}
@@ -280,7 +298,7 @@
     Se una proposizione ha la forma di una tatutologia sappiamo sicuramente che è vera, anche
     senza conoscere il valore di verità delle proposizioni semplici che la compongono.
     \begin{example}
-        ``\textit{Se Carla è italiana e laureata, allora è italiana.}'' è sicuramente una proposizione vera, anche se non sappiamo chi sia Carla.
+        ``\prop{Se Carla è italiana e laureata, allora è italiana}\/'' è sicuramente una proposizione vera, anche se non sappiamo chi sia Carla.
     \end{example}
 
 \end{frame}
@@ -300,10 +318,11 @@
             \end{tabular}
         \end{center}
     \end{example}
+    \uncover<3->{
     Corrisponde a proposizioni in italiano che sono sicuramente false, come
     \begin{example}
-        Carla è laureata ma non è laureata.
-    \end{example}
+        \prop{Carla è laureata ma non è laureata}.
+    \end{example}}
 \end{frame}
 
 
@@ -315,7 +334,11 @@
     \end{theorem}
 
     \begin{block}{Osservazione}
-        In futuro, useremo le lettere terminali dell'alfabeto come $X$, $Y$, $Z$ per indicare una forma proposizionale, mentre useremo le lettere iniziali per le lettere proposizionali.
+        In futuro, useremo:
+        \begin{itemize}
+            \item le lettere terminali dell'alfabeto come $X$, $Y$, $Z$ per indicare una \alert{forma proposizionale};
+            \item le lettere iniziali dell'alfabeto come $A$, $B$, $C$ per le \alert{lettere proposizionali}.
+        \end{itemize}
     \end{block}
 \end{frame}
 
@@ -333,13 +356,10 @@
             \end{tabular}
         \end{center}
     \end{theorem}
+    \uncover<4->{
     \begin{example}[in italiano]
-        ``\textit{Carla è laureata e non è laureata }'' è sicuramente falsa, anche se non sappiamo chi è Carla. Pertanto la sua negazione .``\textit{Non è vero che Carla è laureata e non è laureata}'' è sicuramente vera.
+        ``\prop{Carla è laureata e non è laureata}\/'' è sicuramente falsa, anche se non sappiamo chi è Carla. Pertanto la sua negazione .``\prop{Non è vero che Carla è laureata e non è laureata}\/'' è sicuramente vera.
     \end{example}
-
-    \medskip
-    \onslide<4->{
-        Il principio di non contraddizione è un principio fondante di praticamente qualunque tipo di logica esistente.
     }
 \end{frame}
 
@@ -358,14 +378,30 @@
             \end{tabular}
         \end{center}
     \end{theorem}
+    \uncover<3->{
     \begin{example}[in italiano]
-        ``\textit{Carla è laureata oppure non è laureata}'' è sicuramente vera, anche se non sappiamo chi è Carla.
-    \end{example}
+        ``\prop{Carla è laureata oppure non è laureata}'' è sicuramente vera, anche se non sappiamo chi è Carla.
+    \end{example}}
 
     \medskip
-    \onslide<3->{
-        Il principio del terzo escluso, a differenze di quello di non contraddizione, non è universalmente accettato: esistono molti sistemi logici in cui non vale, anche se noi non ce ne occupiamo.
+    \onslide<4->{
+        Il principio del terzo escluso, a differenze di quello di non contraddizione, \alert{non è universalmente accettato}: esistono molti sistemi logici in cui non vale, anche se noi non ce ne occupiamo.
     }
+\end{frame}
+
+\begin{frame}{Soddisfaciilità e falsificabilità}
+    \begin{definition}[Soddisfaciilità]
+        Una fp si dice \alert{soddisfacibile} quando non è una contraddizione.
+    \end{definition}
+
+     In altri termini, una fp è soddisfacibile se c'è almeno una assegnazione di valori di verità alle lettere proprosizionali (una riga della tavola di verità) che la rende vera.
+
+    \medskip
+    \begin{definition}[Falsificabilità]
+        Una fp si dice \alert{falsificabile} (o anche \alert{refutabile}) se non è una tautologia.
+    \end{definition}
+
+    In altri termini, una fp è falsificabile se c'è almeno una assegnazione di valori di verità alle lettere proprosizionali  (una riga della tavola di verità) che la rende falsa.
 \end{frame}
 
 \begin{frame}{Equivalenza logica}
@@ -376,20 +412,22 @@
         Detto in altri termini, due \fp sono equivalenti se hanno la stessa tavola di verità.
     \end{definition}
 
-
+    \pause
     \begin{example}
         Consideriamo le \fp $\neg A \iff B$ e $A \iff \neg B$. Mostriamo una unica tavola di verità che mostra entrambe le \fp assieme
         \begin{center}
             \begin{tabular}{c|c||c|c|c|c}
                 $A$ & $B$ & $\neg A$ & $\neg B$ & $\neg A \iff B$ & $A \iff \neg B$ \\
                 \hline
-                F   & F   & V        & V        & F               & F               \\
-                F   & V   & V        & F        & V               & V               \\
-                V   & F   & F        & V        & V               & V               \\
-                V   & V   & F        & F        & F               & F
+                F   & F   & \only<3->{V        & V        & F               & F               }\\
+                F   & V   & \only<3->{V        & F        & V               & V}               \\
+                V   & F   & \only<3->{F        & V        & V               & V}               \\
+                V   & V   & \only<3->{F        & F        & F               & F}
             \end{tabular}
         \end{center}
+        \uncover<4->{
         Poiché le colonne $\neg A \iff B$ e $A \iff \neg B$ sono uguali, le due \fp sono logicamente equivalenti.
+        }
     \end{example}
 \end{frame}
 
@@ -450,6 +488,13 @@
     \end{example}
 \end{frame}
 
+\begin{frame}{Esercizi consigliati}
+    Esercizi 10 e 12 del Capitolo 2.
+
+    \medskip
+    Esercizi da 5 a 10 del Capitolo 3.
+\end{frame}
+
 \note{Esercizio 3.6}
 
 \section{Equivalenze logiche notevoli}
@@ -505,11 +550,11 @@
         \begin{tabular}{c|c|c}
             \textbf{logica}               & \textbf{nome proprietà} & \textbf{algebra}             \\
             \hline
-            $\neg \neg A \equiv A$      & doppia negazione        & $ 1 - (1-x) = x$             \\
-            $A \vee \neg A \equiv \top$   & terzo escluso           & $x + (1 - x) = 1$            \\
-            $A \wedge \neg A \equiv \bot$ & non contraddizione      & \sout{$x \cdot (1 - x) = 0$} \\
-            $\neg \top = \bot$            &                         & $1 - 1 = 0$                  \\
-            $\neg \bot = \top$            &                         & $1- 0 = 1$
+            $\neg \neg A \equiv A$      & doppia negazione        & $ 1 - (1 - A) = A$             \\
+            $A \vee \neg A \equiv \top$   & terzo escluso           & $A + (1 - A) = 1$            \\
+            $A \wedge \neg A \equiv \bot$ & non contraddizione      & \sout{$A \cdot (1 - A) = 0$} \\
+            $\neg \top \equiv \bot$            &                         & $1 - 1 = 0$                  \\
+            $\neg \bot \equiv \top$            &                         & $1- 0 = 1$
         \end{tabular}
     \end{center}
 \end{frame}
@@ -517,90 +562,103 @@
 \begin{frame}{Alcuni esempi in linguaggio naturale (1)}
     Il fatto che quelle viste prime siano tatutologie segue dal calcolo della tavole di verità. Cerchiamo comunque di dare una qualche intuizione nel linguaggio naturale.
     \begin{itemize}
-        \item $A \wedge B \equiv B \wedge A$: cambiare l'ordine delle affermazioni, non cambia il significato.
-        ``Carlo è alto e Mario è basso'' $\equiv$ ``Mario è basso e Carlo è alto''.
-        \item $A \wedge (B \wedge C) \equiv (A \wedge B) \wedge C$: non è facile fare un esempio in italiano, dove non ci sono le parentesi. Tuttavia, possiamo ripetere il soggetto in modo diverso per dare una idea del raggruppamento. `Carlo è alto e biondo e Carlo è affabile'' $\equiv$ ``Carlo è alto e Carlo è biondo e affabile''.
-        \item $A \wedge A \equiv A$: ripetere due voleta la stessa proposizione non ne cambia il significato.`Carlo è alto e Carlo è alto'' $\equiv$ ``Carlo è alto''.
-        \item $A \wedge \top \equiv A$:  ``Michele è o non è alto'' è sicuramente vero, quindi non ha alcuna rilevanza. ``Carlo è alto e Michele è o non è alto'' $\equiv$ ``Carlo è alto''
-        \item $A \wedge \bot \equiv \bot$: ``Michele è alto e non è alto'' è sicuramente falso. Quindi ``Carlo è alto e Michele è alto e non è alto'' $\equiv$ ``Carlo è alto''.
+        \item $A \wedge B \equiv B \wedge A$: cambiare l'ordine delle affermazioni, non cambia il significato.\\
+        \prop{Carlo è alto e Mario è basso} $\equiv$ \prop{Mario è basso e Carlo è alto}.
+        \item $A \wedge (B \wedge C) \equiv (A \wedge B) \wedge C$: non è facile fare un esempio in italiano, dove non ci sono le parentesi. Tuttavia, possiamo ripetere il soggetto in modo diverso per dare una idea del raggruppamento.\\
+        \prop{Carlo è alto e biondo e Carlo è affabile} $\equiv$ \prop{Carlo è alto e Carlo è biondo e affabile}.
+        \item $A \wedge A \equiv A$: ripetere due volte la stessa proposizione non ne cambia il significato.\\
+        \prop{Carlo è alto e Carlo è alto} $\equiv$ \prop{Carlo è alto}.
+        \item $A \wedge \top \equiv A$: \prop{Michele è o non è alto} è sicuramente vero, quindi non ha alcuna rilevanza.\\
+        \prop{Carlo è alto e Michele è o non è alto} $\equiv$ \prop{Carlo è alto}.
+        \item $A \wedge \bot \equiv \bot$: \prop{Michele è alto e non è alto} è sicuramente falso. Quindi\\
+        \prop{Carlo è alto e Michele è alto e non è alto} è sicuramente falso.
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Alcuni esempi in linguaggio naturale (2)}
     \begin{itemize}
         \item $A \wedge (B \vee C) \equiv (A \wedge B) \vee (A \wedge C)$:
-        ``Carlo studia informatica e Carlo studia economia o filosofia'' $\equiv$ ``Carlo studia informatica ed economia oppure Carlo studia informatica e filosofia''.
+        \prop{Carlo studia informatica e Carlo studia economia o filosofia} $\equiv$ \prop{Carlo studia informatica ed economia oppure Carlo studia informatica e filosofia}.
         \item $A \vee (B \wedge C) \equiv (A \vee B) \wedge (A \vee C)$:
-        ``Carlo studia informatica oppure Carlo studia economia e filosofia'' $\equiv$ ``Carlo studia informatica o economia e Carlo studio informatica o filosofia''. Tuttavia,  l'equivalenza in italiano non è molto intuitiva.
-        \item $A \wedge (A \vee B)$: ``Carlo studia informatica e Carlo studia informatica o economia'' $\equiv$ ``Carlo studia informatica''. Infatti, perché la proposizione sia vera, è necessario che Carlo studi informatica, mentre se studia anche economia è ininfluente.
-        \item $A \vee (A \wedge B)$: ``Carlo studia informatica oppure Carlo studia informatica ed economia'' $\equiv$ ``Carlo studia informatica''. Come prima, perché la proposizione sia vera è sufficiente che Carlo studi informatica, mentre se studia anche economia è ininfluente.
-        \item $\neg \neg A \equiv A$: due negazioni affermano. ``Non è vero che Carlo non studia informatica'' $\equiv$ ``Carlo studia informatica ''.
+        \prop{Carlo studia informatica oppure Carlo studia economia e filosofia} $\equiv$ \prop{Carlo studia informatica o economia e Carlo studio informatica o filosofia}. Tuttavia,  l'equivalenza in italiano non è molto intuitiva.
+        \item $A \wedge (A \vee B)$: \prop{Carlo studia informatica e Carlo studia informatica o economia} $\equiv$ \prop{Carlo studia informatica}. Perché la proposizione sia vera, è necessario che Carlo studi informatica, mentre che studi anche economia è ininfluente.
+        \item $A \vee (A \wedge B)$: \prop{Carlo studia informatica oppure Carlo studia informatica ed economia} $\equiv$ \prop{Carlo studia informatica}. Come prima, perché la proposizione sia vera è sufficiente che Carlo studi informatica, mentre se studia anche economia è ininfluente.
+        \item $\neg \neg A \equiv A$: due negazioni affermano.\\
+        \prop{Non è vero che Carlo non studia informatica} $\equiv$ \prop{Carlo studia informatica}.
     \end{itemize}
 \end{frame}
 
-% \begin{frame}{Equivalenza logica e insiemistica (1)}
-%     Vediamo quindi che per alcune equivalenze logiche vale una equivalenza algebrica corrispondente, ma non per tutte.
+\begin{frame}{Equivalenza logica e insiemistica (1)}
+    Vediamo quindi che per alcune equivalenze logiche vale una equivalenza algebrica corrispondente, ma non per tutte.
 
-%     \medskip
-%     In realtà, una totale corrispondenza si ha tra le equivalenze logiche e le equivalenze insiemistiche. Si consideri un insieme fissato $U$ (detto \emph{insieme universo}) e tutti i suoi sottinsiemi. La corrispondenza tra logica e insiemistica è la seguente:
-%     \[
-%         \vee \Rightarrow \cup \qquad \wedge \Rightarrow \cap \qquad \neg \Rightarrow  U \setminus \qquad \top = U \qquad \bot = \emptyset
-%     \]
-% \end{frame}
+    \medskip
+    In realtà, una totale corrispondenza si ha tra le equivalenze logiche e le equivalenze insiemistiche. Si consideri un insieme fissato $U$ (detto \alert{insieme universo}). Pensiamo alle lettere proposizionali come \alert{sottoinsiemi di $U$}. La corrispondenza tra logica e insiemistica è la seguente:
+    \[
+        \vee \Rightarrow \cup \qquad \wedge \Rightarrow \cap \qquad \neg \Rightarrow  U \setminus \qquad \top \Rightarrow U \qquad \bot \Rightarrow \emptyset
+    \]
+\end{frame}
 
-% \begin{frame}{Equivalenza logica e insiemistica (2)}
-%     \centering
-%     \begin{tabular}{c|c|c}
-%         \textbf{logica}                                      & \textbf{nome}         & \textbf{insiemi}                          \\
-%         \hline
-%         $A \vee B \equiv B \vee A$                           & prop. commutativa     & $A \cup B = B \cup A$                     \\
-%         $A \vee (B \vee C) \equiv (A \vee B) \vee C$         & prop. associativa     & $A \cup (B \cup C) = (A \cup B) \vee C$   \\
-%         $A \vee A \equiv A$                                  & prop. di idempotenza  & $A \cup A = A$                            \\
-%         $A \vee \bot \equiv A$                               & elemento neutro       & $A \cup \emptyset = A$                    \\
-%         $A \vee \top \equiv \top$                            & elemento assorbente   & $A \cup U = U$                            \\
-%         \hline
-%         \hline
-%         $A \wedge B \equiv B \wedge A$                       & prop. commutativa     & $A \cap B = B \cap A$                     \\
-%         $A \wedge (B \wedge C) \equiv (A \wedge B) \wedge C$ & prop. associativa     & $A \cap (B \wedge C) = (A \cap B) \cap C$ \\
-%         $A \wedge A \equiv A$                                & prop. di idempotenza  & $A \cap A = A$                            \\
-%         $A \wedge \top \equiv A$                             & elemento neutro       & $A \cap U = A$                            \\
-%         $A \wedge \bot \equiv \bot$                          & elemento assorbente   & $A \cap \emptyset = \emptyset$            \\
-%         \hline
-%         \hline
-%         $A \wedge (B \vee C)$                                & prop. distributiva    & $A \cap (B \cup C)$                       \\
-%         $A \vee (B \wedge C)$                                & prop. distributiva    & $A \cup (B \cap C)$                       \\
-%         $A \wedge (A \vee B) \equiv A$                       & prop. di assorbimento & $A \cap (A \cup B) =A$                    \\
-%         $A \vee (A \wedge B) \equiv A$                       & prop. di assorbimento & $A \cup (A \cap B) = A$                   \\
-%     \end{tabular}
-% \end{frame}
+\begin{frame}{Equivalenza logica e insiemistica (2)}
+    \smallskip
+    \centering
+    \begin{tabular}{c|c|c}
+        \textbf{logica}                                      & \textbf{nome}         & \textbf{insiemi}                          \\
+        \hline
+        $A \vee B \equiv B \vee A$                           & prop. commutativa     & $A \cup B = B \cup A$                     \\
+        $A \vee (B \vee C) \equiv (A \vee B) \vee C$         & prop. associativa     & $A \cup (B \cup C) = (A \cup B) \vee C$   \\
+        $A \vee A \equiv A$                                  & prop. di idempotenza  & $A \cup A = A$                            \\
+        $A \vee \bot \equiv A$                               & elemento neutro       & $A \cup \emptyset = A$                    \\
+        $A \vee \top \equiv \top$                            & elemento assorbente   & $A \cup U = U$                            \\
+        \hline
+        \hline
+        $A \wedge B \equiv B \wedge A$                       & prop. commutativa     & $A \cap B = B \cap A$                     \\
+        $A \wedge (B \wedge C) \equiv (A \wedge B) \wedge C$ & prop. associativa     & $A \cap (B \wedge C) = (A \cap B) \cap C$ \\
+        $A \wedge A \equiv A$                                & prop. di idempotenza  & $A \cap A = A$                            \\
+        $A \wedge \top \equiv A$                             & elemento neutro       & $A \cap U = A$                            \\
+        $A \wedge \bot \equiv \bot$                          & elemento assorbente   & $A \cap \emptyset = \emptyset$            \\
+        \hline
+        \hline
+        $A \wedge (B \vee C)$                                & prop. distributiva    & $A \cap (B \cup C)$                       \\
+        $A \vee (B \wedge C)$                                & prop. distributiva    & $A \cup (B \cap C)$                       \\
+        $A \wedge (A \vee B) \equiv A$                       & prop. di assorbimento & $A \cap (A \cup B) =A$                    \\
+        $A \vee (A \wedge B) \equiv A$                       & prop. di assorbimento & $A \cup (A \cap B) = A$                   \\
+    \end{tabular}
+\end{frame}
 
+\begin{frame}{Equivalenza logica e insiemistica (3)}
+    \begin{center}
+        \begin{tabular}{c|c|c}
+            \textbf{logica}               & \textbf{nome proprietà} & \textbf{insiemi}             \\
+            \hline
+            $\neg \neg A \equiv A$      & doppia negazione        & $ U \setminus (U \setminus A) = A$             \\
+            $A \vee \neg A \equiv \top$   & terzo escluso           & $A \cup (U \setminus A) = U$            \\
+            $A \wedge \neg A \equiv \bot$ & non contraddizione      & $A \cap (U \setminus A) = \emptyset$ \\
+            $\neg \top \equiv \bot$            &                         & $U \setminus U = \emptyset$                  \\
+            $\neg \bot \equiv \top$            &                         & $U \setminus \emptyset = U$
+        \end{tabular}
+    \end{center}
+\end{frame}
 
 \begin{frame}{Leggi di De Morgan (1)}
     Le leggi di De Morgan correlano congiunzione e disgiunzione con la negazione. Sono leggi molto importanti che consentono di semplificare le \fp complesse.
     \begin{gather*}
-        \neg (A \wedge B) = \neg A \vee \neg B\\
-        \neg (A \vee B) = \neg A \wedge \neg B
+        \neg (A \wedge B) \equiv \neg A \vee \neg B\\
+        \neg (A \vee B) \equiv \neg A \wedge \neg B
     \end{gather*}
 
     \begin{example}
-        Consideriamo la proposizione:
-        \begin{quote}
-            Carlo non studia informatica ed economia
-        \end{quote}
-        abbreviazione di
-        \begin{quote}
-            Non è vero che Carlo studia informatica ed economia
-        \end{quote}
-        È equivalente a dire
-        \begin{quote}
-            Carlo non studia informatica o Carlo non studia economia
-        \end{quote}
+        Consideriamo la proposizione:\\[0.1cm]
+        \quad\prop{Carlo non studia informatica ed economia}\\[0.1cm]
+        abbreviazione di\\[0.1cm]
+        \quad\prop{Non è vero che Carlo studia informatica ed economia}\\[0.1cm]
+        è equivalente a dire\\[0.1cm]
+        \quad\prop{Carlo non studia informatica o Carlo non studia economia}
     \end{example}
 \end{frame}
 
 \begin{frame}[fragile]{Leggi di De Morgan (2)}
     \begin{example}
-        Consideriamo un frammento di  programma per calcolare le spese di spedizione.
+        Consideriamo un frammento di  programma in Python per calcolare le spese di spedizione.
 
         \begin{minted}[autogobble,xleftmargin=0.5cm]{python}
         shipping_charge = 10
@@ -621,7 +679,7 @@
         \begin{minted}[autogobble,xleftmargin=0.5cm]{python}
         state != "Italy" or regione == "Sardegna"
     \end{minted}
-        Le spese aggiuntive si pagane se la spedizione e all'estero, oppure in Sardegna.
+        Le spese aggiuntive si pagano se la spedizione e all'estero, oppure in Sardegna.
     \end{example}
 \end{frame}
 
@@ -637,32 +695,37 @@
         allora $X' \equiv Y'$.
     \end{theorem}
 
+    \pause\medskip
     \begin{example}
         Prendiamo ad esempio l'equivalenza
-        \[A \wedge \top \equiv A\]
-        Applicando ad ambo i membri dell'equivalenza gli scambi di prima, otteniamo \pause \[A \vee \bot \equiv A\]
+        \[A \wedge \top \equiv A\]\pause
+        Applicando ad ambo i membri dell'equivalenza gli scambi di prima, otteniamo
+        \[A \vee \bot \equiv A\]
     \end{example}
 \end{frame}
 
 \begin{frame}{Proprietà associativa e parentesi}
     Il fatto che $\wedge$ e $\vee$ godano della proprietà associativa, ci consente di risparmiare qualche parentesi.
     \begin{itemize}
-    \item Consideriamo la formula $A \wedge B \wedge C$. La formula non va bene perché è ambigua, la si può interpretare come $(A \wedge B) \wedge C$ oppure $A \wedge (B \wedge C)$.
-    \item Le due possibile interpretazioni sono però equivalenti, per la proprietà associativa, quindi l'ambiguità non ci crea nessun problema!
-    \item La stessa cosa vale anche per $\vee$, ma non se c'è una mescolanza di $\wedge$ e $\vee$:
-    \begin{itemize}
-        \item possiamo scrivere $A \vee B \vee C$ perché tanto le due alternative $(A \vee B) \vee C$ e $A \vee (B \vee C)$ sono equivalenti;
-        \item non possiamo scrivere $A \wedge B \vee C$ perché le due alternative $(A \wedge B) \vee C$ e $A \wedge (B \vee C)$ \textbf{non} sono equivalenti.
-    \end{itemize}
+        \item<+-> Consideriamo la formula $A \wedge B \wedge C$.\\
+        È \alert{ambigua}: la si può interpretare come $(A \wedge B) \wedge C$ oppure $A \wedge (B \wedge C)$.
+        \item<+-> Le due possibile interpretazioni sono però \alert{equivalenti}, per la proprietà associativa, quindi l'ambiguità non ci crea nessun problema!
+        \item<+-> La stessa cosa vale anche per $\vee$, ma solo se non c'è una mescolanza di $\wedge$ e $\vee$:
+        \begin{itemize}
+            \item \alert{possiamo scrivere $A \vee B \vee C$}\\[0.1cm]
+            le due alternative $(A \vee B) \vee C$ e $A \vee (B \vee C)$ sono equivalenti;\\[0.2cm]
+            \item \alert{non possiamo scrivere $A \wedge B \vee C$}\\[0.1cm]
+             le due alternative $(A \wedge B) \vee C$ e $A \wedge (B \vee C)$ \textbf{non} sono equivalenti.
+        \end{itemize}
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Equivalenze con l'or esclusivo}
-    L'or esclusivo è definibile a partire da and, or e not, come segue:
+    La disgiunzione esclusiva è definibile a partire da congiunzione, disgiunzione (inclusiva) e negazione:
     \[
         A \xor B \equiv (A \wedge \neg B) \vee (\neg A \wedge B)
     \]
-    Notare che le due fp $A \wedge \neg B$ e $\neg A \wedge B$ corrispondono esattamente ai due casi in cui l'or esclusivo è vero (una delle due proposizioni è vera, l'altra è falsa).
+    Notare che le due fp $A \wedge \neg B$ e $\neg A \wedge B$ corrispondono esattamente ai due casi in cui la disgiunzione esclusivo è vera (una delle due proposizioni è vera, l'altra è falsa).
 
     \pause \medskip Altre equivalenze notevoli:
     \begin{align*}
@@ -676,7 +739,7 @@
 \end{frame}
 
 \begin{frame}{L'implicazione (1)}
-    L'implicazione è definibile a partire da and, or, e not:
+    L'implicazione è definibile a partire da congiunzione, disgiunzione e negazione:
     \[
         A \to B \equiv \neg(A \wedge \neg B)  \equiv \neg A \vee B
     \]
@@ -710,11 +773,11 @@
         A \to B \equiv \neg B \to \neg A
     \]
     \begin{example}
-        Data la proposizione ``se $x$ è divisibile per 4 allora x è pari'',  vera per tutti gli $x$:
+        Data la proposizione ``\prop{se $x$ è divisibile per 4 allora x è pari}\/'',  vera per tutti gli $x$:
         \begin{itemize}
-            \item l'inversa ``se $x$ è pari allora x è divisibile per 4'' è falsa per $x=2$;
-            \item la contraria ``se $x$ non è divisibile per 4 allora x non è pari'' è falsa per $x=2$;
-            \item la contronominale ``se $x$ non è pari allora x non è divisibile per 4'' è vera per tutti i possibili $x$.
+            \item l'inversa ``\prop{se $x$ è pari allora x è divisibile per 4}'' è falsa per $x=2$;
+            \item la contraria ``\prop{se $x$ non è divisibile per 4 allora x non è pari}'' è falsa per $x=2$;
+            \item la contronominale ``\prop{se $x$ non è pari allora x non è divisibile per 4}'' è vera per tutti i possibili $x$.
         \end{itemize}
     \end{example}
 \end{frame}
@@ -761,7 +824,7 @@
     che mostrano come $A \iff B$ non è altro che la congiunzione di due implicazioni nei due versi opposti.
 
     \pause \medskip
-    La doppia implicazione è inoltre definibile a partire dall'or esclusivo (e viceversa).
+    La doppia implicazione è inoltre definibile a partire dalla disgiunzione esclusiva (e viceversa).
     \begin{gather*}
         A \iff B \equiv \neg (A \xor B)\\
         A \xor B \equiv \neg (A \iff B)
@@ -769,7 +832,8 @@
 \end{frame}
 
 \begin{frame}{La doppia implicazione (2)}
-    La doppia implicazione è anche equivalente ad una formula che usa solo and, or e not:
+    La doppia implicazione è anche equivalente ad una formula che usa solo congiunzione, disgiunzione e negazione:
+
     \[
         A \iff B \equiv (A \wedge B) \vee (\neg A \wedge \neg B)
     \]
@@ -786,6 +850,12 @@
     \end{align*}
 \end{frame}
 
+\begin{frame}{Esercizi consigliati}
+    Esercizi da 11 a 13 del Capitolo 3.
+
+    \medskip
+    Esercizi da 1 a 5 del Capitolo 4.
+\end{frame}
 
 \section{Semplificare le \fp}
 
@@ -805,7 +875,7 @@
     \pause\medskip
     Questo fatto si può formalizzare come segue:
     \begin{theorem}
-        Sia $X$, $X'$ ed $Y$ forme proposizionali, con $X \equiv X'$. Se $Y'$ è ottenuta da $Y$ rimpiazzando tute le occorrenze di $X$ con $X'$ o viceversa, allora $Y \equiv Y'$.
+        Siano $X$, $X'$ ed $Y$ forme proposizionali, con $X \equiv X'$. Se $Y'$ è ottenuta da $Y$ rimpiazzando tute le occorrenze di $X$ con $X'$ o viceversa, allora $Y \equiv Y'$.
     \end{theorem}
 \end{frame}
 
@@ -828,47 +898,57 @@
     \pause\medskip
     Questo fatto si può formalizzare come segue:
     \begin{theorem}
-        Sia $P \equiv Q$. Se $P'$ e $Q'$ sono altre forme proposizionali ottenute da $P$ e $Q$ rimpiazzando le lettere proposizionali con forme proposizionali in maniera consistente (ovvero, la stessa lettera è sempre sostituita dalla stessa formula), allora $P' \equiv Q'$.
+        Siano $X \equiv X'$. Se $Y$ e $Y'$ sono altre forme proposizionali ottenute da $X$ e $X'$ rimpiazzando le lettere proposizionali con forme proposizionali in maniera consistente (ovvero, la stessa lettera è sempre sostituita dalla stessa formula), allora $Y \equiv Y'$.
     \end{theorem}
 \end{frame}
-
-% \begin{frame}{Applicare una equivalenza ad una formula (2)}
-%     Quando rimpiazzo una lettera proposizionale con una formula, devo sempre aggiungere delle parentesi attorno alla formula, altrimenti rischio di ottenere forme proposizionali ambigue o equivalenze errate.
-%     \begin{example}
-%         Dato $A \wedge B \equiv B \wedge A$, rimpiazziamo
-%         \begin{itemize}
-%             \item $A \Rightarrow A \to B$
-%             \item $B \Rightarrow A \vee C$
-%         \end{itemize}
-%         Senza parentesi, si ottiene \pause $A \to B \wedge A \vee C \equiv A \vee C \wedge A \to B$, che è ambiguo per l'alternarsi di $\wedge$ e $\vee$.
-
-%         \pause
-%         \medskip
-%         Peggio ancora, se rimpiazzo
-%         \begin{itemize}
-%             \item $A \Rightarrow A$
-%             \item $B \Rightarrow B \to C$
-%         \end{itemize}
-%         ottengo \pause $A \wedge B \to C \equiv B \to C \wedge A$ che si legge
-%         $(A \wedge B) \to C \equiv B \to (C \wedge A)$ che non è una equivalenza corretta!
-%     \end{example}
-% \end{frame}
 
 \begin{frame}{Applicare una equivalenza ad una formula (3)}
     In conclusione, il fatto che $A \wedge B \equiv B \wedge A$ vuol dire che:
 
     \smallskip
     \begin{quotation}
-        \noindent in una forma proposizionale, ogni volta che c'è un connettivo ``and'' è possibile cambiare l'ordine dei congiunti e ottenere una forma equivalente.
+        \noindent in una forma proposizionale, ogni volta che compare il connettivo $\wedge$ è possibile cambiare l'ordine dei congiunti e ottenere una forma equivalente.
     \end{quotation}
     Analogamente per le altre equivalenze notevoli.
 
     \medskip \pause
     È possibile usare queste manipolazioni di tipo algebrico per
     \begin{itemize}
-        \item verificare nuove equivalenze logiche in maniera più veloce non costruendo la tavola di verità;
+        \item verificare nuove equivalenze logiche in maniera più veloce, senza costruire la tavola di verità;
         \item semplificare delle forme proposizionali complesse.
     \end{itemize}
+\end{frame}
+
+\begin{frame}{Rimpiazzare una lettera con una formula (1)}
+    Quando rimpiazziamo una lettera proposizionale con una fp, bisogna sempre valutare se aggiungere attorno ad essa delle parentesi, altrimenti rischiamo che la fp completa non si legga in modo corretto.
+    \begin{example}
+        Dato $A \wedge B \equiv B \wedge A$, se rimpiazziamo
+        \begin{itemize}
+            \item $A$ con $A \to B$,
+            \item $B$ con $A \vee C$.
+        \end{itemize}
+        senza parentesi, otteniamo\\[0.1cm]
+        \quad $A \to B \wedge A \vee C \equiv A \vee C \wedge A \to B$\\[0.1cm]
+        che contiene fp ambigue per l'alternarsi di $\wedge$ e $\vee$. L'equivalenza corretta, che viene dalla originale proprietà commutativa, è:\\[0.1cm]
+        \quad $(A \to B) \wedge (A \vee C) \equiv (A \vee C) \wedge (A \to B)$
+    \end{example}
+\end{frame}
+
+\begin{frame}{Rimpiazzare una lettera con una formula (2)}
+    Questo esempio è anche peggiore:
+    \begin{example}
+        Dato $A \wedge B \equiv B \wedge A$, se rimpiazziamo
+        \begin{itemize}
+            \item $A$ con $A$,
+            \item $B$ con $B \to C$,
+        \end{itemize}
+        senza parentesi, otteniamo\\[0.1cm]
+        \quad $A \wedge B \to C \equiv B \to C \wedge A$\\[0.1cm]
+        che si legge\\[0.1cm]
+        \quad $(A \wedge B) \to C \equiv B \to (C \wedge A)$\\[0.1cm]
+        che non è una equivalenza corretta! Quella correttà è:\\[0.1cm]
+        \quad $A \wedge (B \to C) \equiv (B \to C) \wedge A$
+    \end{example}
 \end{frame}
 
 \begin{frame}{Verificare una equivalenza logica (1)}
@@ -895,22 +975,18 @@
         \[
         \neg (X \wedge Y) = \neg X \vee \neg Y
         \]
-        \item  Noi vogliamo applicare questa legge a  $\neg(\neg A \wedge \neg B)$: dobbiamo capire se è possibile sostiture $X$ e $Y$ nella legge di De Morgan con delle formule in maniera tale che
+        \item Noi vogliamo applicare questa legge a  $\neg(\neg A \wedge \neg B)$: dobbiamo capire se è possibile sostiture $X$ e $Y$ nella legge di De Morgan con delle formule in maniera tale che
         $\neg (X \wedge Y)$ diventi $\neg(\neg A \wedge \neg B)$.
         \item Questo è possibile con la sostituzione $X \mapsto \neg A$ e $Y \mapsto \neg B$.
-        \item    Applicando queste sostituzioni alla legge di De Morgan, otteniamo
+        \item Applicando queste sostituzioni alla legge di De Morgan, otteniamo
         \[\neg(\neg A \wedge \neg B) \equiv \neg\neg A \vee \neg\neg B \]
     \end{itemize}
     \pause
-    \textbf{Questo vale anche per l'applicazione delle altre equivalenze notevoli, finché con la pratica il loro utilizzo diventa automatico.}
+    \textbf{Procedimento analogo vale per l'applicazione delle altre equivalenze notevoli.}
 \end{frame}
 
-% \note{
-%     Credo che serva dare una spiegazione un po' più dettagliata di come $\neg(\neg A \wedge \neg B)$ diventa $(\neg \neg A \vee \neg \neg B)$. Si potrebbe probabilmente scrivere la formula di De Morgan originaria come $\neg (X \wedge Y) = \neg X \vee \neg Y$ e far vedere graficamente che rimpiazziamo $X$ con $\neg A$ e $Y$ con $\neg B$.
-% }
-
 \begin{frame}{Semplificazione di una fp}
-    Vogliamo semplificare la forma proposizionale $X$. La tecnica è la stessa: si parte da $X$ e si applicano le equivalenze note fino ad ottenere una forma più semplice, ricordando che talvolta, per semplificare le cose, occorre prima complicarle !
+    Vogliamo semplificare la forma proposizionale $X$. La tecnica è la stessa usata sopra: si parte da $X$ e si applicano le equivalenze note fino ad ottenere una forma più semplice, ricordando che talvolta, per semplificare le cose, occorre prima complicarle !
 
     \begin{example}
         Vogliamo semplificare la fp $(A \wedge B) \vee (A \wedge \neg B)$.

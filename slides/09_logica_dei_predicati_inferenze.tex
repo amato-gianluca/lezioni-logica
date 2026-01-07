@@ -1,8 +1,8 @@
-\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table]{beamer}
+\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table,handout]{beamer}
 
 \usepackage{bussproofs}
 \EnableBpAbbreviations
-\setbeameroption{show notes}
+%\setbeameroption{show notes}
 
 \newcommand{\myfbox}[2]{\tikz[baseline=(n.base)]\node(n)[alt=<1>{fill=#1!50}]{#2};}
 
@@ -18,50 +18,15 @@
     \titlepage
 \end{frame}
 
-\section{Dalle proposizioni ai predicati}
-
-\begin{frame}{Inferenze a livello predicativo}
-    Fino ad ora abbiamo trattato la \emph{logica proposizionale}. Nella logica proposizionale il costrutto di base è la proposizione, e proposizioni più complesse si ottengono tramite connettivi logici.
-
-    \medskip
-    Quando entrano in gioco i \emph{quantificatori}, la logica proposizionale non è più sufficiente per determinare la validità di una inferenza.
-
-    \begin{center}
-        \begin{inference}
-            Napoleone è corso\\
-            Tutti i corsi sono francesi\\
-            \hline
-            Napoleone è francese
-        \end{inference}
-        \qquad
-        \begin{inference}
-            Socrate è un uomo\\
-            Tutti gli uomini sono mortali\\
-            \hline
-            Socrate è mortale
-        \end{inference}
-    \end{center}
-    Se analizzate come fatto fin'ora, corrispondo alla regola di inferenza:
-    \begin{center}
-        \begin{inference}
-            A\\
-            B\\
-            \hline
-            C
-        \end{inference}
-    \end{center}
-    che non è corretta! Bisogna passare alla \alert{logica dei predicati}.
+\begin{frame}
+    \copyrightpage
 \end{frame}
 
-% \begin{frame}{Forma logica}
-%     Nella logica dei predicati, la \emph{forma logica} di una proposizione si ottiene in maniera più complessa:
-%     \begin{itemize}
-%         \item si riscrivoni i quantificatori in forma esplicita, usando la forma ``per ogni $x$'' ed ``esiste $x$ tale che'', eventualment nella versione in simboli $\forall x$, $\exists x$.
-%         \item si individuano i \emph{predicati} che compaiono nella proposizione e si rimpiazzano con \alert{costanti predicative} (noi useremo le lettere maiuscole $P$, $Q$, $R$, \dots);
-%         \item si individuano gli individui esplicitamente nominati nelle proposizioni e si rimpiazzano con \alert{costanti individuali} (noi useremo le lettere minuscole $a$, $b$, $c$, \dots);
-%         \item si rimpiazzano i connettivi logici con i corrispondenti connettivi logici della logica dei predicati.
-%     \end{itemize}
-% \end{frame}
+\begin{frame}
+    \bookpage{sul Capitolo 5}
+\end{frame}
+
+\section{Dalle proposizioni ai predicati}
 
 \begin{frame}{Forma logica per la logica dei predicati}
     \tikzstyle{every node} = [rounded corners, outer sep=0, inner sep=0.1cm]
@@ -108,31 +73,34 @@
 
 
 \begin{frame}{Costanti individuali, simboli di connettivi e quantificatori}
-	Per i \alert{simboli dei connettivi} usiamo gli stessi della logica delle proposizioni: $\land$, $\lor$, $\lnot$, $\to$, $\leftrightarrow$, $\xor$.
+	Per i \alert{simboli dei connettivi} usiamo gli stessi della logica proposizionale: $\land$, $\lor$, $\lnot$, $\to$, $\leftrightarrow$, $\xor$.
 
 	\pause\medskip
-	Per i \alert{simboli dei quantificatori} usiamo:
+	Per i \alert{simboli dei quantificatori}:
 	\begin{itemize}
 		\item ``per ogni x,'' si scrive $\forall x$
 		\item ``esiste x tale che,'' si scrive $\exists x$
 	\end{itemize}
 
 	\pause\medskip
-	Le \alert{costanti individuali} rappresentano un individuo. Si scrivono di solito in lettere minuscole. In particolare noi useremo $a$, $b$, $c$, \ldots
+	Le \alert{costanti individuali} rappresentano un individuo. Si scrivono di solito in lettere minuscole. In particolare noi useremo $a$, $b$, $c$, \ldots Per ora non tratteremo il caso di enunciati che contengono descrizioni definite.
+
+    \pause\medskip
+    Notare che anche le \alert{variabili individuali} rappresentano degli individui, e per esse utilizzeremo le lettere finali dell'alfabeto latino ($x$, $y$, etc\ldots). Di solito le variabili saranno vincolate, perché compaiono come conseguenza della formalizzazione dei quantificatori in italiano in ``per ogni'' ed  ``esiste \ldots tale che''.
 \end{frame}
 
 \begin{frame}{Costanti predicative}
 	Le \alert{costanti predicative} rappresentano un predicato. Si scrivono di solito in lettere maiuscole, in particolare noi useremo $P$, $Q$, $R$, $S$, etc\ldots
 
 	\pause\medskip
-	Ad ogni costante predicativa sarà associatà una \alert{arità} che dipende dal tipo di relazione che essa rappresenta.
+	Ad ogni costante predicativa sarà associatà un numero naturale chiamato \alert{arità} che dipende dal tipo di relazione che essa rappresenta.
 	\begin{itemize}
 		\item Ad esempio se $P$ rappresenta il predicato ``essere francese'' (che si applica ad un solo individuo) allora $P$ sarà di arità uno.
-		\item Come ulteriore esempio, se $P$ rappresenta il predicato ``essere più grande di'' (che si applica a due individui) allora $P$ sarà di arità due.
+		\item Se invece $P$ rappresenta il predicato ``essere più grande di'' (che si applica a due individui) allora $P$ sarà di arità due.
 	\end{itemize}
 
 	\pause\medskip
-	A seconda dell'arità della costante predicativa, essa accetterà un certo numero di argomenti. Ad esempio, se $P$ è una costante di arità 2, vuol dire che $P$ accetta due argomenti, per cui nelle formule comparità come $Pxy$, $Pab$, \ldots
+	A seconda dell'arità della costante predicativa, essa accetterà un certo numero di argomenti. Ad esempio, se $P$ è una costante di arità 2, vuol dire che $P$ accetta due argomenti, per cui nelle formule comparità come $Pxy$, $Pab$, \ldots Gli argomenti sono o costanti o variabili individuali.
 
 	\pause\medskip
 	Tavolta si usa per le costanti predicative la stessa notazione che si usa per le funzioni Python, con gli argomenti tra parentesi e separate da virgole: $P(x,y)$, $P(a,b)$, \ldots
@@ -148,7 +116,7 @@
     \end{definition}
 
     \medskip
-    Nella logica delle proposizioni la frase ``ogni volta che \ldots'' veniva tradotta in maniera più precisa con ``in ogni riga della tabella tabella di verità'' o ``in ogni assegnamento di valori di verità a lettere proposizionali''. Ma cosa significa ``ogni volta che \ldots'' nella logica dei predicati?
+    Nella logica delle proposizioni la frase ``ogni volta che \ldots'' veniva tradotta in maniera più precisamente con ``in ogni riga della tabella tabella di verità'' o ``in ogni assegnamento di valori di verità a lettere proposizionali''. Ma cosa significa ``ogni volta che \ldots'' nella logica dei predicati?
 \end{frame}
 
 \begin{frame}{Inferenze nella logica proposizionale (1)}
@@ -166,9 +134,9 @@
     allora la formula diventa
 
     \smallskip
-    \begin{quote}
+    \begin{proposition}
         Se Parigi è la capitale della Francia, allora Roma è la capitale d'Italia e Berlino è la capitale della Finlandia.
-    \end{quote}
+    \end{proposition}
     che è falsa perché l'antecedente è vero ma il conseguente è falso.
 \end{frame}
 
@@ -187,7 +155,7 @@
 \end{frame}
 
 \begin{frame}{Inferenze nella logica proposizionale (3)}
-    Fortunatamente, ci rendiamo presto conto che non è veramente necessario rimpiazzare le lettere proposizionali con proposizioni, perché l'unica cosa che ci interessa di queste proposizioni è se sono vere o false.
+    Fortunatamente, non è veramente necessario rimpiazzare le lettere proposizionali con proposizioni, perché l'unica cosa che ci interessa di queste proposizioni è se sono vere o false.
 
     \medskip
     Quindi possiamo, in maniera più semplice, rimpiazzare le lettere con dei valori di verità, e otteniamo la definizione che abbiamo visto fin'ora:
@@ -199,25 +167,25 @@
     Nella logica dei predicati, seguiremo questo percorso:
     \begin{itemize}
         \item vedremo dapprima una definizione più informale di correttezza di regola di inferenza, simile a quella della slide precedente;
-        \item poi vedremo una definizione più formale, che purtroppo non sarà così semplice come quella della logica proposizionale.
+        \item poi vedremo (in altre lezioni) una definizione più formale, che purtroppo non sarà così semplice come quella della logica proposizionale.
     \end{itemize}
 \end{frame}
 
 \section{Interpretazioni}
 
 \begin{frame}{Interpretazioni}
-    Per trasformare una forma proposizionale in una proposizione, era sufficiente rimpiazzare ogni lettera con una proposizione. La cosa non è così semplice nella logica dei predicati. Chiamiamo \alert{interpretazione} il processo con cui passiamo dalle formule ben formate alle proposizioni.
+    Per trasformare una forma proposizionale in una proposizione, è sufficiente rimpiazzare ogni lettera con una proposizione. La cosa non è così semplice nella logica dei predicati. Chiamiamo \alert{interpretazione} il processo con cui passiamo dalle formule ben formate alle proposizioni.
 
     \begin{definition}[Interpretazione --- informale]
         Una \alert{interpretazione} consiste di:
         \begin{itemize}
-            \item un insieme di individui, chiamato \emph{dominio}, da intendersi come i valori su cui le costanti individuali possono essere interpretate e i quantificatori possono essere valutati;
+            \item un insieme di individui, chiamato \alert{dominio di quantificazione} o \alert{universo del discorso}, da intendersi come i valori su cui le costanti individuali possono essere interpretate e i quantificatori possono essere valutati;
             \item un assegnamento di un individuo del dominio per ogni costante individuale;
             \item un assegnamento di un predicato per ogni costante predicativa, tale che:
                   \begin{itemize}
-                      \item se la costante predicativa si applica ad un solo individuo (tipo $Px$) allora il predicato dovra essere una proprietà (``essere pari'');
-                      \item se la costante predicativa si applica a due individui (tipo $Pxy$) allora il predicato dovra essere una relazione binaria (``essere più grade di'');
-                      \item in maniera simile per costanti che si applicano a più individui.
+                      \item se la costante predicativa è di arità 1 allora il predicato dovra essere una proprietà (``essere pari'');
+                      \item se la costante predicativa è di arità 2 allora il predicato dovra essere una relazione binaria (``essere più grande di'');
+                      \item in maniera simile per costanti proposizionali di arità maggiore.
                   \end{itemize}
         \end{itemize}
     \end{definition}
@@ -226,11 +194,11 @@
 \begin{frame}{Esempi di interpretazione (1)}
     Consideriamo le formule
     \begin{enumerate}
-        \item $P(a)$
+        \item $Pa$
         \item $\forall x (P x \to R x)$
         \item $\forall x \exists y Qxy$
     \end{enumerate}
-    e vediamo un paio di interpretazoni, completamente diverse, per queste formule.
+    e vediamo un paio di interpretazioni, completamente diverse, per queste formule.
 
     \medskip
     Si noti come il dominio influenzi il tipo di predicati che possiamo scegliere per $P$, $Q$ ed $R$. Se il dominio sono le regioni italiane, il predicato $P$ non può essere ``essere pari'' perché non ha senso chiedersi se una regione è pari o dispari.
@@ -248,9 +216,9 @@
         \end{itemize}
         Le formule diventano:
         \begin{enumerate}
-            \item ``5 è pari'' (falso)
-            \item ``per ogni numero intero $x$, se $x$ è pari allora è divisibile per 4'' (falso), che si può rendere in maniera più naturale in italiano con ``tutti i numeri pari sono divisibili per 4''
-            \item ``per ogni numero intero $x$ esiste un numero intero $y$ tale che $x$ è maggiore di $y$'' (vero)
+            \item ``\prop{5 è pari}\/'' (falso)
+            \item ``\prop{per ogni numero intero $x$, se $x$ è pari allora è divisibile per 4}\/'' (falso), che si può rendere in maniera più naturale in italiano con ``\prop{tutti i numeri pari sono divisibili per 4}\/''
+            \item ``\prop{per ogni numero intero $x$ esiste un numero intero $y$ tale che $x$ è maggiore di $y$}\/'' (vero)
         \end{enumerate}
     \end{example}
 \end{frame}
@@ -262,9 +230,9 @@
         \medskip
         Le formule diventano:
         \begin{enumerate}
-            \item ``5 è pari'' (falso)
-            \item ``per ogni numero naturale $x$, se $x$ è pari allora $x$ è divisibile per 4'' (falso), che si può rendere in maniera più naturale in italiano con ``tutti i numeri naturali pari sono divisibili per 4''
-            \item ``per ogni numero naturale $x$ esiste un numero naturale $y$ tale che $x$ è maggiore di $y$'' (falso)
+            \item ``\prop{5 è pari}\/'' (falso)
+            \item ``\prop{per ogni numero naturale $x$, se $x$ è pari allora $x$ è divisibile per 4}\/'' (falso), che si può rendere in maniera più naturale in italiano con ``\prop{tutti i numeri naturali pari sono divisibili per 4}\/''
+            \item ``\prop{per ogni numero naturale $x$ esiste un numero naturale $y$ tale che $x$ è maggiore di $y$}\/'' (falso)
         \end{enumerate}
         Si noti che l'ultima formula è adesso falsa, mentre prima era vera, perché non esiste un numero naturale minore di 0.
     \end{example}
@@ -278,21 +246,23 @@
             \item $a$ = Lazio
             \item $P$ = essere a statuto speciale
             \item $R$ = essere bagnata dal mare
-            \item $Q$ = essere confinante con
+            \item $Q$ = essere confinante via terra con
         \end{itemize}
         e otteniamo
         \begin{enumerate}
-            \item ``il Lazio è a statuto speciale'' (falso);
-            \item ``per ogni regione italiana $x$, se $x$ è a statuto speciale allora $x$ è bagnata dal mare'', che si può rendere in maniera più naturale in italiano con ``tutte le regioni italiane a statuto speciale sono bagnate dal mare'' (falso, perché la Val d'Aosta non è bagnata dal mare);
-            \item ``per ogni regione italiana $x$ esiste una regione italiana $y$ tale che $x$ è confinante con $y$'' (falso, perché le isole non confinano con altre regioni).
+            \item ``\prop{il Lazio è a statuto speciale}'' (falso);
+            \item ``\prop{per ogni regione italiana $x$, se $x$ è a statuto speciale allora $x$ è bagnata dal mare}'', che si può rendere in maniera più naturale in italiano con ``\prop{tutte le regioni italiane a statuto speciale sono bagnate dal mare}'' (falso, perché la Val d'Aosta non è bagnata dal mare);
+            \item ``\prop{per ogni regione italiana $x$ esiste una regione italiana $y$ tale che $x$ è confinante con $y$}\/'' (falso, perché le isole non confinano con altre regioni).
         \end{enumerate}
     \end{example}
 \end{frame}
 
+\section{Inferenze e formule valide}
+
 \begin{frame}{Regole di inferenza corrette}
     Possiamo quindi definire la correttezza di una regola di inferenza come:
     \begin{definition}[Regola di inferenza corretta]
-        Una regola di inferenza è corretta se e solo se  tutte le interpretazioni che rendono vere le premesse rendono vere anche la conclusione.
+        Una regola di inferenza è corretta se e solo se \alert{tutte le interpretazioni che rendono vere le premesse rendono vere anche la conclusione}.
     \end{definition}
 
     \medskip
@@ -301,8 +271,6 @@
     \medskip
     Tuttavia, ci consente quantomeno di verificare facilmente che una regola di inferenza non è corretta: basta trovare una singola interpretazione che rende vere le premesse e falsa la conclusione.
 \end{frame}
-
-\section{Regole di inferenza corrette}
 
 \begin{frame}{Falsificare una regola di inferenza (1)}
     Consideriamo la seguente regola:
@@ -314,7 +282,7 @@
             $Pa$
         \end{inference}
     \end{center}
-    e verifichiamo che non è corretta. Notare che anche ad occhio è sospetta, peché assomiglia alla ``fallacia dell'affermazione del conseguente''
+    e verifichiamo che non è corretta. Notare che anche ad occhio è sospetta, perché assomiglia alla ``fallacia dell'affermazione del conseguente''
     \begin{center}
         \begin{inference}
             $A \to B$\\
@@ -336,25 +304,72 @@
     \end{itemize}
     Le premesse sono:
     \begin{itemize}
-        \item ``per ogni numero naturale $x$, se $x$ è divisibile per 4 allora $x$ è pari'', ovvero ``tutti i numero divisibili per 4 sono pari'' (vero)
-        \item ``2 è pari'' (vero)
+        \item ``\prop{per ogni numero naturale $x$, se $x$ è divisibile per 4 allora $x$ è pari}\/'', ovvero ``\prop{tutti i numero divisibili per 4 sono pari}\/'' (vero)
+        \item ``\prop{2 è pari}\/'' (vero)
     \end{itemize}
     e la conclusione è
     \begin{itemize}
-        \item ``2 è divisibile per 4'' (falso)
+        \item ``\prop{2 è divisibile per 4}\/'' (falso)
     \end{itemize}
     Quindi la regola non è corretta.
 \end{frame}
 
 \begin{frame}{Falsificare una regola di inferenza (3)}
-    Notare che esistono anche intepretazioni per cui la conclusione è corretta. Ad esempio, basta rimpiazza $a$ con 4 nella precedente interpretazione. Questo però non rende la regola di inferenza corretta!!!
+    Notare che esistono anche interpretazioni per cui la conclusione è vera. Ad esempio, basta rimpiazzare $a$ con 8 nella precedente interpretazione. Questo però non rende la regola di inferenza corretta!!!
 
     \medskip
-    Perché sia corretta, la conclusione deve essere vera in tutte le intepretazione che rendono vere le premesse: basta trovarne una che non è così (come quella della slide precedente) e la regola non è corretta.
+    Perché sia corretta, la conclusione deve essere vera in tutte le interpretazioni che rendono vere le premesse: basta trovarne una che non è così (come quella della slide precedente) e la regola non è corretta.
 \end{frame}
 
+\begin{frame}{Esempio di regola corretta}
+    Un esempio di regola corretta che non deriva da quelle proposizionali è:
+    \begin{example}[Regola di eliminazione del quantificatore universale]
+            \begin{center}
+            \begin{inference}
+                $\forall x Px$\\
+                \hline
+                $Pa$
+            \end{inference}
+        \end{center}
+    \end{example}
+
+    Per verificare che è corretta, dovremmo far vedere che, in tutte le possibili interpretazioni, se la premessa è corretta lo è anche la conseguenza. Non possiamo veramente considerare tutte le interpretazioni, ma possiamo scrivere una  \alert{dimostrazione}.
+
+    \begin{proof}
+        Consideriamo una qualunque interpretazione in cui $\forall x Px$ è vera. Vuol dire che qualunque oggetto del dominio di quantificazione gode della proprietà $x$. Ma anche $a$ corrisponde ad un ogetto del dominio di interpretazione, e quindi anche $Pa$ è vera.
+    \end{proof}
+\end{frame}
+
+\begin{frame}{Regole di inferenza derivate dalla logica proposizionale}
+    Consideriamo ora:
+    \begin{center}
+        \begin{inference}
+            $(\forall x Px) \to (\exists y Qy)$\\
+            $\forall x Px$\\
+            \hline
+            $\exists y Qy$
+        \end{inference}
+    \end{center}
+
+    La regola è corretta perché è semplicemente un caso particolare (\alert{istanza}) del \emph{modus ponens}
+    \begin{center}
+        \begin{inference}
+            $A \to B$\\
+            $A$\\
+            \hline
+            $B$
+        \end{inference}
+    \end{center}
+    ottenuto con le sostituzioni $A \mapsto \forall x Px$ a $B \mapsto \exists y Qy$.
+
+    \begin{theorem}
+        Tutte le regole della logica dei predicati che sono istanze di regole proposizionali corrette sono anch'esse corrette.
+    \end{theorem}
+\end{frame}
+
+
 \begin{frame}{Formule valide (1)}
-    Non è solo il concetta di regola di inferenza corretta che si estende immediatamente al caso predicativo. Anche il concetto di \alert{tautologia} si estende in maniera naturale, sebbene con un altro nome.
+    Non è solo il concetto di regola di inferenza corretta che si estende immediatamente al caso predicativo. Anche il concetto di \alert{tautologia} si estende in maniera naturale, sebbene con un altro nome.
 
     \begin{definition}
         Una formula è detta \alert{valida} se e solo se è vera in tutte le interpretazioni.
@@ -371,28 +386,37 @@
 \end{frame}
 
 \begin{frame}{Formule valide (2)}
-    Notare che $Pa \vee \neg Pa$ deriva dal terzo escluso ($A \vee \neg A$)  rimpiazzando la formula $A$ con $Pa$. Questo è un metodo standar per ottenere vormule valide:
+    Notare che $Pa \vee \neg Pa$ è una istanza del terzo escluso ($A \vee \neg A$) con la sostituzione $A \mapsto Pa$. Questo è un metodo standard per ottenere formule valide:
     \begin{theorem}
-        Se $X$ è una tautologia, tutte le formule ottenuta rimpiazzando in $X$ le lettere proposizionali con formule ben formate sono valide.
+        Tutte le formule ben formate ottenute come istanza di tautologie sono formule valide.
     \end{theorem}
     \begin{example}
         Le seguenti formule sono valide:
         \begin{itemize}
-            \item $(\forall x Px) \vee \neg (\forall x Px)$
-            \item $(\forall x \exists y Qxy) \to (\forall x \exists y Qxy)$
-            \item  $(\forall x Px) \vee Qa \iff Qa \vee (\forall x Px)$
+            \item $(\forall x Px) \vee \neg (\forall x Px)$ --- istanza di $A \vee \neg A$
+            \item $(\forall x \exists y Qxy) \to (\forall x \exists y Qxy)$ --- istanza di $A \to A$
+            \item  $(\forall x Px) \vee Qa \iff Qa \vee (\forall x Px)$ --- istanza di $A \iff A$
         \end{itemize}
     \end{example}
 \end{frame}
 
 \begin{frame}{Formule valide (3)}
-    Esistono anche formule valide che non derivano da tautologie.
+    Esistono anche formule valide che non sono istanze di tautologie.
     \begin{example}
         La formula $(\forall x Px) \to Pa$ è una formula valida. Infatti:
         \begin{itemize}
             \item se $\forall x Px$ è vera, $P$ è vero per qualunque elemento del dominio, quindi a maggior regione è vero per l'elemento $a$, chiunque esso sia;
             \item se $\forall x Px$ è falsa, allora l'implicazione è sicuramente vera per definizione.
         \end{itemize}
+
+        \medskip
+        D'altronde è ovvio perché sappiamo che abbiamo già visto che
+        \begin{inference}
+            $\forall x Px$\\
+            \hline
+            $Pa$
+        \end{inference}
+        è una inferenza corretta.
     \end{example}
 \end{frame}
 
@@ -403,42 +427,60 @@
     \end{definition}
 
     \begin{definition}[Conseguenza logica]
-        Una formula $\phi$ è \alert{conseguenza logica} delle formule $\phi_1, \ldots, \phi_n$ se e solo se in ogni interpretazione in cui sono vere $\phi_1, \ldots, \phi_n$ è vera anche $\phi$.
+        Una formula $\phi$ è \alert{conseguenza logica} delle formule $\phi_1, \ldots, \phi_n$ se e solo se in ogni interpretazione in cui sono vere $\phi_1, \ldots, \phi_n$ è vera anche $\phi$. Si scrive:
     \end{definition}
 
     \medskip
     Notare che indichiamo una generica formula con le lettere greche $\phi$, $\psi$ e simili. Non usiamo $X$, $Y$ e $Z$ come nella logica proposizionale perché si confonderebbero con le variabili individuali $x$, $y$ e $z$.
 \end{frame}
 
-\section{Quantificatori limitati}
+
+\begin{frame}{Equivalenze derivate dalla logica proposizionale}
+
+    Come abbiamo visto con altri concetti introdotti nelle slide precedenti, ogni istanza di una equivalenza logica proposizionale è anche una equivalenza logica predicativa.
+    \begin{example}
+        Data l'equivalenza logica $A \wedge B \equiv B \wedge A$, otteniamo l'equivalenza logica predicativa
+        \[
+            (\forall x Px) \wedge \exists x(Qx \wedge \forall y Rxy) \equiv \exists x(Qx \wedge \forall y Rxy) \wedge (\forall x Px)
+        \]
+        tramite la sostituzione $A \mapsto \forall x Px$ e  $B \mapsto \exists x(Qx \wedge \forall y Rxy)$.
+    \end{example}
+
+    Se indichiamo con le lettere $\phi_1$ ed $\phi_2$ delle formule generiche, possiamo scrivere l'equivalenza logica predicativa come
+    \[
+        \phi_1 \wedge \phi_2 \equiv \phi_2 \wedge \phi_1 \enspace.
+    \]
+\end{frame}
+
+\section{Ancora sui quantificatori limitati}
 
 \begin{frame}{Quantificatore universale limitato (1)}
     Consideriamo le proposizioni:
     \[
-        \text{``Tutti sono mortali''} \qquad \text{``Tutti gli uomini sono mortali''}
+        \text{\prop{Tutti sono mortali}} \qquad \text{\prop{Tutti gli uomini sono mortali}}
     \]
-    La prima afferma che qualunque individuo è mortale,  mentre nella seconda la proprietà di essere mortali è ristretta solo ad alcuni individui (gli uomini) perché magari altri (gli dei?) non lo sono. Si parla in questo secondo caso di \alert{quantificatore limitato}.
+    La prima afferma che qualunque individuo è mortale, mentre nella seconda la proprietà di essere mortali è ristretta solo ad alcuni individui (gli uomini) perché magari altri (gli dei?) non lo sono.
 
     \medskip
-    Il quantificatore limitato si può ottenere dal quantificatore illimitato in questo modo. Se:
+    Sappiamo che il second tipo prende il nome di \emph{quantificatore limitato} e si può tranquillamente formalizzare usando il quantificatore standard. Se:
     \begin{itemize}
         \item $Mx$ sta per ``$x$ è mortale''
         \item $Ux$ sta per ``$x$ è un essere umano''
     \end{itemize}
-    la forma logica di ``Tutti gli uomini sono mortali'' diventa
+    la forma logica di ``\prop{Tutti gli uomini sono mortali}\/'' diventa
     \[
         \forall x (Ux \to Mx)
     \]
-    Letteralmente: ``qualunque individuo $x$ prendiamo, se $x$ è un uomo allora $x$ è mortale''.
+    Letteralmente: ``\prop{qualunque individuo $x$ prendiamo, se $x$ è un uomo allora $x$ è mortale\/}''.
 \end{frame}
 
-\begin{frame}{Quantificatore universale limitato (3)}
+\begin{frame}{Quantificatore universale limitato (2)}
     Per comodità, però, in certi ambiti si una una notazione più compatta per il quantificatore universale limitato. Ad esempio, in matematica.
     \begin{example}[Quantificatore limitato da un insieme]
         Se vogliamo dire
-        \begin{center}
-            ``Tutti gli elementi dell'insieme $A$ sono positivi''
-        \end{center}
+        \begin{proposition}
+            Tutti gli elementi dell'insieme $A$ sono positivi
+        \end{proposition}
         possiamo scrivere
         \[
             \forall x (x \in A \to x > 0)
@@ -453,9 +495,9 @@
 
 \begin{frame}{Quantificatore esistenziale limitato (1)}
     Anche il quantificatore esistenziale ha una variante limitata. La proposizione:
-    \begin{center}
-        ``Esiste un uomo che sa volare''
-    \end{center}
+    \begin{proposition}
+        Esiste un uomo che sa volare
+    \end{proposition}
     vuol dire non solo che esiste un qualche individuo che vola, ma che possiamo scegliere quell'individuo in modo che sia un uomo.
 
     \medskip
@@ -475,9 +517,9 @@
     Per comodità, in certi ambiti si una una notazione più compatta per il quantificatore esistenziale limitato. Ad esempio, in matematica.
     \begin{example}[Quantificatore limitato da un insieme]
         Se vogliamo dire
-        \begin{center}
-            ``Esiste un elemento dell'insieme $A$ positivo''
-        \end{center}
+        \begin{proposition}
+            Esiste un elemento dell'insieme $A$ positivo
+        \end{proposition}
         possiamo scrivere
         \[
             \exists x (x \in A \wedge x > 0)
@@ -490,71 +532,22 @@
     \end{example}
 \end{frame}
 
-\begin{frame}{Quantificatore limitati e universo del discorso (1)}
-    I realtà c'è una certa ambiguità sul fatto che un quantificatore sia limitato o no: dipende da qual è l'\alert{universo del discorso}, ovvero l'insieme di tutti gli individui a cui si riferisce il quantificatore.
-
-    \medskip
-    Normalmente quale sia l'universo del discorso va capito dal contesto. Ad esempio, supponiamo di avere a che fare con le seguenti proposizioni:
-    \begin{center}
-        ``Tutti gli uomini sono mortali''\\
-        ``Tutti i cetacei vivono in acqua''\\
-        ``Esiste un rettile che vola''
-    \end{center}
-    L'universo del discorso potrebbe essere l'insieme degli \textcolor{blue}{esseri viventi}. In ogni caso:
-    \begin{itemize}
-        \item i quantificatori vanno intesi in senso limitato;
-        \item avremo bisogno dei predicati "essere uomo", "essere cetaceo", "essere rettile" per poter scrivere le formule.
-    \end{itemize}
-    \medskip
-    In altri termini, l'universo del discorso è la versione in linguaggio naturale del concetto di dominio.
-\end{frame}
-
-\begin{frame}{Quantificatore limitati e universo del discorso (2)}
-    Supponiamo però che le proposizioni a cui siamo interessati siano:
-    \begin{center}
-        ``Tutti gli uomini sono mortali''\\
-        ``Esiste un uomo più alto di due metri''\\
-        ``Nessun uomo è in grado di volare'
-    \end{center}
-    In questo caso:
-    \begin{itemize}
-        \item possiamo prendere come universo del discorso direttamente gli \textcolor{blue}{esseri umani};
-        \item i quantificatori possono essere intesi in senso illimitato;
-        \item non abbiamo bisogno del predicato ``essere uomo'': la forma logica della prima proposizione è semplicemente $\forall x Mx$, dove $M$ è il predicato ``essere mortale''.
-    \end{itemize}
-\end{frame}
 
 \note{Forse sarebbe meglio fare degli esempi del quantificatore limitato con le tessere, come nella sezione sottostante. In questo modo si  potrebbe spiegare meglio il perché l'implicazione è il connettivo giusto da usare nel $\forall$ ma non nell'$\exists$.}
 
 \section{Equivalenze e conseguente logiche notevoli}
 
-\begin{frame}{Equivalenze derivate dalla logica delle proposizioni}
-    Se abbiamo una equivalenza logica proposizionale e rimpiazziamo le lettere proposizionali con formule ben formate, otteniamo una equivalenza logica predicativa.
-
-    \begin{example}
-        Data l'equivalenza logica $A \wedge B \equiv B \wedge A$, otteniamo l'equivalenza logica predicativa
-        \[
-            (\forall x Px) \wedge \exists x(Qx \wedge \forall y Rxy) \equiv \exists x(Qx \wedge \forall y Rxy) \wedge (\forall x Px)
-        \]
-        sostituendo $A$ con $\forall x Px$ e $B$ con $\exists x(Qx \wedge \forall y Rxy)$.
-    \end{example}
-
-    Se indichiamo con le lettere $X$ ed $Y$ delle formule generiche, possiamo scrivere l'equivalenza logica predicativa come
-    \[
-        X \wedge Y \equiv Y \wedge X \enspace.
-    \]
-\end{frame}
 
 \begin{frame}{Negazione e quantificatori (1)}
     Due equivalenze logiche molto importanti (e molto ricorrenti nei test di logica) sono le seguenti:
     \[
-        \neg \exists x X \equiv \forall x \neg X \qquad \neg \forall x X \equiv \exists x \neg X
+        \neg \exists x \phi \equiv \forall x \neg \phi \qquad \neg \forall x \phi \equiv \exists x \neg \phi
     \]
     \begin{example}
-        Supponiamo che l'univero del discorso siano gli esseri umani. Allora, se $X$ è la formula ``$x$ sa volare'':
+        Supponiamo che l'univero del discorso siano gli esseri umani. Allora, se $\phi$ è la funzione proposizionale ``\prop{$x$ sa volare}\/'':
         \begin{itemize}
-            \item $\neg \exists x X$ è ``non esiste un essere umano che sa volare''
-            \item $\forall x \neg X$ è `tutti gli essere umani non sanno volare''
+            \item $\neg \exists x \phi$ è ``\prop{non esiste un essere umano che sa volare}\/''
+            \item $\forall x \neg \phi$ è ``\prop{tutti gli essere umani non sanno volare}\/''
         \end{itemize}
         ed entrambi vogliono dire la stessa cosa (sebbene il secondo in italiano sia innaturale)
     \end{example}
@@ -564,23 +557,23 @@
 \begin{frame}{Negazione e quantificatori (2)}
     Notare che questa equivalenza ci consente anche di dimostrare che i due quantificatori sono ridondanti. Ne basterebbe solo uno. Infatti:
     \begin{align*}
-        \exists x X  & \equiv \neg \neg \exists x X \tag{doppia negazione}\\
-                        & \equiv \neg \forall x \neg X \tag{equivalenza precedente}
+        \exists x \phi  & \equiv \neg \neg \exists x \phi \tag{doppia negazione}\\
+                        & \equiv \neg \forall x \neg \phi \tag{equivalenza precedente}
     \end{align*}
     \begin{example}
-        ``Esiste un gatto nero'' è equivalente a ``non è vero che tutti i gatti non sono neri''.
+        ``\prop{Esiste un gatto nero}\/'' è equivalente a ``\prop{non è vero che tutti i gatti non sono neri}''.
     \end{example}
     Ovviamente si preferisce continuare ad usare due quantificatori perché rendono il discorso più chiaro.
 \end{frame}
 
 \begin{frame}{Negazione e quantificatori (3)}
-     Ovviamente anche il $\forall$ si può riscrivere usando negazione ed $\exists$:
+    Naturalmente, anche il $\forall$ si può riscrivere usando negazione ed $\exists$:
     \begin{align*}
         \forall x X  & \equiv \neg \neg \forall x X \tag{doppia negazione}\\
                         & \equiv \neg \exists x \neg X \tag{equivalenza precedente}
     \end{align*}
     \begin{example}
-        ``Tutti i gatti sono neri'' è equivalente a ``non esiste un gatto che non è nero'.
+        ``\prop{Tutti i gatti sono neri}\/'' è equivalente a ``\prop{non esiste un gatto che non è nero}\/''.
     \end{example}
 \end{frame}
 
@@ -591,7 +584,7 @@
     \]
 
     \medskip
-    Il quantificatore $\forall$ è una specie di ``congiunzione'' di formule, mentre il quantificatore $\exists$ è una specie di ``disgiunzione'' di formule. Ad esempio, se l'universo del discorso sono i numeri naturali, in maniera non del tutto rigorosa possiamo scrivere:
+    Effettivamente, il quantificatore $\forall$ è una specie di ``congiunzione'' di formule, mentre il quantificatore $\exists$ è una specie di ``disgiunzione'' di formule. Ad esempio, se l'universo del discorso sono i numeri naturali, in maniera non del tutto rigorosa possiamo scrivere:
     \begin{gather*}
         \forall x Px \equiv  P0 \wedge P1 \wedge P2 \wedge P3 \ldots\\
         \exists x Px \equiv  P0 \vee P1 \vee P2 \vee P3 \ldots
@@ -640,13 +633,13 @@
 
 \begin{frame}{Quantificatore universale e congiunzione (1)}
     Consideriamo la formula  $\forall x (Rx \wedge Gx)$, che in italiano si può tradurre con
-    \begin{center}
-        ``tutte le tessere sono rotonde e gialle''
-    \end{center}
+    \begin{proposition}
+        tutte le tessere sono rotonde e gialle
+    \end{proposition}
     Dovrebbe essere evidente che questa è equivalente a $(\forall x Rx) \wedge (\forall x Gx)$, ovvero
-    \begin{center}
-        ``tutte le tessere sono rotonde e tutte le tessere sono gialle''
-    \end{center}
+    \begin{proposition}
+        tutte le tessere sono rotonde e tutte le tessere sono gialle
+    \end{proposition}
     La seguente interpretazione soddisfa sia $\forall x (Rx \wedge Gx)$ che $(\forall x Rx) \wedge (\forall x Gx)$:
     \[
     \begin{tikzpicture}[minimum size=1cm]
@@ -686,11 +679,11 @@
         \forall x (Rx \vee Gx) \equiv (\forall x Rx) \vee (\forall x Gx)
     \]
     ovvero
-    \begin{center}
-        ``tutte le tessere sono rotonde o gialle''\\
+    \begin{proposition}
+        tutte le tessere sono rotonde o gialle\\
         $\equiv$\\
-        ``tutte le tessere sono rotonde o tutte le tessere sono gialle''
-    \end{center}
+        tutte le tessere sono rotonde o tutte le tessere sono gialle
+    \end{proposition}
 
     \pause
     Tuttavia, la seguente interpretazione soddisfa $\forall x (Rx \vee Gx)$ ma non $(\forall x Rx) \vee (\forall x Gx)$:
@@ -704,9 +697,9 @@
 \end{frame}
 
 \begin{frame}{Quantificatore universale e disgiunzione (2)}
-    È vero però che
+    È vero però (vi ricordo che $\models$ è il simbolo di conseguenza logica) che
     \[
-        \forall x (Rx \vee Gx) \text{ è conseguenza logica di } (\forall x Rx) \vee (\forall x Gx)
+        (\forall x Rx) \vee (\forall x Gx) \models \forall x (Rx \vee Gx)
     \]
     Infatti se $(\forall x Rx) \wedge (\forall x Gx)$, allora o tutte le tessere sono rotonde, oppure sono tutte gialle (o anche entrambe le cose). In ogni caso, ogni tessara è o rotonda o gialla.
 
@@ -720,32 +713,32 @@
 
     \medskip In generale è vero che:
     \[
-        \forall x (\phi_1 \vee \phi_2) \text{ è conseguenza logica di } (\forall x \phi_1) \vee (\forall x \phi_2)
+        (\forall x \phi_1) \vee (\forall x \phi_2) \models \forall x (\phi_1 \vee \phi_2)
     \]
 \end{frame}
 
 \begin{frame}{Quantificatore esistenziale e congiunzione}
     Se rimpiazziamo il quantificatore universale con l'esistenziale, otteniamo proprietà simili. Intanto
     \[
-        \forall x (Rx \vee Gx) \equiv (\forall x Rx) \vee (\forall x Gx)
+        \exists x (Rx \vee Gx) \equiv (\exists x Rx) \vee (\exists x Gx)
     \]
     ovvero
-    \begin{center}
-        ``esiste una tessera rotonda o gialla''\\
+    \begin{proposition}
+        esiste una tessera rotonda o gialla\\
         $\equiv$\\
-        ``esiste una tessera rotonda o esiste una tessera gialla''
-    \end{center}
+        esiste una tessera rotonda o esiste una tessera gialla
+    \end{proposition}
     In generale è vero
     \[
-        \forall x (\phi_1 \vee \phi_2) \equiv (\forall x \phi_1) \vee (\forall x \phi_2)
+        \exists x (\phi_1 \vee \phi_2) \equiv (\exists x \phi_1) \vee (\exists x \phi_2)
     \]
 \end{frame}
 
 \begin{frame}{Quantificatore esistenziale e disgiunzione (1)}
     Consideriamo adesso
     \begin{itemize}
-        \item $\exists x (Rx \land Gx)$, ovvero ``esiste una tessera rotonda e gialla''
-        \item $(\exists x Rx) \land (\exists x Gx)$, ovvero ``esiste una tessera rotonda ed esiste una tessera gialla''
+        \item $\exists x (Rx \land Gx)$, ovvero ``\prop{esiste una tessera rotonda e gialla}\/''
+        \item $(\exists x Rx) \land (\exists x Gx)$, ovvero ``\prop{esiste una tessera rotonda ed esiste una tessera gialla}\/''
     \end{itemize}
     Sono equivalenti ?
 
@@ -763,7 +756,7 @@
 \begin{frame}{Quantificatore esistenziale e disgiunzione (2)}
     È vero però che
     \[
-        (\exists x Rx) \land (\exists x Gx) \text{ è conseguenza logica di } \exists x (Rx \land Gx)
+        \exists x (Rx \land Gx) \models (\exists x Rx) \land (\exists x Gx)
     \]
     Infatti se $\exists x Rx \wedge \exists x Gx$, vuol dire che possiamo trovare una tessera che è rotonda e gialla allo stesso tempo. Ovviamente, grazie a questa tessera, sarà vera sia $\exists x Rx$ che $\exists x Gx$.
 
@@ -777,243 +770,15 @@
 
     \medskip In generale è vero che:
     \[
-        (\exists x \phi_1) \land (\exists x \phi_2) \text{ è conseguenza logica di } \exists x (\phi_1 \land \phi_2)
+         \exists x (\phi_1 \land \phi_2) \models (\exists x \phi_1) \land (\exists x \phi_2)
     \]
 \end{frame}
 
-\section{Deduzione naturale per la logica dei predicati}
 
-\begin{frame}{Deduzione naturale}
-    \begin{itemize}
-        \item Il calcolo logico della deduzione naturale che abbiamo introdotto per la logica proposizionale si può estendere alla logica dei predicati.
-        \item In questo caso è ancora più importante, perché non c'è un metodo sistematico per capire se una regola di inferenza è corretta o no come quello delle tavole di verità.
-        \item Le regole della deduzione naturale sono le stesse di prima, con l'aggiunta di quattro nuove regole:
-        \begin{itemize}
-            \item introduzione del quantificatore universale;
-            \item eliminazione del quantificatore universale;
-            \item introduzione del quantificatore esistenziale;
-            \item eliminazione del quantificatore esistenziale.
-        \end{itemize}
 
-    \end{itemize}
+
+\begin{frame}{Esercizi consigliati}
+	Esercizi da 5 in poi del Capitolo 5.
 \end{frame}
-
-\begin{frame}{Eliminazione del quantificatore universale}
-    \begin{prooftree}
-        \AXC{$\forall x \phi(x)$}
-        \RightLabel{($\elim\forall$)}
-        \UIC{$\phi(t)$}
-    \end{prooftree}
-    dove
-    \begin{itemize}
-        \item $\phi(x)$ indica una qualunque formula potenzialmente contenente $x$;
-        \item $t$ è un termine (costante individuale o variabile libera) qualunque;
-        \item $\phi(t)$ è ottenuta rimpiazzando le occorrenze libere di $x$ con $t$.
-    \end{itemize}
-
-    \medskip
-    Informalmente, vuol dire che se so che $Y$ è vera per tutti gli individui, allora sarà sicuramente vero per $t$, chiunque sia $t$.
-    \begin{example}[$\forall x (Px \to Qx), Pa \vdash Qa$]
-        \begin{prooftree}
-            \AXC{$\forall x (Px \to Qx)$}
-            \RightLabel{($\elim\forall$)}
-            \UIC{$Pa \to Qa$}
-            \AXC{$Pa$}
-            \RightLabel{($\elim\to$)}
-            \BIC{$Qa$}
-        \end{prooftree}
-    \end{example}
-\end{frame}
-
-\begin{frame}{Introduzione del quantificatore esistenziale}
-    \begin{prooftree}
-        \AXC{$\phi(t)$}
-        \RightLabel{($\intro\exists$)}
-        \UIC{$\exists x \phi(x)$}
-    \end{prooftree}
-    \medskip
-    Informalmente, vuol dire che se so che $\phi$ è vera per un certo individuo  specifico $t$, posso concludere che esiste un individuo $x$ che rende vera $\phi$ (l'individuo in questione è proprio $t$!!).
-    \begin{example}[$\forall x Px \vdash \exists x Px$]
-        \begin{prooftree}
-            \AXC{$\forall x Px$}
-            \RightLabel{($\elim\forall$)}
-            \UIC{$Pa$}
-            \RightLabel{($\intro\exists$)}
-            \UIC{$\exists x Px$}
-        \end{prooftree}
-    \end{example}
-\end{frame}
-
-\begin{frame}{Introduzione del quantificatore universale}
-    Come posso concludere una formula del tipo $\forall x Px$ ?
-
-    \medskip
-    Dimostrando che $Px$ è vera per un individuo $x$ qualsiasi, di cui non so nulla.
-
-    \begin{center}
-            \framebox{\begin{minipage}{0.8\textwidth}
-                \begin{prooftree}
-                    \AXC{$\phi(t)$}
-                    \RightLabel{($\intro\forall$)}
-                    \UIC{$\forall x \phi(x)$}
-                \end{prooftree}
-                \begin{center}
-                    se $t$ non appare in nessuna ipotesi non cancellata
-                \end{center}
-            \end{minipage}}
-    \end{center}
-
-    \begin{example}[$\forall x (Px \to Qx), \forall x Px \to \forall x Qx$]
-        \begin{prooftree}
-            \AXC{$\forall x (Px \to Qx)$}
-            \RightLabel{($\elim\forall$)}
-            \UIC{$\forall a (Pa \to Qa)$}
-            \AXC{$\forall x Px$}
-            \RightLabel{($\elim\forall$)}
-            \UIC{$Pa$}
-            \RightLabel{($\elim\to$)}
-            \BIC{$Qa$}
-            \RightLabel{($\intro\forall$)}
-            \UIC{$\forall x Qx$}
-        \end{prooftree}
-    \end{example}
-\end{frame}
-
-\begin{frame}{Cosa accade se dimentico la condizione a latere ?}
-    La regola di inferenza è falsa. Ad esempio, si può dimostrare che $Pa \vdash \forall Px$ con un singolo passo:
-    \begin{prooftree}
-        \AXC{$Pa$}
-        \RightLabel{($\intro\forall$)}
-        \UIC{$\forall x Px$}
-    \end{prooftree}
-
-    \medskip
-    Come dire che
-    \begin{center}
-        \begin{inference}
-            Carlo studia matematica\\
-            \hline
-            Tutti studiano matematica
-        \end{inference}
-    \end{center}
-\end{frame}
-
-\begin{frame}{Eliminazione del quantificatore esistenziale}
-    Come posso usare il fatto di sapere che $\exists x Px$ ? Ricordiamo che $\exists$ è una specie di disgiunzione infinita.
-
-    \begin{center}
-        \framebox{\begin{minipage}{0.8\textwidth}
-            \begin{prooftree}
-                \AXC{$\exists x \phi(x)$}
-                \AXC{$[\phi(t)]$}
-                \dottedLine
-                \UIC{$\psi$}
-                \RightLabel{($\elim\exists$)}
-                \BIC{$\psi$}
-            \end{prooftree}
-            \begin{center}
-                se $t$ non compare in $\psi$ e in nessuna ipotesi non cancellata di $\psi$
-            \end{center}
-        \end{minipage}}
-    \end{center}
-
-    \begin{example}[$\forall x (Px \to Qx), \exists x Px \vdash \exists x Qx$]
-        \begin{prooftree}
-            \AXC{$\exists x Px$}
-            \AXC{$\forall x (Px \to Qx)$}
-            \RightLabel{($\elim\forall$)}
-            \UIC{$Pa \to Qa$}
-            \AXC{$[Pa]_1$}
-            \RightLabel{($\elim\to$)}
-            \BIC{$Qa$}
-            \RightLabel{($\intro\exists$)}
-            \UIC{$\exists x Qx$}
-            \BIC{$\exists x Qx$}
-        \end{prooftree}
-    \end{example}
-
-\end{frame}
-
-\begin{frame}{Teoremi di correttezza e completezza}
-    Ovviamente, anche per la logica dei predicati valgono i teoremi di correttezzae e completezza.
-
-    \begin{theorem}[Correttezza (forte) della deduzione naturale]
-        Se $\phi_1, \ldots, \phi_n \vdash \phi$, allora $\phi_1, \ldots, \phi_n \models \phi_n$.
-    \end{theorem}
-
-    \begin{theorem}[Completezza (forte) della deduzione naturale]
-        Se $\phi_1, \ldots, \phi_n \models \phi$, allora $\phi_1, \ldots, \phi_n \vdash \phi$.
-    \end{theorem}
-
-    \medskip
-    Le dimostrazioni di questo teoremi esulano dal programma del corso.
-\end{frame}
-
-\end{document}
-
-\section{Combinare le regole di inferenza}
-
-\begin{frame}{Combinare le regole di inferenza}
-    C'è una differenza enorme di complessità tra logica delle proposizioni e dei predicati:
-    \begin{itemize}
-        \item nella logica delle proposizioni, c'è un metodo sistematico per capire se una regola di inferenza è corretta o no (le tavole di verità);
-        \item nella logica dei predicati non esiste un metodo simile;
-        \item nella logica dei predicati anche capire se una formula è vera in una data interpretazione è difficile.
-    \end{itemize}
-
-    \medskip
-    Un modo per determinare se una regola di inferenza è corretta consista nel capire se è possibile ottenerla \alert{combinando regole di inferenza note}.
-\end{frame}
-
-\begin{frame}{Dimostrazioni formali (1)}
-    Verifichiamo che la seguente regola di inferenza è corretta:
-    \begin{center}
-        \begin{inference}
-            $\forall x (Px \to Qx)$\\
-            $Pa$\\
-            \hline
-            $Qa$
-        \end{inference}
-    \end{center}
-    Si procede come segue:
-    \begin{itemize}
-        \item diamo dei numeri alle formule delle premesse della regola;
-        \item ad ogni passo applichiamo una regola di inferenza nota a due formule che abbiamo numerato, ottenendo una nuova formula che numeriamo con un numero più grande;
-        \item se riusciamo ad ottenere in questo modo la conseguenza della regola, vuol dire che la regola è corretta.
-    \end{itemize}
-    Quella che otteniamo è una \alert{dimostrazione formale} della correttezza della regola.
-\end{frame}
-
-\begin{frame}{Dimostrazioni formali (2)}
-    Verifichiamo che la seguente regola di inferenza è corretta:
-    \begin{center}
-        \begin{inference}
-            $\forall x (Px \to Qx)$\\
-            $Pa$\\
-            \hline
-            $Qa$
-        \end{inference}
-    \end{center}
-    Dimostrazione:
-    \begin{enumerate}
-        \item $\forall x (Px \to Qx)$\\
-        \item $Pa$\\
-        \item $Pa \to Qa$ \hfill (1, eliminazione del quantificatore universale)\\
-        \item $Qa$ \hfill (2, 3, modus ponens)
-    \end{enumerate}
-    Dunque la regola di inferenza è corretta.
-\end{frame}
-
-\begin{frame}{Sistemi di prova}
-    Questo metodo di dimostrazione delle regole di inferenza, così com'è, non è sufficiente a verificare tutte le regole di inferenza corrette. Tuttavia, ne esistono vari miglioramenti, chiamati \alert{sistemi di prova}, che consentono di dimostrare qualunque inferenza corretta.
-
-    \medskip
-    Questi sistemi di prova sono almeno in parte meccanizzabili, per cui è possibile scrivere programmi che, data una regola di inferenza, provano a dimostrarne la correttezza. Si tratta dei \alert{dimostratori automatici di teoremi}, come ad esempio \href{https://vprover.github.io/}{Vampire}.
-
-    \medskip
-    L'argomento è molto complesso ed esula completamente dagli obiettivi di questo insegnamento.
-\end{frame}
-
-
 
 \end{document}
