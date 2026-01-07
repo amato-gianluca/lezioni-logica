@@ -4,6 +4,8 @@
 
 \input{preamble.inc}
 
+\usepackage[normalem]{ulem}
+
 \title{Le forme proposizionali}
 
 \begin{document}
@@ -23,18 +25,18 @@
 \section{Forme proposizionali}
 
 \begin{frame}{Forme proposizionali}
-    Usando le lettere $A$, $B$, $C$ etc..., i connettivi $\neg$, $\wedge$, $\vee$, $\xor$, $\to$, $\iff$ e le parentesi tonde, è possibile costruire delle espressioni chiamate \alert{forme proposizionali} (abbreviata in fp) o anche \alert{formule proposizionali}.
+    Usando le lettere $A$, $B$, $C$ ecc., i connettivi $\neg$, $\land$, $\lor$, $\xor$, $\to$, $\iff$ e le parentesi tonde, è possibile costruire delle espressioni chiamate \alert{forme proposizionali} (abbreviate in \fp) o anche \alert{formule proposizionali}.
     \pause
     \begin{example}[Forme proposizionali]
         \centering
-        $\neg(A \wedge \neg B)$ \qquad \qquad
-        $(A \to B) \wedge (B \to A)$ \qquad \qquad
-        $A \vee \neg (B \wedge C)$
+        $\neg(A \land \neg B)$ \qquad \qquad
+        $(A \to B) \land (B \to A)$ \qquad \qquad
+        $A \lor \neg (B \land C)$
     \end{example}
     \pause
     È possibile ottenere delle proposizioni rimpiazzando le lettere proposizionali:
     \begin{example}[dalle forme proposizionali alle proposizioni]
-        Considerate la forma proposizionale $(A \vee B) \to C$. Allora se
+        Considerate la forma proposizionale $(A \lor B) \to C$. Allora se
         \begin{itemize}
             \item $A{}={}$ \prop{Carlo è laureato in economia}
             \item $B{}={}$ \prop{Carlo è laureato in informatica}
@@ -49,10 +51,10 @@
 \end{frame}
 
 \begin{frame}{Calcolo del valore di verità di una forma proposizionale}
-    Possiamo pensare alle forme proposizionali come espressioni algebriche che usano i valori vero e falso invece dei numeri. Se assegnamo un valore di verità alle lettere, è possibile calcolare il valore di verità della forma proposizionale.
+    Possiamo pensare alle forme proposizionali come espressioni algebriche che usano i valori vero e falso invece dei numeri. Se assegniamo un valore di verità alle lettere, è possibile calcolare il valore di verità della forma proposizionale.
 
     \begin{example}[Calcolo valore di verità]
-        Consideriamo la forma proposizionale $(A \vee B) \to C$. Se
+        Consideriamo la forma proposizionale $(A \lor B) \to C$. Se
         \begin{itemize}
             \item $A={}$ vero
             \item $B={}$ falso
@@ -60,7 +62,7 @@
         \end{itemize}
         allora
         \begin{itemize}
-            \item $(A \vee B) \to C = (\text{vero} \vee \text{falso}) \to \text{vero} = \pause \text{vero} \to \text{vero} = \pause \text{vero}$
+            \item $(A \lor B) \to C = (\text{vero} \lor \text{falso}) \to \text{vero} = \pause \text{vero} \to \text{vero} = \pause \text{vero}$
         \end{itemize}
     \end{example}
 \end{frame}
@@ -70,13 +72,13 @@
     \begin{example}[Ambiguità]
         Consideriamo:
         \begin{itemize}
-            \item $A \to B \wedge C$
+            \item $A \to B \land C$
             \item $A=\text{falso}$, $B=\text{vero}$ $C=\text{falso}$
         \end{itemize}.
         La \fp ha due interpretazioni, con due risultati diversi:
         \begin{itemize}
-            \item $(A \to B) \wedge C  = (\text{falso} \to \text{vero}) \wedge \text{falso} = \pause \text{vero} \wedge \text{falso} = \pause \text{falso}$
-            \item  \pause $A \to (B \wedge C)  = \text{falso} \to (\text{vero} \wedge \text{falso}) = \pause \text{falso} \to \text{falso} = \pause \text{vero}$
+            \item $(A \to B) \land C  = (\text{falso} \to \text{vero}) \land \text{falso} = \pause \text{vero} \land \text{falso} = \pause \text{falso}$
+            \item  \pause $A \to (B \land C)  = \text{falso} \to (\text{vero} \land \text{falso}) = \pause \text{falso} \to \text{falso} = \pause \text{vero}$
         \end{itemize}
     \end{example}
 \end{frame}
@@ -85,37 +87,37 @@
     Per evitare di mettere troppe parentesi, si usano le precedenze:
     \begin{itemize}
         \item $\neg$ ha la precedenza più alta
-        \item $\wedge$, $\vee$ e $\xor$ hanno precedenza intermedia
+        \item $\land$, $\lor$ e $\xor$ hanno precedenza intermedia
         \item $\to$ e $\iff$ hanno precedenza più bassa
     \end{itemize}
     \pause
     \begin{example}[Precedenze]
         \begin{itemize}
-            \item $A \to B \wedge C$  si legge \pause $A \to (B \wedge C)$
-            \item $\neg A \wedge B \to C$ si legge \pause$((\neg A) \wedge B) \to C$.
+            \item $A \to B \land C$ si legge \pause $A \to (B \land C)$
+            \item $\neg A \land B \to C$ si legge \pause $((\neg A) \land B) \to C$.
         \end{itemize}
     \end{example}
     \pause
     \medskip
     Alcune parentesi sono comunque necessarie:
     \begin{itemize}
-        \item $A \vee B \wedge C$ è ambigua, occorre scrivere $(A \vee B) \wedge C$ oppure $A \vee (B \wedge C)$.
+        \item $A \lor B \land C$ è ambigua, occorre scrivere $(A \lor B) \land C$ oppure $A \lor (B \land C)$.
     \end{itemize}
 
     \medskip
     Inoltre, spesso qualche parentesi in più non guasta:
     \begin{itemize}
-        \item Invece di $\neg A \wedge B \to C$ meglio scrivere $(\neg A \wedge B) \to C$.
+        \item Invece di $\neg A \land B \to C$ meglio scrivere $(\neg A \land B) \to C$.
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Tavole di verità per \fp (1)}
     Quando si calcola il valore verità di una \fp per tutti i possibili assegnamenti di valori di verità alle variabili proposizionali, si ottiene una \alert{tavola di verità}.
 
-    \begin{example}[Tavola di verità di $\neg A \vee B$]
+    \begin{example}[Tavola di verità di $\neg A \lor B$]
         \begin{center}
             \begin{tabular}{c|c||c}
-                $A$ & $B$ & $\neg A \vee B$ \\
+                $A$ & $B$ & $\neg A \lor B$ \\
                 \hline
                 F   & F   & \only<2->V      \\
                 F   & V   & \only<3->V      \\
@@ -195,9 +197,9 @@
     Come si fa a non dimenticarsi nessuna delle possibili combinazioni di valori di verità per le lettere proposizionali?
     \begin{itemize}
         \item con $n$ lettere proposizionali, ci sono $2^n$ combinazioni possibili;
-        \item partendo dalla colonna più a destra, si alternano una ($2^0$) F ed una V, fino ad arrivare a $2^n$ righe;
-        \item quindi si passa alla colonna immediatamente a sinistra, alternando due ($2^1$) V e due F;
-        \item quindi, passando alle colonne sempre più a sinistra si alternato 4 ($2^2$), 8 ($2^3$), \ldots V ed altrettante F fino a riempire tutte le colonne delle lettere proposizionali.
+        \item partendo dalla colonna più a destra, si alternano una ($2^0$) F e una V, fino ad arrivare a $2^n$ righe;
+        \item quindi si passa alla colonna immediatamente a sinistra, alternando due ($2^1$) F e due V;
+        \item quindi, passando alle colonne sempre più a sinistra, si alternano 4 ($2^2$), 8 ($2^3$), \ldots valori uguali (prima F poi V) fino a riempire tutte le colonne delle lettere proposizionali.
     \end{itemize}
 \end{frame}
 
@@ -239,7 +241,7 @@
 \end{frame}
 
 \begin{frame}{Enumerare tutte le possibili combinazioni (3)}
-    Un metodo alternativo per non dimenticare nessuna combinazione è quella di riempiere le righe una alla volta, contando in binario, ma con F al posto di 0 e V al posto di 1.
+    Un metodo alternativo per non dimenticare nessuna combinazione è quello di riempiere le righe una alla volta, contando in binario, ma con F al posto di 0 e V al posto di 1.
     \begin{example}
         \begin{columns}
             \column{0.5\textwidth}
@@ -280,10 +282,10 @@
     \end{definition}
 
     \begin{example}
-        $A \wedge B \to A$ è una tautologia.
+        $A \land B \to A$ è una tautologia.
         \begin{center}
             \begin{tabular}{c|c||c|c|c}
-                $A$ & $B$ & $A \wedge B$  & $(A \wedge B) \to A$ \\
+                $A$ & $B$ & $A \land B$  & $(A \land B) \to A$ \\
                 \hline
                 F   & F   & \only<2->F & \only<3->V \\
                 F   & V   & \only<2->F & \only<3->V \\
@@ -295,7 +297,7 @@
 \end{frame}
 
 \begin{frame}{Tautologie (2)}
-    Se una proposizione ha la forma di una tatutologia sappiamo sicuramente che è vera, anche
+    Se una proposizione ha la forma di una tautologia sappiamo sicuramente che è vera, anche
     senza conoscere il valore di verità delle proposizioni semplici che la compongono.
     \begin{example}
         ``\prop{Se Carla è italiana e laureata, allora è italiana}\/'' è sicuramente una proposizione vera, anche se non sappiamo chi sia Carla.
@@ -308,10 +310,10 @@
         Si chiama \alert{contraddizione} una forma proposizionale che è sempre falsa, indipendentemente dal valore di verità delle lettere proposizionali che in essa compaiono.
     \end{definition}
     \begin{example}
-        $A \wedge \neg A$ è una contraddizione.
+        $A \land \neg A$ è una contraddizione.
         \begin{center}
             \begin{tabular}{c||c|c}
-                $A$ & $A \wedge \neg A$ \\
+                $A$ & $A \land \neg A$ \\
                 \hline
                 F   & \only<2->F  \\
                 V   & \only<2->F  \\
@@ -346,10 +348,10 @@
     Il \alert{principio di non contraddizione} afferma che non è possibile che una proposizione sia contemporaneamente vera e falsa.
 
     \begin{theorem}[Principio di non contraddizione]
-        $\neg (A \wedge \neg A)$ è una tautologia.
+        $\neg (A \land \neg A)$ è una tautologia.
         \begin{center}
             \begin{tabular}{c||c|c}
-                $A$ & $A \wedge \neg A$ & $\neg (A \wedge \neg A)$ \\
+                $A$ & $A \land \neg A$ & $\neg (A \land \neg A)$ \\
                 \hline
                 F   & \only<2->F        & \only<3->V               \\
                 V   & \only<2->F        & \only<3->V               \\
@@ -358,7 +360,7 @@
     \end{theorem}
     \uncover<4->{
     \begin{example}[in italiano]
-        ``\prop{Carla è laureata e non è laureata}\/'' è sicuramente falsa, anche se non sappiamo chi è Carla. Pertanto la sua negazione .``\prop{Non è vero che Carla è laureata e non è laureata}\/'' è sicuramente vera.
+        ``\prop{Carla è laureata e non è laureata}\/'' è sicuramente falsa, anche se non sappiamo chi è Carla. Pertanto la sua negazione ``\prop{Non è vero che Carla è laureata e non è laureata}\/'' è sicuramente vera.
     \end{example}
     }
 \end{frame}
@@ -368,10 +370,10 @@
     Il \alert{principio del terzo escluso}, noto anche col nome latino \emph{tertium non datur}, afferma sostanzialmente che ogni proposizione è vera o falsa.
 
     \begin{theorem}[Principio del terzo escluso]
-        La \fp $A \vee \neg A$ è una tautologia.
+        La \fp $A \lor \neg A$ è una tautologia.
         \begin{center}
             \begin{tabular}{c||c|c}
-                $A$ & $A \vee \neg A$ \\
+                $A$ & $A \lor \neg A$ \\
                 \hline
                 F   & \only<2->V      \\
                 V   & \only<2->V      \\
@@ -385,23 +387,23 @@
 
     \medskip
     \onslide<4->{
-        Il principio del terzo escluso, a differenze di quello di non contraddizione, \alert{non è universalmente accettato}: esistono molti sistemi logici in cui non vale, anche se noi non ce ne occupiamo.
+        Il principio del terzo escluso, a differenza di quello di non contraddizione, \alert{non è universalmente accettato}: esistono molti sistemi logici in cui non vale, anche se noi non ce ne occupiamo.
     }
 \end{frame}
 
-\begin{frame}{Soddisfaciilità e falsificabilità}
-    \begin{definition}[Soddisfaciilità]
-        Una fp si dice \alert{soddisfacibile} quando non è una contraddizione.
+\begin{frame}{Soddisfacibilità e falsificabilità}
+    \begin{definition}[Soddisfacibilità]
+        Una \fp si dice \alert{soddisfacibile} quando non è una contraddizione.
     \end{definition}
 
-     In altri termini, una fp è soddisfacibile se c'è almeno una assegnazione di valori di verità alle lettere proprosizionali (una riga della tavola di verità) che la rende vera.
+     In altri termini, una \fp è soddisfacibile se esiste almeno un'assegnazione di valori di verità alle lettere proposizionali (una riga della tavola di verità) che la rende vera.
 
     \medskip
     \begin{definition}[Falsificabilità]
-        Una fp si dice \alert{falsificabile} (o anche \alert{refutabile}) se non è una tautologia.
+        Una \fp si dice \alert{falsificabile} (o anche \alert{refutabile}) se non è una tautologia.
     \end{definition}
 
-    In altri termini, una fp è falsificabile se c'è almeno una assegnazione di valori di verità alle lettere proprosizionali  (una riga della tavola di verità) che la rende falsa.
+    In altri termini, una \fp è falsificabile se esiste almeno un'assegnazione di valori di verità alle lettere proposizionali (una riga della tavola di verità) che la rende falsa.
 \end{frame}
 
 \begin{frame}{Equivalenza logica}
@@ -414,7 +416,7 @@
 
     \pause
     \begin{example}
-        Consideriamo le \fp $\neg A \iff B$ e $A \iff \neg B$. Mostriamo una unica tavola di verità che mostra entrambe le \fp assieme
+        Consideriamo le \fp $\neg A \iff B$ e $A \iff \neg B$. Mostriamo un'unica tavola di verità che mostra entrambe le \fp assieme.
         \begin{center}
             \begin{tabular}{c|c||c|c|c|c}
                 $A$ & $B$ & $\neg A$ & $\neg B$ & $\neg A \iff B$ & $A \iff \neg B$ \\
@@ -448,10 +450,10 @@
     \end{theorem}
 
     \begin{example}
-        Le \fp $X = \neg A \vee B$ e $Y = A \to B$ sono equivalenti. Infatti
+        Le \fp $X = \neg A \lor B$ e $Y = A \to B$ sono equivalenti. Infatti
         \begin{center}
             \begin{tabular}{c|c||c|c|c}
-                $A$ & $B$ & $\neg A$ & $\neg A \vee B$ & $A \to B$ \\
+                $A$ & $B$ & $\neg A$ & $\neg A \lor B$ & $A \to B$ \\
                 \hline
                 F   & F   & V        & V               & V         \\
                 F   & V   & V        & V               & V         \\
@@ -459,7 +461,7 @@
                 V   & V   & F        & V               & V
             \end{tabular}
         \end{center}
-        Le due colonne $X = \neg A \vee B$ e $Y = A \to B$ sono uguali, quindi $X \equiv Y$.
+        Le due colonne $X = \neg A \lor B$ e $Y = A \to B$ sono uguali, quindi $X \equiv Y$.
 
         \smallskip Cosa possiamo dire di $X \iff Y$ ?
     \end{example}
@@ -474,7 +476,7 @@
         Aggiungiamo una nuova colonna alla tavola.
         \begin{center}
             \begin{tabular}{c|c||c|c|c|c}
-                $A$ & $B$ & $\neg A$ & $\neg A \vee B$ & $A \to B$ & $(\neg A \vee B) \iff (A \to B)$ \\
+                $A$ & $B$ & $\neg A$ & $\neg A \lor B$ & $A \to B$ & $(\neg A \lor B) \iff (A \to B)$ \\
                 \hline
                 F   & F   & V        & V               & V         & V                                \\
                 F   & V   & V        & V               & V         & V                                \\
@@ -482,7 +484,7 @@
                 V   & V   & F        & V               & V         & V
             \end{tabular}
         \end{center}
-        La colonna $X \iff Y = (\neg A \vee B) \iff (A \to B)$ è sempre vera, perché i due valori di verità che la doppia implicazione collega sono uguali.
+        La colonna $X \iff Y = (\neg A \lor B) \iff (A \to B)$ è sempre vera, perché i due valori di verità che la doppia implicazione collega sono uguali.
 
         \medskip Dunque $X \iff Y$ è una tautologia.
     \end{example}
@@ -503,7 +505,7 @@
     L'equivalenza logica è assimilabile all'uguaglianza tra espressioni algebriche:
     \begin{itemize}
         \item siccome $x + y = y + x$, dovunque c'è una somma possiamo invertire gli addendi senza cambiare il risultato.
-        \item allo stesso modo, siccome $A \vee B \equiv B \vee A$, possiamo invertire l'ordine delle proposizioni a cui si applica l'or senza cambiare il risultato (ovvero la tavola di verità)
+        \item allo stesso modo, siccome $A \lor B \equiv B \lor A$, possiamo invertire l'ordine delle proposizioni a cui si applica l'or senza cambiare il risultato (ovvero la tavola di verità)
     \end{itemize}
 
     % \medskip
@@ -515,7 +517,7 @@
     \medskip
     Vediamo quindi alcune equivalenze logiche notevoli. Quando possibile, faremo un parallelo con equivalenze notevoli delle espressioni algebriche, secondo la corrispondenza:
     \[
-        \vee \Rightarrow + \qquad \wedge \Rightarrow \cdot \qquad \neg \Rightarrow 1 - {} \qquad \top \Rightarrow 1 \qquad \bot \Rightarrow 0
+    \lor \Rightarrow + \qquad \land \Rightarrow \cdot \qquad \neg \Rightarrow 1 - {} \qquad \top \Rightarrow 1 \qquad \bot \Rightarrow 0
     \]
 \end{frame}
 
@@ -524,24 +526,24 @@
     \begin{tabular}{c|c|c}
         \textbf{logica}                                             & \textbf{nome proprietà} & \textbf{algebra}                               \\
         \hline
-        $A \wedge B \equiv B \wedge A$                              & commutativa             & $x \cdot y = y \cdot x$                        \\
-        $A \wedge (B \wedge C) \equiv (A \wedge B) \wedge C$        & associativa             & $x \cdot (y \cdot z) = (x \cdot y) \cdot z$    \\
-        $A \wedge A \equiv A$                                       & idempotenza             & \sout{$x \cdot x = x$}                         \\
-        $A \wedge \top \equiv A$                                    & elemento neutro         & $x \cdot 1 = x$                                \\
-        $A \wedge \bot \equiv \bot$                                 & elem. assorbente        & $x \cdot 0 = 0$                                \\
+    $A \land B \equiv B \land A$                              & commutativa             & $x \cdot y = y \cdot x$                        \\
+    $A \land (B \land C) \equiv (A \land B) \land C$        & associativa             & $x \cdot (y \cdot z) = (x \cdot y) \cdot z$    \\
+    $A \land A \equiv A$                                       & idempotenza             & \sout{$x \cdot x = x$}                         \\
+    $A \land \top \equiv A$                                    & elemento neutro         & $x \cdot 1 = x$                                \\
+    $A \land \bot \equiv \bot$                                 & elem. assorbente        & $x \cdot 0 = 0$                                \\
         \hline
         \hline
-        $A \vee B \equiv B \vee A$                                  & commutativa             & $x + y = y + x$                                \\
-        $A \vee (B \vee C) \equiv (A \vee B) \vee C$                & associativa             & $x + (y + z) = (x + y) + z$                    \\
-        $A \vee A \equiv A$                                         & idempotenza             & \sout{$x + x = x$}                             \\
-        $A \vee \bot \equiv A$                                      & elemento neutro         & $x + 0 = x$                                    \\
-        $A \vee \top \equiv \top$                                   & elem. assorbente        & \sout{$x + 1 = 1$}                             \\
+    $A \lor B \equiv B \lor A$                                  & commutativa             & $x + y = y + x$                                \\
+    $A \lor (B \lor C) \equiv (A \lor B) \lor C$                & associativa             & $x + (y + z) = (x + y) + z$                    \\
+    $A \lor A \equiv A$                                         & idempotenza             & \sout{$x + x = x$}                             \\
+    $A \lor \bot \equiv A$                                      & elemento neutro         & $x + 0 = x$                                    \\
+    $A \lor \top \equiv \top$                                   & elem. assorbente        & \sout{$x + 1 = 1$}                             \\
         \hline
         \hline
-        $A \wedge (B \vee C) \equiv (A \wedge B) \vee (A \wedge C)$ & distributiva            & $x \cdot (y + z) = x \cdot y + x \cdot z$      \\
-        $A \vee (B \wedge C) \equiv (A \vee B) \wedge (A \vee C)$   & distributiva            & \sout{$x + y \cdot z = (x + y) \cdot (x + z)$} \\
-        $A \wedge (A \vee B) \equiv A$                              & assorbimento            & \sout{$x \cdot (x + y) = x$}                   \\
-        $A \vee (A \wedge B) \equiv A$                              & assorbimento            & \sout{$x + (x \cdot y) = x$}                   \\
+    $A \land (B \lor C) \equiv (A \land B) \lor (A \land C)$ & distributiva            & $x \cdot (y + z) = x \cdot y + x \cdot z$      \\
+    $A \lor (B \land C) \equiv (A \lor B) \land (A \lor C)$   & distributiva            & \sout{$x + y \cdot z = (x + y) \cdot (x + z)$} \\
+    $A \land (A \lor B) \equiv A$                              & assorbimento            & \sout{$x \cdot (x + y) = x$}                   \\
+    $A \lor (A \land B) \equiv A$                              & assorbimento            & \sout{$x + (x \cdot y) = x$}                   \\
     \end{tabular}
 \end{frame}
 
@@ -551,8 +553,8 @@
             \textbf{logica}               & \textbf{nome proprietà} & \textbf{algebra}             \\
             \hline
             $\neg \neg A \equiv A$      & doppia negazione        & $ 1 - (1 - A) = A$             \\
-            $A \vee \neg A \equiv \top$   & terzo escluso           & $A + (1 - A) = 1$            \\
-            $A \wedge \neg A \equiv \bot$ & non contraddizione      & \sout{$A \cdot (1 - A) = 0$} \\
+            $A \lor \neg A \equiv \top$   & terzo escluso           & $A + (1 - A) = 1$            \\
+            $A \land \neg A \equiv \bot$ & non contraddizione      & \sout{$A \cdot (1 - A) = 0$} \\
             $\neg \top \equiv \bot$            &                         & $1 - 1 = 0$                  \\
             $\neg \bot \equiv \top$            &                         & $1- 0 = 1$
         \end{tabular}
@@ -560,29 +562,29 @@
 \end{frame}
 
 \begin{frame}{Alcuni esempi in linguaggio naturale (1)}
-    Il fatto che quelle viste prime siano tatutologie segue dal calcolo della tavole di verità. Cerchiamo comunque di dare una qualche intuizione nel linguaggio naturale.
+    Il fatto che quelle viste prima siano tautologie segue dal calcolo delle tavole di verità. Cerchiamo comunque di dare una qualche intuizione nel linguaggio naturale.
     \begin{itemize}
-        \item $A \wedge B \equiv B \wedge A$: cambiare l'ordine delle affermazioni, non cambia il significato.\\
+    \item $A \land B \equiv B \land A$: cambiare l'ordine delle affermazioni, non cambia il significato.\\
         \prop{Carlo è alto e Mario è basso} $\equiv$ \prop{Mario è basso e Carlo è alto}.
-        \item $A \wedge (B \wedge C) \equiv (A \wedge B) \wedge C$: non è facile fare un esempio in italiano, dove non ci sono le parentesi. Tuttavia, possiamo ripetere il soggetto in modo diverso per dare una idea del raggruppamento.\\
+    \item $A \land (B \land C) \equiv (A \land B) \land C$: non è facile fare un esempio in italiano, dove non ci sono le parentesi. Tuttavia, possiamo ripetere il soggetto in modo diverso per dare una idea del raggruppamento.\\
         \prop{Carlo è alto e biondo e Carlo è affabile} $\equiv$ \prop{Carlo è alto e Carlo è biondo e affabile}.
-        \item $A \wedge A \equiv A$: ripetere due volte la stessa proposizione non ne cambia il significato.\\
+    \item $A \land A \equiv A$: ripetere due volte la stessa proposizione non ne cambia il significato.\\
         \prop{Carlo è alto e Carlo è alto} $\equiv$ \prop{Carlo è alto}.
-        \item $A \wedge \top \equiv A$: \prop{Michele è o non è alto} è sicuramente vero, quindi non ha alcuna rilevanza.\\
+    \item $A \land \top \equiv A$: \prop{Michele è o non è alto} è sicuramente vero, quindi non ha alcuna rilevanza.\\
         \prop{Carlo è alto e Michele è o non è alto} $\equiv$ \prop{Carlo è alto}.
-        \item $A \wedge \bot \equiv \bot$: \prop{Michele è alto e non è alto} è sicuramente falso. Quindi\\
+    \item $A \land \bot \equiv \bot$: \prop{Michele è alto e non è alto} è sicuramente falso. Quindi\\
         \prop{Carlo è alto e Michele è alto e non è alto} è sicuramente falso.
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Alcuni esempi in linguaggio naturale (2)}
     \begin{itemize}
-        \item $A \wedge (B \vee C) \equiv (A \wedge B) \vee (A \wedge C)$:
+    \item $A \land (B \lor C) \equiv (A \land B) \lor (A \land C)$:
         \prop{Carlo studia informatica e Carlo studia economia o filosofia} $\equiv$ \prop{Carlo studia informatica ed economia oppure Carlo studia informatica e filosofia}.
-        \item $A \vee (B \wedge C) \equiv (A \vee B) \wedge (A \vee C)$:
-        \prop{Carlo studia informatica oppure Carlo studia economia e filosofia} $\equiv$ \prop{Carlo studia informatica o economia e Carlo studio informatica o filosofia}. Tuttavia,  l'equivalenza in italiano non è molto intuitiva.
-        \item $A \wedge (A \vee B)$: \prop{Carlo studia informatica e Carlo studia informatica o economia} $\equiv$ \prop{Carlo studia informatica}. Perché la proposizione sia vera, è necessario che Carlo studi informatica, mentre che studi anche economia è ininfluente.
-        \item $A \vee (A \wedge B)$: \prop{Carlo studia informatica oppure Carlo studia informatica ed economia} $\equiv$ \prop{Carlo studia informatica}. Come prima, perché la proposizione sia vera è sufficiente che Carlo studi informatica, mentre se studia anche economia è ininfluente.
+    \item $A \lor (B \land C) \equiv (A \lor B) \land (A \lor C)$:
+        \prop{Carlo studia informatica oppure Carlo studia economia e filosofia} $\equiv$ \prop{Carlo studia informatica o economia e Carlo studia informatica o filosofia}. Tuttavia, l'equivalenza in italiano non è molto intuitiva.
+    \item $A \land (A \lor B)$: \prop{Carlo studia informatica e Carlo studia informatica o economia} $\equiv$ \prop{Carlo studia informatica}. Perché la proposizione sia vera, è necessario che Carlo studi informatica, mentre che studi anche economia è ininfluente.
+    \item $A \lor (A \land B)$: \prop{Carlo studia informatica oppure Carlo studia informatica ed economia} $\equiv$ \prop{Carlo studia informatica}. Come prima, perché la proposizione sia vera è sufficiente che Carlo studi informatica, mentre se studia anche economia è ininfluente.
         \item $\neg \neg A \equiv A$: due negazioni affermano.\\
         \prop{Non è vero che Carlo non studia informatica} $\equiv$ \prop{Carlo studia informatica}.
     \end{itemize}
@@ -594,7 +596,7 @@
     \medskip
     In realtà, una totale corrispondenza si ha tra le equivalenze logiche e le equivalenze insiemistiche. Si consideri un insieme fissato $U$ (detto \alert{insieme universo}). Pensiamo alle lettere proposizionali come \alert{sottoinsiemi di $U$}. La corrispondenza tra logica e insiemistica è la seguente:
     \[
-        \vee \Rightarrow \cup \qquad \wedge \Rightarrow \cap \qquad \neg \Rightarrow  U \setminus \qquad \top \Rightarrow U \qquad \bot \Rightarrow \emptyset
+    \lor \Rightarrow \cup \qquad \land \Rightarrow \cap \qquad \neg \Rightarrow  U \setminus \qquad \top \Rightarrow U \qquad \bot \Rightarrow \emptyset
     \]
 \end{frame}
 
@@ -604,24 +606,24 @@
     \begin{tabular}{c|c|c}
         \textbf{logica}                                      & \textbf{nome}         & \textbf{insiemi}                          \\
         \hline
-        $A \vee B \equiv B \vee A$                           & prop. commutativa     & $A \cup B = B \cup A$                     \\
-        $A \vee (B \vee C) \equiv (A \vee B) \vee C$         & prop. associativa     & $A \cup (B \cup C) = (A \cup B) \vee C$   \\
-        $A \vee A \equiv A$                                  & prop. di idempotenza  & $A \cup A = A$                            \\
-        $A \vee \bot \equiv A$                               & elemento neutro       & $A \cup \emptyset = A$                    \\
-        $A \vee \top \equiv \top$                            & elemento assorbente   & $A \cup U = U$                            \\
+    $A \lor B \equiv B \lor A$                           & prop. commutativa     & $A \cup B = B \cup A$                     \\
+    $A \lor (B \lor C) \equiv (A \lor B) \lor C$         & prop. associativa     & $A \cup (B \cup C) = (A \cup B) \cup C$   \\
+    $A \lor A \equiv A$                                  & prop. di idempotenza  & $A \cup A = A$                            \\
+    $A \lor \bot \equiv A$                               & elemento neutro       & $A \cup \emptyset = A$                    \\
+    $A \lor \top \equiv \top$                            & elemento assorbente   & $A \cup U = U$                            \\
         \hline
         \hline
-        $A \wedge B \equiv B \wedge A$                       & prop. commutativa     & $A \cap B = B \cap A$                     \\
-        $A \wedge (B \wedge C) \equiv (A \wedge B) \wedge C$ & prop. associativa     & $A \cap (B \wedge C) = (A \cap B) \cap C$ \\
-        $A \wedge A \equiv A$                                & prop. di idempotenza  & $A \cap A = A$                            \\
-        $A \wedge \top \equiv A$                             & elemento neutro       & $A \cap U = A$                            \\
-        $A \wedge \bot \equiv \bot$                          & elemento assorbente   & $A \cap \emptyset = \emptyset$            \\
+    $A \land B \equiv B \land A$                       & prop. commutativa     & $A \cap B = B \cap A$                     \\
+    $A \land (B \land C) \equiv (A \land B) \land C$ & prop. associativa     & $A \cap (B \cap C) = (A \cap B) \cap C$ \\
+    $A \land A \equiv A$                                & prop. di idempotenza  & $A \cap A = A$                            \\
+    $A \land \top \equiv A$                             & elemento neutro       & $A \cap U = A$                            \\
+    $A \land \bot \equiv \bot$                          & elemento assorbente   & $A \cap \emptyset = \emptyset$            \\
         \hline
         \hline
-        $A \wedge (B \vee C)$                                & prop. distributiva    & $A \cap (B \cup C)$                       \\
-        $A \vee (B \wedge C)$                                & prop. distributiva    & $A \cup (B \cap C)$                       \\
-        $A \wedge (A \vee B) \equiv A$                       & prop. di assorbimento & $A \cap (A \cup B) =A$                    \\
-        $A \vee (A \wedge B) \equiv A$                       & prop. di assorbimento & $A \cup (A \cap B) = A$                   \\
+        $A \land (B \lor C)$                                & prop. distributiva    & $A \cap (B \cup C)$                       \\
+        $A \lor (B \land C)$                                & prop. distributiva    & $A \cup (B \cap C)$                       \\
+        $A \land (A \lor B) \equiv A$                       & prop. di assorbimento & $A \cap (A \cup B) =A$                    \\
+        $A \lor (A \land B) \equiv A$                       & prop. di assorbimento & $A \cup (A \cap B) = A$                   \\
     \end{tabular}
 \end{frame}
 
@@ -631,8 +633,8 @@
             \textbf{logica}               & \textbf{nome proprietà} & \textbf{insiemi}             \\
             \hline
             $\neg \neg A \equiv A$      & doppia negazione        & $ U \setminus (U \setminus A) = A$             \\
-            $A \vee \neg A \equiv \top$   & terzo escluso           & $A \cup (U \setminus A) = U$            \\
-            $A \wedge \neg A \equiv \bot$ & non contraddizione      & $A \cap (U \setminus A) = \emptyset$ \\
+            $A \lor \neg A \equiv \top$   & terzo escluso           & $A \cup (U \setminus A) = U$            \\
+            $A \land \neg A \equiv \bot$ & non contraddizione      & $A \cap (U \setminus A) = \emptyset$ \\
             $\neg \top \equiv \bot$            &                         & $U \setminus U = \emptyset$                  \\
             $\neg \bot \equiv \top$            &                         & $U \setminus \emptyset = U$
         \end{tabular}
@@ -642,8 +644,8 @@
 \begin{frame}{Leggi di De Morgan (1)}
     Le leggi di De Morgan correlano congiunzione e disgiunzione con la negazione. Sono leggi molto importanti che consentono di semplificare le \fp complesse.
     \begin{gather*}
-        \neg (A \wedge B) \equiv \neg A \vee \neg B\\
-        \neg (A \vee B) \equiv \neg A \wedge \neg B
+        \neg (A \land B) \equiv \neg A \lor \neg B\\
+        \neg (A \lor B) \equiv \neg A \land \neg B
     \end{gather*}
 
     \begin{example}
@@ -666,7 +668,7 @@
             shipping_charge = 20
     \end{minted}
 
-        C'è una tariffa base di 10 €, ma sotto certe condizioni la tariffa sale a 20 € Ma quali sono queste codizioni ? Non si capisce molto bene.
+        C'è una tariffa base di 10 €, ma sotto certe condizioni la tariffa sale a 20 €. Ma quali sono queste condizioni? Non si capisce molto bene.
 
         \pause \medskip
         Applicando De Morgan, possiamo riscrivere la condizione come:
@@ -679,16 +681,16 @@
         \begin{minted}[autogobble,xleftmargin=0.5cm]{python}
         state != "Italy" or regione == "Sardegna"
     \end{minted}
-        Le spese aggiuntive si pagano se la spedizione e all'estero, oppure in Sardegna.
+        Le spese aggiuntive si pagano se la spedizione è all'estero, oppure in Sardegna.
     \end{example}
 \end{frame}
 
 \begin{frame}{Il principio di dualità}
     \smallskip
     \begin{theorem}[Principio di dualità]
-        Sia $X, Y$ due fp tali che $X \equiv Y$, nessuna delle quali contiene $\rightarrow$. Se $X'$ e $Y'$ si ottengono da $X$ e $Y$ scambiando:
+        Siano $X, Y$ due \fp tali che $X \equiv Y$, nessuna delle quali contiene $\to$. Se $X'$ e $Y'$ si ottengono da $X$ e $Y$ scambiando:
         \begin{itemize}
-            \item $\wedge$ con $\vee$,
+            \item $\land$ con $\lor$,
             \item $\leftrightarrow$ con $\xor$,
             \item $\top$ con $\bot$,
         \end{itemize}
@@ -698,24 +700,24 @@
     \pause\medskip
     \begin{example}
         Prendiamo ad esempio l'equivalenza
-        \[A \wedge \top \equiv A\]\pause
+        \[A \land \top \equiv A\]\pause
         Applicando ad ambo i membri dell'equivalenza gli scambi di prima, otteniamo
-        \[A \vee \bot \equiv A\]
+        \[A \lor \bot \equiv A\]
     \end{example}
 \end{frame}
 
 \begin{frame}{Proprietà associativa e parentesi}
-    Il fatto che $\wedge$ e $\vee$ godano della proprietà associativa, ci consente di risparmiare qualche parentesi.
+    Il fatto che $\land$ e $\lor$ godano della proprietà associativa, ci consente di risparmiare qualche parentesi.
     \begin{itemize}
-        \item<+-> Consideriamo la formula $A \wedge B \wedge C$.\\
-        È \alert{ambigua}: la si può interpretare come $(A \wedge B) \wedge C$ oppure $A \wedge (B \wedge C)$.
-        \item<+-> Le due possibile interpretazioni sono però \alert{equivalenti}, per la proprietà associativa, quindi l'ambiguità non ci crea nessun problema!
-        \item<+-> La stessa cosa vale anche per $\vee$, ma solo se non c'è una mescolanza di $\wedge$ e $\vee$:
+        \item<+-> Consideriamo la formula $A \land B \land C$.\\
+        È \alert{ambigua}: la si può interpretare come $(A \land B) \land C$ oppure $A \land (B \land C)$.
+        \item<+-> Le due possibili interpretazioni sono però \alert{equivalenti}, per la proprietà associativa, quindi l'ambiguità non ci crea nessun problema!
+        \item<+-> La stessa cosa vale anche per $\lor$, ma solo se non c'è una mescolanza di $\land$ e $\lor$:
         \begin{itemize}
-            \item \alert{possiamo scrivere $A \vee B \vee C$}\\[0.1cm]
-            le due alternative $(A \vee B) \vee C$ e $A \vee (B \vee C)$ sono equivalenti;\\[0.2cm]
-            \item \alert{non possiamo scrivere $A \wedge B \vee C$}\\[0.1cm]
-             le due alternative $(A \wedge B) \vee C$ e $A \wedge (B \vee C)$ \textbf{non} sono equivalenti.
+            \item \alert{possiamo scrivere $A \lor B \lor C$}\\[0.1cm]
+            le due alternative $(A \lor B) \lor C$ e $A \lor (B \lor C)$ sono equivalenti;\\[0.2cm]
+            \item \alert{non possiamo scrivere $A \land B \lor C$}\\[0.1cm]
+             le due alternative $(A \land B) \lor C$ e $A \land (B \lor C)$ \textbf{non} sono equivalenti.
         \end{itemize}
     \end{itemize}
 \end{frame}
@@ -723,9 +725,9 @@
 \begin{frame}{Equivalenze con l'or esclusivo}
     La disgiunzione esclusiva è definibile a partire da congiunzione, disgiunzione (inclusiva) e negazione:
     \[
-        A \xor B \equiv (A \wedge \neg B) \vee (\neg A \wedge B)
+        A \xor B \equiv (A \land \neg B) \lor (\neg A \land B)
     \]
-    Notare che le due fp $A \wedge \neg B$ e $\neg A \wedge B$ corrispondono esattamente ai due casi in cui la disgiunzione esclusivo è vera (una delle due proposizioni è vera, l'altra è falsa).
+    Notare che le due \fp $A \land \neg B$ e $\neg A \land B$ corrispondono esattamente ai due casi in cui la disgiunzione esclusiva è vera (una delle due proposizioni è vera, l'altra è falsa).
 
     \pause \medskip Altre equivalenze notevoli:
     \begin{align*}
@@ -741,7 +743,7 @@
 \begin{frame}{L'implicazione (1)}
     L'implicazione è definibile a partire da congiunzione, disgiunzione e negazione:
     \[
-        A \to B \equiv \neg(A \wedge \neg B)  \equiv \neg A \vee B
+        A \to B \equiv \neg(A \land \neg B)  \equiv \neg A \lor B
     \]
     Detto in altro modo, affermare $A \to B$ è equivalente ad affermare:
     \begin{itemize}
@@ -752,17 +754,17 @@
     \smallskip
     Ancora:
     \begin{align*}
-        A \to A      & \equiv \top   & (A \wedge B) \to C & \equiv A \to (B \to C)            \\
-        A \to \neg A & \equiv \neg A & A \to (B \wedge C) & \equiv (A \to B) \wedge (A \to C) \\
-        \bot \to A   & \equiv \top   & (A \vee B) \to C   & \equiv (A \to C) \wedge (B \to C) \\
-        \top \to A   & \equiv A      & A \to (B \vee C)   & \equiv (A \to B) \vee (A \to C)   \\
+        A \to A      & \equiv \top   & (A \land B) \to C & \equiv A \to (B \to C)            \\
+        A \to \neg A & \equiv \neg A & A \to (B \land C) & \equiv (A \to B) \land (A \to C) \\
+        \bot \to A   & \equiv \top   & (A \lor B) \to C   & \equiv (A \to C) \land (B \to C) \\
+        \top \to A   & \equiv A      & A \to (B \lor C)   & \equiv (A \to B) \lor (A \to C)   \\
         A \to \bot   & \equiv \neg A                                                          \\
         A \to \top   & \equiv \top
     \end{align*}
 \end{frame}
 
 \begin{frame}{L'implicazione (2)}
-    Data una implicazione $A \to B$, si possono definire altre tre implicazioni correlate:
+    Data un'implicazione $A \to B$, si possono definire altre tre implicazioni correlate:
     \begin{itemize}
         \item l'implicazione \alert{inversa}: $B \to A$
         \item l'implicazione \alert{contraria}: $\neg A \to \neg B$
@@ -782,7 +784,7 @@
     \end{example}
 \end{frame}
 
-\begin{frame}{Contronomiale, modus ponens e modus tollens}
+\begin{frame}{Contronominale, modus ponens e modus tollens}
     Nella parte introduttiva del corso abbiamo visto due regole di inferenza che abbiamo chiamato \emph{modus ponens} e \emph{modus tollens}:
 
     \medskip
@@ -818,8 +820,8 @@
 \begin{frame}{La doppia implicazione (1)}
     Due importanti equivalenze riguardanti la doppia implicazione sono
     \begin{gather*}
-        A \iff B \equiv (A \to B) \wedge (B \to A)\\
-        A \iff B \equiv (A \to B) \wedge (\neg A \to \neg B)
+        A \iff B \equiv (A \to B) \land (B \to A)\\
+        A \iff B \equiv (A \to B) \land (\neg A \to \neg B)
     \end{gather*}
     che mostrano come $A \iff B$ non è altro che la congiunzione di due implicazioni nei due versi opposti.
 
@@ -835,12 +837,12 @@
     La doppia implicazione è anche equivalente ad una formula che usa solo congiunzione, disgiunzione e negazione:
 
     \[
-        A \iff B \equiv (A \wedge B) \vee (\neg A \wedge \neg B)
+        A \iff B \equiv (A \land B) \lor (\neg A \land \neg B)
     \]
-    dove $A \wedge B$ e $\neg A \wedge \neg B$ rappresentano i due casi per cui la doppia implicazione è vera.
+    dove $A \land B$ e $\neg A \land \neg B$ rappresentano i due casi per cui la doppia implicazione è vera.
 
     \pause\medskip
-    Altre equivalenze che coinvogono la doppia implicazione:
+    Altre equivalenze che coinvolgono la doppia implicazione:
     \begin{align*}
         A \iff A      & \equiv \top     \\
         A \iff \neg A & \equiv \bot     \\
@@ -860,14 +862,14 @@
 \section{Semplificare le \fp}
 
 \begin{frame}{Applicare una equivalenza ad una formula (1)}
-    Il fatto che $A \wedge B \equiv B \wedge A$ vuol dire che, ovunque in una fp compare $A \wedge B$, è possibile rimpiazzarlo con $B \wedge A$ senza cambiare il significato della formula (e viceversa).
+    Il fatto che $A \land B \equiv B \land A$ vuol dire che, ovunque in una fp compare $A \land B$, è possibile rimpiazzarlo con $B \land A$ senza cambiare il significato della formula (e viceversa).
     \begin{itemize}
-        \item $A \wedge B \to C \equiv$ \pause $B \wedge A \to C$ \pause\
-        \item $(B \wedge A) \xor (C \iff A) \equiv$ \pause $(A \wedge B) \xor (C \iff A)$
+        \item $A \land B \to C \equiv$ \pause $B \land A \to C$ \pause\
+        \item $(B \land A) \xor (C \iff A) \equiv$ \pause $(A \land B) \xor (C \iff A)$
     \end{itemize}
 
     \pause\medskip
-    Analogamente, in matematica sappiamo che $x+y=y+x$. Questo ci consente di rimpiazzare $x+y$ con $y+x$ ovunque in una formale. Ad esempio,
+    Analogamente, in matematica sappiamo che $x+y=y+x$. Questo ci consente di rimpiazzare $x+y$ con $y+x$ ovunque in una formula. Ad esempio,
     \begin{itemize}
         \item $(a(x+y))^2 = (a(y+x))^2$.
     \end{itemize}
@@ -875,17 +877,17 @@
     \pause\medskip
     Questo fatto si può formalizzare come segue:
     \begin{theorem}
-        Siano $X$, $X'$ ed $Y$ forme proposizionali, con $X \equiv X'$. Se $Y'$ è ottenuta da $Y$ rimpiazzando tute le occorrenze di $X$ con $X'$ o viceversa, allora $Y \equiv Y'$.
+        Siano $X$, $X'$ e $Y$ forme proposizionali, con $X \equiv X'$. Se $Y'$ è ottenuta da $Y$ rimpiazzando tutte le occorrenze di $X$ con $X'$ (o viceversa), allora $Y \equiv Y'$.
     \end{theorem}
 \end{frame}
 
 \begin{frame}{Applicare una equivalenza ad una formula (2)}
-    Inoltre, in una equivalenza com $A \wedge B \equiv B \wedge A$, le lettere $A$ e $B$ possono essere rimpiazzate con qualsiasi altra formula proposizionale, ottenendo sempre una equivalenza:
+    Inoltre, in un'equivalenza come $A \land B \equiv B \land A$, le lettere $A$ e $B$ possono essere rimpiazzate con qualsiasi altra forma proposizionale, ottenendo sempre un'equivalenza:
     \begin{itemize}
-        \item $C \wedge D \equiv$ \pause $D \wedge C$ \\
+        \item $C \land D \equiv$ \pause $D \land C$ \\
                 (abbiamo rimpiazzato $A$ con $C$ e $B$ con $D$)
-        \item $(A \to B) \wedge (A \vee C) \equiv$ \pause $(A \vee C) \wedge (A \to B)$\\
-            (abbiamo rimpiazzato $A$ con $A \to B$, e $B$ con $A \vee C$)
+        \item $(A \to B) \land (A \lor C) \equiv$ \pause $(A \lor C) \land (A \to B)$\\
+            (abbiamo rimpiazzato $A$ con $A \to B$, e $B$ con $A \lor C$)
     \end{itemize}
 
 
@@ -903,11 +905,11 @@
 \end{frame}
 
 \begin{frame}{Applicare una equivalenza ad una formula (3)}
-    In conclusione, il fatto che $A \wedge B \equiv B \wedge A$ vuol dire che:
+    In conclusione, il fatto che $A \land B \equiv B \land A$ vuol dire che:
 
     \smallskip
     \begin{quotation}
-        \noindent in una forma proposizionale, ogni volta che compare il connettivo $\wedge$ è possibile cambiare l'ordine dei congiunti e ottenere una forma equivalente.
+        \noindent in una forma proposizionale, ogni volta che compare il connettivo $\land$ è possibile cambiare l'ordine dei congiunti e ottenere una forma equivalente.
     \end{quotation}
     Analogamente per le altre equivalenze notevoli.
 
@@ -922,32 +924,32 @@
 \begin{frame}{Rimpiazzare una lettera con una formula (1)}
     Quando rimpiazziamo una lettera proposizionale con una fp, bisogna sempre valutare se aggiungere attorno ad essa delle parentesi, altrimenti rischiamo che la fp completa non si legga in modo corretto.
     \begin{example}
-        Dato $A \wedge B \equiv B \wedge A$, se rimpiazziamo
+        Dato $A \land B \equiv B \land A$, se rimpiazziamo
         \begin{itemize}
             \item $A$ con $A \to B$,
-            \item $B$ con $A \vee C$.
+            \item $B$ con $A \lor C$.
         \end{itemize}
         senza parentesi, otteniamo\\[0.1cm]
-        \quad $A \to B \wedge A \vee C \equiv A \vee C \wedge A \to B$\\[0.1cm]
-        che contiene fp ambigue per l'alternarsi di $\wedge$ e $\vee$. L'equivalenza corretta, che viene dalla originale proprietà commutativa, è:\\[0.1cm]
-        \quad $(A \to B) \wedge (A \vee C) \equiv (A \vee C) \wedge (A \to B)$
+        \quad $A \to B \land A \lor C \equiv A \lor C \land A \to B$\\[0.1cm]
+        che contiene fp ambigue per l'alternarsi di $\land$ e $\lor$. L'equivalenza corretta, che viene dalla originale proprietà commutativa, è:\\[0.1cm]
+        \quad $(A \to B) \land (A \lor C) \equiv (A \lor C) \land (A \to B)$
     \end{example}
 \end{frame}
 
 \begin{frame}{Rimpiazzare una lettera con una formula (2)}
     Questo esempio è anche peggiore:
     \begin{example}
-        Dato $A \wedge B \equiv B \wedge A$, se rimpiazziamo
+        Dato $A \land B \equiv B \land A$, se rimpiazziamo
         \begin{itemize}
             \item $A$ con $A$,
             \item $B$ con $B \to C$,
         \end{itemize}
         senza parentesi, otteniamo\\[0.1cm]
-        \quad $A \wedge B \to C \equiv B \to C \wedge A$\\[0.1cm]
+        \quad $A \land B \to C \equiv B \to C \land A$\\[0.1cm]
         che si legge\\[0.1cm]
-        \quad $(A \wedge B) \to C \equiv B \to (C \wedge A)$\\[0.1cm]
-        che non è una equivalenza corretta! Quella correttà è:\\[0.1cm]
-        \quad $A \wedge (B \to C) \equiv (B \to C) \wedge A$
+        \quad $(A \land B) \to C \equiv B \to (C \land A)$\\[0.1cm]
+        che non è un'equivalenza corretta! Quella corretta è:\\[0.1cm]
+        \quad $A \land (B \to C) \equiv (B \to C) \land A$
     \end{example}
 \end{frame}
 
@@ -955,53 +957,53 @@
     Vogliamo verificare l'equivalenza $X \equiv Y$.  Si parte dalla proposizione sul lato sinistro o destro (quella che sembra più comoda) e si applicano le equivalenze note fino ad ottenere l'altra proposizione.
 
     \begin{example}
-        Vogliamo verificare l'equivalenza $A \vee B \equiv \neg(\neg A \wedge \neg B)$. Partendo da destra:
+        Vogliamo verificare l'equivalenza $A \lor B \equiv \neg(\neg A \land \neg B)$. Partendo da destra:
         \[
             \begin{array}{rl@{\hspace{0.8cm}}l}
-                              & \neg(\neg A \wedge \neg B) & \pause \text{(legge di De Morgan)} \\
-                \pause \equiv & \neg\neg A \vee \neg\neg B & \pause \text{(doppia negazione)}   \\
-                \pause \equiv & A \vee \neg\neg B          & \pause \text{(doppia negazione)}   \\
-                \pause \equiv & A \vee B
+                              & \neg(\neg A \land \neg B) & \pause \text{(legge di De Morgan)} \\
+                \pause \equiv & \neg\neg A \lor \neg\neg B & \pause \text{(doppia negazione)}   \\
+                \pause \equiv & A \lor \neg\neg B          & \pause \text{(doppia negazione)}   \\
+                \pause \equiv & A \lor B
             \end{array}
         \]
     \end{example}
 \end{frame}
 
 \begin{frame}{Verificare una equivalenza logica (2)}
-    Spieghiamo più dettagliatamente il passaggio da $\neg(\neg A \wedge \neg B)$ a $\neg\neg A \vee \neg\neg B$.
+    Spieghiamo più dettagliatamente il passaggio da $\neg(\neg A \land \neg B)$ a $\neg\neg A \lor \neg\neg B$.
 
     \begin{itemize}[<+->]
         \item Iniziamo a riscrivere la legge di De Morgan, ma per non fare confusione, usando le lettere $X$ e $Y$ invece di $A$ e $B$:
         \[
-        \neg (X \wedge Y) = \neg X \vee \neg Y
+        \neg (X \land Y) \equiv \neg X \lor \neg Y
         \]
-        \item Noi vogliamo applicare questa legge a  $\neg(\neg A \wedge \neg B)$: dobbiamo capire se è possibile sostiture $X$ e $Y$ nella legge di De Morgan con delle formule in maniera tale che
-        $\neg (X \wedge Y)$ diventi $\neg(\neg A \wedge \neg B)$.
+        \item Noi vogliamo applicare questa legge a $\neg(\neg A \land \neg B)$: dobbiamo capire se è possibile sostituire $X$ e $Y$ nella legge di De Morgan con delle formule, in maniera tale che
+        $\neg (X \land Y)$ diventi $\neg(\neg A \land \neg B)$.
         \item Questo è possibile con la sostituzione $X \mapsto \neg A$ e $Y \mapsto \neg B$.
         \item Applicando queste sostituzioni alla legge di De Morgan, otteniamo
-        \[\neg(\neg A \wedge \neg B) \equiv \neg\neg A \vee \neg\neg B \]
+        \[\neg(\neg A \land \neg B) \equiv \neg\neg A \lor \neg\neg B \]
     \end{itemize}
     \pause
     \textbf{Procedimento analogo vale per l'applicazione delle altre equivalenze notevoli.}
 \end{frame}
 
 \begin{frame}{Semplificazione di una fp}
-    Vogliamo semplificare la forma proposizionale $X$. La tecnica è la stessa usata sopra: si parte da $X$ e si applicano le equivalenze note fino ad ottenere una forma più semplice, ricordando che talvolta, per semplificare le cose, occorre prima complicarle !
+    Vogliamo semplificare la forma proposizionale $X$. La tecnica è la stessa usata sopra: si parte da $X$ e si applicano le equivalenze note fino ad ottenere una forma più semplice, ricordando che talvolta, per semplificare le cose, occorre prima complicarle!
 
     \begin{example}
-        Vogliamo semplificare la fp $(A \wedge B) \vee (A \wedge \neg B)$.
+        Vogliamo semplificare la fp $(A \land B) \lor (A \land \neg B)$.
         \[
             \begin{array}{rl@{\hspace{0.8cm}}l}
-                              & (A \wedge B) \vee (A \wedge \neg B) & \pause \text{(prop. distributiva${}^*$)} \\
-                \pause \equiv & A \wedge (B \vee \neg B)            & \pause \text{(terzo escluso)}            \\
-                \pause \equiv & A \wedge \top                       & \pause \text{(elemento neutro di $\wedge$)}          \\
+                              & (A \land B) \lor (A \land \neg B) & \pause \text{(prop. distributiva${}^*$)} \\
+                \pause \equiv & A \land (B \lor \neg B)            & \pause \text{(terzo escluso)}            \\
+                \pause \equiv & A \land \top                       & \pause \text{(elemento neutro di $\land$)}          \\
                 \pause \equiv & A
             \end{array}
         \]
-        Quello indicato con ${}^*$ è l'uso della proprietà distributiva $X \wedge (Y \vee Z) \equiv (X \wedge Y) \vee (X \wedge Z)$ ma da destra a sinistra. È l'operazione che nelle espressioni algebriche si chiama \emph{mettere in evidenza} o \emph{raccogliere}.
+        Quello indicato con ${}^*$ è l'uso della proprietà distributiva $X \land (Y \lor Z) \equiv (X \land Y) \lor (X \land Z)$ ma da destra a sinistra. È l'operazione che nelle espressioni algebriche si chiama \emph{mettere in evidenza} o \emph{raccogliere}.
     \end{example}
 \end{frame}
 
-\note{Esercizio 4.5, $(A \to B) \wedge (A \to C) \equiv A \to (B \wedge C)$}
+\note{Esercizio 4.5, $(A \to B) \land (A \to C) \equiv A \to (B \land C)$}
 
 \end{document}

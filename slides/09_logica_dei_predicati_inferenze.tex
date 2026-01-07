@@ -1,7 +1,5 @@
-\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table,handout]{beamer}
+\documentclass[aspectratio=169,10pt,dvipsnames,handout]{beamer}
 
-\usepackage{bussproofs}
-\EnableBpAbbreviations
 %\setbeameroption{show notes}
 
 \newcommand{\myfbox}[2]{\tikz[baseline=(n.base)]\node(n)[alt=<1>{fill=#1!50}]{#2};}
@@ -125,7 +123,7 @@
     \medskip Un formula del tipo $A \to B$ non è né vera né falsa. Ma se fissiamo una proposizione per ogni lettera proposizionale, allora possiamo tornare indietro, dalla formula tornare ad avere una proposizione, e possiamo discutere del suo valore di verità.
 
     \medskip
-    Ad esempio, data la formula $A \to B \wedge C$, se fissiamo:
+    Ad esempio, data la formula $A \to B \land C$, se fissiamo:
     \begin{itemize}
         \item $A$ = Parigi è la capitale della Francia
         \item $B$ = Roma è la capitale d'Italia
@@ -376,26 +374,26 @@
     \end{definition}
 
     \begin{example}
-        La formula $Pa \vee \neg Pa$ è valida, perché è vera in tutte le interpretazioni. Infatti data una qualunque interpretazione:
+    La formula $Pa \lor \neg Pa$ è valida, perché è vera in tutte le interpretazioni. Infatti data una qualunque interpretazione:
         \begin{itemize}
-            \item se $Pa$ è vera, allora la formula di sopra è $V \vee \neg V = V$;
-            \item se $Pa$ è falsa, allora la formula di sopra è $F \vee \neg F = F \vee V = V$
+            \item se $Pa$ è vera, allora la formula di sopra è $V \lor \neg V = V$;
+            \item se $Pa$ è falsa, allora la formula di sopra è $F \lor \neg F = F \lor V = V$
         \end{itemize}
         Notare che a questa conclusione siamo giunti con una dimostrazione matematica, non riempiendo un tabella in maniera meccanica come per la logica proposizionale.
     \end{example}
 \end{frame}
 
 \begin{frame}{Formule valide (2)}
-    Notare che $Pa \vee \neg Pa$ è una istanza del terzo escluso ($A \vee \neg A$) con la sostituzione $A \mapsto Pa$. Questo è un metodo standard per ottenere formule valide:
+    Notare che $Pa \lor \neg Pa$ è una istanza del terzo escluso ($A \lor \neg A$) con la sostituzione $A \mapsto Pa$. Questo è un metodo standard per ottenere formule valide:
     \begin{theorem}
         Tutte le formule ben formate ottenute come istanza di tautologie sono formule valide.
     \end{theorem}
     \begin{example}
         Le seguenti formule sono valide:
         \begin{itemize}
-            \item $(\forall x Px) \vee \neg (\forall x Px)$ --- istanza di $A \vee \neg A$
+            \item $(\forall x Px) \lor \neg (\forall x Px)$ --- istanza di $A \lor \neg A$
             \item $(\forall x \exists y Qxy) \to (\forall x \exists y Qxy)$ --- istanza di $A \to A$
-            \item  $(\forall x Px) \vee Qa \iff Qa \vee (\forall x Px)$ --- istanza di $A \iff A$
+            \item  $(\forall x Px) \lor Qa \iff Qa \lor (\forall x Px)$ --- istanza di $A \iff A$
         \end{itemize}
     \end{example}
 \end{frame}
@@ -405,7 +403,7 @@
     \begin{example}
         La formula $(\forall x Px) \to Pa$ è una formula valida. Infatti:
         \begin{itemize}
-            \item se $\forall x Px$ è vera, $P$ è vero per qualunque elemento del dominio, quindi a maggior regione è vero per l'elemento $a$, chiunque esso sia;
+            \item se $\forall x Px$ è vera, $P$ è vero per qualunque elemento del dominio, quindi a maggior ragione è vero per l'elemento $a$, chiunque esso sia;
             \item se $\forall x Px$ è falsa, allora l'implicazione è sicuramente vera per definizione.
         \end{itemize}
 
@@ -439,16 +437,16 @@
 
     Come abbiamo visto con altri concetti introdotti nelle slide precedenti, ogni istanza di una equivalenza logica proposizionale è anche una equivalenza logica predicativa.
     \begin{example}
-        Data l'equivalenza logica $A \wedge B \equiv B \wedge A$, otteniamo l'equivalenza logica predicativa
+    Data l'equivalenza logica $A \land B \equiv B \land A$, otteniamo l'equivalenza logica predicativa
         \[
-            (\forall x Px) \wedge \exists x(Qx \wedge \forall y Rxy) \equiv \exists x(Qx \wedge \forall y Rxy) \wedge (\forall x Px)
+            (\forall x Px) \land \exists x(Qx \land \forall y Rxy) \equiv \exists x(Qx \land \forall y Rxy) \land (\forall x Px)
         \]
-        tramite la sostituzione $A \mapsto \forall x Px$ e  $B \mapsto \exists x(Qx \wedge \forall y Rxy)$.
+    tramite la sostituzione $A \mapsto \forall x Px$ e  $B \mapsto \exists x(Qx \land \forall y Rxy)$.
     \end{example}
 
     Se indichiamo con le lettere $\phi_1$ ed $\phi_2$ delle formule generiche, possiamo scrivere l'equivalenza logica predicativa come
     \[
-        \phi_1 \wedge \phi_2 \equiv \phi_2 \wedge \phi_1 \enspace.
+    \phi_1 \land \phi_2 \equiv \phi_2 \land \phi_1 \enspace.
     \]
 \end{frame}
 
@@ -475,7 +473,7 @@
 \end{frame}
 
 \begin{frame}{Quantificatore universale limitato (2)}
-    Per comodità, però, in certi ambiti si una una notazione più compatta per il quantificatore universale limitato. Ad esempio, in matematica.
+    Per comodità, però, in certi ambiti si usa una notazione più compatta per il quantificatore universale limitato. Ad esempio, in matematica.
     \begin{example}[Quantificatore limitato da un insieme]
         Se vogliamo dire
         \begin{proposition}
@@ -508,13 +506,13 @@
     \end{itemize}
     allora la forma logica della proposizione è
     \[
-        \exists x (Mx \wedge Vx)
+    \exists x (Mx \land Vx)
     \]
     \textcolor{Blue}{Attenzione!} La formula corretta $\exists x (Mx \land Vx)$ con l'uso della \alert{congiunzione} e non  $\exists x (Mx \to Vx)$ che vorrebbe dire tutt'altro!
 \end{frame}
 
 \begin{frame}{Quantificatore esistenziale limitato (2)}
-    Per comodità, in certi ambiti si una una notazione più compatta per il quantificatore esistenziale limitato. Ad esempio, in matematica.
+    Per comodità, in certi ambiti si usa una notazione più compatta per il quantificatore esistenziale limitato. Ad esempio, in matematica.
     \begin{example}[Quantificatore limitato da un insieme]
         Se vogliamo dire
         \begin{proposition}
@@ -522,7 +520,7 @@
         \end{proposition}
         possiamo scrivere
         \[
-            \exists x (x \in A \wedge x > 0)
+            \exists x (x \in A \land x > 0)
         \]
         ma è più comodo scrivere
         \[
@@ -533,7 +531,7 @@
 \end{frame}
 
 
-\note{Forse sarebbe meglio fare degli esempi del quantificatore limitato con le tessere, come nella sezione sottostante. In questo modo si  potrebbe spiegare meglio il perché l'implicazione è il connettivo giusto da usare nel $\forall$ ma non nell'$\exists$.}
+\note{Forse sarebbe meglio fare degli esempi del quantificatore limitato con le tessere, come nella sezione sottostante. In questo modo si potrebbe spiegare meglio il perché l'implicazione è il connettivo giusto da usare nel $\forall$ ma non nell'$\exists$.}
 
 \section{Equivalenze e conseguente logiche notevoli}
 
@@ -544,10 +542,10 @@
         \neg \exists x \phi \equiv \forall x \neg \phi \qquad \neg \forall x \phi \equiv \exists x \neg \phi
     \]
     \begin{example}
-        Supponiamo che l'univero del discorso siano gli esseri umani. Allora, se $\phi$ è la funzione proposizionale ``\prop{$x$ sa volare}\/'':
+        Supponiamo che l'universo del discorso sia costituito dagli esseri umani. Allora, se $\phi$ è la funzione proposizionale ``\prop{$x$ sa volare}\/'' :
         \begin{itemize}
             \item $\neg \exists x \phi$ è ``\prop{non esiste un essere umano che sa volare}\/''
-            \item $\forall x \neg \phi$ è ``\prop{tutti gli essere umani non sanno volare}\/''
+            \item $\forall x \neg \phi$ è ``\prop{tutti gli esseri umani non sanno volare}\/''
         \end{itemize}
         ed entrambi vogliono dire la stessa cosa (sebbene il secondo in italiano sia innaturale)
     \end{example}
@@ -580,20 +578,20 @@
 \begin{frame}{Negazione e quantificatori (4)}
     Queste equivalenze assomigliano un po' alla legge di De Morgan, che riportiamo qui sotto:
     \[
-        \neg (A \wedge B) \equiv \neg A \vee \neg B \qquad \qquad \neg (A \vee B) \equiv \neg A \wedge \neg B
+        \neg (A \land B) \equiv \neg A \lor \neg B \qquad \qquad \neg (A \lor B) \equiv \neg A \land \neg B
     \]
 
     \medskip
     Effettivamente, il quantificatore $\forall$ è una specie di ``congiunzione'' di formule, mentre il quantificatore $\exists$ è una specie di ``disgiunzione'' di formule. Ad esempio, se l'universo del discorso sono i numeri naturali, in maniera non del tutto rigorosa possiamo scrivere:
     \begin{gather*}
-        \forall x Px \equiv  P0 \wedge P1 \wedge P2 \wedge P3 \ldots\\
-        \exists x Px \equiv  P0 \vee P1 \vee P2 \vee P3 \ldots
+        \forall x Px \equiv  P0 \land P1 \land P2 \land P3 \ldots\\
+        \exists x Px \equiv  P0 \lor P1 \lor P2 \lor P3 \ldots
     \end{gather*}
     Applicando De Morgan:
     \begin{align*}
-        \neg(\forall x Px) & \equiv \neg (P0 \wedge P1 \wedge P2 \wedge P3 \ldots) \tag{equivalenza vista prima}\\
-        & \equiv (\neg P0) \vee (\neg P1) \vee (\neg P2) \vee \ldots \tag{legge di De Morgan}\\
-        & \equiv \exists x (\neg Px) \tag{equivalenza vista prima}
+    \neg(\forall x Px) & \equiv \neg (P0 \land P1 \land P2 \land P3 \ldots) \tag{equivalenza vista prima}\\
+    & \equiv (\neg P0) \lor (\neg P1) \lor (\neg P2) \lor \ldots \tag{legge di De Morgan}\\
+    & \equiv \exists x (\neg Px) \tag{equivalenza vista prima}
     \end{align*}
 \end{frame}
 
@@ -602,23 +600,23 @@
     \begin{align*}
         \neg \forall x \in A \, (x > 0) & \equiv \neg \forall x (x \in A \to x > 0) \tag{rimozione del quantificatore limitato}\\
        & \equiv \exists x \neg (x \in A \to x > 0) \tag{equivalenza precedente}\\
-        & \equiv \exists x \neg \neg(x \in A \wedge \neg  (x > 0)) \tag{poiché $A \to B \equiv \neg(A \wedge \neg B)$}\\
-        & \equiv \exists x (x \in A  \wedge \neg ( x > 0)) \tag{doppia negazione}\\
+    & \equiv \exists x \neg \neg(x \in A \land \neg  (x > 0)) \tag{poiché $A \to B \equiv \neg(A \land \neg B)$}\\
+    & \equiv \exists x (x \in A  \land \neg ( x > 0)) \tag{doppia negazione}\\
         & \equiv \exists x \in A \, \neg (x > 0) \tag{reintroduzione del quantificatore limitato}
     \end{align*}
     In generale:
     \begin{gather*}
-        \neg \forall x (Y \to X) \equiv \exists x (Y \wedge \neg X)\\
-        \neg \exists x (Y \wedge X) \equiv \forall x (Y \to \neg X)
+    \neg \forall x (Y \to X) \equiv \exists x (Y \land \neg X)\\
+    \neg \exists x (Y \land X) \equiv \forall x (Y \to \neg X)
     \end{gather*}
 \end{frame}
 
 \begin{frame}{Interpretazione dei prossimi esempi}
-    Nei prossimi esempi utilizzeremo la seguente intepretazione:
+    Nei prossimi esempi utilizzeremo la seguente interpretazione:
     \begin{itemize}
         \item il dominio sarà un insieme di tessere che possono avere varie forme e colori;
         \item il predicato unario $R$ sta per ``essere rotondo'';
-        \item il predicato unario $G$ sta per ``essere giallo'.
+    \item il predicato unario $G$ sta per ``essere giallo''.
     \end{itemize}
     Il numero di tessere, la loro forma e colore verrà rappresentato graficamente. Ad esempio
     \[
@@ -632,15 +630,15 @@
 \end{frame}
 
 \begin{frame}{Quantificatore universale e congiunzione (1)}
-    Consideriamo la formula  $\forall x (Rx \wedge Gx)$, che in italiano si può tradurre con
+    Consideriamo la formula  $\forall x (Rx \land Gx)$, che in italiano si può tradurre con
     \begin{proposition}
         tutte le tessere sono rotonde e gialle
     \end{proposition}
-    Dovrebbe essere evidente che questa è equivalente a $(\forall x Rx) \wedge (\forall x Gx)$, ovvero
+    Dovrebbe essere evidente che questa è equivalente a $(\forall x Rx) \land (\forall x Gx)$, ovvero
     \begin{proposition}
         tutte le tessere sono rotonde e tutte le tessere sono gialle
     \end{proposition}
-    La seguente interpretazione soddisfa sia $\forall x (Rx \wedge Gx)$ che $(\forall x Rx) \wedge (\forall x Gx)$:
+    La seguente interpretazione soddisfa sia $\forall x (Rx \land Gx)$ che $(\forall x Rx) \land (\forall x Gx)$:
     \[
     \begin{tikzpicture}[minimum size=1cm]
         \node (1) [draw, circle, fill=yellow] at (0,0) {1};
@@ -659,7 +657,7 @@
 \end{frame}
 
 \begin{frame}{Quantificatore universale e congiunzione (2)}
-    Esiste una configurazione di tessere che soddisfi $\forall x (Rx \wedge Gx)$  ma non $(\forall x Rx) \wedge (\forall x Gx)$, o viceversa ?
+    Esiste una configurazione di tessere che soddisfi $\forall x (Rx \land Gx)$  ma non $(\forall x Rx) \land (\forall x Gx)$, o viceversa ?
     \pause
 
     \medskip
@@ -667,16 +665,16 @@
     \pause
 
     \medskip
-    Pià in generale, è vera la seguente equivalenza, che è un sorta di proprietà distributiva del quantificatore universale rispetto alla congiunzione:
+    Più in generale, è vera la seguente equivalenza, che è una sorta di proprietà distributiva del quantificatore universale rispetto alla congiunzione:
     \[
-        \forall x (\phi_1 \wedge \phi_2) \equiv (\forall x \phi_1) \wedge (\forall x \phi_2)
+        \forall x (\phi_1 \land \phi_2) \equiv (\forall x \phi_1) \land (\forall x \phi_2)
     \]
 \end{frame}
 
 \begin{frame}{Quantificatore universale e disgiunzione (1)}
     Ci chiediamo adesso se valga anche l'equivalenza
     \[
-        \forall x (Rx \vee Gx) \equiv (\forall x Rx) \vee (\forall x Gx)
+    \forall x (Rx \lor Gx) \equiv (\forall x Rx) \lor (\forall x Gx)
     \]
     ovvero
     \begin{proposition}
@@ -686,7 +684,7 @@
     \end{proposition}
 
     \pause
-    Tuttavia, la seguente interpretazione soddisfa $\forall x (Rx \vee Gx)$ ma non $(\forall x Rx) \vee (\forall x Gx)$:
+    Tuttavia, la seguente interpretazione soddisfa $\forall x (Rx \lor Gx)$ ma non $(\forall x Rx) \lor (\forall x Gx)$:
     \[
     \begin{tikzpicture}[minimum size=1cm]
         \node (1) [draw, circle, fill=red] at (0,0) {1};
@@ -699,28 +697,28 @@
 \begin{frame}{Quantificatore universale e disgiunzione (2)}
     È vero però (vi ricordo che $\models$ è il simbolo di conseguenza logica) che
     \[
-        (\forall x Rx) \vee (\forall x Gx) \models \forall x (Rx \vee Gx)
+    (\forall x Rx) \lor (\forall x Gx) \models \forall x (Rx \lor Gx)
     \]
-    Infatti se $(\forall x Rx) \wedge (\forall x Gx)$, allora o tutte le tessere sono rotonde, oppure sono tutte gialle (o anche entrambe le cose). In ogni caso, ogni tessara è o rotonda o gialla.
+    Infatti se $(\forall x Rx) \land (\forall x Gx)$, allora o tutte le tessere sono rotonde, oppure sono tutte gialle (o anche entrambe le cose). In ogni caso, ogni tessara è o rotonda o gialla.
 
     \medskip
     Una interpretazione che:
     \begin{itemize}
-        \item rende vera $(\forall x Rx) \vee (\forall x Gx)$
-        \item rende falsa $\forall x (Rx \vee Gx)$
+    \item rende vera $(\forall x Rx) \lor (\forall x Gx)$
+    \item rende falsa $\forall x (Rx \lor Gx)$
     \end{itemize}
     non esiste!
 
     \medskip In generale è vero che:
     \[
-        (\forall x \phi_1) \vee (\forall x \phi_2) \models \forall x (\phi_1 \vee \phi_2)
+    (\forall x \phi_1) \lor (\forall x \phi_2) \models \forall x (\phi_1 \lor \phi_2)
     \]
 \end{frame}
 
 \begin{frame}{Quantificatore esistenziale e congiunzione}
     Se rimpiazziamo il quantificatore universale con l'esistenziale, otteniamo proprietà simili. Intanto
     \[
-        \exists x (Rx \vee Gx) \equiv (\exists x Rx) \vee (\exists x Gx)
+        \exists x (Rx \lor Gx) \equiv (\exists x Rx) \lor (\exists x Gx)
     \]
     ovvero
     \begin{proposition}
@@ -730,7 +728,7 @@
     \end{proposition}
     In generale è vero
     \[
-        \exists x (\phi_1 \vee \phi_2) \equiv (\exists x \phi_1) \vee (\exists x \phi_2)
+        \exists x (\phi_1 \lor \phi_2) \equiv (\exists x \phi_1) \lor (\exists x \phi_2)
     \]
 \end{frame}
 
@@ -758,24 +756,21 @@
     \[
         \exists x (Rx \land Gx) \models (\exists x Rx) \land (\exists x Gx)
     \]
-    Infatti se $\exists x Rx \wedge \exists x Gx$, vuol dire che possiamo trovare una tessera che è rotonda e gialla allo stesso tempo. Ovviamente, grazie a questa tessera, sarà vera sia $\exists x Rx$ che $\exists x Gx$.
+    Infatti se $\exists x (Rx \land Gx)$, vuol dire che possiamo trovare una tessera che è rotonda e gialla allo stesso tempo. Ovviamente, grazie a questa tessera, saranno vere sia $\exists x Rx$ che $\exists x Gx$.
 
     \medskip
     Una interpretazione che:
     \begin{itemize}
-        \item rende vera $\exists x (Rx \wedge Gx)$
-        \item rende false $(\exists x Rx) \wedge (\exists x Gx)$
+        \item rende vera $\exists x (Rx \land Gx)$
+        \item rende false $(\exists x Rx) \land (\exists x Gx)$
     \end{itemize}
     non esiste!
 
     \medskip In generale è vero che:
     \[
-         \exists x (\phi_1 \land \phi_2) \models (\exists x \phi_1) \land (\exists x \phi_2)
+        \exists x (\phi_1 \land \phi_2) \models (\exists x \phi_1) \land (\exists x \phi_2)
     \]
 \end{frame}
-
-
-
 
 \begin{frame}{Esercizi consigliati}
 	Esercizi da 5 in poi del Capitolo 5.

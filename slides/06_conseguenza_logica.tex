@@ -1,6 +1,6 @@
-\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table]{beamer}
+\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table,handout]{beamer}
 
-\setbeameroption{show notes}
+%\setbeameroption{show notes}
 
 \input{preamble.inc}
 
@@ -28,7 +28,7 @@
 
 \begin{frame}{Conseguenza logica (1)}
     \begin{block}{Ripasso: equivalenza logica}
-        Due fp $X$ ed $Y$ sono \alert{equivalenti} ($X \equiv Y$) quando hanno lo stesso valore di verità per ogni assegnamento di verità alle variabili proposizionali.
+        Due \fp $X$ e $Y$ sono \alert{equivalenti} ($X \equiv Y$) quando hanno lo stesso valore di verità per ogni assegnamento di valori di verità alle variabili proposizionali.
     \end{block}
 
     \pause
@@ -43,11 +43,11 @@
 
     \pause
     \begin{definition}[Simbolo per conseguenza logica]
-        Scriviamo \alert{$X \models Y$} per indicare $Y$ è conseguenza logica di $X$.
+        Scriviamo \alert{$X \models Y$} per indicare che $Y$ è conseguenza logica di $X$.
     \end{definition}
 \end{frame}
 
-\begin{frame}{Conseguenenza logica (2)}
+\begin{frame}{Conseguenza logica (2)}
     Ingrandimento del simbolo di conseguenza logica:
 
     \smallskip
@@ -58,8 +58,8 @@
     \pause
     \medskip
     In generale, il concetto di conseguenza logica si generalizza al caso di premesse multiple come segue:
-    \begin{definition}[Conseguenenza logica]
-        Una \fp $Y$ è \alert{conseguenza logica} delle \fp $X_1, \ldots, X_n$ quando tutti gli assegnamenti di lettere a valori di verità che rendono vere tutte le  $X_i$ contemporanamente, rendono vera anche $Y$.
+    \begin{definition}[Conseguenza logica]
+        Una \fp $Y$ è \alert{conseguenza logica} delle \fp $X_1, \ldots, X_n$ quando tutti gli assegnamenti di lettere a valori di verità che rendono vere tutte le $X_i$ contemporaneamente rendono vera anche $Y$.
 
         \smallskip
         In simboli: $X_1, \ldots, X_n \models Y$.
@@ -105,7 +105,7 @@
 \end{frame}
 
 \begin{frame}{Conseguenza logica e implicazione (1)}
-    Il concetto di conseguenza logica, ha delle affinità con il connettivo dell'implicazione:
+    Il concetto di conseguenza logica ha delle affinità con il connettivo dell'implicazione:
     \begin{itemize}
         \item $Y$ è conseguenza logica di $X$ quando non può mai accadere che $X$ è vera ed $Y$ è falsa
         \item la \fp $X\to Y$ è vera sempre tranne quando $X$ è vera ed $Y$ è falsa.
@@ -113,13 +113,13 @@
 
     \medskip Non deve sorprendere quindi il seguente:
     \begin{theorem}[Conseguenza logica e implicazione]
-        $X_1, \ldots, X_n \models Y$ se e solo se $X_1 \land \cdots \land X_n \to Y$ è una tatutologia.
+        $X_1, \ldots, X_n \models Y$ se e solo se $(X_1 \land \cdots \land X_n) \to Y$ è una tautologia.
     \end{theorem}
 \end{frame}
 
 \begin{frame}{Conseguenza logica e implicazione (2)}
     \begin{example}
-        Riprendiamo la tavola di verità usata per verificare che $B$ è conseguenza logica di $A \to B$ e $A$, a cui aggiungo un paio di colonne.
+        Riprendiamo la tavola di verità usata per verificare che $B$ è conseguenza logica di $A \to B$ e $A$, a cui aggiungiamo un paio di colonne.
         \begin{center}
             \begin{tabular}{|c|c||c|c|c|c|c|}
                 $A$ & $B$ & \color{magenta}$A \to B$ & \color{magenta}$A$ & \color{blue}$B$ & \only<1>{\phantom{$(A \to B) \land A$}}\only<2->{$(A \to B) \land A$} & \only<1-2>{\phantom{$((A \to B) \land A) \to B$}}\only<3->{$((A \to B) \land A) \to B$} \\
@@ -175,10 +175,10 @@
 
 \begin{frame}{Conseguenza logica e correttezza delle inferenze (1)}
     \begin{block}{Ripasso: inferenza corretta}
-		Una inferenza è \alert{corretta} (o \alert{valida}) se ogni qualvolta le premesse sono vere, allora è necessariamente vera anche la conclusione.
+		Un'inferenza è \alert{corretta} (o \alert{valida}) se ogni qualvolta le premesse sono vere, allora è necessariamente vera anche la conclusione.
     \end{block}
 
-    \pause Sappiamo anche che la correttezza di una inferenza dipende solo dalla sua forma logica, ovvero dalla regola di inferenza da cui deriva.
+        \pause Sappiamo anche che la correttezza di un'inferenza dipende solo dalla sua forma logica, ovvero dalla regola di inferenza da cui deriva.
 
     \pause
     \begin{definition}[Regola di inferenza corretta]
@@ -224,7 +224,7 @@
 
 \begin{frame}{Conseguenza logica e correttezza delle inferenze (3)}
     \begin{example}[Modus ponens]
-        Possiamo verificare formalmente che il \emph{modus ponens} è una inferenza corretta. Il modus ponens è
+        Possiamo verificare formalmente che il \emph{modus ponens} è un'inferenza corretta. Il modus ponens è
         \begin{center}
             \begin{inference}
                 $A \to B$\\
@@ -247,7 +247,7 @@
                 $\neg B$
             \end{inference}
         \end{center}
-        Abbiamo già vistol che $\neg B$ non è conseguenza logica di $A \to B$ e di $\neg A$.
+        Abbiamo già visto che $\neg B$ non è conseguenza logica di $A \to B$ e di $\neg A$.
     \end{example}
 \end{frame}
 
@@ -264,7 +264,7 @@
 
     \pause
     \medskip
-    Una istanza di questa regola, ad esempio, è
+    Un'istanza di questa regola, ad esempio, è
     \begin{center}
         \begin{inference}
             Carla va alla festa\\
@@ -276,7 +276,7 @@
 \end{frame}
 
 \begin{frame}{Ex falso quodlibet (2)}
-    Cerchiamo di verificare la correttezza della regola con le tavola di verità:
+    Cerchiamo di verificare la correttezza della regola con le tavole di verità:
     \smallskip
     \begin{center}
         \begin{tabular}{|c|c||c|c|c|}
@@ -292,7 +292,7 @@
     \only<2->{Constatiamo che:}
     \begin{itemize}
         \item<2-> Non esistono righe in cui le premesse ($A$ e $\neg A$) sono contemporanamente vere!
-        \item<3-> Peranto, possiamo affermare senza timori di smentita che in tutte le righe in cui le premesse sono contemporanamente vere, anche la conclusione $B$ è vera.
+        \item<3-> Pertanto, possiamo affermare senza timori di smentita che in tutte le righe in cui le premesse sono contemporanamente vere, anche la conclusione $B$ è vera.
         \item<4-> $B$ è conseguenza logica di $A$ e $\neg A$ e quindi l'inferenza è corretta.
     \end{itemize}
 
@@ -309,15 +309,15 @@
         \item Abbiamo affermato che \textbf{in tutte le righe in cui le premesse sono contemporanamente vere, anche la conclusione è vera}.
         \item Nella logica moderna il quantificatore universale non implica l'esistenza di ciò che si quantifica.
         \item La proposizione ``\textbf{tutti gli elefanti volanti sono rosa}'' è vera.
-        \item L'idea è che non si può falsificare la proposizione con un controesempio. Se fosse falsa, dovrebbe esistere un elefante volante che non è rosa. Vi sfido a trovarne uno !
-        \item  In altre parola, la proposizione
+        \item L'idea è che non si può falsificare la proposizione con un controesempio. Se fosse falsa, dovrebbe esistere un elefante volante che non è rosa. Vi sfido a trovarne uno!
+        \item In altre parole, la proposizione
         \begin{center}
-            \emph{tutti gli elefanti volanti sono rosa}
+            \prop{tutti gli elefanti volanti sono rosa}
         \end{center}
         equivale a \begin{center}
-            \emph{non esiste alcun elefante volante che non è rosa}
+            \prop{non esiste alcun elefante volante che non è rosa}
         \end{center}
-        \item Non la si è sempre pensata così in passato. Nella \alert{logica aristotelica}, un frase del tipo \emph{``Tutti gli A sono B''} implica l'esistenza di almeno un $A$.
+        \item Non la si è sempre pensata così in passato. Nella \alert{logica aristotelica}, una frase del tipo \emph{``Tutti gli A sono B''} implica l'esistenza di almeno un $A$.
         \item Si dice che nella logica aristotelica il quantificatore ``tutti'' ha un \alert{impegno esistenziale}. Il vostro libro di testo discute questo fatto a pag.~186 nel \emph{Riquadro 9}.
     \end{itemize}
 \end{frame}

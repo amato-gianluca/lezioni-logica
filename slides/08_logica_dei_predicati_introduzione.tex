@@ -4,8 +4,6 @@
 
 \input{preamble.inc}
 
-\newcommand{\myfbox}[2]{\tikz[baseline=(n.base)]\node(n)[alt=<1>{fill=#1!50}]{#2};}
-
 \title{Introduzione alla logica dei predicati}
 
 \begin{document}
@@ -355,7 +353,7 @@
 		\item Per ogni $y$, Elisa ama $y$ (Elisa ama tutti).
 	\end{itemize}
 	}
-	In queste frasi, non si può rimpiazzare una variable con un nome... la frase seguente non ha alcun significato:
+	In queste frasi, non si può rimpiazzare una variabile con un nome\ldots la frase seguente non ha alcun significato:
 	\begin{itemize}
 		\item {\propshape Esiste Elena tale che Elena ama Massimo}\\
 	\end{itemize}
@@ -369,10 +367,10 @@
 	\[
 		\sum_{i=1}^{10} ij
 	\]
-	In questa formula, l'operazione di sommatoria svolge lo stesso ruole del quantificatore, vincolando la variabile $i$. La variabile $j$ è invece libera.
+	In questa formula, l'operazione di sommatoria svolge lo stesso ruolo del quantificatore, vincolando la variabile $i$. La variabile $j$ è invece libera.
 
 	\medskip
-	A causa di ciò, il risultato della sommatoria dipende solo dal valore di $j$: se eliminamo la sommatoria svolgendo il calcolo, otteniamo la formula $55 j$ dove compare solo la variabile $j$.
+	A causa di ciò, il risultato della sommatoria dipende solo dal valore di $j$: se eliminiamo la sommatoria svolgendo il calcolo, otteniamo la formula $55 j$ dove compare solo la variabile $j$.
 
 	\medskip
 	Come esempio finale, anche l'operazione di integrale definisce una variabile vincolata. Ad esempio, nell'integrale
@@ -410,7 +408,7 @@
 		\propshape\centering
 		Esiste un libro il cui autore è nato nel 1920.\\
 		$\Downarrow$\\
-		Esiste x tale l'autore di x è nato nel 1920.
+		Esiste $x$ tale che l'autore di $x$ è nato nel 1920.
 	\end{example}
 \end{frame}
 
@@ -461,7 +459,7 @@
 	\begin{proposition}
 		Tutte le vocali compaiono nella parola ``aiuole''.
 	\end{proposition}
-	Come facciamo ad affermare che questa proposizione è vera o falsa ? Prima di tutto, rimpiazziamo  il quantificatore \quant{tutti} con \quant{per ogni}, ottenendo:
+	Come facciamo ad affermare che questa proposizione è vera o falsa? Prima di tutto, rimpiazziamo il quantificatore \quant{tutti} con \quant{per ogni}, ottenendo:
 	\begin{proposition}
 		Per ogni $x$, se $x$ è una vocale allora $x$ compare nella parola ``aiuole''.
 	\end{proposition}
@@ -484,26 +482,26 @@
 	\end{center}
 	è vera quando tutte le seguenti proposizioni sono vere:
 	\begin{itemize}
-		\item $x \mapsto a$: \prop{se la lettere ``a'' è una vocale allora ``a'' compare nella parola ``aiuole''}
-		\item $x \mapsto b$: \prop{se la lettere ``b'' è una vocale allora ``b'' compare nella parola ``aiuole''}
-		\item $x \mapsto c$: \prop{se la lettere ``c'' è una vocale allora ``c'' compare nella parola ``aiuole''}
+		\item $x \mapsto a$: \prop{se la lettera ``a'' è una vocale allora ``a'' compare nella parola ``aiuole''}
+		\item $x \mapsto b$: \prop{se la lettera ``b'' è una vocale allora ``b'' compare nella parola ``aiuole''}
+		\item $x \mapsto c$: \prop{se la lettera ``c'' è una vocale allora ``c'' compare nella parola ``aiuole''}
 		\item \ldots
-		\item $x \mapsto l$: \prop{se la lettere ``l'' è una vocale allora ``l'' compare nella parola ``aiuole''}
+		\item $x \mapsto l$: \prop{se la lettera ``l'' è una vocale allora ``l'' compare nella parola ``aiuole''}
 		\item \ldots
-		\item $x \mapsto z$: \prop{se la lettere ``z'' è una vocale allora ``z'' compare nella parola ``aiuole''}
+		\item $x \mapsto z$: \prop{se la lettera ``z'' è una vocale allora ``z'' compare nella parola ``aiuole''}
 	\end{itemize}
 \end{frame}
 
 \begin{frame}{Il quantificatore universale (3)}
-	Si può verificare che queste proposizioni sono effettivamene tutte vere. Facciamo solo un paio di esempi:
+	Si può verificare che queste proposizioni sono effettivamente tutte vere. Facciamo solo un paio di esempi:
 	\begin{itemize}
-		\item \prop{se la lettere ``a'' è una vocale allora ``a'' compare nella parola ``aiuole''}\\[0.1cm]
+		\item \prop{se la lettera ``a'' è una vocale allora ``a'' compare nella parola ``aiuole''}\\[0.1cm]
 		      È vera perché sono vere sia l'antecedente che il conseguente dell'implicazione.\\[0.2cm]
 
-		\item \prop{se la lettere ``b'' è una vocale allora ``b'' compare nella parola ``aiuole''}\\[0.1cm]
+		\item \prop{se la lettera ``b'' è una vocale allora ``b'' compare nella parola ``aiuole''}\\[0.1cm]
 		      È vera perché l'antecedente dell'implicazione è vero.\\[0.2cm]
 
-		\item \prop{se la lettere ``l'' è una vocale allora ``l'' compare nella parola ``aiuole''}\\[0.1cm]
+		\item \prop{se la lettera ``l'' è una vocale allora ``l'' compare nella parola ``aiuole''}\\[0.1cm]
 		      È vera perché l'antecedente dell'implicazione è vero.
 	\end{itemize}
 \end{frame}
@@ -528,7 +526,7 @@
 \end{frame}
 
 \begin{frame}{Controesempio}
-	Nella pratica, dovremo trovare altri modi di determinare se una proposizione è vera, per esempio scrivendo una \alert{dimostrazione}, ovvero una inferenza che partendo da proprietà note (assiomi) arriva ad inferire la proprietà voluta.
+	Nella pratica, dovremo trovare altri modi di determinare se una proposizione è vera, per esempio scrivendo una \alert{dimostrazione}, ovvero un'inferenza che partendo da proprietà note (assiomi) arriva ad inferire la proprietà voluta.
 
 	\medskip
 	In realtà, se la proposizione è falsa, possiamo mostrarlo facilmente producendo un \alert{controesempio}, ovvero un singolo valore per $x$ che rende falsa la proposizione quantificata. Basta provare con $x \mapsto 11$ per ottenere
@@ -538,8 +536,8 @@
 	che è falsa, perché l'antecedente è vero e il conseguente è falso.
 \end{frame}
 
-\begin{frame}{Conseguttura di Goldbach}
-	Ma se non trovo nessun controesempio ? Ci sono tante proposizioni sui numeri che non sappiamo se sono vere o fale, come la \alert{congettura di Goldbach}.
+\begin{frame}{Congettura di Goldbach}
+	Ma se non trovo nessun controesempio? Ci sono tante proposizioni sui numeri che non sappiamo se sono vere o false, come la \alert{congettura di Goldbach}.
 	\begin{proposition}
 		Ogni numero pari maggiore di 2 è la somma di due numeri primi.
 	\end{proposition}
@@ -606,7 +604,7 @@
 
 		Vogliamo verificare che
 		\begin{itemize}
-			\item \prop{Tutti i nodi connesso con c sono verdi}
+			\item \prop{Tutti i nodi connessi con c sono verdi}
 		\end{itemize}
 		ovvero
 		\begin{itemize}
@@ -620,7 +618,7 @@
 			\item $x \mapsto b$: \prop{se b è connesso con c allora b è verde};
 			\item $x \mapsto c$: \prop{se c è connesso con c allora c è verde};
 			\item $x \mapsto d$: \prop{se d è connesso con c allora d è verde};
-			\item $x \mapsto e$: \prop{sse e è connesso con c allora e è verde}.
+			\item $x \mapsto e$: \prop{se e è connesso con c allora e è verde}.
 		\end{itemize}
 	\end{columns}
 \end{frame}
@@ -652,7 +650,7 @@
 	\begin{proposition}
 		Esiste $x$ tale che \ldots
 	\end{proposition}
-	è vera se esiste almeno un valore dell'universo del discorso che possiamo rimpiazzare in $x$ per rendere vera proposizione nei $\ldots$
+	è vera se esiste almeno un valore dell'universo del discorso che possiamo rimpiazzare in $x$ per rendere vera la proposizione nei $\ldots$
 
 	\medskip
 	Ad esempio, nel grafo di prima, la proposizione
@@ -694,7 +692,7 @@
 	\begin{proposition}
 		Esiste $x$ tale che $x$ è rosa e $x$ è connesso con b
 	\end{proposition}
-	Questa proposizione è falsa:rimpiazzando $x$ con un nodo si ottengono sempre proposizioni false:
+	Questa proposizione è falsa: rimpiazzando $x$ con un nodo si ottengono sempre proposizioni false:
 	\begin{itemize}
 		\item $x \mapsto a$: \prop{a è rosa e a è connesso con b}
 		\item $x \mapsto b$: \prop{b è rosa e b è connesso con b}
@@ -717,12 +715,12 @@
 	Per determinare se è vera, proviamo a sostituire ad $x$, tutti i possibili nodi, e otteniamo:
 	\begin{itemize}
 		\item $x \mapsto a$: \prop{se a è verde esiste y tale che y è giallo ed a è connesso con y}
-		\item $x \mapsto a$: \prop{se b è verde esiste y tale che y è giallo e b è connesso con y}
-		\item $x \mapsto a$: \prop{se c è verde esiste y tale che y è giallo e c è connesso con y}
-		\item $x \mapsto a$: \prop{se d è verde esiste y tale che y è giallo e d è connesso con y}
-		\item $x \mapsto a$: \prop{se e è verde esiste y tale che y è giallo ed e è connesso con y}
+		\item $x \mapsto b$: \prop{se b è verde esiste y tale che y è giallo e b è connesso con y}
+		\item $x \mapsto c$: \prop{se c è verde esiste y tale che y è giallo e c è connesso con y}
+		\item $x \mapsto d$: \prop{se d è verde esiste y tale che y è giallo e d è connesso con y}
+		\item $x \mapsto e$: \prop{se e è verde esiste y tale che y è giallo ed e è connesso con y}
 	\end{itemize}
-	Verifchiamole una alla volta.
+	Verifichiamole una alla volta.
 \end{frame}
 
 \begin{frame}{Più quantificatori (2)}
@@ -757,7 +755,7 @@
 \end{frame}
 
 \begin{frame}{Più quantificatori (3)}
-	Otteniamo così che la sostituzione $x \mapsto d$ da origine ad un controesempio
+	Otteniamo così che la sostituzione $x \mapsto d$ dà origine ad un controesempio
 	\begin{proposition}
 		se d è verde esiste y tale che y è giallo e d è connesso con y
 	\end{proposition}

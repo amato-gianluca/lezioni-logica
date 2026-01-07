@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table,handout]{beamer}
+\documentclass[aspectratio=169,10pt,handout]{beamer}
 
 \usepackage{bussproofs}
 \EnableBpAbbreviations
@@ -52,7 +52,7 @@
     \end{itemize}
 
     \medskip
-    Informalmente, vuol dire che se so che $Y$ è vera per tutti gli individui, allora sarà sicuramente vero per $t$, chiunque sia $t$.
+    Informalmente, vuol dire che se so che $\phi(x)$ è vera per tutti gli individui, allora sarà sicuramente vera per $t$, chiunque sia $t$.
     \begin{example}[$\forall x (Px \to Qx), Pa \vdash Qa$]
         \begin{prooftree}
             \AXC{$\forall x (Px \to Qx)$}
@@ -103,7 +103,7 @@
             \end{minipage}}
     \end{center}
 
-    \begin{example}[$\forall x (Px \to Qx), \forall x Px \to \forall x Qx$]
+    \begin{example}[$\forall x (Px \to Qx), \forall x Px \vdash \forall x Qx$]
         \begin{prooftree}
             \AXC{$\forall x (Px \to Qx)$}
             \RightLabel{($\elim\forall$)}
@@ -120,7 +120,7 @@
 \end{frame}
 
 \begin{frame}{Cosa accade se dimentico la condizione a latere ?}
-    La regola di inferenza è falsa. Ad esempio, si può dimostrare che $Pa \vdash \forall Px$ con un singolo passo:
+    La regola di inferenza è falsa. Ad esempio, si può dimostrare che $Pa \vdash \forall x Px$ con un singolo passo:
     \begin{prooftree}
         \AXC{$Pa$}
         \RightLabel{($\intro\forall$)}
@@ -175,10 +175,10 @@
 \end{frame}
 
 \begin{frame}{Teoremi di correttezza e completezza}
-    Ovviamente, anche per la logica dei predicati valgono i teoremi di correttezzae e completezza forte.
+    Ovviamente, anche per la logica dei predicati valgono i teoremi di correttezza e completezza forte.
 
     \begin{theorem}[Correttezza (forte) della deduzione naturale]
-        Se $\phi_1, \ldots, \phi_n \vdash \phi$, allora $\phi_1, \ldots, \phi_n \models \phi_n$.
+        Se $\phi_1, \ldots, \phi_n \vdash \phi$, allora $\phi_1, \ldots, \phi_n \models \phi$.
     \end{theorem}
 
     \begin{theorem}[Completezza (forte) della deduzione naturale]
@@ -186,10 +186,13 @@
     \end{theorem}
 
     \medskip
-    Le dimostrazioni di questo teoremi esulano dal programma del corso.
+    Le dimostrazioni di questi teoremi esulano dal programma del corso.
 \end{frame}
 
-\end{document}
+% -----------------------------------------------------------------------------
+% Materiale aggiuntivo (non usato in questa versione del documento)
+% -----------------------------------------------------------------------------
+\iffalse
 
 \section{Combinare le regole di inferenza}
 
@@ -202,7 +205,7 @@
     \end{itemize}
 
     \medskip
-    Un modo per determinare se una regola di inferenza è corretta consista nel capire se è possibile ottenerla \alert{combinando regole di inferenza note}.
+    Un modo per determinare se una regola di inferenza è corretta consiste nel capire se è possibile ottenerla \alert{combinando regole di inferenza note}.
 \end{frame}
 
 \begin{frame}{Dimostrazioni formali (1)}
@@ -254,5 +257,6 @@
     L'argomento è molto complesso ed esula completamente dagli obiettivi di questo insegnamento.
 \end{frame}
 
+\fi
 
 \end{document}

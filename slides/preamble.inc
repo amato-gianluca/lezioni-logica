@@ -3,12 +3,9 @@
 \usepackage[utf8]{inputenc}
 \usepackage{pifont}
 \usepackage{tikz}
-\usepackage[normalem]{ulem}
 \usepackage{xspace}
 \usepackage{minted}
 \usepackage{qrcode}
-\usepackage{array}
-\usepackage{mathrsfs}
 \usepackage[
     type={CC},
     modifier={by-nc-sa},
@@ -32,11 +29,10 @@
 \newcommand{\prop}[1]{\emph{#1}}
 \newcommand{\link}[1]{\textcolor{blue}{#1}}
 \newcommand{\propshape}{\itshape}
-\newcommand{\xor}{\mathbin{\underbar{$\vee$}}}
+\newcommand{\xor}{\mathbin{\underbar{$\lor$}}}
 \renewcommand{\iff}{\mathbin{\leftrightarrow}}
 \newcommand{\fp}{fp\xspace}
 \newcommand{\fbf}{fbf\xspace}
-\newcommand{\partof}{\mathscr{P}}
 
 \newenvironment{inference}{\propshape\begin{tabular}{c}}{\end{tabular}}
 \newenvironment{proposition}{\begin{center}\propshape}{\end{center}}

@@ -23,7 +23,7 @@
 \begin{frame}{Proposizioni semplici e composte}
     Abbiamo visto nella lezione introduttiva che per studiare le inferenze dobbiamo rendere esplicita la \alert{forma logica} delle proposizioni, ovvero ciò che è rilevante per riconoscere il nesso tra premesse e conclusione.
 
-    \medskip Studieremo quindi più in dettaglio la stuttura di una proposizione.
+    \medskip Studieremo quindi più in dettaglio la struttura di una proposizione.
 
     \pause
     \begin{definition}[Proposizioni semplici e composte]
@@ -33,12 +33,12 @@
     \vspace*{-0.5cm}
     \begin{columns}[t]
         \column{0.45\textwidth}
-    \begin{example}[Proposizioni semplici]
-        \propshape
-        Carlo è ligure\\
-        Carlo è più alto di Mario\\
-        Tutti gli uomini sono mortali
-    \end{example}
+        \begin{example}[Proposizioni semplici]
+            \propshape
+            Carlo è ligure\\
+            Carlo è più alto di Mario\\
+            Tutti gli uomini sono mortali
+        \end{example}
         \column{0.50\textwidth}
         \begin{example}[Proposizioni composte]
             \propshape
@@ -74,7 +74,7 @@
 \begin{frame}{Logica delle proposizioni}
     Le proposizioni semplici hanno una loro struttura interna:
     \begin{itemize}
-        \item \prop{Carlo è ligure} afferma che un certo \emph{indiviuduo} (Carlo) gode di una certa proprietà (essere ligure).
+        \item \prop{Carlo è ligure} afferma che un certo \emph{individuo} (Carlo) gode di una certa proprietà (essere ligure).
         \item \prop{Carlo è più alto di Mario} afferma che c'è una \emph{relazione} (essere più alto di) tra Carlo e Mario.
         \item \prop{Tutti gli uomini sono mortali} ha una struttura complessa e contiene il quantificatore \emph{tutti}.
     \end{itemize}
@@ -200,7 +200,7 @@
 \end{frame}
 
 \begin{frame}{Congiunzione nella lingua italiana (2)}
-    Ma attenzione!!! Non tutti gli usi della parola ``\conn{e}'' sono istanze della congiunzione.
+    Ma attenzione! Non tutti gli usi della parola ``\conn{e}'' sono istanze della congiunzione.
     \begin{example}
         \prop{Carlo e Maria sono amici}\medskip
 
@@ -222,7 +222,7 @@
 \begin{frame}{Dettagli della congiunzione}
     Simboli usati per scrivere la congiunzione sono:
     \begin{itemize}
-        \item \alert{$\wedge$ (in logica)}
+        \item \alert{$\land$ (in logica)}
         \item \alert{and (in inglese, Python e C++)}
         \item $\texttt{\&\&}$ (in C, C++, Java, ecc.)
         \item $\cdot$ (nelle reti logiche, spesso omesso come in algebra)
@@ -235,7 +235,7 @@
         \medskip
         \centering
         \begin{tabular}{c|c||c}
-            $A$           & $B$           & $A \wedge B$  \\
+            $A$           & $B$           & $A \land B$   \\
             \hline
             \uncover<3->F & \uncover<3->F & \uncover<4->F \\
             \uncover<3->F & \uncover<3->V & \uncover<5->F \\
@@ -248,13 +248,13 @@
 \begin{frame}{Doppia lettura della tavola di verità}
     \begin{tikz}[overlay]
         \node at (12,-4.5) {        \begin{tabular}{c|c||c}
-            $A$           & $B$           & $A \wedge B$  \\
-            \hline
-            F & F & F \\
-            F & V & F \\
-            V & F & F \\
-            V & V & V
-        \end{tabular}};
+                $A$ & $B$ & $A \land B$ \\
+                \hline
+                F   & F   & F           \\
+                F   & V   & F           \\
+                V   & F   & F           \\
+                V   & V   & V
+            \end{tabular}};
     \end{tikz}
     In realtà la tavola di verità la si può leggere in due modi:
     \pause
@@ -263,19 +263,19 @@
         \item da sinistra a destra: se sappiamo il valore di verità delle proposizioni di base, possiamo determinare il valore di verità della proposizione risultante.
 
               \medskip
-              A è vera e B è falsa $\longrightarrow$ $A \wedge B$ è falsa.
+              A è vera e B è falsa $\longrightarrow$ $A \land B$ è falsa.
               \pause
 
-        \item da destra a sinistra: se sappiamo il valore di verità della proposizione composta, possiamo determinare quasi sono le possibili combinazioni di valori di verità delle proposizioni di base.
+        \item da destra a sinistra: se sappiamo il valore di verità della proposizione composta, possiamo determinare quali sono le possibili combinazioni di valori di verità delle proposizioni di base.
 
               \medskip
-              $A \wedge B$ è vera $\longrightarrow$ c'è una sola possibilità: \pause
+              $A \land B$ è vera $\longrightarrow$ c'è un'unica possibilità: \pause
               \begin{itemize}
                   \item $A$ vera, $B$ vera
               \end{itemize}
 
               \medskip
-              $A \wedge B$ è falsa $\longrightarrow$ ci sono tre possibilità: \pause
+              $A \land B$ è falsa $\longrightarrow$ ci sono tre possibilità: \pause
               \begin{itemize}
                   \item $A$ falsa, $B$ falsa
                   \item $A$ falsa, $B$ vera
@@ -286,7 +286,7 @@
 
 \section{Connettivi vero-funzionali}
 
-\begin{frame}{Connettivi vero funzionali}
+\begin{frame}{Connettivi vero-funzionali}
     \begin{definition}[Connettivi vero-funzionali]
         Un connettivo si dice \alert{vero-funzionale} se il valore di verità della proposizione risultante dipende solo dal valore di verità delle proposizioni di partenza.
     \end{definition}
@@ -301,15 +301,15 @@
 \begin{frame}{Esempio di connettivo non vero-funzionale}
     Consideriamo il connettivo \conn{mentre}, ad esempio nella proposizione:
     \begin{itemize}
-        \item \prop{Lucia ha mangiato una mela mentre \conn{mentre} ha guardato la televisione.}
+        \item \prop{Lucia ha mangiato una mela \conn{mentre} ha guardato la televisione.}
     \end{itemize}
 
     \uncover<2->{
         \medskip
-        Quale sarebbe la tavola di verità di questo connettivo ?
+        Quale sarebbe la tavola di verità di questo connettivo?
 
         \[
-        A \equiv \text{\prop{Lucia ha mangiato una mela}} \qquad B \equiv \text{\prop{Lucia ha guardato la televisione}}
+            A \equiv \text{\prop{Lucia ha mangiato una mela}} \qquad B \equiv \text{\prop{Lucia ha guardato la televisione}}
         \]
 
         \begin{center}
@@ -325,7 +325,7 @@
 
         \medskip
         \uncover<8->{
-            Non possiamo riempire l'ultima riga della tabella: Lucia ha guardato la TV e mangiato, ma lo ha fatto nello stesso momento o in momenti diversi ?
+            Non possiamo riempire l'ultima riga della tabella: Lucia ha guardato la TV e mangiato, ma lo ha fatto nello stesso momento o in momenti diversi?
         }
     }
 \end{frame}
@@ -417,7 +417,7 @@
 \begin{frame}{Dettagli della disgiunzione inclusiva}
     Simboli usati per scrivere la disgiunzione inclusiva sono:
     \begin{itemize}
-        \item \alert{$\vee$ (in logica)}
+        \item \alert{$\lor$ (in logica)}
         \item \alert{or (in inglese, Python e C++)}
         \item $\texttt{||}$ (in C, C++, Java, ecc.)
         \item $+$ (nelle reti logiche)
@@ -430,11 +430,11 @@
         \medskip
         \begin{center}
             \begin{tabular}{c|c||c}
-                $A$           & $B$           & $A \vee B$    \\
+                $A$           & $B$           & $A \lor B$                                \\
                 \hline
-                \uncover<3->F & \uncover<3->F & \uncover<4->F \\
-                \uncover<3->F & \uncover<3->V & \uncover<5->V \\
-                \uncover<3->V & \uncover<3->F & \uncover<6->V \\
+                \uncover<3->F & \uncover<3->F & \uncover<4->F                             \\
+                \uncover<3->F & \uncover<3->V & \uncover<5->V                             \\
+                \uncover<3->V & \uncover<3->F & \uncover<6->V                             \\
                 \uncover<3->V & \uncover<3->V & \uncover<7->{V\rlap{ (perché inclusiva)}}
             \end{tabular}
         \end{center}
@@ -457,11 +457,11 @@
         \medskip
         \begin{center}
             \begin{tabular}{c|c||c}
-                $A$           & $B$           & $A \xor B$              \\
+                $A$           & $B$           & $A \xor B$                                        \\
                 \hline
-                \uncover<3->F & \uncover<3->F & \uncover<4->F           \\
-                \uncover<3->F & \uncover<3->V & \uncover<4->V           \\
-                \uncover<3->V & \uncover<3->F & \uncover<4->V           \\
+                \uncover<3->F & \uncover<3->F & \uncover<4->F                                     \\
+                \uncover<3->F & \uncover<3->V & \uncover<4->V                                     \\
+                \uncover<3->V & \uncover<3->F & \uncover<4->V                                     \\
                 \uncover<3->V & \uncover<3->V & \uncover<5->{\alert{F}\rlap{ (perché esclusiva)}}
             \end{tabular}
         \end{center}
@@ -520,22 +520,22 @@
     \begin{itemize}
         \item Se la disgiunzione è l'unico connettivo, essa è tipicamente esclusiva.
 
-        \medskip
-        Se la mamma dice al figlio
-        \begin{itemize}
-            \item \prop{puoi comprare un gelato \conn{o} un pasticcino}
-        \end{itemize}
-        intende uno dei due, non entrambi.
+              \medskip
+              Se la mamma dice al figlio
+              \begin{itemize}
+                  \item \prop{puoi comprare un gelato \conn{o} un pasticcino}
+              \end{itemize}
+              intende uno dei due, non entrambi.
 
-        \pause
+              \pause
         \item Se la disgiunzione appare nell'antecedente di una implicazione (vedremo dopo di cosa si tratta), è tipicamente inclusiva.
 
-            \medskip
-        Data la proposizione
-        \begin{itemize}
-            \item \prop{\conn{se} sono laureato in economia \conn{o} in informatica sono ammesso al concorso}
-        \end{itemize}
-        ovviamente si intende che sono amemsso anche se ho entrambe le lauree.
+              \medskip
+              Data la proposizione
+              \begin{itemize}
+                  \item \prop{\conn{se} sono laureato in economia \conn{o} in informatica sono ammesso al concorso}
+              \end{itemize}
+              ovviamente si intende che sono ammesso anche se ho entrambe le lauree.
     \end{itemize}
 \end{frame}
 
@@ -556,7 +556,7 @@
     \medskip
     Ovviamente in questo caso usare ``\conn{oppure}'' può sembrare stupido, ma solo perché sappiamo a priori che entrambe le proposizioni di base sono vere. Se introduciamo delle variabili, e scriviamo una proposizione del tipo
     \begin{center}
-    $x < 4$ \conn{oppure} $x$ è pari
+        $x < 4$ \conn{oppure} $x$ è pari
     \end{center}
     non possiamo rimpiazzare ``\conn{oppure}'' con ``\conn{e}'' perché il senso della frase cambierebbe completamente.
 
@@ -610,16 +610,16 @@
         \begin{itemize}
             \item  \prop{\conn{se} Carla è alla festa \conn{allora} anche Luca è alla festa}
         \end{itemize}
-        Quali di queste condizioni si potranno verificare ?
+        Quali di queste condizioni si potranno verificare?
 
         \uncover<2->{
             \begin{center}
                 \begin{tabular}{c|c||c}
-                    Carla è alla festa & Luca è alla festa & si può verificare ?\\
+                    Carla è alla festa & Luca è alla festa & si può verificare?                                         \\
                     \hline
-                    F                  & F                 & \only<4|handout:0>{?}\only<5->\checkmark                            \\
-                    F                  & V                 & \only<5|handout:0>{?}\only<6->{\checkmark\rlap{ (dubbi?)}}          \\
-                    V                  & F                 & \only<3|handout:0>{?}\only<4->\xmark                                \\
+                    F                  & F                 & \only<4|handout:0>{?}\only<5->\checkmark                   \\
+                    F                  & V                 & \only<5|handout:0>{?}\only<6->{\checkmark\rlap{ (dubbi?)}} \\
+                    V                  & F                 & \only<3|handout:0>{?}\only<4->\xmark                       \\
                     V                  & V                 & \only<2|handout:0>{?}\only<3->\checkmark
                 \end{tabular}
             \end{center}
@@ -629,7 +629,7 @@
 \end{frame}
 
 \begin{frame}{Interpretazione dell'implicazione (3)}
-    Se avete dubbi sulla seconda riga della tabella di prima è perché spesso in italiamo diciamo \conn{se \ldots allora} ma in realtà intendiamo \conn{se e solo se} (che è un altro connettivo).
+    Se avete dubbi sulla seconda riga della tabella di prima è perché spesso in italiano diciamo \conn{se \ldots allora} ma in realtà intendiamo \conn{se e solo se} (che è un altro connettivo).
 
     \pause
     \begin{example}
@@ -637,14 +637,14 @@
         \begin{itemize}
             \item \prop{\conn{se} piove \conn{allora} vengo a prenderti in macchina}
         \end{itemize}
-        Quali di queste situazioni possono verificarsi (se l'amico mantiente la promessa, cioè se la proposizione di prima è vera) ?
+        Quali di queste situazioni possono verificarsi (se l'amico mantiene la promessa, cioè se la proposizione di prima è vera)?
         \begin{center}
             \begin{tabular}{c|c||c}
-                piove & vengo a prenderti & si può verificare ?      \\
+                piove & vengo a prenderti & si può verificare?                                                         \\
                 \hline
-                F     & F                 & \only<4|handout:0>{?}\only<5->\checkmark                                      \\
+                F     & F                 & \only<4|handout:0>{?}\only<5->\checkmark                                   \\
                 F     & V                 & \only<5|handout:0>{?}\only<6->{\checkmark\rlap{ (sono comunque sorpreso)}} \\
-                V     & F                 & \only<3|handout:0>{?}\only<4->{\xmark\rlap{ (se accade ci resto male)}}       \\
+                V     & F                 & \only<3|handout:0>{?}\only<4->{\xmark\rlap{ (se accade ci resto male)}}    \\
                 V     & V                 & \only<2|handout:0>{?}\only<3->\checkmark
             \end{tabular}
         \end{center}
@@ -652,7 +652,7 @@
 \end{frame}
 
 \begin{frame}{Interpretazione dell'implicazione in italiano (2)}
-    Se proviamo a interpretare la tavola di verità della l'implicazione ``da sinistra verso destra'', otteniamo spesso qualcosa di poco sensato.
+    Se proviamo a interpretare la tavola di verità dell'implicazione ``da sinistra verso destra'', otteniamo spesso qualcosa di poco sensato.
 
     \medskip
     \begin{example}[Vero o falso?]
@@ -681,7 +681,7 @@
     \begin{example}
         Quando diciamo\\
         \begin{center}
-        \prop{\conn{se} Carla è alla festa \conn{allora} anche Luca è alla festa}
+            \prop{\conn{se} Carla è alla festa \conn{allora} anche Luca è alla festa}
         \end{center}
         intendiamo che c'è qualche rapporto di causa-effetto tra le due cose.
     \end{example}
@@ -758,10 +758,10 @@
         \item l'implicazione nel linguaggio naturale è spesso diversa dall'implicazione materiale in logica;
         \item non a caso in Python (e in altri linguaggi di programmazione) esistono gli operatori logici \texttt{and}, \texttt{or}, \texttt{not} ma non esiste una operazione per l'implicazione;
         \item l'implicazione materiale è molto usata in matematica, ma quasi sempre in presenza di variabili:
-        \begin{itemize}
-            \item è difficile trovare affermazioni del tipo ``\prop{\conn{se} 8 è divisibile per 4 \conn{allora} 8 è divisibile per 2}\/'';
-            \item è molto più normale trovare ``\prop{\conn{se} $x$ è divisibile per 4 \conn{allora} $x$ è divisibile per 2}\/''.
-        \end{itemize}
+              \begin{itemize}
+                  \item è difficile trovare affermazioni del tipo ``\prop{\conn{se} 8 è divisibile per 4 \conn{allora} 8 è divisibile per 2}\/'';
+                  \item è molto più normale trovare ``\prop{\conn{se} $x$ è divisibile per 4 \conn{allora} $x$ è divisibile per 2}\/''.
+              \end{itemize}
     \end{itemize}
     \pause
     Ad ogni modo,
@@ -809,15 +809,15 @@
 
     \begin{center}
         \begin{tabular}{c|c}
-            proposizione in italiano                & proposizione in simboli \\
+            proposizione in italiano                              & proposizione in simboli \\
             \hline
             \conn{se} A \conn{allora} B                           & \pause A $\to$ B        \\
-            \pause A \conn{se} B                           & \pause B $\to$ A        \\
-            \pause A \conn{solo se} B                      & \pause A $\to$ B        \\
+            \pause A \conn{se} B                                  & \pause B $\to$ A        \\
+            \pause A \conn{solo se} B                             & \pause A $\to$ B        \\
             \pause \conn{da} A \conn{segue} B                     & \pause A $\to$ B        \\
-            \pause A \conn{implica} B                      & \pause A $\to$ B        \\
-            \pause A \conn{è condizione sufficiente per} B & \pause A $\to$ B        \\
-            \pause A \conn{è condizione necessaria per} B  & \pause B $\to$ A        \\
+            \pause A \conn{implica} B                             & \pause A $\to$ B        \\
+            \pause A \conn{è condizione sufficiente per} B        & \pause A $\to$ B        \\
+            \pause A \conn{è condizione necessaria per} B         & \pause B $\to$ A        \\
             \pause \conn{condizione sufficiente per} A \conn{è} B & \pause B $\to$ A        \\
             \pause \conn{condizione necessaria per} A \conn{è} B  & \pause A $\to$ B
         \end{tabular}
@@ -830,10 +830,10 @@
     \medskip
     Alcune osservazioni:
     \begin{itemize}
-        \item A \conn{se} B: è solo un modo contorno di scrivere ``se B allora A'', ovvero $B \to A$.
-        \item A \conn{solo se} B: vuol dire che A si può verificare solo se si verifica anche B. Quindi, non appare sappiamo che A è vero, per forza dever essere vero anche B, ovvero $A \to B$.
+        \item A \conn{se} B: è solo un modo contorto di scrivere ``se B allora A'', ovvero $B \to A$.
+        \item A \conn{solo se} B: vuol dire che A si può verificare solo se si verifica anche B. Quindi, non appena sappiamo che A è vero, per forza deve essere vero anche B, ovvero $A \to B$.
         \item A \conn{è condizione sufficiente per} B: vuol dire che il verificarsi di A è sufficiente, da solo senza nessun'altra informazione, a causare anche B, quindi $A \to B$.
-        \item A \conn{è condizione necessaria per} B: vuol dire che perché si verifichi B deve necessariamente verificarsi A. Quindi, non appiamo sappiamo che B è vero, A deve essere pure vero. In sostanza, $B \to A$.
+        \item A \conn{è condizione necessaria per} B: vuol dire che perché si verifichi B deve necessariamente verificarsi A. Quindi, non appena sappiamo che B è vero, A deve essere pure vero. In sostanza, $B \to A$.
         \item  \conn{condizione sufficiente per} A \conn{è} B: è un modo un po' contorto di scrivere ``B \conn{è condizione sufficiente per} A'', quindi $B \to A$.
         \item \conn{condizione necessaria per} A \conn{è} B: è un modo un po' contorto di scrivere ``B \conn{è condizione necessaria per} A'', ovvero $A \to B$
     \end{itemize}
@@ -880,14 +880,14 @@
         \begin{itemize}
             \item \prop{vengo a prenderti in macchina \conn{se e solo se} piove}
         \end{itemize}
-        A parte il fatto che il vostro amico parla in maniera un po' strana\ldots quali di queste situazioni possono verificarsi (se l'amico mantiente la promessa, cioè se la proposizione di prima è vera) ?
+        A parte il fatto che il vostro amico parla in maniera un po' strana\ldots quali di queste situazioni possono verificarsi (se l'amico mantiene la promessa, cioè se la proposizione di prima è vera)?
         \begin{center}
             \begin{tabular}{c|c||c}
-                vengo a prenderti & piove & si può verificare ? \\
+                vengo a prenderti & piove & si può verificare?                       \\
                 \hline
-                F                 & F     & \only<2|handout:0>{?}\only<3->\checkmark                                    \\
-                F                 & V     & \only<3|handout:0>{?}\only<4->\xmark                                        \\
-                V                 & F     & \only<4|handout:0>{?}\only<5->\xmark                                        \\
+                F                 & F     & \only<2|handout:0>{?}\only<3->\checkmark \\
+                F                 & V     & \only<3|handout:0>{?}\only<4->\xmark     \\
+                V                 & F     & \only<4|handout:0>{?}\only<5->\xmark     \\
                 V                 & V     & \only<5|handout:0>{?}\only<6->\checkmark
             \end{tabular}
         \end{center}

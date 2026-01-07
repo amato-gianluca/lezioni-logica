@@ -1,4 +1,4 @@
-\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table,handout]{beamer}
+\documentclass[aspectratio=169,10pt,dvipsnames,handout]{beamer}
 
 %\setbeameroption{show notes}
 
@@ -26,13 +26,13 @@
 \section{Dalle operazioni numeriche alla logica}
 
 \begin{frame}{Sommare tre cifre binarie (1)}
-    Tra le operazioni che la CPU deve fare, una ovviamente è la somma di numeri.
+    Tra le operazioni che la CPU deve fare, la somma di numeri è tra le più importanti.
 
     \medskip
-    Supponiamo di dover costruire un circuito che esegue la somma di tre cifre binarie. L'output sarà numero di due bit. Questo circuito prende il nome di \alert{sommatore completo}.
+    Supponiamo di dover costruire un dispositivo che esegue la somma di tre numeri in base due composti da una singola cifra. L'output sarà un numero di due bit. Questo dispositivo prende il nome di \alert{sommatore completo}.
 
     \medskip
-    Questa tabella mostra l'output prodotto dal circuito per ogni possibile input:
+    Questa tabella mostra l'output prodotto dal dispositivo per ogni possibile input (in parentesi il valore in base 10):
     \begin{center}
         \begin{tabular}{|c|c|c||c|}
             $a$ & $b$ & $c$ & $a+b+c$ \\
@@ -51,7 +51,7 @@
 
 \begin{frame}{Sommare tre cifre binarie (2)}
     \begin{center}
-        \only<1-2>{
+        \only<1-2|handout:1>{
             \begin{tabular}{|c|c|c||c|}
                 $a$ & $b$ & $c$ & $a+b+c$ \\
                 \hline
@@ -64,7 +64,7 @@
                 1   & 1   & 0   & 10 (2)  \\
                 1   & 1   & 1   & 11 (3)  \\
             \end{tabular}}%
-        \only<3-4>{
+        \only<3-4|handout:2>{
             \begin{tabular}{|c|c|c||c|c|}
                 $a$ & $b$ & $c$ & $r$ & $s$ \\
                 \hline
@@ -78,7 +78,7 @@
                 1   & 1   & 1   & 1   & 1   \\
             \end{tabular}
         }%
-        \only<5>{
+        \only<5|handout:3>{
             \begin{tabular}{|c|c|c||c|c|}
                 $A$ & $B$ & $C$ & $R$ & $S$ \\
                 \hline
@@ -97,10 +97,10 @@
     \medskip
     Partendo da questa tabella:
     \begin{itemize}
-        \item<2-> Separiamo le due cifre binarie dell'output in due colonne
-        \item<4-> Rimiazziamo 0 ed 1 con V ed F
+        \item<2-|handout:1-> Separiamo le due cifre binarie dell'output in due colonne
+        \item<4-|handout:2-> Sostituiamo 0 e 1 con F e V
     \end{itemize}
-    \uncover<5->{Ottieniamo una tabella di verità per due funzioni proposizionali $R$ e $S$}
+    \uncover<5-|handout:3->{Otteniamo una tabella di verità per due funzioni proposizionali $R$ e $S$}
 \end{frame}
 
 \begin{frame}{Formule logiche del sommatore}
@@ -108,10 +108,10 @@
     \begin{itemize}
         \item $R = \begin{array}[t]{l}
             (\lnot A \land B \land C) \lor (A \land \lnot B \land C) \lor (A \land B \land \lnot C) \lor (A \land B \land C) \\
-            \equiv (B \wedge C) \vee (A \wedge (B \vee C))
+            \equiv (B \land C) \lor (A \land (B \lor C))
         \end{array}$
         \item $S = \begin{array}[t]{l}
-            (\lnot A \land B \land \lnot C) \lor (A \land \lnot B \land C) \lor (A \land \lnot B \land \lnot C) \lor (A \land B \land C) \\
+            (\lnot A \land \lnot B \land C) \lor (\lnot A \land B \land \lnot C) \lor (A \land \lnot B \land \lnot C) \lor (A \land B \land C) \\
             \equiv A \xor B \xor C
         \end{array}$
     \end{itemize}
@@ -120,7 +120,7 @@
     Per curiosità, si noti che una disgiunzione esclusiva tra più lettere proposizionali, come $A \xor B \xor C$, è vera quando il numero di lettere che hanno valore di verità vero è dispari.
 
     \medskip
-    Abbiamo quindi due formle logiche che ``implementano''  le operazioni di somma di tre numeri a un bit.
+    Abbiamo quindi due formule che ``implementano'' le operazioni di somma di tre numeri a un bit.
 \end{frame}
 
 \begin{frame}{Dalla somma di bit alla somma di numeri (1)}
@@ -144,18 +144,18 @@
     Come si sommano due numeri in colonna (in base 2 o 10 che sia) ?
     \begin{itemize}
         \item Si sommano prima le unità. Siccome la somma può dare come risultato un numero con due cifre, si scrive la cifra delle unità e si tiene da parte la cifra delle decine (che si chiama \emph{riporto}).
-        \item Si passa quindi alle cifra a sinistra: queste si sommano tra di loro e assieme al riporto generato al passo prima. Il risultato di questa somma è anch'esso costituito da una cifra di risultato ed una di riporto.
+        \item Si passa quindi alle cifre a sinistra: queste si sommano tra di loro e assieme al riporto generato al passo prima. Il risultato di questa somma è anch'esso costituito da una cifra di risultato e una di riporto.
         \item E così via per le cifre ancora più significative.
     \end{itemize}
-    Seguendo questo principio, se dobbiamo sommare due numeri composti da vari bit, possiamo collegare in cascata vari circuiti addizionatori.
+    Seguendo questo principio, se dobbiamo sommare due numeri composti da vari bit, possiamo collegare in cascata vari addizionatori.
 \end{frame}
 
 \begin{frame}{Dalla somma di bit alla somma di numeri (3)}
-    Ad esempio, se abbiamo due numeri di 4 cifre ($A_3 A_2 A_1 A_0$ e $B_3 B_2 B_1 B_0$) un circuito che li somma si può ottenere come segue:
+    Ad esempio, se abbiamo due numeri di 4 cifre ($A_3 A_2 A_1 A_0$ e $B_3 B_2 B_1 B_0$) un dispositivo che li somma si può ottenere come segue:
     \begin{center}
         \includegraphics[height=0.3\textheight]{4-bit_adder.png}
     \end{center}
-    Il risultato è costituito da $S_3 S_2 S_1 S_0$ con il riporto $C_4$. L'input $C_0$ è il riporto da una eventuale addizione precedente, che può essere posto a 0 / falso se non c'è nessun riporto da considerare.
+    Il risultato è costituito da $S_3 S_2 S_1 S_0$ con il riporto $C_4$. L'input $C_0$ è il riporto da un'eventuale addizione precedente, che può essere posto a 0 / falso se non c'è nessun riporto da considerare.
     \vfill
     {\scriptsize Immagine \copyright\ en:User:Cburnett - This W3C-unspecified vector image was created with Inkscape ., CC BY-SA 3.0, \url{https://commons.wikimedia.org/w/index.php?curid=1477488}}
 \end{frame}
@@ -164,13 +164,13 @@
 \section{Dalla logica ai circuiti elettrici}
 
 \begin{frame}{Interruttori elettronici}
-    Per ora questi circuiti sono comunque oggeti puramente logico/matematici. Come si fa a costruire un circuito che implementa effettivamente una formula logica?
+    Per ora questi dispositivi sono comunque oggetti puramente logico/matematici. Come si fa a costruire un circuito elettrico che implementa effettivamente una formula logica?
     \begin{itemize}
         \item si associa un livello di tensione ai due valori di verità: ad esempio, 0 Volt per il valore falso e 5 Volt per il valore vero;
         \item si utilizzano degli \alert{interruttori elettronici}, ovvero degli interruttori concettualmente simili a quelli che usiamo per accendere la luce, ma che si possono aprire e chiudere tramite un segnale elettrico.
 
         \medskip
-        La tecnologia degli interrutori elettronici è cambiata nel tempo:
+        La tecnologia degli interruttori elettronici è cambiata nel tempo:
         \begin{itemize}
             \item relè
             \item valvole termoioniche
@@ -186,7 +186,7 @@
         \includegraphics[height=0.45\textheight]{TransistorANDgate.png}
     \end{center}
     \begin{itemize}
-        \item se $A$ e $B$ sono entrambi veri, i due transistor fanno passare la corrente, e nel punto \textit{Out} si misura la tensione $V$ (+5 V);
+        \item se $A$ e $B$ sono entrambi veri (+5 V), i due transistor fanno passare la corrente, e nel punto \textit{Out} si misura la tensione $V$ (+5 V);
         \item appena uno solo tra $A$ o $B$ è falso (0 V), il transistor scollega il circuito, e nel punto \textit{Out} si misura 0 V.
     \end{itemize}
 \end{frame}
@@ -200,8 +200,8 @@
     \medskip
     Ad esempio:
     \begin{itemize}
-        \item la CPU Apple M2 che si trova sui nuovo Mac ha circa 20 miliardi di transistor;
-        \item la GPU nVidia GTX 3090 ha circa 28.3 miliardi di transistor.
+        \item la CPU Apple M2 che si trova sui nuovi Mac ha circa 20 miliardi di transistor;
+        \item la GPU nVidia GTX 3090 ha circa 28{,}3 miliardi di transistor.
     \end{itemize}
 
     \medskip

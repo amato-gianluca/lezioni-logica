@@ -1,5 +1,6 @@
-\documentclass[aspectratio=169,10pt,dvipsnames,xcolor=table,handout]{beamer}
+\documentclass[aspectratio=169,10pt,dvipsnames,handout]{beamer}
 
+\usepackage{array}
 \usepackage{bussproofs}
 \EnableBpAbbreviations
 
@@ -24,7 +25,7 @@
 \end{frame}
 
 \begin{frame}{Conseguenza logica (1)}
-    Nella lezione precedente abbiamo introdotto  il concetto di \alert{conseguenza logica} che ci permette di stabilire se una inferenza è corretta o no.
+    Nella lezione precedente abbiamo introdotto il concetto di \alert{conseguenza logica}, che ci permette di stabilire se un'inferenza è corretta oppure no.
 
     \medskip
     Verificare se $Y$ è conseguenza logica di $X_1, \ldots, X_n$ con le tavole di verità è un metodo:
@@ -39,17 +40,17 @@
     Ad esempio, consideriamo la seguente inferenza:
     \begin{center}
         \begin{inference}
-            \textit{Carlo è laureato in matematica o in economia}\\
-            \textit{Se Carlo è laureato in economia, allora fa il commercialista}\\
-            \textit{Carlo non fa il commercialista}\\
+            \prop{Carlo è laureato in matematica o in economia}\\
+            \prop{Se Carlo è laureato in economia, allora fa il commercialista}\\
+            \prop{Carlo non fa il commercialista}\\
             \hline
-            \textit{Carlo è laureato in matematica}
+            \prop{Carlo è laureato in matematica}
         \end{inference}
     \end{center}
     o la sua equivalente forma logica
     \begin{center}
         \begin{inference}
-            $A \vee B$\\
+            $A \lor B$\\
             $B \to C$\\
             $\neg C$\\
             \hline
@@ -62,10 +63,10 @@
     Si verifica facilmente con le tavole di verità che l'inferenza è corretta.
 
     \medskip
-    Usare le tavole di verità corrisponde a considerare tutti i possibili ``universi alternativi'' in cui Carlo è o non è laureato in matematica, laureato in economia, commercialista, e verificare che in tutti gli ``universi alternativi'' nei quali le premesse sono vere, anche la conclusione è vera.
+    Usare le tavole di verità corrisponde a considerare tutti i possibili ``universi alternativi'' in cui Carlo è o non è laureato in matematica, (è o non è) laureato in economia, (fa o non fa) il commercialista, e verificare che in tutti gli ``universi alternativi'' nei quali le premesse sono vere, anche la conclusione è vera.
 
     \medskip
-    Ma un persona non ragiona normalmente in questo modo. Piuttosto, per convincersi che l'inferenza è corretta, seguirebbe un argomento di questo tipo:
+    Ma una persona non ragiona normalmente in questo modo. Piuttosto, per convincersi che l'inferenza è corretta, seguirebbe un argomento di questo tipo:
 
     \smallskip
     \begin{quote}
@@ -74,13 +75,13 @@
 \end{frame}
 
 \begin{frame}{Calcoli logici}
-    Vogliamo adesso introdurre un metodo di verifica della correttezza di una inferenza che sia più vicino a quello che farebbe un essere umano per verificare la validità di un ragionamento.
+    Vogliamo adesso introdurre un metodo di verifica della correttezza di un'inferenza che sia più vicino a quello che farebbe una persona per verificare la validità di un ragionamento.
 
     \medskip
     Dall'esempio di prima, si vede che il suo argomento si basa sulla combinazione di regole di inferenza di base (come modus ponens e sillogismo disgiuntivo) che si assumono come note.
 
     \medskip
-    I dettagli però di quali regole di inferenza siano valide e come si possano combinare per ottenere nuove inferenze non sono ovvi. Scelte diverse danno luogo a \alert{calcoli logici} diversi.
+    I dettagli su quali regole di inferenza siano valide, e su come si possano combinare per ottenere nuove inferenze, non sono ovvi. Scelte diverse danno luogo a \alert{calcoli logici} diversi.
 
     \begin{definition}[Calcolo logico]
         Un \alert{calcolo logico} è un insieme di regole che permettono di derivare nuove formule logiche a partire da formule date.
@@ -94,7 +95,7 @@
     Il calcolo logico che ci interessa in questo corso è chiamato \alert{deduzione naturale}.
     \begin{itemize}
         \item Introdotta dal logico Gerhard Gentzen nella prima metà degli anni '30.
-        \item È un calcolo molto vicino a quello che farebbe una persona per dimostrare la correttezza di una inferenza.
+    \item È un calcolo molto vicino a quello che farebbe una persona per dimostrare la correttezza di un'inferenza.
         \item È molto usato in logica e in informatica teorica.
     \end{itemize}
 \end{frame}
@@ -117,7 +118,7 @@
 \begin{frame}{Regole di inferenza}
     Le regole di inferenza della deduzione naturale hanno alcune differenze rispetto a quelle viste finora:
     \begin{itemize}
-    \item le premesse si scrivono in una unica riga sopra la linea orizzontale, invece che su più righe. Ad esempio, si scrive
+    \item le premesse si scrivono in un'unica riga sopra la linea orizzontale, invece che su più righe. Ad esempio, si scrive
     \begin{center}
         \begin{inference}
             $A$ \qquad $B$\\
@@ -133,7 +134,7 @@
         \end{inference}
     \end{center}
 
-    Questo al solo scopo di permettere di combinare graficamente più regole di inferenza in una unica \alert{dimostrazione}.
+    Questo ha il solo scopo di permettere di combinare graficamente più regole di inferenza in un'unica \alert{dimostrazione}.
     \item in alcune regole di inferenza è consentito \alert{scaricare} delle premesse (vedremo più avanti cosa significa).
     \end{itemize}
 \end{frame}
@@ -146,7 +147,7 @@
     \end{itemize}
 
     \medskip
-    Ogni regola ha un nome come $\elim\wedge$ o $\intro_1\vee$, composto da:
+    Ogni regola ha un nome come $\elim\land$ o $\intro_1\lor$, composto da:
     \begin{itemize}
         \item una lettera che identifica se si tratta di una regola di introduzione ($\intro$) o di eliminazione ($\elim$);
         \item un eventuale numero che identifica una variante della regola, se ce n'è più d'una;
@@ -185,9 +186,9 @@
 \begin{frame}{Dimostrazione}
     Le regole di inferenza si possono combinare per ottenere una dimostrazione:
     \begin{itemize}
-            \item Una \alert{dimostrazione} (o \alert{derivazione}) si ottiene combinando tra loro le regole di inferenza in un unica \emph{struttura ad albero}, dove la conclusione di una inferenza può essere la premessa di un'altra.
-        \item Le formule che non sono conclusioni di alcuna inferenza, ovvero che non hanno nessuna linea orizzontale sopra di loro, si chiamano \alert{premesse della dimostrazione}
-        \item Le formule che non sono premesse di alcuna inferenza, ovvero che non hanno nessuna linea orizzontale sotto di loro, si chiamano \alert{conclusioni della dimostrazione}.
+            \item Una \alert{dimostrazione} (o \alert{derivazione}) si ottiene combinando tra loro le regole di inferenza in un'unica \emph{struttura ad albero}, dove la conclusione di un'inferenza può essere la premessa di un'altra.
+        \item Le formule che non sono conclusioni di alcuna inferenza, ovvero che non hanno alcuna linea orizzontale sopra di loro, si chiamano \alert{premesse della dimostrazione}.
+        \item Le formule che non sono premesse di alcuna inferenza, ovvero che non hanno alcuna linea orizzontale sotto di loro, si chiamano \alert{conclusioni della dimostrazione}.
         \item In una dimostrazione può esserci una sola conclusione.
     \end{itemize}
 
@@ -203,7 +204,7 @@
 \end{frame}
 
 \begin{frame}{Esempio}
-    Consideriamo la seguente dimostrazione
+    Consideriamo la seguente dimostrazione:
     \begin{prooftree}
         \AXC{$\color{red}(A \land B) \land C$}
         \RightLabel{($\elim_1\land$)}
@@ -256,7 +257,7 @@
     \end{itemize}
 \end{frame}
 
-\begin{frame}{example}
+\begin{frame}{Esempio}
     Verifichiamo che
     \[
     A \to B, B \to C \vdash A \to C \enspace .
@@ -307,18 +308,18 @@
     \end{center}
 
     \smallskip
-    Questa regola corrisponde al \alert{ragionamento per casi}. Se so che $X \vee Y$, mi basta considerare separatamente i casi per cui vale $X$ e per cui vale $Y$ (sono le assunzioni da scaricare). Se in entrambi i casi riesco a dimostrare $Z$, allora $Z$ segue da $X \vee Y$.
+    Questa regola corrisponde al \alert{ragionamento per casi}. Se so che $X \lor Y$, mi basta considerare separatamente i casi per cui vale $X$ e per cui vale $Y$ (sono le assunzioni da scaricare). Se in entrambi i casi riesco a dimostrare $Z$, allora $Z$ segue da $X \lor Y$.
 \end{itemize}
 \end{frame}
 
 \begin{frame}{Esempio}
     Consideriamo la dimostrazione di
     \[
-    A \vee B, A \to C, B \to C \vdash C
+    A \lor B, A \to C, B \to C \vdash C
     \]
     data di seguito:
     \begin{prooftree}
-        \AXC{$\color{red}A \vee B$}
+        \AXC{$\color{red}A \lor B$}
             \AXC{$\color{red}A \to C$}
             \AXC{$[A]$}
             \RightLabel{($\elim{\to}$)}
@@ -354,11 +355,11 @@
 \begin{frame}{Esempio}
     Consideriamo la dimostrazione vista all'inizio di queste slide, ovvero
     \[
-    A \vee B, B \to C, \neg C \vdash A
+    A \lor B, B \to C, \neg C \vdash A
     \]
     Siccome non trattiamo direttamente la negazione, riscriviamola nel suo equivalente $C \to \bot$.
     \begin{prooftree}
-            \AXC{$\color{red}A \vee B$}
+            \AXC{$\color{red}A \lor B$}
             \AXC{$[A]$}
                     \AXC{$\color{red}C \to \bot$}
                         \AXC{$\color{red}B \to C$}
@@ -369,7 +370,7 @@
                 \BIC{$\bot$}
                 \RightLabel{($\elim\bot$)}
             \UIC{$A$}
-        \RightLabel{($\elim\vee$)}
+        \RightLabel{($\elim\lor$)}
         \TIC{A}
     \end{prooftree}
 
@@ -378,11 +379,11 @@
 \end{frame}
 
 \begin{frame}{Terzo escluso}
-    Queste regole corrispondo alla \alert{logica intuizionista}, un tipo di logica che non accetta il principio del terzo escluso. Ed infatti, se ci provate, non c'è modo di dimostrare
+    Queste regole corrispondono alla \alert{logica intuizionista}, un tipo di logica che non accetta il principio del terzo escluso. Infatti, se ci provate, non c'è modo di dimostrare
     \[
-    \vdash A \vee \neg A
+    \vdash A \lor \neg A
     \]
-    ovvero che $A \vee \neg A$ è vero senza assumere ipotesi aggiuntive.
+    ovvero che $A \lor \neg A$ è vero senza assumere ipotesi aggiuntive.
 
     \medskip
     Per rendere la deduzione naturale equivalente alla logica delle proposizioni \alert{classica}, si aggiunge una regola di inferenza specifica che non ricade nella classificazione in regole di introduzione ed eliminazione.
@@ -392,7 +393,7 @@
     \begin{center}
         \AXC{}
         \RightLabel{(TE)}
-        \UIC{$X \vee (X \to \bot)$}
+        \UIC{$X \lor (X \to \bot)$}
         \DP
     \end{center}
 
@@ -406,7 +407,7 @@
     \begin{prooftree}
             \AXC{}
             \RightLabel{(TE)}
-        \UIC{$A \vee (A \to \bot)$}
+        \UIC{$A \lor (A \to \bot)$}
         \AXC{$[A]$}
                 \AXC{$\color{red}(A \to \bot) \to \bot$}
                 \AXC{$[A \to \bot]$}
@@ -414,7 +415,7 @@
             \BIC{$\bot$}
             \RightLabel{($\elim\bot$)}
         \UIC{$A$}
-        \RightLabel{($\elim\vee$)}
+        \RightLabel{($\elim\lor$)}
         \TIC{$A$}
     \end{prooftree}
 
@@ -447,11 +448,11 @@
         \BIC{{$X \land Y$}}
         \DP \smallskip &
         \smallskip
-        \AXC{$X \wedge Y$}
+    \AXC{$X \land Y$}
         \RightLabel{($\elim_1\land$)}
         \UIC{{$X$}}
         \DP \qquad
-        \AXC{$X \wedge Y$}
+    \AXC{$X \land Y$}
         \RightLabel{($\elim_2\land$)}
         \UIC{{$Y$}}
         \DP \smallskip \\
@@ -512,7 +513,7 @@
         \multicolumn{2}{c}{
             \AXC{\phantom{$Y^2$}}
             \RightLabel{(TE)}
-            \UIC{$X \vee (X \to \bot)$}
+            \UIC{$X \lor (X \to \bot)$}
             \DP
             \smallskip
         }\\
@@ -521,7 +522,7 @@
 \end{frame}
 
 \begin{frame}{Deduzione naturale e conseguenza logica}
-    Cosa lega le dimostrazioni della deduzione naturale con la conseguenza logica? Noi l'abbiamo presentata come un modo di stabilire se una inferenza è corretta o no, ma per far ciò ci intereresserebbe sapere se:
+    Cosa lega le dimostrazioni della deduzione naturale con la conseguenza logica? Noi l'abbiamo presentata come un modo di stabilire se un'inferenza è corretta oppure no, ma per far ciò ci interesserebbe sapere se:
     \begin{enumerate}
         \item \textbf{(essenziale, altrimenti la deduzione naturale non serve a nulla)}:\\
         è vero che se c'è una dimostrazione di $Y$ a partire da $X_1, \ldots, X_n$ (ovvero $X_1, \ldots, X_n \vdash Y$) allora $Y$ è conseguenza logica di $X_1, \ldots, X_n$ (ovvero $X_1, \ldots, X_n \models Y$) ?

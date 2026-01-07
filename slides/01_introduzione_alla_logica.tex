@@ -166,9 +166,9 @@
 	\medskip
 	Un esempio dovrebbe rendere evidente la differenza. Consideriamo le tre frasi:
 	\begin{itemize}
-	\item \prop{il gatto non è nero}
-	\item \prop{non è vero che il gatto è nero}
-	\item \prop{the cat is not black}
+		\item \prop{il gatto non è nero}
+		\item \prop{non è vero che il gatto è nero}
+		\item \prop{the cat is not black}
 	\end{itemize}
 	Questi sono tre enunciati che però vogliono dire la stessa cosa, ovvero esprimono la stessa proposizione.
 \end{frame}
@@ -179,7 +179,7 @@
 %	Quando vogliamo indicare una proposizione senza specificarla esattamente, useremo le lettere maiuscole: $A$, $B$, $C$, \ldots, $P$, \ldots.
 %
 %	\medskip
-%	\textbf{Indicatore di conclusiome}\\
+%	\textbf{Indicatore di conclusione}\\
 %	Invece di usare parole come ``dunque'' o ``allora'' per indicare la conclusione di una  inferenza, utilizzeremo una linea orizzontale che separi premesse da conclusione.
 %
 %	\begin{center}
@@ -206,14 +206,13 @@
 % 		Allora \alert{$C$ à conseguenza logica di $P_1$ e $P_2$}.
 % 	\end{example}
 % 	\begin{block}{Nota}
-% 		In alternativa, possiamo dire che $C$ è \alert{conseguenza logica} delle proposizioni $P_1, \ldots, P_n$ qualore è impossibile che $P_1, \ldots, P_n$ siano tutte vere e nello stesso tempo $C$ sia falsa.
+% 		In alternativa, possiamo dire che $C$ è \alert{conseguenza logica} delle proposizioni $P_1, \ldots, P_n$ qualora è impossibile che $P_1, \ldots, P_n$ siano tutte vere e nello stesso tempo $C$ sia falsa.
 % 	\end{block}
 % \end{frame}
 
 \begin{frame}{Inferenze corrette}
 	\begin{definition}[Inferenza  corretta]
-		Una inferenza è \alert{corretta} (o \alert{valida}) se ogni qualvolta le premesse sono vere, allora è necessariamente
-		vera anche la conclusione.
+		Un'inferenza è \alert{corretta} (o \alert{valida}) se ogni qualvolta le premesse sono vere, allora anche la conclusione è necessariamente vera.
 	\end{definition}
 	\begin{example}[Inferenza corretta]
 		\begin{center}
@@ -232,9 +231,9 @@
 
 
 \begin{frame}{Inferenze corrette e verità delle conclusioni}
-	Il fatto che una inferenza sia corretta non vuol dire che la conclusione è vera.
+	Il fatto che un'inferenza sia corretta non vuol dire che la conclusione sia vera.
 	\begin{itemize}
-		\item  \alert{Se le premesse sono tutte vere}, una inferenza corretta garantisce che la conclusione è vera.
+		\item \alert{Se le premesse sono tutte vere}, un'inferenza corretta garantisce che la conclusione è vera.
 		\item \alert{Se le premesse non sono tutte vere}, la conclusione può essere vera o falsa.
 	\end{itemize}
 
@@ -255,7 +254,7 @@
 \end{frame}
 
 \begin{frame}{Inferenze e contesto}
-	Non si considerano corrette inferenze che dipendono dalla conoscenza del contesto.
+	Non consideriamo corrette inferenze la cui correttezza dipende da conoscenze di contesto non esplicitate.
 	\begin{example}[Inferenza non corretta]
 		\begin{columns}
 			\begin{column}{0.3\textwidth}
@@ -278,12 +277,12 @@
 	La si può rendere corretta esplicitando le assunzioni di fondo:
 	\begin{example}[Inferenza corretta]
 		\begin{center}
-		\begin{inference}
+			\begin{inference}
 				Marco è pescarese\\
 				\textcolor{blue}{Tutti i pescaresi sono abruzzesi}\\
 				\hline
 				Marco è abruzzese
-		\end{inference}
+			\end{inference}
 		\end{center}
 		\vspace{0.1cm}
 	\end{example}
@@ -376,7 +375,7 @@
 	\end{example}
 	\pause
 	\begin{definition}[Regola di inferenza]
-		Una inferenza in cui usiamo \alert{lettere proposizionali}  invece di proposizioni vere e proprie prende il nome di \alert{regola di inferenza}.
+		Uno schema di inferenza in cui usiamo \alert{lettere proposizionali} invece di proposizioni vere e proprie prende il nome di \alert{regola di inferenza}.
 		\begin{tikzpicture}[overlay, remember picture]
 			\draw [red, thick] (disj) circle (0.8cm);
 			\path (disj) ++ (1.6cm,1cm) node [red] {Regola di inferenza};
@@ -418,7 +417,7 @@
 
 \begin{frame}{Inferenze corrette e verità delle conclusioni}
 	\medskip
-	Ribadiamo che bisogna distinguere la correttezza della inferenze dalla verità della conclusione!
+	Ribadiamo che bisogna distinguere la correttezza delle inferenze dalla verità della conclusione!
 
 	\medskip
 	Consideriamo alcune istanze della regola vista prima:
@@ -568,7 +567,7 @@
 	All'apparenza potrebbe sembrare corretta, ma consideriamo un'altra istanza della regola.
 	\begin{center}
 		\begin{inference}
-			Se Fabio è pecarese, allora Fabio è abruzzese \only<3->{\checkmark}\\
+			Se Fabio è pescarese, allora Fabio è abruzzese \only<3->{\checkmark}\\
 			Fabio non è pescarese \only<4->{\checkmark}\\
 			\hline
 			Fabio non è abruzzese \only<5->{\xmark}
@@ -581,11 +580,11 @@
 	Pensate al caso in cui Fabio sia nato a Chieti.
 
 	\only<6->{
-	\medskip
-	Le premesse sono vere, ma la conclusione è falsa, quindi l'inferenza \alert{non è corretta}. Abbiamo individuato un \alert{controesempio}, ovvero una situazione che rende evidente il fatto che l'inferenza non è corretta.
+		\medskip
+		Le premesse sono vere, ma la conclusione è falsa, quindi l'inferenza \alert{non è corretta}. Abbiamo individuato un \alert{controesempio}, ovvero una situazione che rende evidente il fatto che l'inferenza non è corretta.
 
-	\medskip
-	Ed infatti, se ci pensiamo bene, non è corretta neanche la prima inferenza: magari non sono un ladro, ma devo essere punito per qualche altro motivo.
+		\medskip
+		Ed infatti, se ci pensiamo bene, non è corretta neanche la prima inferenza: magari non sono un ladro, ma devo essere punito per qualche altro motivo.
 	}
 \end{frame}
 
@@ -695,7 +694,7 @@
 			Socrate è mortale
 		\end{inference}
 	\end{center}
-	Se analizzate come fatto fin'ora, corrispondo alla regola di inferenza:
+	Se analizzate come fatto finora, corrispondono alla regola di inferenza:
 	\begin{center}
 		\begin{inference}
 			A\\
@@ -880,9 +879,9 @@
 	}
 
 	\uncover<4->{
-	\begin{block}{Nota}
-		Dal punto di visto deduttivo, queste inferenze non sono corrette. L'ultima, in particolare, è proprio quella che abbiamo chiamato ``fallacia dell'affermazione del conseguente''.
-	\end{block}
+		\begin{block}{Nota}
+			Dal punto di vista deduttivo, queste inferenze non sono corrette. L'ultima, in particolare, è proprio quella che abbiamo chiamato ``fallacia dell'affermazione del conseguente''.
+		\end{block}
 	}
 	% \textbf{Ragionamento per default (o per difetto)}
 	% \begin{inference}
@@ -894,8 +893,8 @@
 	% \end{inference}
 \end{frame}
 
-% \begin{frame}{Inferenze e monot\`onia}
-% 	Tutti i tipi di ragionamento visti pocanzi \alert{non sono monot\`oni}: nuove premesse possono trasformare la conclusione del ragionamento.
+% \begin{frame}{Inferenze e monotònia}
+% 	Tutti i tipi di ragionamento visti pocanzi \alert{non sono monotòni}: nuove premesse possono trasformare la conclusione del ragionamento.
 % 	\begin{center}
 % 		\begin{inference}
 % 			Normalmente i polacchi non sanno parlare italiano\\
@@ -907,15 +906,15 @@
 % 		\end{inference}
 % 	\end{center}
 
-% 	Invece le inferenze (e i ragionamenti deduttivi) \alert{sono monot\`one}. Se aggiungo nuove premesse, l'inferenza rimane corretta.
+% 	Invece le inferenze (e i ragionamenti deduttivi) \alert{sono monotòne}. Se aggiungo nuove premesse, l'inferenza rimane corretta.
 
 % 	\medskip
 % 	Per questo l'inferenza è il meccanismo principale delle \alert{dimostrazioni matematiche}.
 % \end{frame}
 
-\begin{frame}{Inferenze e monot\`onia}
+\begin{frame}{Inferenze e monotònia}
 	\begin{itemize}
-		\item Ragionamenti induttivi e abduttivi \alert{non sono monot\`oni}: nuove premesse possono trasformare la conclusione del ragionamento.
+		\item Ragionamenti induttivi e abduttivi \alert{non sono monotòni}: nuove premesse possono trasformare la conclusione del ragionamento.
 		      \begin{center}
 			      \begin{inference}
 				      L'assassino ha lasciato tracce di fango\\
@@ -926,18 +925,18 @@
 			      \end{inference}
 		      \end{center}
 
-		\item Invece il ragionamento deduttivio \alert{è monot\`ono}: se aggiungo nuove premesse, un'inferenza rimane corretta. Per questo il ragionamento deduttivo è il meccanismo principale delle \alert{dimostrazioni matematiche}:
-		\begin{itemize}
-			\item si parte da proposizioni assunte vere per principio, chiamate \alert{assiomi};
-			\begin{itemize}
-				\item assiomi di Euclide, assiomi dei numeri reali, etc\ldots
-			\end{itemize}
-			\item si applicano inferenze corrette a premesse vere per ottenere conclusioni vere (\alert{teoremi});
-			\item in questo modo il teorema sarà vero per sempre:
-				\begin{itemize}
-					\item \link{\url{https://youtu.be/LlED5V7EuFY?si=40FmAOQ4491dCbVQ&t=313}}
-				\end{itemize}
-		\end{itemize}
+		\item Invece il ragionamento deduttivo \alert{è monotòno}: se aggiungo nuove premesse, un'inferenza rimane corretta. Per questo il ragionamento deduttivo è il meccanismo principale delle \alert{dimostrazioni matematiche}:
+		      \begin{itemize}
+			      \item si parte da proposizioni assunte vere per principio, chiamate \alert{assiomi};
+			            \begin{itemize}
+				            \item assiomi di Euclide, assiomi dei numeri reali, etc\ldots
+			            \end{itemize}
+			      \item si applicano inferenze corrette a premesse vere per ottenere conclusioni vere (\alert{teoremi});
+			      \item in questo modo il teorema sarà vero per sempre:
+			            \begin{itemize}
+				            \item \link{\url{https://youtu.be/LlED5V7EuFY?si=40FmAOQ4491dCbVQ&t=313}}
+			            \end{itemize}
+		      \end{itemize}
 	\end{itemize}
 \end{frame}
 
