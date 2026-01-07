@@ -46,37 +46,37 @@
 \end{frame}
 
 \begin{frame}[t]{Determinare una \fp da una tavola di verità (2)}
-        Effettivamente, esiste una procedura sistematica per ottenere la fp cercata:
-        \begin{columns}[t]
-            \column{0.45\textwidth}
-            \begin{center}
-                \small
-                \begin{tabular}{c|c|c||c|l}
-                    $A$ & $B$ & $C$ & ? \\
-                    \hline
-                    F   & F   & F   & F \\
-                    F   & F   & V   & F \\
-                    F   & V   & F   & F \\
-                    F   & V   & V   & F \\
-                    \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}F & \only<2>{\cellcolor{red}}F & \only<2>{\cellcolor{red}}V & \uncover<3->{$A \land \neg B \land \neg C$} \\
-                    \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}F & \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}V & \uncover<3->{$A \land \neg B \land C$}\\
-                    \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}F & \only<2>{\cellcolor{red}}V & \uncover<3->{$A \land B \land \neg C$}\\
-                    V   & V   & V   & F
-                \end{tabular}
-            \end{center}%
-            \column{0.55\textwidth}
-            \begin{enumerate}
-                \item<2-> individuare le righe il cui risultato è V
-                \item<3-> per ogni riga, scrivere la congiunzione di tutte le variabili: quelle che hanno valore V compaiono direttamente, quelle che hanno valore F compaiono negate
-                \item<4-> scrivere la disgiunzione di tutte le congiunzioni ottenute al passo precedente, ottenendo
-                \small
-                \[
-                    (A \land \neg B \land \neg C) \lor (A \land \neg B \land C) \lor (A \land  B \land \neg C)
-                \]
-            \end{enumerate}
-        \end{columns}
+    Effettivamente, esiste una procedura sistematica per ottenere la fp cercata:
+    \begin{columns}[t]
+        \column{0.45\textwidth}
+        \begin{center}
+            \small
+            \begin{tabular}{c|c|c||c|l}
+                $A$                        & $B$                        & $C$                        & ?                                                                        \\
+                \hline
+                F                          & F                          & F                          & F                                                                        \\
+                F                          & F                          & V                          & F                                                                        \\
+                F                          & V                          & F                          & F                                                                        \\
+                F                          & V                          & V                          & F                                                                        \\
+                \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}F & \only<2>{\cellcolor{red}}F & \only<2>{\cellcolor{red}}V & \uncover<3->{$A \land \neg B \land \neg C$} \\
+                \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}F & \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}V & \uncover<3->{$A \land \neg B \land C$}      \\
+                \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}V & \only<2>{\cellcolor{red}}F & \only<2>{\cellcolor{red}}V & \uncover<3->{$A \land B \land \neg C$}      \\
+                V                          & V                          & V                          & F
+            \end{tabular}
+        \end{center}%
+        \column{0.55\textwidth}
+        \begin{enumerate}
+            \item<2-> individuare le righe il cui risultato è V
+            \item<3-> per ogni riga, scrivere la congiunzione di tutte le variabili: quelle che hanno valore V compaiono direttamente, quelle che hanno valore F compaiono negate
+            \item<4-> scrivere la disgiunzione di tutte le congiunzioni ottenute al passo precedente, ottenendo
+                  \small
+                  \[
+                      (A \land \neg B \land \neg C) \lor (A \land \neg B \land C) \lor (A \land  B \land \neg C)
+                  \]
+        \end{enumerate}
+    \end{columns}
     \uncover<5>{
-    Una formula di questo tipo è detta in \alert{forma normale disgiuntiva} (FND). Questo esempio ci mostra anche che tutte le fp ne hanno una equivalente in FND.}
+        Una formula di questo tipo è detta in \alert{forma normale disgiuntiva} (FND). Questo esempio ci mostra anche che tutte le fp ne hanno una equivalente in FND.}
 \end{frame}
 
 \begin{frame}{Perché funziona?}
@@ -87,16 +87,16 @@
     \begin{center}
         \small
         \begin{tabular}{c|c|c||c|c|c|c|c}
-            $A$ & $B$ & $C$ & ? & \cellcolor{red}{$P=A \land \neg B \land \neg C$} &  \cellcolor{blue}{$Q=A \land \neg B \land  C$} &  \cellcolor{green}{$R=A \land  B \land \neg C$} &  $P \lor Q \lor R$\\
+            $A$                & $B$                & $C$                & ?                  & \cellcolor{red}{$P=A \land \neg B \land \neg C$} & \cellcolor{blue}{$Q=A \land \neg B \land  C$} & \cellcolor{green}{$R=A \land  B \land \neg C$} & $P \lor Q \lor R$ \\
             \hline
-            F   & F   & F   & F & F & F & F & F \\
-            F   & F   & V   & F & F & F & F & F \\
-            F   & V   & F   & F & F & F & F & F \\
-            F   & V   & V   & F & F & F & F & F \\
-            \cellcolor{red}V  & \cellcolor{red}F   & \cellcolor{red}F   & \cellcolor{red}V & V & F & F & V \\
-            \cellcolor{blue}V   & \cellcolor{blue}F   & \cellcolor{blue}V   & \cellcolor{blue}V & F & V & F & V \\
-            \cellcolor{green}V   & \cellcolor{green}V   & \cellcolor{green}F   & \cellcolor{green}V & F & F & V & V \\
-            V   & V   & V   & F & F & F & F & F
+            F                  & F                  & F                  & F                  & F                                                & F                                             & F                                              & F                 \\
+            F                  & F                  & V                  & F                  & F                                                & F                                             & F                                              & F                 \\
+            F                  & V                  & F                  & F                  & F                                                & F                                             & F                                              & F                 \\
+            F                  & V                  & V                  & F                  & F                                                & F                                             & F                                              & F                 \\
+            \cellcolor{red}V   & \cellcolor{red}F   & \cellcolor{red}F   & \cellcolor{red}V   & V                                                & F                                             & F                                              & V                 \\
+            \cellcolor{blue}V  & \cellcolor{blue}F  & \cellcolor{blue}V  & \cellcolor{blue}V  & F                                                & V                                             & F                                              & V                 \\
+            \cellcolor{green}V & \cellcolor{green}V & \cellcolor{green}F & \cellcolor{green}V & F                                                & F                                             & V                                              & V                 \\
+            V                  & V                  & V                  & F                  & F                                                & F                                             & F                                              & F
         \end{tabular}
     \end{center}
 \end{frame}
@@ -109,10 +109,10 @@
         \begin{tabular}{c|c||c}
             $A$ & $B$ & ? \\
             \hline
-            F   & F  & V \\
-            F   & V  & V \\
-            V   & F  & V \\
-            V   & V  & F \\
+            F   & F   & V \\
+            F   & V   & V \\
+            V   & F   & V \\
+            V   & V   & F \\
         \end{tabular}
     \end{quote}
 
@@ -129,13 +129,13 @@
 \begin{frame}{Semplificare la FND (2)}
     \[
         \begin{array}{rl@{\hspace{0.8cm}}l}
-                          & (\neg A \land \neg B) \lor (\neg A \land B) \lor (A \land \neg B) & \pause \text{(raccoglimento)} \\
-            \pause \equiv & \left(\neg A \land (\neg B \lor B)\right) \lor (A \land \neg B)           & \pause \text{(terzo escluso)}            \\
-            \pause \equiv & \left(\neg A \land \top\right) \lor (A \land \neg B)           & \pause \text{(elemento neutro di $\land$)}            \\
-            \pause \equiv & \neg A \lor (A \land \neg B)                     & \pause \text{(prop. distributiva)}          \\
-            \pause \equiv & (\neg A \lor A) \land (\neg A \lor \neg B)        & \pause \text{(terzo escluso)}      \\
-            \pause \equiv & \top \land (\neg A \lor \neg B)        & \pause \text{(elemento neutro di $\land$)}      \\
-            \pause \equiv & \neg A \lor \neg B       & \pause \text{(De Morgan*)}      \\
+                          & (\neg A \land \neg B) \lor (\neg A \land B) \lor (A \land \neg B) & \pause \text{(raccoglimento)}              \\
+            \pause \equiv & \left(\neg A \land (\neg B \lor B)\right) \lor (A \land \neg B)   & \pause \text{(terzo escluso)}              \\
+            \pause \equiv & \left(\neg A \land \top\right) \lor (A \land \neg B)              & \pause \text{(elemento neutro di $\land$)} \\
+            \pause \equiv & \neg A \lor (A \land \neg B)                                      & \pause \text{(prop. distributiva)}         \\
+            \pause \equiv & (\neg A \lor A) \land (\neg A \lor \neg B)                        & \pause \text{(terzo escluso)}              \\
+            \pause \equiv & \top \land (\neg A \lor \neg B)                                   & \pause \text{(elemento neutro di $\land$)} \\
+            \pause \equiv & \neg A \lor \neg B                                                & \pause \text{(De Morgan*)}                 \\
             \pause \equiv & \neg (A \land B)
         \end{array}
     \]
@@ -173,20 +173,20 @@
 \begin{frame}{$\land$ e $\neg$ costituiscono una base di connettivi (1)}
     In realtà, $\neg$ e $\land$ da soli sono sufficienti per avere una base di connettivi. Infatti è facile verificare che
     \begin{theorem}
-    \[
-        A \lor B \equiv \neg(\neg A \land \neg B)
-    \]
+        \[
+            A \lor B \equiv \neg(\neg A \land \neg B)
+        \]
     \end{theorem}
     \begin{proof}
-    Potremmo verificarlo con le tavole di verità, ma proviamo a farlo per via algebrica. Partiamo dal secondo membro:
+        Potremmo verificarlo con le tavole di verità, ma proviamo a farlo per via algebrica. Partiamo dal secondo membro:
 
-    \[
-        \begin{array}{rl@{\hspace{0.8cm}}l}
-                          & \neg(\neg A \land \neg B)& \pause \text{(De Morgan)} \\
-            \pause \equiv & \neg \neg A \lor \neg \neg B  & \pause \text{(doppia negazione)}            \\
-            \pause \equiv & A \lor B
-        \end{array}
-    \]
+        \[
+            \begin{array}{rl@{\hspace{0.8cm}}l}
+                              & \neg(\neg A \land \neg B)    & \pause \text{(De Morgan)}        \\
+                \pause \equiv & \neg \neg A \lor \neg \neg B & \pause \text{(doppia negazione)} \\
+                \pause \equiv & A \lor B
+            \end{array}
+        \]
     \end{proof}
 \end{frame}
 
@@ -245,11 +245,11 @@
         $\{ \to, \bot\}$ è una base di connettivi.
     \end{theorem}
     \begin{proof}
-    Basta trovare formule equivalenti a $\neg A$ ed a $A \lor B$ che usano solo $\to$ e $\bot$. È facile verificare che
-    \begin{gather*}
-        \neg A \equiv A \to \bot\\
-        A \lor B \equiv \neg A \to B \equiv (A \to \bot) \to B
-    \end{gather*}
+        Basta trovare formule equivalenti a $\neg A$ ed a $A \lor B$ che usano solo $\to$ e $\bot$. È facile verificare che
+        \begin{gather*}
+            \neg A \equiv A \to \bot\\
+            A \lor B \equiv \neg A \to B \equiv (A \to \bot) \to B
+        \end{gather*}
     \end{proof}
 
     Invece $\to$ da sola non è sufficiente. Siccome $V \to V = V$, qualunque formula che usa solo $\to$ ha valore di verità V quando tutte le lettere proposizionali hanno valore di verità V. Quindi $\to$ da sola non può esprimere, ad esempio, una fp sempre falsa.
@@ -264,9 +264,9 @@
         \begin{tabular}{c|c||c}
             $A$ & $B$ & $A \uparrow B$ \\
             \hline
-            F   & F   & V         \\
-            F   & V   & V         \\
-            V   & F   & V         \\
+            F   & F   & V              \\
+            F   & V   & V              \\
+            V   & F   & V              \\
             V   & V   & F
         \end{tabular}
     \end{center}
@@ -283,12 +283,12 @@
     \begin{proof}
         Siccome sappiamo che $\{\neg, \land\}$ è una base, basta mostrare che sia $\neg$ che $\land$ si possono esprimere usando solo $\uparrow$.
 
-    \medskip
-    Si ottiene facilmente, con le tavole di verità:
-    \begin{gather*}
-        \neg A \equiv A \uparrow A\\
-        A \land B \equiv \neg(A \uparrow B) \equiv (A \uparrow B) \uparrow (A \uparrow B)
-    \end{gather*}
+        \medskip
+        Si ottiene facilmente, con le tavole di verità:
+        \begin{gather*}
+            \neg A \equiv A \uparrow A\\
+            A \land B \equiv \neg(A \uparrow B) \equiv (A \uparrow B) \uparrow (A \uparrow B)
+        \end{gather*}
     \end{proof}
 \end{frame}
 
@@ -300,9 +300,9 @@
         \begin{tabular}{c|c||c}
             $A$ & $B$ & $A \downarrow B$ \\
             \hline
-            F   & F   & V         \\
-            F   & V   & F        \\
-            V   & F   & F         \\
+            F   & F   & V                \\
+            F   & V   & F                \\
+            V   & F   & F                \\
             V   & V   & F
         \end{tabular}
     \end{center}
@@ -319,12 +319,12 @@
     \begin{proof}
         Siccome sappiamo che $\{\neg, \lor\}$ è una base, basta mostrare che sia $\neg$ che $\lor$ si possono esprimere usando solo $\downarrow$.
 
-    \medskip
-    Si ottiene facilmente, con le tavole di verità:
-    \begin{gather*}
-        \neg A \equiv A \downarrow A\\
-        A \lor B \equiv \neg(A \downarrow B) \equiv (A \downarrow B) \downarrow (A \downarrow B)
-    \end{gather*}
+        \medskip
+        Si ottiene facilmente, con le tavole di verità:
+        \begin{gather*}
+            \neg A \equiv A \downarrow A\\
+            A \lor B \equiv \neg(A \downarrow B) \equiv (A \downarrow B) \downarrow (A \downarrow B)
+        \end{gather*}
     \end{proof}
 \end{frame}
 

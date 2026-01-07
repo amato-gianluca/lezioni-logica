@@ -71,37 +71,37 @@
 
 
 \begin{frame}{Costanti individuali, simboli di connettivi e quantificatori}
-	Per i \alert{simboli dei connettivi} usiamo gli stessi della logica proposizionale: $\land$, $\lor$, $\lnot$, $\to$, $\leftrightarrow$, $\xor$.
+    Per i \alert{simboli dei connettivi} usiamo gli stessi della logica proposizionale: $\land$, $\lor$, $\lnot$, $\to$, $\leftrightarrow$, $\xor$.
 
-	\pause\medskip
-	Per i \alert{simboli dei quantificatori}:
-	\begin{itemize}
-		\item ``per ogni x,'' si scrive $\forall x$
-		\item ``esiste x tale che,'' si scrive $\exists x$
-	\end{itemize}
+    \pause\medskip
+    Per i \alert{simboli dei quantificatori}:
+    \begin{itemize}
+        \item ``per ogni x,'' si scrive $\forall x$
+        \item ``esiste x tale che,'' si scrive $\exists x$
+    \end{itemize}
 
-	\pause\medskip
-	Le \alert{costanti individuali} rappresentano un individuo. Si scrivono di solito in lettere minuscole. In particolare noi useremo $a$, $b$, $c$, \ldots Per ora non tratteremo il caso di enunciati che contengono descrizioni definite.
+    \pause\medskip
+    Le \alert{costanti individuali} rappresentano un individuo. Si scrivono di solito in lettere minuscole. In particolare noi useremo $a$, $b$, $c$, \ldots Per ora non tratteremo il caso di enunciati che contengono descrizioni definite.
 
     \pause\medskip
     Notare che anche le \alert{variabili individuali} rappresentano degli individui, e per esse utilizzeremo le lettere finali dell'alfabeto latino ($x$, $y$, etc\ldots). Di solito le variabili saranno vincolate, perché compaiono come conseguenza della formalizzazione dei quantificatori in italiano in ``per ogni'' ed  ``esiste \ldots tale che''.
 \end{frame}
 
 \begin{frame}{Costanti predicative}
-	Le \alert{costanti predicative} rappresentano un predicato. Si scrivono di solito in lettere maiuscole, in particolare noi useremo $P$, $Q$, $R$, $S$, etc\ldots
+    Le \alert{costanti predicative} rappresentano un predicato. Si scrivono di solito in lettere maiuscole, in particolare noi useremo $P$, $Q$, $R$, $S$, etc\ldots
 
-	\pause\medskip
-	Ad ogni costante predicativa sarà associatà un numero naturale chiamato \alert{arità} che dipende dal tipo di relazione che essa rappresenta.
-	\begin{itemize}
-		\item Ad esempio se $P$ rappresenta il predicato ``essere francese'' (che si applica ad un solo individuo) allora $P$ sarà di arità uno.
-		\item Se invece $P$ rappresenta il predicato ``essere più grande di'' (che si applica a due individui) allora $P$ sarà di arità due.
-	\end{itemize}
+    \pause\medskip
+    Ad ogni costante predicativa sarà associatà un numero naturale chiamato \alert{arità} che dipende dal tipo di relazione che essa rappresenta.
+    \begin{itemize}
+        \item Ad esempio se $P$ rappresenta il predicato ``essere francese'' (che si applica ad un solo individuo) allora $P$ sarà di arità uno.
+        \item Se invece $P$ rappresenta il predicato ``essere più grande di'' (che si applica a due individui) allora $P$ sarà di arità due.
+    \end{itemize}
 
-	\pause\medskip
-	A seconda dell'arità della costante predicativa, essa accetterà un certo numero di argomenti. Ad esempio, se $P$ è una costante di arità 2, vuol dire che $P$ accetta due argomenti, per cui nelle formule comparità come $Pxy$, $Pab$, \ldots Gli argomenti sono o costanti o variabili individuali.
+    \pause\medskip
+    A seconda dell'arità della costante predicativa, essa accetterà un certo numero di argomenti. Ad esempio, se $P$ è una costante di arità 2, vuol dire che $P$ accetta due argomenti, per cui nelle formule comparità come $Pxy$, $Pab$, \ldots Gli argomenti sono o costanti o variabili individuali.
 
-	\pause\medskip
-	Tavolta si usa per le costanti predicative la stessa notazione che si usa per le funzioni Python, con gli argomenti tra parentesi e separate da virgole: $P(x,y)$, $P(a,b)$, \ldots
+    \pause\medskip
+    Tavolta si usa per le costanti predicative la stessa notazione che si usa per le funzioni Python, con gli argomenti tra parentesi e separate da virgole: $P(x,y)$, $P(a,b)$, \ldots
 \end{frame}
 
 \begin{frame}{Formule e inferenze}
@@ -322,7 +322,7 @@
 \begin{frame}{Esempio di regola corretta}
     Un esempio di regola corretta che non deriva da quelle proposizionali è:
     \begin{example}[Regola di eliminazione del quantificatore universale]
-            \begin{center}
+        \begin{center}
             \begin{inference}
                 $\forall x Px$\\
                 \hline
@@ -374,7 +374,7 @@
     \end{definition}
 
     \begin{example}
-    La formula $Pa \lor \neg Pa$ è valida, perché è vera in tutte le interpretazioni. Infatti data una qualunque interpretazione:
+        La formula $Pa \lor \neg Pa$ è valida, perché è vera in tutte le interpretazioni. Infatti data una qualunque interpretazione:
         \begin{itemize}
             \item se $Pa$ è vera, allora la formula di sopra è $V \lor \neg V = V$;
             \item se $Pa$ è falsa, allora la formula di sopra è $F \lor \neg F = F \lor V = V$
@@ -437,16 +437,16 @@
 
     Come abbiamo visto con altri concetti introdotti nelle slide precedenti, ogni istanza di una equivalenza logica proposizionale è anche una equivalenza logica predicativa.
     \begin{example}
-    Data l'equivalenza logica $A \land B \equiv B \land A$, otteniamo l'equivalenza logica predicativa
+        Data l'equivalenza logica $A \land B \equiv B \land A$, otteniamo l'equivalenza logica predicativa
         \[
             (\forall x Px) \land \exists x(Qx \land \forall y Rxy) \equiv \exists x(Qx \land \forall y Rxy) \land (\forall x Px)
         \]
-    tramite la sostituzione $A \mapsto \forall x Px$ e  $B \mapsto \exists x(Qx \land \forall y Rxy)$.
+        tramite la sostituzione $A \mapsto \forall x Px$ e  $B \mapsto \exists x(Qx \land \forall y Rxy)$.
     \end{example}
 
     Se indichiamo con le lettere $\phi_1$ ed $\phi_2$ delle formule generiche, possiamo scrivere l'equivalenza logica predicativa come
     \[
-    \phi_1 \land \phi_2 \equiv \phi_2 \land \phi_1 \enspace.
+        \phi_1 \land \phi_2 \equiv \phi_2 \land \phi_1 \enspace.
     \]
 \end{frame}
 
@@ -506,7 +506,7 @@
     \end{itemize}
     allora la forma logica della proposizione è
     \[
-    \exists x (Mx \land Vx)
+        \exists x (Mx \land Vx)
     \]
     \textcolor{Blue}{Attenzione!} La formula corretta $\exists x (Mx \land Vx)$ con l'uso della \alert{congiunzione} e non  $\exists x (Mx \to Vx)$ che vorrebbe dire tutt'altro!
 \end{frame}
@@ -555,8 +555,8 @@
 \begin{frame}{Negazione e quantificatori (2)}
     Notare che questa equivalenza ci consente anche di dimostrare che i due quantificatori sono ridondanti. Ne basterebbe solo uno. Infatti:
     \begin{align*}
-        \exists x \phi  & \equiv \neg \neg \exists x \phi \tag{doppia negazione}\\
-                        & \equiv \neg \forall x \neg \phi \tag{equivalenza precedente}
+        \exists x \phi & \equiv \neg \neg \exists x \phi \tag{doppia negazione}       \\
+                       & \equiv \neg \forall x \neg \phi \tag{equivalenza precedente}
     \end{align*}
     \begin{example}
         ``\prop{Esiste un gatto nero}\/'' è equivalente a ``\prop{non è vero che tutti i gatti non sono neri}''.
@@ -567,8 +567,8 @@
 \begin{frame}{Negazione e quantificatori (3)}
     Naturalmente, anche il $\forall$ si può riscrivere usando negazione ed $\exists$:
     \begin{align*}
-        \forall x X  & \equiv \neg \neg \forall x X \tag{doppia negazione}\\
-                        & \equiv \neg \exists x \neg X \tag{equivalenza precedente}
+        \forall x X & \equiv \neg \neg \forall x X \tag{doppia negazione}       \\
+                    & \equiv \neg \exists x \neg X \tag{equivalenza precedente}
     \end{align*}
     \begin{example}
         ``\prop{Tutti i gatti sono neri}\/'' è equivalente a ``\prop{non esiste un gatto che non è nero}\/''.
@@ -589,25 +589,25 @@
     \end{gather*}
     Applicando De Morgan:
     \begin{align*}
-    \neg(\forall x Px) & \equiv \neg (P0 \land P1 \land P2 \land P3 \ldots) \tag{equivalenza vista prima}\\
-    & \equiv (\neg P0) \lor (\neg P1) \lor (\neg P2) \lor \ldots \tag{legge di De Morgan}\\
-    & \equiv \exists x (\neg Px) \tag{equivalenza vista prima}
+        \neg(\forall x Px) & \equiv \neg (P0 \land P1 \land P2 \land P3 \ldots) \tag{equivalenza vista prima}    \\
+                           & \equiv (\neg P0) \lor (\neg P1) \lor (\neg P2) \lor \ldots \tag{legge di De Morgan} \\
+                           & \equiv \exists x (\neg Px) \tag{equivalenza vista prima}
     \end{align*}
 \end{frame}
 
 \begin{frame}{Negazione e quantificatori limitati}
     Le equivalenze precedenti valgono anche per i quantificatori limitati. Ad esempio:
     \begin{align*}
-        \neg \forall x \in A \, (x > 0) & \equiv \neg \forall x (x \in A \to x > 0) \tag{rimozione del quantificatore limitato}\\
-       & \equiv \exists x \neg (x \in A \to x > 0) \tag{equivalenza precedente}\\
-    & \equiv \exists x \neg \neg(x \in A \land \neg  (x > 0)) \tag{poiché $A \to B \equiv \neg(A \land \neg B)$}\\
-    & \equiv \exists x (x \in A  \land \neg ( x > 0)) \tag{doppia negazione}\\
-        & \equiv \exists x \in A \, \neg (x > 0) \tag{reintroduzione del quantificatore limitato}
+        \neg \forall x \in A \, (x > 0) & \equiv \neg \forall x (x \in A \to x > 0) \tag{rimozione del quantificatore limitato}                      \\
+                                        & \equiv \exists x \neg (x \in A \to x > 0) \tag{equivalenza precedente}                                     \\
+                                        & \equiv \exists x \neg \neg(x \in A \land \neg  (x > 0)) \tag{poiché $A \to B \equiv \neg(A \land \neg B)$} \\
+                                        & \equiv \exists x (x \in A  \land \neg ( x > 0)) \tag{doppia negazione}                                     \\
+                                        & \equiv \exists x \in A \, \neg (x > 0) \tag{reintroduzione del quantificatore limitato}
     \end{align*}
     In generale:
     \begin{gather*}
-    \neg \forall x (Y \to X) \equiv \exists x (Y \land \neg X)\\
-    \neg \exists x (Y \land X) \equiv \forall x (Y \to \neg X)
+        \neg \forall x (Y \to X) \equiv \exists x (Y \land \neg X)\\
+        \neg \exists x (Y \land X) \equiv \forall x (Y \to \neg X)
     \end{gather*}
 \end{frame}
 
@@ -616,15 +616,15 @@
     \begin{itemize}
         \item il dominio sarà un insieme di tessere che possono avere varie forme e colori;
         \item il predicato unario $R$ sta per ``essere rotondo'';
-    \item il predicato unario $G$ sta per ``essere giallo''.
+        \item il predicato unario $G$ sta per ``essere giallo''.
     \end{itemize}
     Il numero di tessere, la loro forma e colore verrà rappresentato graficamente. Ad esempio
     \[
-    \begin{tikzpicture}[minimum size=1cm]
-        \node (1) [draw, circle, fill=yellow] at (0,0) {1};
-        \node (2) [draw, rectangle, fill=yellow, right=of 1]  {2};
-        \node (3) [draw, rectangle, fill=red, right=of 2]  {3};
-    \end{tikzpicture}
+        \begin{tikzpicture}[minimum size=1cm]
+            \node (1) [draw, circle, fill=yellow] at (0,0) {1};
+            \node (2) [draw, rectangle, fill=yellow, right=of 1]  {2};
+            \node (3) [draw, rectangle, fill=red, right=of 2]  {3};
+        \end{tikzpicture}
     \]
     è una interpretazione con tre tessere, la prima gialla e tonda, la seconda gialla e rettangolare, la terza rossa e rettangolare.
 \end{frame}
@@ -640,11 +640,11 @@
     \end{proposition}
     La seguente interpretazione soddisfa sia $\forall x (Rx \land Gx)$ che $(\forall x Rx) \land (\forall x Gx)$:
     \[
-    \begin{tikzpicture}[minimum size=1cm]
-        \node (1) [draw, circle, fill=yellow] at (0,0) {1};
-        \node (2) [draw, circle, fill=yellow, right=of 1]  {2};
-        \node (3) [draw, circle, fill=yellow, right=of 2]  {3};
-    \end{tikzpicture}
+        \begin{tikzpicture}[minimum size=1cm]
+            \node (1) [draw, circle, fill=yellow] at (0,0) {1};
+            \node (2) [draw, circle, fill=yellow, right=of 1]  {2};
+            \node (3) [draw, circle, fill=yellow, right=of 2]  {3};
+        \end{tikzpicture}
     \]
     mentre la seguente non soddisfa nessuna delle due
     \[
@@ -674,7 +674,7 @@
 \begin{frame}{Quantificatore universale e disgiunzione (1)}
     Ci chiediamo adesso se valga anche l'equivalenza
     \[
-    \forall x (Rx \lor Gx) \equiv (\forall x Rx) \lor (\forall x Gx)
+        \forall x (Rx \lor Gx) \equiv (\forall x Rx) \lor (\forall x Gx)
     \]
     ovvero
     \begin{proposition}
@@ -686,32 +686,32 @@
     \pause
     Tuttavia, la seguente interpretazione soddisfa $\forall x (Rx \lor Gx)$ ma non $(\forall x Rx) \lor (\forall x Gx)$:
     \[
-    \begin{tikzpicture}[minimum size=1cm]
-        \node (1) [draw, circle, fill=red] at (0,0) {1};
-        \node (2) [draw, rectangle, fill=yellow, right=of 1]  {2};
-        \node (3) [draw, circle, fill=yellow, right=of 2]  {3};
-    \end{tikzpicture}
+        \begin{tikzpicture}[minimum size=1cm]
+            \node (1) [draw, circle, fill=red] at (0,0) {1};
+            \node (2) [draw, rectangle, fill=yellow, right=of 1]  {2};
+            \node (3) [draw, circle, fill=yellow, right=of 2]  {3};
+        \end{tikzpicture}
     \]
 \end{frame}
 
 \begin{frame}{Quantificatore universale e disgiunzione (2)}
     È vero però (vi ricordo che $\models$ è il simbolo di conseguenza logica) che
     \[
-    (\forall x Rx) \lor (\forall x Gx) \models \forall x (Rx \lor Gx)
+        (\forall x Rx) \lor (\forall x Gx) \models \forall x (Rx \lor Gx)
     \]
     Infatti se $(\forall x Rx) \land (\forall x Gx)$, allora o tutte le tessere sono rotonde, oppure sono tutte gialle (o anche entrambe le cose). In ogni caso, ogni tessara è o rotonda o gialla.
 
     \medskip
     Una interpretazione che:
     \begin{itemize}
-    \item rende vera $(\forall x Rx) \lor (\forall x Gx)$
-    \item rende falsa $\forall x (Rx \lor Gx)$
+        \item rende vera $(\forall x Rx) \lor (\forall x Gx)$
+        \item rende falsa $\forall x (Rx \lor Gx)$
     \end{itemize}
     non esiste!
 
     \medskip In generale è vero che:
     \[
-    (\forall x \phi_1) \lor (\forall x \phi_2) \models \forall x (\phi_1 \lor \phi_2)
+        (\forall x \phi_1) \lor (\forall x \phi_2) \models \forall x (\phi_1 \lor \phi_2)
     \]
 \end{frame}
 
@@ -742,11 +742,11 @@
 
     \medskip La risposta è no. Questa interpretazione rende vera la seconda ma non la prima:
     \[
-    \begin{tikzpicture}[minimum size=1cm]
-        \node (1) [draw, circle, fill=red] at (0,0) {1};
-        \node (2) [draw, rectangle, fill=yellow, right=of 1]  {2};
-        \node (3) [draw, circle, fill=green, right=of 2]  {3};
-    \end{tikzpicture}
+        \begin{tikzpicture}[minimum size=1cm]
+            \node (1) [draw, circle, fill=red] at (0,0) {1};
+            \node (2) [draw, rectangle, fill=yellow, right=of 1]  {2};
+            \node (3) [draw, circle, fill=green, right=of 2]  {3};
+        \end{tikzpicture}
     \]
     Infatti è vero che esiste una tessera rotonda (la 1 e la 3) e che esiste una tessera gialla (2), ma non esiste una tessera che è rotonda e gialla contemporaneamente.
 \end{frame}
@@ -773,7 +773,7 @@
 \end{frame}
 
 \begin{frame}{Esercizi consigliati}
-	Esercizi da 5 in poi del Capitolo 5.
+    Esercizi da 5 in poi del Capitolo 5.
 \end{frame}
 
 \end{document}

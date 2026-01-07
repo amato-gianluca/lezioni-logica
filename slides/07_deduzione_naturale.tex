@@ -95,7 +95,7 @@
     Il calcolo logico che ci interessa in questo corso è chiamato \alert{deduzione naturale}.
     \begin{itemize}
         \item Introdotta dal logico Gerhard Gentzen nella prima metà degli anni '30.
-    \item È un calcolo molto vicino a quello che farebbe una persona per dimostrare la correttezza di un'inferenza.
+        \item È un calcolo molto vicino a quello che farebbe una persona per dimostrare la correttezza di un'inferenza.
         \item È molto usato in logica e in informatica teorica.
     \end{itemize}
 \end{frame}
@@ -103,39 +103,39 @@
 \begin{frame}{Un sottoinsieme dei connettivi}
     Non sarebbe necessario, ma per semplicità presentiamo la deduzione naturale per un sottoinsieme dei connettivi logici:
     \[
-    \land, \lor, \to, \bot
+        \land, \lor, \to, \bot
     \]
     Sappiamo che tutti gli altri sono equivalenti a combinazioni di questi:
     \begin{align*}
-        \neg X &\equiv X \to \bot\\
-        X \leftrightarrow Y &\equiv (X \to Y) \land (Y \to X)\\
-        X \xor Y &\equiv (X \land \neg Y) \lor (\neg X \land Y)\\
-        & \equiv (X \land (Y \to \bot)) \lor ((X \to \bot) \land Y)\\
-        \top & \equiv X \lor \neg X
+        \neg X              & \equiv X \to \bot                                         \\
+        X \leftrightarrow Y & \equiv (X \to Y) \land (Y \to X)                          \\
+        X \xor Y            & \equiv (X \land \neg Y) \lor (\neg X \land Y)             \\
+                            & \equiv (X \land (Y \to \bot)) \lor ((X \to \bot) \land Y) \\
+        \top                & \equiv X \lor \neg X
     \end{align*}
 \end{frame}
 
 \begin{frame}{Regole di inferenza}
     Le regole di inferenza della deduzione naturale hanno alcune differenze rispetto a quelle viste finora:
     \begin{itemize}
-    \item le premesse si scrivono in un'unica riga sopra la linea orizzontale, invece che su più righe. Ad esempio, si scrive
-    \begin{center}
-        \begin{inference}
-            $A$ \qquad $B$\\
-            \hline
-            $A \land B$
-        \end{inference}
-        \qquad invece di \qquad
-        \begin{inference}
-            $A$ \\
-            $B$\\
-            \hline
-            $A \land B$
-        \end{inference}
-    \end{center}
+        \item le premesse si scrivono in un'unica riga sopra la linea orizzontale, invece che su più righe. Ad esempio, si scrive
+              \begin{center}
+                  \begin{inference}
+                      $A$ \qquad $B$\\
+                      \hline
+                      $A \land B$
+                  \end{inference}
+                  \qquad invece di \qquad
+                  \begin{inference}
+                      $A$ \\
+                      $B$\\
+                      \hline
+                      $A \land B$
+                  \end{inference}
+              \end{center}
 
-    Questo ha il solo scopo di permettere di combinare graficamente più regole di inferenza in un'unica \alert{dimostrazione}.
-    \item in alcune regole di inferenza è consentito \alert{scaricare} delle premesse (vedremo più avanti cosa significa).
+              Questo ha il solo scopo di permettere di combinare graficamente più regole di inferenza in un'unica \alert{dimostrazione}.
+        \item in alcune regole di inferenza è consentito \alert{scaricare} delle premesse (vedremo più avanti cosa significa).
     \end{itemize}
 \end{frame}
 
@@ -161,32 +161,32 @@
     \medskip
     \begin{itemize}
         \item \textbf{introduzione}:
-        \begin{center}
-            \AxiomC{$X$}
-            \AxiomC{$Y$}
-            \RightLabel{($\intro\land$)}
-            \BinaryInfC{$X \land Y$}
-            \DisplayProof
-        \end{center}
+              \begin{center}
+                  \AxiomC{$X$}
+                  \AxiomC{$Y$}
+                  \RightLabel{($\intro\land$)}
+                  \BinaryInfC{$X \land Y$}
+                  \DisplayProof
+              \end{center}
         \item \textbf{eliminazione}:
-        \begin{center}
-            \AxiomC{$X \land Y$}
-            \RightLabel{($\elim_1\land$)}
-            \UnaryInfC{$X$}
-            \DisplayProof
-            \qquad
-            \AxiomC{$X \land Y$}
-            \RightLabel{($\elim_2\land$)}
-            \UnaryInfC{$Y$}
-            \DisplayProof
-       \end{center}
+              \begin{center}
+                  \AxiomC{$X \land Y$}
+                  \RightLabel{($\elim_1\land$)}
+                  \UnaryInfC{$X$}
+                  \DisplayProof
+                  \qquad
+                  \AxiomC{$X \land Y$}
+                  \RightLabel{($\elim_2\land$)}
+                  \UnaryInfC{$Y$}
+                  \DisplayProof
+              \end{center}
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Dimostrazione}
     Le regole di inferenza si possono combinare per ottenere una dimostrazione:
     \begin{itemize}
-            \item Una \alert{dimostrazione} (o \alert{derivazione}) si ottiene combinando tra loro le regole di inferenza in un'unica \emph{struttura ad albero}, dove la conclusione di un'inferenza può essere la premessa di un'altra.
+        \item Una \alert{dimostrazione} (o \alert{derivazione}) si ottiene combinando tra loro le regole di inferenza in un'unica \emph{struttura ad albero}, dove la conclusione di un'inferenza può essere la premessa di un'altra.
         \item Le formule che non sono conclusioni di alcuna inferenza, ovvero che non hanno alcuna linea orizzontale sopra di loro, si chiamano \alert{premesse della dimostrazione}.
         \item Le formule che non sono premesse di alcuna inferenza, ovvero che non hanno alcuna linea orizzontale sotto di loro, si chiamano \alert{conclusioni della dimostrazione}.
         \item In una dimostrazione può esserci una sola conclusione.
@@ -199,7 +199,7 @@
     \end{itemize}
     si dice che $Y$ è dimostrabile da $X_1, \ldots, X_n$ e si scrive
     \[
-    X_1, \ldots, X_n \vdash Y
+        X_1, \ldots, X_n \vdash Y
     \]
 \end{frame}
 
@@ -222,45 +222,45 @@
     \medskip
     Dunque questa è una dimostrazione di $B \land C$ a partire da $(A \land B) \land C$. In simboli:
     \[
-    (A \land B) \land C \vdash B \land C
+        (A \land B) \land C \vdash B \land C
     \]
 \end{frame}
 
 \begin{frame}{Regole per l'implicazione}
     \begin{itemize}
         \item \textbf{introduzione}:
-        \begin{center}
-            \AXC{$[X]$}
-            \dottedLine
-            \UIC{$Y$}
-            \RightLabel{($\intro{\to}$)}
-            \UIC{$X \to Y$}
-            \DP
-        \end{center}
-        \smallskip
-        La $[X]$ indica che è possibile \alert{scaricare} la premessa $X$ nella dimostrazione che porta a $Y$. Questo significa che anche se $X$ compare come premessa della dimostrazione, possiamo far finta che non ci sia. La linea tratteggiata indica che lì in mezzo c'è una dimostrazione anche molto complessa, ma non compare effettivamente in una dimostrazione.
+              \begin{center}
+                  \AXC{$[X]$}
+                  \dottedLine
+                  \UIC{$Y$}
+                  \RightLabel{($\intro{\to}$)}
+                  \UIC{$X \to Y$}
+                  \DP
+              \end{center}
+              \smallskip
+              La $[X]$ indica che è possibile \alert{scaricare} la premessa $X$ nella dimostrazione che porta a $Y$. Questo significa che anche se $X$ compare come premessa della dimostrazione, possiamo far finta che non ci sia. La linea tratteggiata indica che lì in mezzo c'è una dimostrazione anche molto complessa, ma non compare effettivamente in una dimostrazione.
 
-        \smallskip
-        Questa regola corrisponde alla classica modalità con cui si dimostra un'implicazione: si assume l'antecedente e si dimostra il conseguente.\\[0.2cm]
+              \smallskip
+              Questa regola corrisponde alla classica modalità con cui si dimostra un'implicazione: si assume l'antecedente e si dimostra il conseguente.\\[0.2cm]
 
         \item \textbf{eliminazione}:
-        \begin{center}
-            \AXC{$X \to Y$}
-            \AXC{$X$}
-            \RightLabel{($\elim{\to}$)}
-            \BIC{$Y$}
-            \DP
-        \end{center}
+              \begin{center}
+                  \AXC{$X \to Y$}
+                  \AXC{$X$}
+                  \RightLabel{($\elim{\to}$)}
+                  \BIC{$Y$}
+                  \DP
+              \end{center}
 
-        \smallskip
-        Questa è la stessa regola che abbiamo chiamato in precedenza \emph{modus ponens}.
+              \smallskip
+              Questa è la stessa regola che abbiamo chiamato in precedenza \emph{modus ponens}.
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Esempio}
     Verifichiamo che
     \[
-    A \to B, B \to C \vdash A \to C \enspace .
+        A \to B, B \to C \vdash A \to C \enspace .
     \]
     Questa è una possibile dimostrazione:
     \begin{prooftree}
@@ -280,53 +280,53 @@
 \end{frame}
 
 \begin{frame}{Regole per la disgiunzione}
-\begin{itemize}
-    \item \textbf{introduzione}:
-    \begin{center}
-        \AXC{$X$}
-        \RightLabel{($\intro_1\lor$)}
-        \UIC{$X \lor Y$}
-        \DP
-        \qquad
-        \AXC{$Y$}
-        \RightLabel{($\intro_2\lor$)}
-        \UIC{$X \lor Y$}
-        \DP
-    \end{center}
-    \item \textbf{eliminazione}:
-    \begin{center}
-        \AXC{$X \lor Y$}
-        \AXC{$[X]$}
-        \dottedLine
-        \UIC{$Z$}
-        \AXC{$[Y]$}
-        \dottedLine
-        \UIC{$Z$}
-        \RightLabel{($\elim\lor$)}
-        \TIC{$Z$}
-        \DP
-    \end{center}
+    \begin{itemize}
+        \item \textbf{introduzione}:
+              \begin{center}
+                  \AXC{$X$}
+                  \RightLabel{($\intro_1\lor$)}
+                  \UIC{$X \lor Y$}
+                  \DP
+                  \qquad
+                  \AXC{$Y$}
+                  \RightLabel{($\intro_2\lor$)}
+                  \UIC{$X \lor Y$}
+                  \DP
+              \end{center}
+        \item \textbf{eliminazione}:
+              \begin{center}
+                  \AXC{$X \lor Y$}
+                  \AXC{$[X]$}
+                  \dottedLine
+                  \UIC{$Z$}
+                  \AXC{$[Y]$}
+                  \dottedLine
+                  \UIC{$Z$}
+                  \RightLabel{($\elim\lor$)}
+                  \TIC{$Z$}
+                  \DP
+              \end{center}
 
-    \smallskip
-    Questa regola corrisponde al \alert{ragionamento per casi}. Se so che $X \lor Y$, mi basta considerare separatamente i casi per cui vale $X$ e per cui vale $Y$ (sono le assunzioni da scaricare). Se in entrambi i casi riesco a dimostrare $Z$, allora $Z$ segue da $X \lor Y$.
-\end{itemize}
+              \smallskip
+              Questa regola corrisponde al \alert{ragionamento per casi}. Se so che $X \lor Y$, mi basta considerare separatamente i casi per cui vale $X$ e per cui vale $Y$ (sono le assunzioni da scaricare). Se in entrambi i casi riesco a dimostrare $Z$, allora $Z$ segue da $X \lor Y$.
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Esempio}
     Consideriamo la dimostrazione di
     \[
-    A \lor B, A \to C, B \to C \vdash C
+        A \lor B, A \to C, B \to C \vdash C
     \]
     data di seguito:
     \begin{prooftree}
         \AXC{$\color{red}A \lor B$}
-            \AXC{$\color{red}A \to C$}
-            \AXC{$[A]$}
-            \RightLabel{($\elim{\to}$)}
+        \AXC{$\color{red}A \to C$}
+        \AXC{$[A]$}
+        \RightLabel{($\elim{\to}$)}
         \BIC{$C$}
-            \AXC{$\color{red}B \to C$}
-            \AXC{$[B]$}
-            \RightLabel{($\elim{\to}$)}
+        \AXC{$\color{red}B \to C$}
+        \AXC{$[B]$}
+        \RightLabel{($\elim{\to}$)}
         \BIC{$C$}
         \RightLabel{($\elim\lor$)}
         \TIC{$\color{blue}C$}
@@ -340,36 +340,36 @@
     Per il simbolo $\bot$ perdiamo la simmetria tra introduzione ed eliminazione, perché abbiamo solo la regola di eliminazione.
     \begin{itemize}
         \item \textbf{eliminazione}:
-        \begin{center}
-            \AXC{$\bot$}
-            \RightLabel{($\elim\bot$)}
-            \UIC{$X$}
-            \DP
-        \end{center}
+              \begin{center}
+                  \AXC{$\bot$}
+                  \RightLabel{($\elim\bot$)}
+                  \UIC{$X$}
+                  \DP
+              \end{center}
 
-        \smallskip
-        Questa è una variante della regola che abbiamo chiamato ``\emph{ex falso quodlibet}\/'', ovvero il fatto che da una contraddizione si può dedurre qualsiasi cosa.
+              \smallskip
+              Questa è una variante della regola che abbiamo chiamato ``\emph{ex falso quodlibet}\/'', ovvero il fatto che da una contraddizione si può dedurre qualsiasi cosa.
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Esempio}
     Consideriamo la dimostrazione vista all'inizio di queste slide, ovvero
     \[
-    A \lor B, B \to C, \neg C \vdash A
+        A \lor B, B \to C, \neg C \vdash A
     \]
     Siccome non trattiamo direttamente la negazione, riscriviamola nel suo equivalente $C \to \bot$.
     \begin{prooftree}
-            \AXC{$\color{red}A \lor B$}
-            \AXC{$[A]$}
-                    \AXC{$\color{red}C \to \bot$}
-                        \AXC{$\color{red}B \to C$}
-                        \AXC{$[B]$}
-                        \RightLabel{($\elim{\to}$)}
-                    \BIC{$C$}
-                    \RightLabel{($\elim{\to}$)}
-                \BIC{$\bot$}
-                \RightLabel{($\elim\bot$)}
-            \UIC{$A$}
+        \AXC{$\color{red}A \lor B$}
+        \AXC{$[A]$}
+        \AXC{$\color{red}C \to \bot$}
+        \AXC{$\color{red}B \to C$}
+        \AXC{$[B]$}
+        \RightLabel{($\elim{\to}$)}
+        \BIC{$C$}
+        \RightLabel{($\elim{\to}$)}
+        \BIC{$\bot$}
+        \RightLabel{($\elim\bot$)}
+        \UIC{$A$}
         \RightLabel{($\elim\lor$)}
         \TIC{A}
     \end{prooftree}
@@ -381,7 +381,7 @@
 \begin{frame}{Terzo escluso}
     Queste regole corrispondono alla \alert{logica intuizionista}, un tipo di logica che non accetta il principio del terzo escluso. Infatti, se ci provate, non c'è modo di dimostrare
     \[
-    \vdash A \lor \neg A
+        \vdash A \lor \neg A
     \]
     ovvero che $A \lor \neg A$ è vero senza assumere ipotesi aggiuntive.
 
@@ -405,15 +405,15 @@
     Verifichiamo adesso che $\neg \neg A \vdash A$.
     Ricordiamo che $\neg \neg A \equiv (A \to \bot) \to \bot$.
     \begin{prooftree}
-            \AXC{}
-            \RightLabel{(TE)}
+        \AXC{}
+        \RightLabel{(TE)}
         \UIC{$A \lor (A \to \bot)$}
         \AXC{$[A]$}
-                \AXC{$\color{red}(A \to \bot) \to \bot$}
-                \AXC{$[A \to \bot]$}
-                \RightLabel{($\elim{\to}$)}
-            \BIC{$\bot$}
-            \RightLabel{($\elim\bot$)}
+        \AXC{$\color{red}(A \to \bot) \to \bot$}
+        \AXC{$[A \to \bot]$}
+        \RightLabel{($\elim{\to}$)}
+        \BIC{$\bot$}
+        \RightLabel{($\elim\bot$)}
         \UIC{$A$}
         \RightLabel{($\elim\lor$)}
         \TIC{$A$}
@@ -423,8 +423,8 @@
     Notare che il contrario $A \vdash \neg \neg A$ si può dimostrare anche senza il principio del terzo escluso.
     \begin{prooftree}
         \AXC{$\color{red}A$}
-            \AXC{$[A \to \bot]$}
-            \RightLabel{($\elim{\to}$)}
+        \AXC{$[A \to \bot]$}
+        \RightLabel{($\elim{\to}$)}
         \BIC{$\bot$}
         \RightLabel{($\intro{\to}$)}
         \UIC{$(A \to \bot) \to \bot$}
@@ -437,87 +437,87 @@
 
 \begin{frame}{Tutte le regole}
     \begin{center}
-    \begin{tabular}{r|M{6cm}|M{6cm}}
-        & introduzione & eliminazione\\
-        \hline
-        $\land$ &
-        \smallskip
-        \AXC{$X$}
-        \AXC{$Y$}
-        \RightLabel{($\intro\land$)}
-        \BIC{{$X \land Y$}}
-        \DP \smallskip &
-        \smallskip
-    \AXC{$X \land Y$}
-        \RightLabel{($\elim_1\land$)}
-        \UIC{{$X$}}
-        \DP \qquad
-    \AXC{$X \land Y$}
-        \RightLabel{($\elim_2\land$)}
-        \UIC{{$Y$}}
-        \DP \smallskip \\
-        \hline
-        $\lor$ &
-        \smallskip
-        \AXC{$X$}
-        \RightLabel{($\intro_1\lor$)}
-        \UIC{$X \lor Y$}
-        \DP \qquad
-        \AXC{$Y$}
-        \RightLabel{($\intro_2\lor$)}
-        \UIC{$X \lor Y$}
-        \DP\smallskip &
-        \smallskip
-        \AXC{$X \lor Y$}
-        \AXC{$[X]$}
-        \dottedLine
-        \UIC{$Z$}
-        \AXC{$[Y]$}
-        \dottedLine
-        \UIC{$Z$}
-        \RightLabel{($\elim\lor$)}
-        \TIC{$Z$}
-        \DP
-        \smallskip
-        \\
-        \hline
-        $\to$ &
-        \smallskip
-        \AXC{$[X]$}
-        \dottedLine
-        \UIC{$Y$}
-        \RightLabel{($\intro{\to}$)}
-        \UIC{$Y$}
-        \DP
-        \smallskip &
-        \smallskip
-        \AXC{$X \to Y$}
-        \AXC{$X$}
-        \RightLabel{($\elim{\to}$)}
-        \BIC{$Y$}
-        \DP
-        \smallskip
-        \\
-        \hline
-        $\bot$ &
-        &
-        \smallskip
-        \AXC{$\bot$}
-        \RightLabel{($\elim\bot$)}
-        \UIC{$X$}
-        \DP
-        \smallskip
-        \\
-        \hline
-        TE &
-        \multicolumn{2}{c}{
-            \AXC{\phantom{$Y^2$}}
-            \RightLabel{(TE)}
-            \UIC{$X \lor (X \to \bot)$}
+        \begin{tabular}{r|M{6cm}|M{6cm}}
+                           & introduzione & eliminazione \\
+            \hline
+            $\land$        &
+            \smallskip
+            \AXC{$X$}
+            \AXC{$Y$}
+            \RightLabel{($\intro\land$)}
+            \BIC{{$X \land Y$}}
+            \DP \smallskip &
+            \smallskip
+            \AXC{$X \land Y$}
+            \RightLabel{($\elim_1\land$)}
+            \UIC{{$X$}}
+            \DP \qquad
+            \AXC{$X \land Y$}
+            \RightLabel{($\elim_2\land$)}
+            \UIC{{$Y$}}
+            \DP \smallskip                               \\
+            \hline
+            $\lor$         &
+            \smallskip
+            \AXC{$X$}
+            \RightLabel{($\intro_1\lor$)}
+            \UIC{$X \lor Y$}
+            \DP \qquad
+            \AXC{$Y$}
+            \RightLabel{($\intro_2\lor$)}
+            \UIC{$X \lor Y$}
+            \DP\smallskip  &
+            \smallskip
+            \AXC{$X \lor Y$}
+            \AXC{$[X]$}
+            \dottedLine
+            \UIC{$Z$}
+            \AXC{$[Y]$}
+            \dottedLine
+            \UIC{$Z$}
+            \RightLabel{($\elim\lor$)}
+            \TIC{$Z$}
             \DP
             \smallskip
-        }\\
-    \end{tabular}
+            \\
+            \hline
+            $\to$          &
+            \smallskip
+            \AXC{$[X]$}
+            \dottedLine
+            \UIC{$Y$}
+            \RightLabel{($\intro{\to}$)}
+            \UIC{$Y$}
+            \DP
+            \smallskip     &
+            \smallskip
+            \AXC{$X \to Y$}
+            \AXC{$X$}
+            \RightLabel{($\elim{\to}$)}
+            \BIC{$Y$}
+            \DP
+            \smallskip
+            \\
+            \hline
+            $\bot$         &
+                           &
+            \smallskip
+            \AXC{$\bot$}
+            \RightLabel{($\elim\bot$)}
+            \UIC{$X$}
+            \DP
+            \smallskip
+            \\
+            \hline
+            TE             &
+            \multicolumn{2}{c}{
+                \AXC{\phantom{$Y^2$}}
+                \RightLabel{(TE)}
+                \UIC{$X \lor (X \to \bot)$}
+                \DP
+                \smallskip
+            }                                            \\
+        \end{tabular}
     \end{center}
 \end{frame}
 
@@ -525,9 +525,9 @@
     Cosa lega le dimostrazioni della deduzione naturale con la conseguenza logica? Noi l'abbiamo presentata come un modo di stabilire se un'inferenza è corretta oppure no, ma per far ciò ci interesserebbe sapere se:
     \begin{enumerate}
         \item \textbf{(essenziale, altrimenti la deduzione naturale non serve a nulla)}:\\
-        è vero che se c'è una dimostrazione di $Y$ a partire da $X_1, \ldots, X_n$ (ovvero $X_1, \ldots, X_n \vdash Y$) allora $Y$ è conseguenza logica di $X_1, \ldots, X_n$ (ovvero $X_1, \ldots, X_n \models Y$) ?
+              è vero che se c'è una dimostrazione di $Y$ a partire da $X_1, \ldots, X_n$ (ovvero $X_1, \ldots, X_n \vdash Y$) allora $Y$ è conseguenza logica di $X_1, \ldots, X_n$ (ovvero $X_1, \ldots, X_n \models Y$) ?
         \item \textbf{(opzionale, ma sarebbe comodo)}:\\
-        è vero che se $Y$ è conseguenza logica di $X_1, \ldots, X_n$ allora esiste una dimostrazione di $Y$ a partire da $X_1, \ldots, X_n$?
+              è vero che se $Y$ è conseguenza logica di $X_1, \ldots, X_n$ allora esiste una dimostrazione di $Y$ a partire da $X_1, \ldots, X_n$?
     \end{enumerate}
 \end{frame}
 

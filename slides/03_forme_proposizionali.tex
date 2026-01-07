@@ -285,12 +285,12 @@
         $A \land B \to A$ è una tautologia.
         \begin{center}
             \begin{tabular}{c|c||c|c|c}
-                $A$ & $B$ & $A \land B$  & $(A \land B) \to A$ \\
+                $A$ & $B$ & $A \land B$ & $(A \land B) \to A$ \\
                 \hline
-                F   & F   & \only<2->F & \only<3->V \\
-                F   & V   & \only<2->F & \only<3->V \\
-                V   & F   & \only<2->F & \only<3->V \\
-                V   & V   & \only<2->V & \only<3->V
+                F   & F   & \only<2->F  & \only<3->V          \\
+                F   & V   & \only<2->F  & \only<3->V          \\
+                V   & F   & \only<2->F  & \only<3->V          \\
+                V   & V   & \only<2->V  & \only<3->V
             \end{tabular}
         \end{center}
     \end{example}
@@ -315,16 +315,16 @@
             \begin{tabular}{c||c|c}
                 $A$ & $A \land \neg A$ \\
                 \hline
-                F   & \only<2->F  \\
-                V   & \only<2->F  \\
+                F   & \only<2->F       \\
+                V   & \only<2->F       \\
             \end{tabular}
         \end{center}
     \end{example}
     \uncover<3->{
-    Corrisponde a proposizioni in italiano che sono sicuramente false, come
-    \begin{example}
-        \prop{Carla è laureata ma non è laureata}.
-    \end{example}}
+        Corrisponde a proposizioni in italiano che sono sicuramente false, come
+        \begin{example}
+            \prop{Carla è laureata ma non è laureata}.
+        \end{example}}
 \end{frame}
 
 
@@ -353,15 +353,15 @@
             \begin{tabular}{c||c|c}
                 $A$ & $A \land \neg A$ & $\neg (A \land \neg A)$ \\
                 \hline
-                F   & \only<2->F        & \only<3->V               \\
-                V   & \only<2->F        & \only<3->V               \\
+                F   & \only<2->F       & \only<3->V              \\
+                V   & \only<2->F       & \only<3->V              \\
             \end{tabular}
         \end{center}
     \end{theorem}
     \uncover<4->{
-    \begin{example}[in italiano]
-        ``\prop{Carla è laureata e non è laureata}\/'' è sicuramente falsa, anche se non sappiamo chi è Carla. Pertanto la sua negazione ``\prop{Non è vero che Carla è laureata e non è laureata}\/'' è sicuramente vera.
-    \end{example}
+        \begin{example}[in italiano]
+            ``\prop{Carla è laureata e non è laureata}\/'' è sicuramente falsa, anche se non sappiamo chi è Carla. Pertanto la sua negazione ``\prop{Non è vero che Carla è laureata e non è laureata}\/'' è sicuramente vera.
+        \end{example}
     }
 \end{frame}
 
@@ -381,9 +381,9 @@
         \end{center}
     \end{theorem}
     \uncover<3->{
-    \begin{example}[in italiano]
-        ``\prop{Carla è laureata oppure non è laureata}'' è sicuramente vera, anche se non sappiamo chi è Carla.
-    \end{example}}
+        \begin{example}[in italiano]
+            ``\prop{Carla è laureata oppure non è laureata}'' è sicuramente vera, anche se non sappiamo chi è Carla.
+        \end{example}}
 
     \medskip
     \onslide<4->{
@@ -396,7 +396,7 @@
         Una \fp si dice \alert{soddisfacibile} quando non è una contraddizione.
     \end{definition}
 
-     In altri termini, una \fp è soddisfacibile se esiste almeno un'assegnazione di valori di verità alle lettere proposizionali (una riga della tavola di verità) che la rende vera.
+    In altri termini, una \fp è soddisfacibile se esiste almeno un'assegnazione di valori di verità alle lettere proposizionali (una riga della tavola di verità) che la rende vera.
 
     \medskip
     \begin{definition}[Falsificabilità]
@@ -419,16 +419,16 @@
         Consideriamo le \fp $\neg A \iff B$ e $A \iff \neg B$. Mostriamo un'unica tavola di verità che mostra entrambe le \fp assieme.
         \begin{center}
             \begin{tabular}{c|c||c|c|c|c}
-                $A$ & $B$ & $\neg A$ & $\neg B$ & $\neg A \iff B$ & $A \iff \neg B$ \\
+                $A$ & $B$ & $\neg A$    & $\neg B$ & $\neg A \iff B$ & $A \iff \neg B$   \\
                 \hline
-                F   & F   & \only<3->{V        & V        & F               & F               }\\
-                F   & V   & \only<3->{V        & F        & V               & V}               \\
-                V   & F   & \only<3->{F        & V        & V               & V}               \\
-                V   & V   & \only<3->{F        & F        & F               & F}
+                F   & F   & \only<3->{V & V        & F               & F               } \\
+                F   & V   & \only<3->{V & F        & V               & V}                \\
+                V   & F   & \only<3->{F & V        & V               & V}                \\
+                V   & V   & \only<3->{F & F        & F               & F}
             \end{tabular}
         \end{center}
         \uncover<4->{
-        Poiché le colonne $\neg A \iff B$ e $A \iff \neg B$ sono uguali, le due \fp sono logicamente equivalenti.
+            Poiché le colonne $\neg A \iff B$ e $A \iff \neg B$ sono uguali, le due \fp sono logicamente equivalenti.
         }
     \end{example}
 \end{frame}
@@ -517,46 +517,46 @@
     \medskip
     Vediamo quindi alcune equivalenze logiche notevoli. Quando possibile, faremo un parallelo con equivalenze notevoli delle espressioni algebriche, secondo la corrispondenza:
     \[
-    \lor \Rightarrow + \qquad \land \Rightarrow \cdot \qquad \neg \Rightarrow 1 - {} \qquad \top \Rightarrow 1 \qquad \bot \Rightarrow 0
+        \lor \Rightarrow + \qquad \land \Rightarrow \cdot \qquad \neg \Rightarrow 1 - {} \qquad \top \Rightarrow 1 \qquad \bot \Rightarrow 0
     \]
 \end{frame}
 
 \begin{frame}{Proprietà di congiunzione e disgiunzione}
     \centering
     \begin{tabular}{c|c|c}
-        \textbf{logica}                                             & \textbf{nome proprietà} & \textbf{algebra}                               \\
+        \textbf{logica}                                          & \textbf{nome proprietà} & \textbf{algebra}                               \\
         \hline
-    $A \land B \equiv B \land A$                              & commutativa             & $x \cdot y = y \cdot x$                        \\
-    $A \land (B \land C) \equiv (A \land B) \land C$        & associativa             & $x \cdot (y \cdot z) = (x \cdot y) \cdot z$    \\
-    $A \land A \equiv A$                                       & idempotenza             & \sout{$x \cdot x = x$}                         \\
-    $A \land \top \equiv A$                                    & elemento neutro         & $x \cdot 1 = x$                                \\
-    $A \land \bot \equiv \bot$                                 & elem. assorbente        & $x \cdot 0 = 0$                                \\
-        \hline
-        \hline
-    $A \lor B \equiv B \lor A$                                  & commutativa             & $x + y = y + x$                                \\
-    $A \lor (B \lor C) \equiv (A \lor B) \lor C$                & associativa             & $x + (y + z) = (x + y) + z$                    \\
-    $A \lor A \equiv A$                                         & idempotenza             & \sout{$x + x = x$}                             \\
-    $A \lor \bot \equiv A$                                      & elemento neutro         & $x + 0 = x$                                    \\
-    $A \lor \top \equiv \top$                                   & elem. assorbente        & \sout{$x + 1 = 1$}                             \\
+        $A \land B \equiv B \land A$                             & commutativa             & $x \cdot y = y \cdot x$                        \\
+        $A \land (B \land C) \equiv (A \land B) \land C$         & associativa             & $x \cdot (y \cdot z) = (x \cdot y) \cdot z$    \\
+        $A \land A \equiv A$                                     & idempotenza             & \sout{$x \cdot x = x$}                         \\
+        $A \land \top \equiv A$                                  & elemento neutro         & $x \cdot 1 = x$                                \\
+        $A \land \bot \equiv \bot$                               & elem. assorbente        & $x \cdot 0 = 0$                                \\
         \hline
         \hline
-    $A \land (B \lor C) \equiv (A \land B) \lor (A \land C)$ & distributiva            & $x \cdot (y + z) = x \cdot y + x \cdot z$      \\
-    $A \lor (B \land C) \equiv (A \lor B) \land (A \lor C)$   & distributiva            & \sout{$x + y \cdot z = (x + y) \cdot (x + z)$} \\
-    $A \land (A \lor B) \equiv A$                              & assorbimento            & \sout{$x \cdot (x + y) = x$}                   \\
-    $A \lor (A \land B) \equiv A$                              & assorbimento            & \sout{$x + (x \cdot y) = x$}                   \\
+        $A \lor B \equiv B \lor A$                               & commutativa             & $x + y = y + x$                                \\
+        $A \lor (B \lor C) \equiv (A \lor B) \lor C$             & associativa             & $x + (y + z) = (x + y) + z$                    \\
+        $A \lor A \equiv A$                                      & idempotenza             & \sout{$x + x = x$}                             \\
+        $A \lor \bot \equiv A$                                   & elemento neutro         & $x + 0 = x$                                    \\
+        $A \lor \top \equiv \top$                                & elem. assorbente        & \sout{$x + 1 = 1$}                             \\
+        \hline
+        \hline
+        $A \land (B \lor C) \equiv (A \land B) \lor (A \land C)$ & distributiva            & $x \cdot (y + z) = x \cdot y + x \cdot z$      \\
+        $A \lor (B \land C) \equiv (A \lor B) \land (A \lor C)$  & distributiva            & \sout{$x + y \cdot z = (x + y) \cdot (x + z)$} \\
+        $A \land (A \lor B) \equiv A$                            & assorbimento            & \sout{$x \cdot (x + y) = x$}                   \\
+        $A \lor (A \land B) \equiv A$                            & assorbimento            & \sout{$x + (x \cdot y) = x$}                   \\
     \end{tabular}
 \end{frame}
 
 \begin{frame}{Proprietà che coinvolgono la negazione}
     \begin{center}
         \begin{tabular}{c|c|c}
-            \textbf{logica}               & \textbf{nome proprietà} & \textbf{algebra}             \\
+            \textbf{logica}              & \textbf{nome proprietà} & \textbf{algebra}             \\
             \hline
-            $\neg \neg A \equiv A$      & doppia negazione        & $ 1 - (1 - A) = A$             \\
-            $A \lor \neg A \equiv \top$   & terzo escluso           & $A + (1 - A) = 1$            \\
+            $\neg \neg A \equiv A$       & doppia negazione        & $ 1 - (1 - A) = A$           \\
+            $A \lor \neg A \equiv \top$  & terzo escluso           & $A + (1 - A) = 1$            \\
             $A \land \neg A \equiv \bot$ & non contraddizione      & \sout{$A \cdot (1 - A) = 0$} \\
-            $\neg \top \equiv \bot$            &                         & $1 - 1 = 0$                  \\
-            $\neg \bot \equiv \top$            &                         & $1- 0 = 1$
+            $\neg \top \equiv \bot$      &                         & $1 - 1 = 0$                  \\
+            $\neg \bot \equiv \top$      &                         & $1- 0 = 1$
         \end{tabular}
     \end{center}
 \end{frame}
@@ -564,29 +564,29 @@
 \begin{frame}{Alcuni esempi in linguaggio naturale (1)}
     Il fatto che quelle viste prima siano tautologie segue dal calcolo delle tavole di verità. Cerchiamo comunque di dare una qualche intuizione nel linguaggio naturale.
     \begin{itemize}
-    \item $A \land B \equiv B \land A$: cambiare l'ordine delle affermazioni, non cambia il significato.\\
-        \prop{Carlo è alto e Mario è basso} $\equiv$ \prop{Mario è basso e Carlo è alto}.
-    \item $A \land (B \land C) \equiv (A \land B) \land C$: non è facile fare un esempio in italiano, dove non ci sono le parentesi. Tuttavia, possiamo ripetere il soggetto in modo diverso per dare una idea del raggruppamento.\\
-        \prop{Carlo è alto e biondo e Carlo è affabile} $\equiv$ \prop{Carlo è alto e Carlo è biondo e affabile}.
-    \item $A \land A \equiv A$: ripetere due volte la stessa proposizione non ne cambia il significato.\\
-        \prop{Carlo è alto e Carlo è alto} $\equiv$ \prop{Carlo è alto}.
-    \item $A \land \top \equiv A$: \prop{Michele è o non è alto} è sicuramente vero, quindi non ha alcuna rilevanza.\\
-        \prop{Carlo è alto e Michele è o non è alto} $\equiv$ \prop{Carlo è alto}.
-    \item $A \land \bot \equiv \bot$: \prop{Michele è alto e non è alto} è sicuramente falso. Quindi\\
-        \prop{Carlo è alto e Michele è alto e non è alto} è sicuramente falso.
+        \item $A \land B \equiv B \land A$: cambiare l'ordine delle affermazioni, non cambia il significato.\\
+              \prop{Carlo è alto e Mario è basso} $\equiv$ \prop{Mario è basso e Carlo è alto}.
+        \item $A \land (B \land C) \equiv (A \land B) \land C$: non è facile fare un esempio in italiano, dove non ci sono le parentesi. Tuttavia, possiamo ripetere il soggetto in modo diverso per dare una idea del raggruppamento.\\
+              \prop{Carlo è alto e biondo e Carlo è affabile} $\equiv$ \prop{Carlo è alto e Carlo è biondo e affabile}.
+        \item $A \land A \equiv A$: ripetere due volte la stessa proposizione non ne cambia il significato.\\
+              \prop{Carlo è alto e Carlo è alto} $\equiv$ \prop{Carlo è alto}.
+        \item $A \land \top \equiv A$: \prop{Michele è o non è alto} è sicuramente vero, quindi non ha alcuna rilevanza.\\
+              \prop{Carlo è alto e Michele è o non è alto} $\equiv$ \prop{Carlo è alto}.
+        \item $A \land \bot \equiv \bot$: \prop{Michele è alto e non è alto} è sicuramente falso. Quindi\\
+              \prop{Carlo è alto e Michele è alto e non è alto} è sicuramente falso.
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Alcuni esempi in linguaggio naturale (2)}
     \begin{itemize}
-    \item $A \land (B \lor C) \equiv (A \land B) \lor (A \land C)$:
-        \prop{Carlo studia informatica e Carlo studia economia o filosofia} $\equiv$ \prop{Carlo studia informatica ed economia oppure Carlo studia informatica e filosofia}.
-    \item $A \lor (B \land C) \equiv (A \lor B) \land (A \lor C)$:
-        \prop{Carlo studia informatica oppure Carlo studia economia e filosofia} $\equiv$ \prop{Carlo studia informatica o economia e Carlo studia informatica o filosofia}. Tuttavia, l'equivalenza in italiano non è molto intuitiva.
-    \item $A \land (A \lor B)$: \prop{Carlo studia informatica e Carlo studia informatica o economia} $\equiv$ \prop{Carlo studia informatica}. Perché la proposizione sia vera, è necessario che Carlo studi informatica, mentre che studi anche economia è ininfluente.
-    \item $A \lor (A \land B)$: \prop{Carlo studia informatica oppure Carlo studia informatica ed economia} $\equiv$ \prop{Carlo studia informatica}. Come prima, perché la proposizione sia vera è sufficiente che Carlo studi informatica, mentre se studia anche economia è ininfluente.
+        \item $A \land (B \lor C) \equiv (A \land B) \lor (A \land C)$:
+              \prop{Carlo studia informatica e Carlo studia economia o filosofia} $\equiv$ \prop{Carlo studia informatica ed economia oppure Carlo studia informatica e filosofia}.
+        \item $A \lor (B \land C) \equiv (A \lor B) \land (A \lor C)$:
+              \prop{Carlo studia informatica oppure Carlo studia economia e filosofia} $\equiv$ \prop{Carlo studia informatica o economia e Carlo studia informatica o filosofia}. Tuttavia, l'equivalenza in italiano non è molto intuitiva.
+        \item $A \land (A \lor B)$: \prop{Carlo studia informatica e Carlo studia informatica o economia} $\equiv$ \prop{Carlo studia informatica}. Perché la proposizione sia vera, è necessario che Carlo studi informatica, mentre che studi anche economia è ininfluente.
+        \item $A \lor (A \land B)$: \prop{Carlo studia informatica oppure Carlo studia informatica ed economia} $\equiv$ \prop{Carlo studia informatica}. Come prima, perché la proposizione sia vera è sufficiente che Carlo studi informatica, mentre se studia anche economia è ininfluente.
         \item $\neg \neg A \equiv A$: due negazioni affermano.\\
-        \prop{Non è vero che Carlo non studia informatica} $\equiv$ \prop{Carlo studia informatica}.
+              \prop{Non è vero che Carlo non studia informatica} $\equiv$ \prop{Carlo studia informatica}.
     \end{itemize}
 \end{frame}
 
@@ -596,7 +596,7 @@
     \medskip
     In realtà, una totale corrispondenza si ha tra le equivalenze logiche e le equivalenze insiemistiche. Si consideri un insieme fissato $U$ (detto \alert{insieme universo}). Pensiamo alle lettere proposizionali come \alert{sottoinsiemi di $U$}. La corrispondenza tra logica e insiemistica è la seguente:
     \[
-    \lor \Rightarrow \cup \qquad \land \Rightarrow \cap \qquad \neg \Rightarrow  U \setminus \qquad \top \Rightarrow U \qquad \bot \Rightarrow \emptyset
+        \lor \Rightarrow \cup \qquad \land \Rightarrow \cap \qquad \neg \Rightarrow  U \setminus \qquad \top \Rightarrow U \qquad \bot \Rightarrow \emptyset
     \]
 \end{frame}
 
@@ -604,39 +604,39 @@
     \smallskip
     \centering
     \begin{tabular}{c|c|c}
-        \textbf{logica}                                      & \textbf{nome}         & \textbf{insiemi}                          \\
+        \textbf{logica}                                  & \textbf{nome}         & \textbf{insiemi}                        \\
         \hline
-    $A \lor B \equiv B \lor A$                           & prop. commutativa     & $A \cup B = B \cup A$                     \\
-    $A \lor (B \lor C) \equiv (A \lor B) \lor C$         & prop. associativa     & $A \cup (B \cup C) = (A \cup B) \cup C$   \\
-    $A \lor A \equiv A$                                  & prop. di idempotenza  & $A \cup A = A$                            \\
-    $A \lor \bot \equiv A$                               & elemento neutro       & $A \cup \emptyset = A$                    \\
-    $A \lor \top \equiv \top$                            & elemento assorbente   & $A \cup U = U$                            \\
-        \hline
-        \hline
-    $A \land B \equiv B \land A$                       & prop. commutativa     & $A \cap B = B \cap A$                     \\
-    $A \land (B \land C) \equiv (A \land B) \land C$ & prop. associativa     & $A \cap (B \cap C) = (A \cap B) \cap C$ \\
-    $A \land A \equiv A$                                & prop. di idempotenza  & $A \cap A = A$                            \\
-    $A \land \top \equiv A$                             & elemento neutro       & $A \cap U = A$                            \\
-    $A \land \bot \equiv \bot$                          & elemento assorbente   & $A \cap \emptyset = \emptyset$            \\
+        $A \lor B \equiv B \lor A$                       & prop. commutativa     & $A \cup B = B \cup A$                   \\
+        $A \lor (B \lor C) \equiv (A \lor B) \lor C$     & prop. associativa     & $A \cup (B \cup C) = (A \cup B) \cup C$ \\
+        $A \lor A \equiv A$                              & prop. di idempotenza  & $A \cup A = A$                          \\
+        $A \lor \bot \equiv A$                           & elemento neutro       & $A \cup \emptyset = A$                  \\
+        $A \lor \top \equiv \top$                        & elemento assorbente   & $A \cup U = U$                          \\
         \hline
         \hline
-        $A \land (B \lor C)$                                & prop. distributiva    & $A \cap (B \cup C)$                       \\
-        $A \lor (B \land C)$                                & prop. distributiva    & $A \cup (B \cap C)$                       \\
-        $A \land (A \lor B) \equiv A$                       & prop. di assorbimento & $A \cap (A \cup B) =A$                    \\
-        $A \lor (A \land B) \equiv A$                       & prop. di assorbimento & $A \cup (A \cap B) = A$                   \\
+        $A \land B \equiv B \land A$                     & prop. commutativa     & $A \cap B = B \cap A$                   \\
+        $A \land (B \land C) \equiv (A \land B) \land C$ & prop. associativa     & $A \cap (B \cap C) = (A \cap B) \cap C$ \\
+        $A \land A \equiv A$                             & prop. di idempotenza  & $A \cap A = A$                          \\
+        $A \land \top \equiv A$                          & elemento neutro       & $A \cap U = A$                          \\
+        $A \land \bot \equiv \bot$                       & elemento assorbente   & $A \cap \emptyset = \emptyset$          \\
+        \hline
+        \hline
+        $A \land (B \lor C)$                             & prop. distributiva    & $A \cap (B \cup C)$                     \\
+        $A \lor (B \land C)$                             & prop. distributiva    & $A \cup (B \cap C)$                     \\
+        $A \land (A \lor B) \equiv A$                    & prop. di assorbimento & $A \cap (A \cup B) =A$                  \\
+        $A \lor (A \land B) \equiv A$                    & prop. di assorbimento & $A \cup (A \cap B) = A$                 \\
     \end{tabular}
 \end{frame}
 
 \begin{frame}{Equivalenza logica e insiemistica (3)}
     \begin{center}
         \begin{tabular}{c|c|c}
-            \textbf{logica}               & \textbf{nome proprietà} & \textbf{insiemi}             \\
+            \textbf{logica}              & \textbf{nome proprietà} & \textbf{insiemi}                     \\
             \hline
-            $\neg \neg A \equiv A$      & doppia negazione        & $ U \setminus (U \setminus A) = A$             \\
-            $A \lor \neg A \equiv \top$   & terzo escluso           & $A \cup (U \setminus A) = U$            \\
+            $\neg \neg A \equiv A$       & doppia negazione        & $ U \setminus (U \setminus A) = A$   \\
+            $A \lor \neg A \equiv \top$  & terzo escluso           & $A \cup (U \setminus A) = U$         \\
             $A \land \neg A \equiv \bot$ & non contraddizione      & $A \cap (U \setminus A) = \emptyset$ \\
-            $\neg \top \equiv \bot$            &                         & $U \setminus U = \emptyset$                  \\
-            $\neg \bot \equiv \top$            &                         & $U \setminus \emptyset = U$
+            $\neg \top \equiv \bot$      &                         & $U \setminus U = \emptyset$          \\
+            $\neg \bot \equiv \top$      &                         & $U \setminus \emptyset = U$
         \end{tabular}
     \end{center}
 \end{frame}
@@ -710,15 +710,15 @@
     Il fatto che $\land$ e $\lor$ godano della proprietà associativa, ci consente di risparmiare qualche parentesi.
     \begin{itemize}
         \item<+-> Consideriamo la formula $A \land B \land C$.\\
-        È \alert{ambigua}: la si può interpretare come $(A \land B) \land C$ oppure $A \land (B \land C)$.
+              È \alert{ambigua}: la si può interpretare come $(A \land B) \land C$ oppure $A \land (B \land C)$.
         \item<+-> Le due possibili interpretazioni sono però \alert{equivalenti}, per la proprietà associativa, quindi l'ambiguità non ci crea nessun problema!
         \item<+-> La stessa cosa vale anche per $\lor$, ma solo se non c'è una mescolanza di $\land$ e $\lor$:
-        \begin{itemize}
-            \item \alert{possiamo scrivere $A \lor B \lor C$}\\[0.1cm]
-            le due alternative $(A \lor B) \lor C$ e $A \lor (B \lor C)$ sono equivalenti;\\[0.2cm]
-            \item \alert{non possiamo scrivere $A \land B \lor C$}\\[0.1cm]
-             le due alternative $(A \land B) \lor C$ e $A \land (B \lor C)$ \textbf{non} sono equivalenti.
-        \end{itemize}
+              \begin{itemize}
+                  \item \alert{possiamo scrivere $A \lor B \lor C$}\\[0.1cm]
+                        le due alternative $(A \lor B) \lor C$ e $A \lor (B \lor C)$ sono equivalenti;\\[0.2cm]
+                  \item \alert{non possiamo scrivere $A \land B \lor C$}\\[0.1cm]
+                        le due alternative $(A \land B) \lor C$ e $A \land (B \lor C)$ \textbf{non} sono equivalenti.
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -754,11 +754,11 @@
     \smallskip
     Ancora:
     \begin{align*}
-        A \to A      & \equiv \top   & (A \land B) \to C & \equiv A \to (B \to C)            \\
+        A \to A      & \equiv \top   & (A \land B) \to C & \equiv A \to (B \to C)           \\
         A \to \neg A & \equiv \neg A & A \to (B \land C) & \equiv (A \to B) \land (A \to C) \\
-        \bot \to A   & \equiv \top   & (A \lor B) \to C   & \equiv (A \to C) \land (B \to C) \\
-        \top \to A   & \equiv A      & A \to (B \lor C)   & \equiv (A \to B) \lor (A \to C)   \\
-        A \to \bot   & \equiv \neg A                                                          \\
+        \bot \to A   & \equiv \top   & (A \lor B) \to C  & \equiv (A \to C) \land (B \to C) \\
+        \top \to A   & \equiv A      & A \to (B \lor C)  & \equiv (A \to B) \lor (A \to C)  \\
+        A \to \bot   & \equiv \neg A                                                        \\
         A \to \top   & \equiv \top
     \end{align*}
 \end{frame}
@@ -789,30 +789,30 @@
 
     \medskip
     \begin{center}
-    \begin{inference}
-        $A \to B$\\
-        $A$\\
-        \hline
-        $B$
-    \end{inference}
-    (modus ponens)
-    \hspace{2cm}
-    \begin{inference}
-        $A \to B$\\
-        $\neg B$\\
-        \hline
-        $\neg A$
-    \end{inference}
-    (modus tollens)
+        \begin{inference}
+            $A \to B$\\
+            $A$\\
+            \hline
+            $B$
+        \end{inference}
+        (modus ponens)
+        \hspace{2cm}
+        \begin{inference}
+            $A \to B$\\
+            $\neg B$\\
+            \hline
+            $\neg A$
+        \end{inference}
+        (modus tollens)
     \end{center}
     In virtù della equivalenza logica tra $A \to B$ e $\neg B \to \neg A$, possiamo pensare al modus tollens come segue:
     \begin{center}
-    \begin{inference}
-        $\neg B \to \neg A$\\
-        $\neg B$\\
-        \hline
-        $\neg A$
-    \end{inference}
+        \begin{inference}
+            $\neg B \to \neg A$\\
+            $\neg B$\\
+            \hline
+            $\neg A$
+        \end{inference}
     \end{center}
     che quindi non è altro che il modus ponens ma applicato alla contronominale della proposizione $A \to B$.
 \end{frame}
@@ -885,9 +885,9 @@
     Inoltre, in un'equivalenza come $A \land B \equiv B \land A$, le lettere $A$ e $B$ possono essere rimpiazzate con qualsiasi altra forma proposizionale, ottenendo sempre un'equivalenza:
     \begin{itemize}
         \item $C \land D \equiv$ \pause $D \land C$ \\
-                (abbiamo rimpiazzato $A$ con $C$ e $B$ con $D$)
+              (abbiamo rimpiazzato $A$ con $C$ e $B$ con $D$)
         \item $(A \to B) \land (A \lor C) \equiv$ \pause $(A \lor C) \land (A \to B)$\\
-            (abbiamo rimpiazzato $A$ con $A \to B$, e $B$ con $A \lor C$)
+              (abbiamo rimpiazzato $A$ con $A \to B$, e $B$ con $A \lor C$)
     \end{itemize}
 
 
@@ -960,7 +960,7 @@
         Vogliamo verificare l'equivalenza $A \lor B \equiv \neg(\neg A \land \neg B)$. Partendo da destra:
         \[
             \begin{array}{rl@{\hspace{0.8cm}}l}
-                              & \neg(\neg A \land \neg B) & \pause \text{(legge di De Morgan)} \\
+                              & \neg(\neg A \land \neg B)  & \pause \text{(legge di De Morgan)} \\
                 \pause \equiv & \neg\neg A \lor \neg\neg B & \pause \text{(doppia negazione)}   \\
                 \pause \equiv & A \lor \neg\neg B          & \pause \text{(doppia negazione)}   \\
                 \pause \equiv & A \lor B
@@ -974,14 +974,14 @@
 
     \begin{itemize}[<+->]
         \item Iniziamo a riscrivere la legge di De Morgan, ma per non fare confusione, usando le lettere $X$ e $Y$ invece di $A$ e $B$:
-        \[
-        \neg (X \land Y) \equiv \neg X \lor \neg Y
-        \]
+              \[
+                  \neg (X \land Y) \equiv \neg X \lor \neg Y
+              \]
         \item Noi vogliamo applicare questa legge a $\neg(\neg A \land \neg B)$: dobbiamo capire se è possibile sostituire $X$ e $Y$ nella legge di De Morgan con delle formule, in maniera tale che
-        $\neg (X \land Y)$ diventi $\neg(\neg A \land \neg B)$.
+              $\neg (X \land Y)$ diventi $\neg(\neg A \land \neg B)$.
         \item Questo è possibile con la sostituzione $X \mapsto \neg A$ e $Y \mapsto \neg B$.
         \item Applicando queste sostituzioni alla legge di De Morgan, otteniamo
-        \[\neg(\neg A \land \neg B) \equiv \neg\neg A \lor \neg\neg B \]
+              \[\neg(\neg A \land \neg B) \equiv \neg\neg A \lor \neg\neg B \]
     \end{itemize}
     \pause
     \textbf{Procedimento analogo vale per l'applicazione delle altre equivalenze notevoli.}
@@ -994,9 +994,9 @@
         Vogliamo semplificare la fp $(A \land B) \lor (A \land \neg B)$.
         \[
             \begin{array}{rl@{\hspace{0.8cm}}l}
-                              & (A \land B) \lor (A \land \neg B) & \pause \text{(prop. distributiva${}^*$)} \\
-                \pause \equiv & A \land (B \lor \neg B)            & \pause \text{(terzo escluso)}            \\
-                \pause \equiv & A \land \top                       & \pause \text{(elemento neutro di $\land$)}          \\
+                              & (A \land B) \lor (A \land \neg B) & \pause \text{(prop. distributiva${}^*$)}   \\
+                \pause \equiv & A \land (B \lor \neg B)           & \pause \text{(terzo escluso)}              \\
+                \pause \equiv & A \land \top                      & \pause \text{(elemento neutro di $\land$)} \\
                 \pause \equiv & A
             \end{array}
         \]

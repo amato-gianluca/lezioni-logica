@@ -100,7 +100,7 @@
             \item sempre per il punto 3, poiché $A$ è una \fp e $(B \land C)$ è una \fp, allora $(A \to (B \land C))$ è una \fp.
         \end{itemize}
         \uncover<+->{
-        Analogamente si può fare per qualunque altra \fp.
+            Analogamente si può fare per qualunque altra \fp.
         }
     \end{example}
 
@@ -108,7 +108,7 @@
         Dimostrare in maniera formale che qualcosa non è una \fp è più difficile, perché bisogna far vedere che, comunque applichiamo le regole della definizione, non riusciamo a costruire la stringa che vogliamo.
 
         \medskip
-    Ad esempio, consideriamo la stringa $(A \land \land B)$. Dovrebbe essere abbastanza chiaro intuitivamente che seguendo le regole non possiamo mai mettere due $\land$ affiancati, ma la dimostrazione formale è un po' più complicata.
+        Ad esempio, consideriamo la stringa $(A \land \land B)$. Dovrebbe essere abbastanza chiaro intuitivamente che seguendo le regole non possiamo mai mettere due $\land$ affiancati, ma la dimostrazione formale è un po' più complicata.
     \end{block}
 \end{frame}
 
@@ -382,7 +382,7 @@
 
 \begin{frame}{Formula ben formata (2)}
     \begin{example}
-    Con la segnatura di prima, le seguenti sono \fbf:
+        Con la segnatura di prima, le seguenti sono \fbf:
         \begin{itemize}
             \item $(\forall x (P x \to (\exists y Ryx)))$
             \item $(Pa \to (\exists x Qx))$
@@ -446,7 +446,7 @@
     \medskip
     Analogamente, il predicato ``essere confinante con'' per le regioni italiane si può identificare con l'insieme delle coppie di regioni che godono di tale proprietà, ovvero:
     \[
-    \{ \text{(Abruzzo, Molise), (Molise, Abruzzo), (Abruzzo, Lazio),  \ldots } \} \subseteq R \times R
+        \{ \text{(Abruzzo, Molise), (Molise, Abruzzo), (Abruzzo, Lazio),  \ldots } \} \subseteq R \times R
     \]
 \end{frame}
 
@@ -515,7 +515,7 @@
         Nella logica proposizionale una interpretazione era sufficiente per assegnare un valore di verità ad una formula, ma non nella logica dei predicati.
 
         \medskip
-    Se consideriamo l'interpretazione dell'esempio qui sopra, in termini informali possiamo per ora affermare che $Pa$ è vero in questa interpretazione, perché $a$ viene interpretato come $0$ e $0$ è pari. Ma non possiamo dire nulla di $Px$, perché $x$ è una variabile e non sappiamo che valore attribuirgli.
+        Se consideriamo l'interpretazione dell'esempio qui sopra, in termini informali possiamo per ora affermare che $Pa$ è vero in questa interpretazione, perché $a$ viene interpretato come $0$ e $0$ è pari. Ma non possiamo dire nulla di $Px$, perché $x$ è una variabile e non sappiamo che valore attribuirgli.
     \end{block}
 \end{frame}
 
@@ -542,7 +542,7 @@
 
     \pause
     \begin{example}
-    La funzione $\alpha(\upsilon) = 0$ che assegna il valore $0$ ad ogni variabile è una valutazione sui naturali. Notare che usiamo $\upsilon$ per riferirci a una variabile generica, mentre $v$ indica una variabile specifica in $\mc V$.
+        La funzione $\alpha(\upsilon) = 0$ che assegna il valore $0$ ad ogni variabile è una valutazione sui naturali. Notare che usiamo $\upsilon$ per riferirci a una variabile generica, mentre $v$ indica una variabile specifica in $\mc V$.
     \end{example}
 
     \pause
@@ -727,11 +727,11 @@
     \begin{itemize}
         \item segnatura $\Sigma=(\{a, b, c\}, \{P/1, Q/1, R/2\})$;
         \item interpretazione $\mcI = (\mathbb N, \mcI_C, \mcI_P)$ tale che
-        \begin{itemize}
-            \item $\mc I_C(a) = 0$, $\mc I_C(b) = 5$, $\mc I_C(c) = 2$;
-            \item $\mc I_P(P) = \{ x \in \mathbb N \mid \text{$x$ è pari} \}$, \quad $\mc I_P(Q) = \{ 0, 1, 2, 3 \}$;
-            \item $\mc I_P(R) = \{ (x,y) \in \mathbb N \times \mathbb N \mid x > y \}$;
-        \end{itemize}
+              \begin{itemize}
+                  \item $\mc I_C(a) = 0$, $\mc I_C(b) = 5$, $\mc I_C(c) = 2$;
+                  \item $\mc I_P(P) = \{ x \in \mathbb N \mid \text{$x$ è pari} \}$, \quad $\mc I_P(Q) = \{ 0, 1, 2, 3 \}$;
+                  \item $\mc I_P(R) = \{ (x,y) \in \mathbb N \times \mathbb N \mid x > y \}$;
+              \end{itemize}
         \item valutazione $\alpha$ tale che $\alpha(\upsilon) = 0$ per ogni $\upsilon \in \mc V$.
     \end{itemize}
 \end{frame}
@@ -746,18 +746,18 @@
     \medskip
     \begin{itemize}[<+->]
         \item $\mcI \models_\alpha Px \to Qb$ \only<.-13|handout:0>{?}\uncover<14->{\xmark}
-        \begin{itemize}
-            \item $\mcI \models_\alpha Px$  \only<.-6|handout:0>{?}\uncover<7->{\checkmark}
-            \begin{itemize}
-                \item $\mcI_\alpha(x) = {}\only<.|handout:0>{?}\uncover<+->{0}$
-                \item $0 \in \mcI_P(P)$ \only<.|handout:0>{?}\uncover<+->{\checkmark \quad perché 0 è pari}
-            \end{itemize}
-            \item<8-> $\mcI \models_\alpha Qb$ \only<.-12|handout:0>{?}\uncover<13->{\xmark}
-            \begin{itemize}
-                \item<9-> $\mcI_\alpha(b) = {}\only<9|handout:0>{?}\uncover<10->{5}$
-                \item<11-> $5 \in \mcI_P(Q)$ \only<11|handout:0>{?}\uncover<12->{\xmark}
-            \end{itemize}
-        \end{itemize}
+              \begin{itemize}
+                  \item $\mcI \models_\alpha Px$  \only<.-6|handout:0>{?}\uncover<7->{\checkmark}
+                        \begin{itemize}
+                            \item $\mcI_\alpha(x) = {}\only<.|handout:0>{?}\uncover<+->{0}$
+                            \item $0 \in \mcI_P(P)$ \only<.|handout:0>{?}\uncover<+->{\checkmark \quad perché 0 è pari}
+                        \end{itemize}
+                  \item<8-> $\mcI \models_\alpha Qb$ \only<.-12|handout:0>{?}\uncover<13->{\xmark}
+                        \begin{itemize}
+                            \item<9-> $\mcI_\alpha(b) = {}\only<9|handout:0>{?}\uncover<10->{5}$
+                            \item<11-> $5 \in \mcI_P(Q)$ \only<11|handout:0>{?}\uncover<12->{\xmark}
+                        \end{itemize}
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -769,23 +769,23 @@
 
     \begin{itemize}[<+->]
         \item $\mcI \models_\alpha \exists x (Px \lor Qb)$ \only<.-12|handout:0>{?}\uncover<13->{\checkmark}
-        \begin{itemize}
-            \item Dovremmo provare as assegnare ad $x$ tutti i possibili numeri naturali, fino a trovarne uno che va bene. Ma cerchiamo di usare un po' l'intuizione. La formula $Qb$ è sempre falsa, indipendentemente dalla valutazione, quindi per rendere vera $Px \lor Qb$ dobbiamo rendere vera $Px$, ovvero scegliere un valore pari per $x$.
-            \item con $x \mapsto 2$ otteniamo $\mcI \models_{\alpha[x \mapsto 2]} Px \lor Qb$ \only<.-10|handout:0>{?}\uncover<11->{\checkmark}
-            \begin{itemize}
-                \item $\mcI \models_{\alpha[x \mapsto 2]} Px$ \only<.-8|handout:0>{?}\uncover<9->{\checkmark}
+              \begin{itemize}
+                  \item Dovremmo provare as assegnare ad $x$ tutti i possibili numeri naturali, fino a trovarne uno che va bene. Ma cerchiamo di usare un po' l'intuizione. La formula $Qb$ è sempre falsa, indipendentemente dalla valutazione, quindi per rendere vera $Px \lor Qb$ dobbiamo rendere vera $Px$, ovvero scegliere un valore pari per $x$.
+                  \item con $x \mapsto 2$ otteniamo $\mcI \models_{\alpha[x \mapsto 2]} Px \lor Qb$ \only<.-10|handout:0>{?}\uncover<11->{\checkmark}
+                        \begin{itemize}
+                            \item $\mcI \models_{\alpha[x \mapsto 2]} Px$ \only<.-8|handout:0>{?}\uncover<9->{\checkmark}
 
-                \uncover<+->{
-                \qquad $\mcI_{\alpha[x \mapsto 2]}(x) = {}\only<.|handout:0>{?}\uncover<+->{2}$
-                }
+                                  \uncover<+->{
+                                  \qquad $\mcI_{\alpha[x \mapsto 2]}(x) = {}\only<.|handout:0>{?}\uncover<+->{2}$
+                                  }
 
-                \uncover<+->{
-                \qquad $2 \in \mcI_P(P)$ \only<.|handout:0>{?}\uncover<+->{\checkmark \quad perché 2  è pari}
-                }
-                \item<10-> non è necessario controllare $Qb$, sappiamo già che la disgiunzione è vera
-            \end{itemize}
-            \item<12-> dunque $2$ è il valore di $x$ cercato che rende vera la formula con il quantificatore esistenziale.
-        \end{itemize}
+                                  \uncover<+->{
+                                      \qquad $2 \in \mcI_P(P)$ \only<.|handout:0>{?}\uncover<+->{\checkmark \quad perché 2  è pari}
+                                  }
+                            \item<10-> non è necessario controllare $Qb$, sappiamo già che la disgiunzione è vera
+                        \end{itemize}
+                  \item<12-> dunque $2$ è il valore di $x$ cercato che rende vera la formula con il quantificatore esistenziale.
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -813,9 +813,9 @@
                                   \uncover<+->{\qquad$(1, 0)  \in \mc I_P(R)$ \only<.|handout:0>{?}\uncover<+->{\checkmark}}
                         \end{itemize}
                   \item<13-> per $x \mapsto 1$: $\mcI \models_{\alpha[x \mapsto 1]} \exists y Ryx$ \only<.-15|handout:0>{?}\uncover<16->{\checkmark}
-                      \begin{itemize}
-                          \item<14-> scegliamo $y \mapsto 2$: $\mcI \models_{\alpha[x \mapsto 1][y \mapsto 2]} Ryx$ \only<.|handout:0>{?}\uncover<15->{\checkmark}
-                      \end{itemize}
+                        \begin{itemize}
+                            \item<14-> scegliamo $y \mapsto 2$: $\mcI \models_{\alpha[x \mapsto 1][y \mapsto 2]} Ryx$ \only<.|handout:0>{?}\uncover<15->{\checkmark}
+                        \end{itemize}
                   \item<17-> in teoria dovremmo ripetere il discorso per ogni numero naturale. Invece, facciamo una \emph{dimostrazione} prendendo un $d$ generico.
               \end{itemize}
     \end{itemize}
@@ -851,7 +851,7 @@
 \begin{frame}{Esempio: $\mcI \not\models_\alpha \forall x \exists y Rxy$}
     Tenendo conto che $Rxy$ vuol dire ``$x$ maggiore di $y$'', la formula in italiano diventa
     \begin{center}
-    ``per ogni $x$ esiste un $y$ tale che $x$ è maggiore di $y$''
+        ``per ogni $x$ esiste un $y$ tale che $x$ è maggiore di $y$''
     \end{center}
     o anche
     \begin{center}
@@ -902,24 +902,24 @@
                                   }
                         \end{itemize}
                   \item<8-> per $x \mapsto 1$ otteniamo $\mcI \models_{\alpha[x \mapsto 1]} \neg P x \to \exists y Rxy$ \only<.-14|handout:0>{?}\uncover<15->{\checkmark}
-                      \begin{itemize}
-                          \setlength\itemsep{0.6em}
-                          \item<9-> $\mcI \models_{\alpha[x \mapsto 1]} \neg P x$ \only<.-10|handout:0>{?}\uncover<11->{\checkmark}
+                        \begin{itemize}
+                            \setlength\itemsep{0.6em}
+                            \item<9-> $\mcI \models_{\alpha[x \mapsto 1]} \neg P x$ \only<.-10|handout:0>{?}\uncover<11->{\checkmark}
 
-                              \uncover<10->{
-                                  \smallskip
-                                  \qquad $\mcI \models_{\alpha[x \mapsto 1]} P x$ \only<.|handout:0>{?}\uncover<+->{\xmark}
-                              }
-                          \item<12-> $\mcI \models_{\alpha[x \mapsto 1]} \exists y Rxy$ \only<.-13|handout:0>{?}\uncover<14->{\checkmark \quad scegliendo $y \mapsto 0$}
-                      \end{itemize}
+                                  \uncover<10->{
+                                      \smallskip
+                                      \qquad $\mcI \models_{\alpha[x \mapsto 1]} P x$ \only<.|handout:0>{?}\uncover<+->{\xmark}
+                                  }
+                            \item<12-> $\mcI \models_{\alpha[x \mapsto 1]} \exists y Rxy$ \only<.-13|handout:0>{?}\uncover<14->{\checkmark \quad scegliendo $y \mapsto 0$}
+                        \end{itemize}
                   \item<16-> per gli altri valori di $x$, tutto procede come il caso $x \mapsto 0$ o $x \mapsto 1$ a seconda che il numero sia pari o dispari.
               \end{itemize}
         \item<18-> Notare il ruolo svolto dalla implicazione:
-            \begin{itemize}
-                \item gli $x$ pari rendono la premessa falsa, quindi la formula è vera banalmente;
-                \item gli $x$ dispari rendono la premessa vera, quindi la formula è vera se e solo se la conclusione è vera.
-            \end{itemize}
-            Quindi l'implicazione ``salta'' i casi che non sono di interesse (quelli pari).
+              \begin{itemize}
+                  \item gli $x$ pari rendono la premessa falsa, quindi la formula è vera banalmente;
+                  \item gli $x$ dispari rendono la premessa vera, quindi la formula è vera se e solo se la conclusione è vera.
+              \end{itemize}
+              Quindi l'implicazione ``salta'' i casi che non sono di interesse (quelli pari).
     \end{itemize}
 \end{frame}
 
@@ -929,10 +929,10 @@
         Siano $\mcI$ una interpretazione, $X$ una \fbf e $\alpha$ e $\alpha'$ due valutazioni su $D$ tali che $\alpha(\upsilon) = \alpha'(\upsilon)$ per ogni variabile libera $\upsilon$ in $X$. Allora $\mcI \models_\alpha X$ se e solo se $\mcI \models_{\alpha'} X$.
     \end{theorem}
     \begin{block}{Osservazione}
-    Notare che ci interessa il valore della valutazione solo per le variabili \textbf{libere}. Per determinare se $\mcI \models_\alpha \forall x Px$, il valore di $\alpha(x)$ non ci interessa, tanto verrà sostituito da un valore $d$ nel dominio $D$.
+        Notare che ci interessa il valore della valutazione solo per le variabili \textbf{libere}. Per determinare se $\mcI \models_\alpha \forall x Px$, il valore di $\alpha(x)$ non ci interessa, tanto verrà sostituito da un valore $d$ nel dominio $D$.
     \end{block}
     \begin{block}{Osservazione}
-    In particolare, il valore di verità delle formule chiuse non dipende dalla valutazione!
+        In particolare, il valore di verità delle formule chiuse non dipende dalla valutazione!
     \end{block}
 \end{frame}
 
@@ -941,7 +941,7 @@
     Queste definizioni sono praticamente le stesse che abbiamo già visto, solo rifrasate usando i concetti di interpretazione e modello.
 
     \begin{definition}[Tautologia e contraddizione]
-    Una \fbf $X$ è detta \emph{tautologia} se e solo se $\mcI \models_\alpha X$ per tutte le interpretazioni $\mcI$ e valutazioni $\alpha$. Una \fbf $X$ è detta \emph{contraddizione} se e solo se $\mcI \not\models_\alpha X$ per tutte le interpretazioni $\mcI$ e valutazioni $\alpha$.
+        Una \fbf $X$ è detta \emph{tautologia} se e solo se $\mcI \models_\alpha X$ per tutte le interpretazioni $\mcI$ e valutazioni $\alpha$. Una \fbf $X$ è detta \emph{contraddizione} se e solo se $\mcI \not\models_\alpha X$ per tutte le interpretazioni $\mcI$ e valutazioni $\alpha$.
     \end{definition}
 
     \begin{definition}[Equivalenza logica]

@@ -13,11 +13,11 @@
 \end{frame}
 
 \begin{frame}
-    \copyrightpage
+	\copyrightpage
 \end{frame}
 
 \begin{frame}
-    \bookpage{sulle sezioni da 1.1 a 1.4}
+	\bookpage{sulle sezioni da 1.1 a 1.4}
 \end{frame}
 
 \begin{frame}{Inferenze a livello predicativo}
@@ -279,9 +279,9 @@
 			      L'uomo è mortale
 		      \end{proposition}
 		      Entrambi sono modi compatti di dire
-			  	\begin{proposition}
-			  Tutti gli uomini sono mortali
-			  \end{proposition}
+		      \begin{proposition}
+			      Tutti gli uomini sono mortali
+		      \end{proposition}
 
 		      \medskip\pause
 
@@ -624,7 +624,7 @@
 \end{frame}
 
 \begin{frame}{Quantificatore esistenziale (1)}
-\begin{columns}
+	\begin{columns}
 		\column{0.35\textwidth}
 		\[
 			\begin{tikzpicture}[
@@ -646,23 +646,23 @@
 		\]
 		\column{0.6\textwidth}
 
-	La proposizione
-	\begin{proposition}
-		Esiste $x$ tale che \ldots
-	\end{proposition}
-	è vera se esiste almeno un valore dell'universo del discorso che possiamo rimpiazzare in $x$ per rendere vera la proposizione nei $\ldots$
+		La proposizione
+		\begin{proposition}
+			Esiste $x$ tale che \ldots
+		\end{proposition}
+		è vera se esiste almeno un valore dell'universo del discorso che possiamo rimpiazzare in $x$ per rendere vera la proposizione nei $\ldots$
 
-	\medskip
-	Ad esempio, nel grafo di prima, la proposizione
-	\begin{proposition}
-		Esiste almeno un nodo verde connesso con b
-	\end{proposition}
-	ovvero
-	\begin{proposition}
-		Esiste $x$ tale che $x$ è verde ed $x$ è connesso con b
-	\end{proposition}
-	è vera, basta prendere come \alert{esempio} la sostituzione $x \mapsto a$.
-\end{columns}
+		\medskip
+		Ad esempio, nel grafo di prima, la proposizione
+		\begin{proposition}
+			Esiste almeno un nodo verde connesso con b
+		\end{proposition}
+		ovvero
+		\begin{proposition}
+			Esiste $x$ tale che $x$ è verde ed $x$ è connesso con b
+		\end{proposition}
+		è vera, basta prendere come \alert{esempio} la sostituzione $x \mapsto a$.
+	\end{columns}
 \end{frame}
 
 \begin{frame}{Quantificatore esistenziale (2)}
@@ -688,19 +688,19 @@
 		\]
 		\column{0.6\textwidth}
 
-	Vediamo invece la proposizione
-	\begin{proposition}
-		Esiste $x$ tale che $x$ è rosa e $x$ è connesso con b
-	\end{proposition}
-	Questa proposizione è falsa: rimpiazzando $x$ con un nodo si ottengono sempre proposizioni false:
-	\begin{itemize}
-		\item $x \mapsto a$: \prop{a è rosa e a è connesso con b}
-		\item $x \mapsto b$: \prop{b è rosa e b è connesso con b}
-		\item $x \mapsto c$: \prop{c è rosa e c è connesso con b}
-		\item $x \mapsto d$: \prop{d è rosa e d è connesso con b}
-		\item $x \mapsto e$: \prop{e è rosa e e è connesso con b}
-	\end{itemize}
-\end{columns}
+		Vediamo invece la proposizione
+		\begin{proposition}
+			Esiste $x$ tale che $x$ è rosa e $x$ è connesso con b
+		\end{proposition}
+		Questa proposizione è falsa: rimpiazzando $x$ con un nodo si ottengono sempre proposizioni false:
+		\begin{itemize}
+			\item $x \mapsto a$: \prop{a è rosa e a è connesso con b}
+			\item $x \mapsto b$: \prop{b è rosa e b è connesso con b}
+			\item $x \mapsto c$: \prop{c è rosa e c è connesso con b}
+			\item $x \mapsto d$: \prop{d è rosa e d è connesso con b}
+			\item $x \mapsto e$: \prop{e è rosa e e è connesso con b}
+		\end{itemize}
+	\end{columns}
 \end{frame}
 
 \begin{frame}{Più quantificatori (1)}
@@ -726,31 +726,31 @@
 \begin{frame}{Più quantificatori (2)}
 	\begin{itemize}
 		\item ``\prop{se a è verde esiste y tale che y è giallo ed a è connesso con y}'' è vera perché:\\
-		\begin{itemize}
-			\item ``\prop{a è verde}'' è vera
-			\item ``\prop{esiste y tale che y è giallo ed a è connesso con y}'' è vera, perché c'è l'esempio:
-				\begin{itemize}
-					\item $y \mapsto b$: ``\prop{b è giallo ed a è connesso con b}'' che è vera
-				\end{itemize}
-			\item quindi l'implicazione è vera;
-		\end{itemize}
+		      \begin{itemize}
+			      \item ``\prop{a è verde}'' è vera
+			      \item ``\prop{esiste y tale che y è giallo ed a è connesso con y}'' è vera, perché c'è l'esempio:
+			            \begin{itemize}
+				            \item $y \mapsto b$: ``\prop{b è giallo ed a è connesso con b}'' che è vera
+			            \end{itemize}
+			      \item quindi l'implicazione è vera;
+		      \end{itemize}
 		\item ``\prop{se b è verde esiste y tale che y è giallo e b è connesso con y}'' è vera perché:
-		\begin{itemize}
-			\item ``\prop{b è verde}'' è falsa;
-			\item quindi l'implicazione è vera, anche senza andare a guardare il conseguente;
-		\end{itemize}
+		      \begin{itemize}
+			      \item ``\prop{b è verde}'' è falsa;
+			      \item quindi l'implicazione è vera, anche senza andare a guardare il conseguente;
+		      \end{itemize}
 		\item ``\prop{se c è verde esiste y tale che y è giallo e c è connesso con y}'' è vera come per a;
 		\item ``\prop{se d è verde esiste y tale che y è giallo e d è connesso con y}'' è falsa perché:
-		\begin{itemize}
-			\item ``\prop{d è verde}'' è vera;
-			\item ``\prop{esiste y tale che y è giallo ed a è connesso con y}'' è falsa perché:
-			\begin{itemize}
-				\item $y \mapsto a$: \prop{a è giallo ed a è connesso con a}'' è falsa;
-				\item $y \mapsto b$: \prop{b è giallo ed a è connesso con b}'' è falsa;
-				\item \ldots in maniera analoga le altre
-			\end{itemize}
-			\item quindi l'implicazione è falsa;
-		\end{itemize}
+		      \begin{itemize}
+			      \item ``\prop{d è verde}'' è vera;
+			      \item ``\prop{esiste y tale che y è giallo ed a è connesso con y}'' è falsa perché:
+			            \begin{itemize}
+				            \item $y \mapsto a$: \prop{a è giallo ed a è connesso con a}'' è falsa;
+				            \item $y \mapsto b$: \prop{b è giallo ed a è connesso con b}'' è falsa;
+				            \item \ldots in maniera analoga le altre
+			            \end{itemize}
+			      \item quindi l'implicazione è falsa;
+		      \end{itemize}
 	\end{itemize}
 \end{frame}
 

@@ -107,13 +107,13 @@
     Usando tecniche già viste, possiamo ricavare le forme proposizionali per le colonne $R$ ed $S$, che sono:
     \begin{itemize}
         \item $R = \begin{array}[t]{l}
-            (\lnot A \land B \land C) \lor (A \land \lnot B \land C) \lor (A \land B \land \lnot C) \lor (A \land B \land C) \\
-            \equiv (B \land C) \lor (A \land (B \lor C))
-        \end{array}$
+                      (\lnot A \land B \land C) \lor (A \land \lnot B \land C) \lor (A \land B \land \lnot C) \lor (A \land B \land C) \\
+                      \equiv (B \land C) \lor (A \land (B \lor C))
+                  \end{array}$
         \item $S = \begin{array}[t]{l}
-            (\lnot A \land \lnot B \land C) \lor (\lnot A \land B \land \lnot C) \lor (A \land \lnot B \land \lnot C) \lor (A \land B \land C) \\
-            \equiv A \xor B \xor C
-        \end{array}$
+                      (\lnot A \land \lnot B \land C) \lor (\lnot A \land B \land \lnot C) \lor (A \land \lnot B \land \lnot C) \lor (A \land B \land C) \\
+                      \equiv A \xor B \xor C
+                  \end{array}$
     \end{itemize}
 
     \smallskip
@@ -126,15 +126,15 @@
 \begin{frame}{Dalla somma di bit alla somma di numeri (1)}
     Possiamo schematizzare il sommatore completo in questo modo:
     \begin{center}
-    \includegraphics[height=0.3\textheight]{img/1-bit_full-adder.png}
+        \includegraphics[height=0.3\textheight]{img/1-bit_full-adder.png}
     \end{center}
     \begin{itemize}
         \item $A$, $B$, e $C_{in}$ sono i bit da sommare;
         \item $S$ e $C_{out}$ sono il risultato. In particolare:
-        \begin{itemize}
-            \item $S$ è il bit meno significativo del risultato;
-            \item $C_{out}$ è il bit più significativo del risultato, chiamato \alert{riporto} (o \alert{carry} in inglese).
-        \end{itemize}
+              \begin{itemize}
+                  \item $S$ è il bit meno significativo del risultato;
+                  \item $C_{out}$ è il bit più significativo del risultato, chiamato \alert{riporto} (o \alert{carry} in inglese).
+              \end{itemize}
     \end{itemize}
     \vfill
     {\scriptsize  Immagine \copyright\ en:User:Cburnett - Own work, CC BY-SA 3.0, \url{https://commons.wikimedia.org/w/index.php?curid=1477628}}
@@ -153,7 +153,7 @@
 \begin{frame}{Dalla somma di bit alla somma di numeri (3)}
     Ad esempio, se abbiamo due numeri di 4 cifre ($A_3 A_2 A_1 A_0$ e $B_3 B_2 B_1 B_0$) un dispositivo che li somma si può ottenere come segue:
     \begin{center}
-    \includegraphics[height=0.3\textheight]{img/4-bit_adder.png}
+        \includegraphics[height=0.3\textheight]{img/4-bit_adder.png}
     \end{center}
     Il risultato è costituito da $S_3 S_2 S_1 S_0$ con il riporto $C_4$. L'input $C_0$ è il riporto da un'eventuale addizione precedente, che può essere posto a 0 / falso se non c'è nessun riporto da considerare.
     \vfill
@@ -169,21 +169,21 @@
         \item si associa un livello di tensione ai due valori di verità: ad esempio, 0 Volt per il valore falso e 5 Volt per il valore vero;
         \item si utilizzano degli \alert{interruttori elettronici}, ovvero degli interruttori concettualmente simili a quelli che usiamo per accendere la luce, ma che si possono aprire e chiudere tramite un segnale elettrico.
 
-        \medskip
-        La tecnologia degli interruttori elettronici è cambiata nel tempo:
-        \begin{itemize}
-            \item relè
-            \item valvole termoioniche
-            \item diodi
-            \item transistor
-        \end{itemize}
+              \medskip
+              La tecnologia degli interruttori elettronici è cambiata nel tempo:
+              \begin{itemize}
+                  \item relè
+                  \item valvole termoioniche
+                  \item diodi
+                  \item transistor
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
 \begin{frame}{Il connettivo AND}
     Ecco come realizzare il connettivo AND con una coppia di transistor:
     \begin{center}
-    \includegraphics[height=0.45\textheight]{img/TransistorANDgate.png}
+        \includegraphics[height=0.45\textheight]{img/TransistorANDgate.png}
     \end{center}
     \begin{itemize}
         \item se $A$ e $B$ sono entrambi veri (+5 V), i due transistor fanno passare la corrente, e nel punto \textit{Out} si misura la tensione $V$ (+5 V);

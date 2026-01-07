@@ -70,7 +70,7 @@
     Vogliamo verificare che \textcolor{blue}{$B$} è conseguenza logica di \textcolor{magenta}{$A \to B$} ed \textcolor{magenta}{$A$}. Scriviamo la tavola di verità delle tre formule $A \to B$, $A$ e $B$:
     \begin{center}
         \begin{tabular}{|c|c||c|c|c|}
-            $A$                         & $B$                         & \color{magenta}$A \to B$                   & \color{magenta}$A$                         & \color{blue}$B$                         \\
+            $A$                         & $B$                         & \color{magenta}$A \to B$    & \color{magenta}$A$          & \color{blue}$B$             \\
             \hline
             F                           & F                           & V                           & F                           & F                           \\
             F                           & V                           & V                           & F                           & V                           \\
@@ -89,7 +89,7 @@
     Verifichiamo adesso che \textcolor{blue}{$\neg B$} \textbf{non è} conseguenza logica di \textcolor{magenta}{$A \to B$} e \textcolor{magenta}{$\neg A$}.
     \begin{center}
         \begin{tabular}{|c|c||c|c|c|}
-            $A$                         & $B$                         & \color{magenta}$A \to B$                   & \color{magenta}$\neg A$                    & \color{blue}$\neg B$                    \\
+            $A$                         & $B$                         & \color{magenta}$A \to B$    & \color{magenta}$\neg A$     & \color{blue}$\neg B$        \\
             \hline
             \only<3->{\cellcolor{red}}F & \only<3->{\cellcolor{red}}F & \only<3->{\cellcolor{red}}V & \only<3->{\cellcolor{red}}V & \only<3->{\cellcolor{red}}V \\
             \only<3->{\cellcolor{red}}F & \only<3->{\cellcolor{red}}V & \only<3->{\cellcolor{red}}V & \only<3->{\cellcolor{red}}V & \only<3->{\cellcolor{red}}F \\
@@ -122,12 +122,12 @@
         Riprendiamo la tavola di verità usata per verificare che $B$ è conseguenza logica di $A \to B$ e $A$, a cui aggiungiamo un paio di colonne.
         \begin{center}
             \begin{tabular}{|c|c||c|c|c|c|c|}
-                $A$ & $B$ & \color{magenta}$A \to B$ & \color{magenta}$A$ & \color{blue}$B$ & \only<1>{\phantom{$(A \to B) \land A$}}\only<2->{$(A \to B) \land A$} & \only<1-2>{\phantom{$((A \to B) \land A) \to B$}}\only<3->{$((A \to B) \land A) \to B$} \\
+                $A$              & $B$              & \color{magenta}$A \to B$ & \color{magenta}$A$ & \color{blue}$B$  & \only<1>{\phantom{$(A \to B) \land A$}}\only<2->{$(A \to B) \land A$} & \only<1-2>{\phantom{$((A \to B) \land A) \to B$}}\only<3->{$((A \to B) \land A) \to B$} \\
                 \hline
-                F   & F   & V         & F   & F & \only<2->{F} & \only<3->V  \\
-                F   & V   & V         & F   & V & \only<2->{F} & \only<3->V  \\
-                V   & F   & F         & V   & F & \only<2->{F} & \only<3->V  \\
-                \cellcolor{red}V   & \cellcolor{red}V   & \cellcolor{red}V         &\cellcolor{red}V   & \cellcolor{red}V & \only<2->{\cellcolor{red}V} & \only<3->{\cellcolor{red}V}
+                F                & F                & V                        & F                  & F                & \only<2->{F}                                                          & \only<3->V                                                                              \\
+                F                & V                & V                        & F                  & V                & \only<2->{F}                                                          & \only<3->V                                                                              \\
+                V                & F                & F                        & V                  & F                & \only<2->{F}                                                          & \only<3->V                                                                              \\
+                \cellcolor{red}V & \cellcolor{red}V & \cellcolor{red}V         & \cellcolor{red}V   & \cellcolor{red}V & \only<2->{\cellcolor{red}V}                                           & \only<3->{\cellcolor{red}V}
             \end{tabular}
         \end{center}
         \begin{itemize}
@@ -148,12 +148,12 @@
     \begin{block}{Ripasso: inferenza}
         Ricordiamo la differenza tra inferenza
         \begin{center}
-                \begin{inference}
-                    Se manca la benzina, allora l'auto non parte\\
-                    Manca la benzina\\
-                    \hline
-                    L'auto non parte
-                \end{inference}
+            \begin{inference}
+                Se manca la benzina, allora l'auto non parte\\
+                Manca la benzina\\
+                \hline
+                L'auto non parte
+            \end{inference}
         \end{center}
         dove premesse e conclusioni sono proposizioni\ldots
     \end{block}
@@ -175,10 +175,10 @@
 
 \begin{frame}{Conseguenza logica e correttezza delle inferenze (1)}
     \begin{block}{Ripasso: inferenza corretta}
-		Un'inferenza è \alert{corretta} (o \alert{valida}) se ogni qualvolta le premesse sono vere, allora è necessariamente vera anche la conclusione.
+        Un'inferenza è \alert{corretta} (o \alert{valida}) se ogni qualvolta le premesse sono vere, allora è necessariamente vera anche la conclusione.
     \end{block}
 
-        \pause Sappiamo anche che la correttezza di un'inferenza dipende solo dalla sua forma logica, ovvero dalla regola di inferenza da cui deriva.
+    \pause Sappiamo anche che la correttezza di un'inferenza dipende solo dalla sua forma logica, ovvero dalla regola di inferenza da cui deriva.
 
     \pause
     \begin{definition}[Regola di inferenza corretta]
@@ -212,7 +212,7 @@
     \pause
     Ma questa è esattamente la definizione di conseguenza logica
     \[
-    X_1, \ldots, X_n \models Y
+        X_1, \ldots, X_n \models Y
     \]
     solo espressa in termini un po' più informali.
 
@@ -311,12 +311,12 @@
         \item La proposizione ``\textbf{tutti gli elefanti volanti sono rosa}'' è vera.
         \item L'idea è che non si può falsificare la proposizione con un controesempio. Se fosse falsa, dovrebbe esistere un elefante volante che non è rosa. Vi sfido a trovarne uno!
         \item In altre parole, la proposizione
-        \begin{center}
-            \prop{tutti gli elefanti volanti sono rosa}
-        \end{center}
-        equivale a \begin{center}
-            \prop{non esiste alcun elefante volante che non è rosa}
-        \end{center}
+              \begin{center}
+                  \prop{tutti gli elefanti volanti sono rosa}
+              \end{center}
+              equivale a \begin{center}
+                  \prop{non esiste alcun elefante volante che non è rosa}
+              \end{center}
         \item Non la si è sempre pensata così in passato. Nella \alert{logica aristotelica}, una frase del tipo \emph{``Tutti gli A sono B''} implica l'esistenza di almeno un $A$.
         \item Si dice che nella logica aristotelica il quantificatore ``tutti'' ha un \alert{impegno esistenziale}. Il vostro libro di testo discute questo fatto a pag.~186 nel \emph{Riquadro 9}.
     \end{itemize}
