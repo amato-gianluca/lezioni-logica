@@ -1,9 +1,14 @@
 \documentclass[aspectratio=169,10pt]{beamer}
-\usepackage[italian]{babel}
 \usepackage[T1]{fontenc}
+\usepackage[italian]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{pifont}
-\usepackage{textcomp} % copyleft symbol con \textcopyleft
+\usepackage{qrcode}
+\usepackage[
+    type={CC},
+    modifier={by-nc-sa},
+    version={4.0}
+]{doclicense}
 \usepackage{tikz}
 \usetikzlibrary{backgrounds, fit, calc, positioning, arrows.meta, overlay-beamer-styles}
 \PassOptionsToPackage{height=1cm}{beamerouterthemesidebar}
@@ -15,20 +20,12 @@
 
 \title{Logica}
 \author{Gianluca Amato}
-\date{31 marzo 2023}
 
 \newcommand{\xmark}{{\color{red}{\ding{55}}}}
 \newcommand{\ra}{\rightarrow}
 \newcommand{\conn}[1]{\textcolor{blue}{#1}}
 \newcommand{\quant}[1]{\textcolor{blue}{#1}}
 \newenvironment{inference}{\begin{tabular}{c}}{\end{tabular}}
-
-\begin{document}
-
-\begin{frame}
-    \titlepage
-    %\thanks{Rielaborazione delle slide di Gianluca Amato}
-\end{frame}
 
 \AtBeginSection[]
 {
@@ -37,6 +34,39 @@
    \tableofcontents[currentsection]
   \end{frame}
 }
+
+\begin{document}
+
+\begin{frame}
+    \titlepage
+\end{frame}
+
+\begin{frame}
+    \centering
+    \begin{minipage}{12cm}
+        \doclicenseThis
+
+        \medskip
+        \href{\doclicenseURL}{\doclicenseURL}
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+    Queste slide sono basate sul libro:
+    \bigskip
+
+    \hrule
+    \medskip
+    Dario Palladino\\
+    \textcolor{blue}{\href{https://www.carocci.it/prodotto/corso-di-logica-3}{Corso di logica: introduzione elementare al calcolo dei predicati (terza edizione)}}\\
+    Carocci editore\\[0.2cm]
+
+    \hrule
+
+    \bigskip
+    \centering
+    \qrcode[height=4cm]{https://www.carocci.it/prodotto/corso-di-logica-3}
+\end{frame}
 
 \section{Introduzione}
 
@@ -48,12 +78,12 @@
         \begin{columns}
             \column{0.5\textwidth}
             \begin{center}
-            Tutti gli uomini sono mortali.\\
-            Socrate è un uomo.\\
-            Dunque Socrate è mortale.\\[0.6cm]
-            Ogni numero intero è o pari o dispari\\
-            Il numero intero 3 non è pari\\
-            Dunque 3 è dispari.
+                Tutti gli uomini sono mortali.\\
+                Socrate è un uomo.\\
+                Dunque Socrate è mortale.\\[0.6cm]
+                Ogni numero intero è o pari o dispari\\
+                Il numero intero 3 non è pari\\
+                Dunque 3 è dispari.
             \end{center}
             \column{0.5\textwidth}
             \centering
@@ -63,62 +93,62 @@
         \end{columns}
     \end{example}
     \begin{block}{Nota}
-    Esistono varie forme di ragionamento, qui siamo interessati al \alert{ragionamento deduttivo}.
+        Esistono varie forme di ragionamento, qui siamo interessati al \alert{ragionamento deduttivo}.
     \end{block}
 \end{frame}
 
 \subsection{Inferenze, proposizioni e connettivi}
 
 \begin{frame}[label=inferenza]{Ragionamento deduttivo}
-La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
-\begin{definition}[Inferenza]
-    Una \alert{inferenza} è una sequenza di \alert{proposizioni} di cui l'ultima è ottenuta come \alert{conclusione} delle rimanenti, che si assumono come \alert{premesse}.
-\end{definition}
-\begin{example}
-\[
-\begin{tikzpicture}
-\tikzset{
-    fillstyle/.style={rounded corners, draw=black},
-    greenstyle/.style={fillstyle,fill=green!50},
-    redstyle/.style={fillstyle,fill=red!50},
-    bluestyle/.style={fillstyle,fill=blue!50},
-    yellowstyle/.style={fillstyle,fill=yellow!50}
-}
-\clip (-6cm, -3cm) rectangle (6cm, 0.5cm);
-\node (p1) {Tutti gli uomini sono mortali.};
-\node (p2) [below of=p1] {Socrate è un uomo.};
-\node (c) [below of=p2] {Socrate è mortale.};
-\begin{scope}[on background layer]
-\only<2->{\node (inf) [greenstyle, fit={(p1) (p2) (c)}, inner sep=0.5cm] {};}
-\only<4->{\node (premises) [redstyle, fit={(p1) (p2)},  inner sep=0.2cm] {};}
-\only<5->{\node (conclusion) [yellowstyle, fit={(c)},  inner sep=0.2cm] {};}
-\only<3->{\node (prop1) [bluestyle, fit={(p1)},  inner sep=-0.05cm] {};}
-\only<3->{\node (prop2) [bluestyle, fit={(p2)},  inner sep=-0.05cm] {};}
-\only<3->{\node (prop3) [bluestyle, fit={(c)},  inner sep=-0.05cm] {};}
-\end{scope}
-\draw ($(c.west) + (-1cm,0.5cm)$) -- ($(c.east) + (1cm,0.5cm)$);
-\only<2->{
-    \draw (inf) ++ (-4.5cm,0cm)  node (inflabel) [greenstyle] {Inferenza};
-    \draw [thick, ->] (inflabel) -- (inf.west);
-}
-\only<4->{
-     \draw (premises) ++ (-4.5cm,0cm)  node (premiseslabel) [redstyle] {Premesse};
-     \draw [thick, ->] (premiseslabel) -- (premises.west);
-}
-\only<5->{
-     \draw (conclusion) ++ (-4.5cm,0cm)  node (conclusionlabel) [yellowstyle] {Conclusione};
-     \draw [thick, ->] (conclusionlabel) -- (conclusion.west);
-}
-\only<3->{
-    \draw (prop2) ++ (+4.5cm,0cm)  node (proplabel) [bluestyle] {Proposizioni};
-    \draw [thick, ->] (proplabel) -- (prop1.east);
-    \draw [thick, ->] (proplabel) -- (prop2.east);
-    \draw [thick, ->] (proplabel) -- (prop3.east);
-}
-\end{tikzpicture}
-\vspace{-0.4cm}
-\]
-\end{example}
+    La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
+    \begin{definition}[Inferenza]
+        Un'\alert{inferenza} è una sequenza di \alert{proposizioni} di cui l'ultima è ottenuta come \alert{conclusione} delle rimanenti, che si assumono come \alert{premesse}.
+    \end{definition}
+    \begin{example}
+        \[
+            \begin{tikzpicture}
+                \tikzset{
+                    fillstyle/.style={rounded corners, draw=black},
+                    greenstyle/.style={fillstyle,fill=green!50},
+                    redstyle/.style={fillstyle,fill=red!50},
+                    bluestyle/.style={fillstyle,fill=blue!50},
+                    yellowstyle/.style={fillstyle,fill=yellow!50}
+                }
+                \clip (-6cm, -3cm) rectangle (6cm, 0.5cm);
+                \node (p1) {Tutti gli uomini sono mortali.};
+                \node (p2) [below of=p1] {Socrate è un uomo.};
+                \node (c) [below of=p2] {Socrate è mortale.};
+                \begin{scope}[on background layer]
+                    \only<2->{\node (inf) [greenstyle, fit={(p1) (p2) (c)}, inner sep=0.5cm] {};}
+                    \only<4->{\node (premises) [redstyle, fit={(p1) (p2)},  inner sep=0.2cm] {};}
+                    \only<5->{\node (conclusion) [yellowstyle, fit={(c)},  inner sep=0.2cm] {};}
+                    \only<3->{\node (prop1) [bluestyle, fit={(p1)},  inner sep=-0.05cm] {};}
+                    \only<3->{\node (prop2) [bluestyle, fit={(p2)},  inner sep=-0.05cm] {};}
+                    \only<3->{\node (prop3) [bluestyle, fit={(c)},  inner sep=-0.05cm] {};}
+                \end{scope}
+                \draw ($(c.west) + (-1cm,0.5cm)$) -- ($(c.east) + (1cm,0.5cm)$);
+                \only<2->{
+                    \draw (inf) ++ (-4.5cm,0cm)  node (inflabel) [greenstyle] {Inferenza};
+                    \draw [thick, ->] (inflabel) -- (inf.west);
+                }
+                \only<4->{
+                    \draw (premises) ++ (-4.5cm,0cm)  node (premiseslabel) [redstyle] {Premesse};
+                    \draw [thick, ->] (premiseslabel) -- (premises.west);
+                }
+                \only<5->{
+                    \draw (conclusion) ++ (-4.5cm,0cm)  node (conclusionlabel) [yellowstyle] {Conclusione};
+                    \draw [thick, ->] (conclusionlabel) -- (conclusion.west);
+                }
+                \only<3->{
+                    \draw (prop2) ++ (+4.5cm,0cm)  node (proplabel) [bluestyle] {Proposizioni};
+                    \draw [thick, ->] (proplabel) -- (prop1.east);
+                    \draw [thick, ->] (proplabel) -- (prop2.east);
+                    \draw [thick, ->] (proplabel) -- (prop3.east);
+                }
+            \end{tikzpicture}
+            \vspace{-0.4cm}
+        \]
+    \end{example}
 \end{frame}
 
 \begin{frame}{Proposizioni}
@@ -134,42 +164,42 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
     \begin{example}[Proposizioni \checkmark o no? \xmark]
         \begin{itemize}
             \item Link ama Zelda \only<1-4>{\makebox(0,0)[l]{\hspace{6cm}\vspace{-2.5cm}\raisebox{-1\totalheight}{\includegraphics[width=4cm,keepaspectratio]{zelda.jpg}}}} \pause \checkmark
-            \pause
+                  \pause
             \item Link ama Zelda? \pause \xmark\ (è una \emph{domanda})
-            \pause
+                  \pause
             \item $4 + 2 = 6$
-            \only<5-10>{\makebox(0,0)[l]{\hspace{7cm}\vspace{-1.5cm}\raisebox{-1\totalheight}{\includegraphics[width=3cm,keepaspectratio]{calcolatrice2.png}}}} \pause  \checkmark
-            \pause
+                  \only<5-10>{\makebox(0,0)[l]{\hspace{7cm}\vspace{-1.5cm}\raisebox{-1\totalheight}{\includegraphics[width=3cm,keepaspectratio]{calcolatrice2.png}}}} \pause  \checkmark
+                  \pause
             \item $4 + 2 = 5$ \pause \checkmark (è falsa, ma è comunque una proposizione)
-            \pause
+                  \pause
             \item $3 + 5^2$ \pause \ \xmark \ (è una \emph{descrizione})
-            \pause
+                  \pause
             \item Tutti gli uomini sono mortali
-            \only<11-12>{\makebox(0,0)[l]{\hspace{4cm}\vspace{1.5cm}\raisebox{-1\totalheight}{\includegraphics[width=4cm,keepaspectratio]{mortal-kombat-11.jpg}}}}
-            \pause \checkmark
-            \pause
+                  \only<11-12>{\makebox(0,0)[l]{\hspace{4cm}\vspace{1.5cm}\raisebox{-1\totalheight}{\includegraphics[width=4cm,keepaspectratio]{mortal-kombat-11.jpg}}}}
+                  \pause \checkmark
+                  \pause
             \item Lazzaro, alzati e cammina!
-            \only<13-14>{\makebox(0,0)[l]{\hspace{5cm}\vspace{2.5cm}\raisebox{-1\totalheight}{\includegraphics[width=2.5cm,keepaspectratio]{lazzaro2.jpg}}}}
-            \pause \xmark \ (è un \emph{ordine})
-            \pause
+                  \only<13-14>{\makebox(0,0)[l]{\hspace{5cm}\vspace{2.5cm}\raisebox{-1\totalheight}{\includegraphics[width=2.5cm,keepaspectratio]{lazzaro2.jpg}}}}
+                  \pause \xmark \ (è un \emph{ordine})
+                  \pause
             \item Quel ramo del lago di Como che volge a mezzogiorno
-            \only<15-16>{\makebox(0,0)[l]{\hspace{1.3cm}\vspace{4.5cm}\raisebox{-1\totalheight}{\includegraphics[width=2.3cm,keepaspectratio]{LagoDiComo.jpg}}}}
-            \pause \xmark \ (è una \emph{descrizione})
+                  \only<15-16>{\makebox(0,0)[l]{\hspace{1.3cm}\vspace{4.5cm}\raisebox{-1\totalheight}{\includegraphics[width=2.3cm,keepaspectratio]{LagoDiComo.jpg}}}}
+                  \pause \xmark \ (è una \emph{descrizione})
         \end{itemize}
-     \end{example}
+    \end{example}
     % \end{columns}
 \end{frame}
 
 \begin{frame}{Connettivi}
     \begin{columns}
-            \column{0.65\textwidth}
-            \begin{definition}[Connettivo]
-                Un \alert{connettivo} è un elemento grammaticale che collega un certo numero di proposizioni tra di loro per formare una nuova proposizione.
-            \end{definition}
-            \column{0.3\textwidth}
-            \begin{center}
-                \includegraphics[width=3cm,keepaspectratio]{puzzle.png}
-            \end{center}
+        \column{0.65\textwidth}
+        \begin{definition}[Connettivo]
+            Un \alert{connettivo} è un elemento grammaticale che collega un certo numero di proposizioni tra di loro per formare una nuova proposizione.
+        \end{definition}
+        \column{0.3\textwidth}
+        \begin{center}
+            \includegraphics[width=3cm,keepaspectratio]{puzzle.png}
+        \end{center}
     \end{columns}
     \begin{example}
         \begin{itemize}
@@ -184,199 +214,199 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
 \againframe<6>{inferenza}
 
 \begin{frame}{Inferenze corrette}
-	\begin{definition}[Inferenza corrette]
-		Una inferenza è corretta se, ogni qualvolta le premesse sono vere, allora è necessariamente vera anche la conclusione.
-  	\end{definition}
-    \begin{example}[una inferenza corretta]
-    \begin{center}
-        \begin{inference}
-        Carlo è ligure \conn{o} Stefano è piemontese\\
-        Stefano \conn{non} è piemontese\\
-        \hline
-        Carlo è ligure
-    \end{inference}
-    \end{center}
+    \begin{definition}[Inferenza corretta]
+        Un'inferenza è corretta se, ogni qualvolta le premesse sono vere, allora è necessariamente vera anche la conclusione.
+    \end{definition}
+    \begin{example}[un'inferenza corretta]
+        \begin{center}
+            \begin{inference}
+                Carlo è ligure \conn{o} Stefano è piemontese\\
+                Stefano \conn{non} è piemontese\\
+                \hline
+                Carlo è ligure
+            \end{inference}
+        \end{center}
     \end{example}
 \end{frame}
 
 \begin{frame}{Inferenze e forma logica}
-	La correttezza di una inferenza dipende solo dalla \alert{forma logica} delle proposizioni.
-	\begin{example}[inferenze con la stessa forma logica]
-		\begin{center}
-		\begin{inference}
-			Carlo è ligure \conn{o} Stefano è piemontese\\
-			Stefano \conn{non} è piemontese\\
-			\hline
-			Carlo è ligure
-		\end{inference}
-		\end{center}
-        \medskip
-
+    La correttezza di un'inferenza dipende solo dalla \alert{forma logica} delle proposizioni.
+    \begin{example}[inferenze con la stessa forma logica]
         \begin{center}
-		\begin{inference}
-			Il maggiordomo è colpevole, \conn{oppure} la cameriera è colpevole.\\
-			La cameriera \conn{non} è colpevole\\
-			\hline
-			Il maggiordomo è colpevole
-		\end{inference}
+            \begin{inference}
+                Carlo è ligure \conn{o} Stefano è piemontese\\
+                Stefano \conn{non} è piemontese\\
+                \hline
+                Carlo è ligure
+            \end{inference}
         \end{center}
         \medskip
 
         \begin{center}
             \begin{inference}
-		\conn{O} due buchi neri si sono scontrati \conn{oppure} il rivelatore di onde gravitazionali è rotto.\\
-		Il rivelatore di onde gravitazionali \conn{non} è rotto.\\
-        \hline
-         Due buchi neri si sono scontrati.
-       \end{inference}
-       \end{center}
-	\end{example}
+                Il maggiordomo è colpevole, \conn{oppure} la cameriera è colpevole.\\
+                La cameriera \conn{non} è colpevole\\
+                \hline
+                Il maggiordomo è colpevole
+            \end{inference}
+        \end{center}
+        \medskip
+
+        \begin{center}
+            \begin{inference}
+                \conn{O} due buchi neri si sono scontrati \conn{oppure} il rivelatore di onde gravitazionali è rotto.\\
+                Il rivelatore di onde gravitazionali \conn{non} è rotto.\\
+                \hline
+                Due buchi neri si sono scontrati.
+            \end{inference}
+        \end{center}
+    \end{example}
 \end{frame}
 
 \begin{frame}{Regole di inferenza}
-	Mettiamo in evidenza la \alert{forma logica} dell'inferenza.\\
+    Mettiamo in evidenza la \alert{forma logica} dell'inferenza.\\
     \medskip
     Usiamo delle \alert{lettere proposizionali}, al posto delle proposizioni:
-	\begin{center}
-		A  = ``Carlo è ligure'' \hspace{1cm} B = ``Stefano è piemontese''
-	\end{center}
-	otteniamo
-	\[
-	\begin{tikzpicture}[remember picture]
-	\node (carlo) {\begin{inference}
-		Carlo è ligure \conn{o} Stefano è piemontese\\
-		Stefano \conn{non} è piemontese\\
-		\hline
-		Carlo è ligure
-	\end{inference}
-	};
-	\node (disj) [right=of carlo] {
-		\begin{inference}
-		A o B\\
-		non B\\
-		\hline
-		A
-		\end{inference}
-	};
-	\draw [-{Latex[width=3mm]},very thick] (carlo) -- (disj);
-	\end{tikzpicture}
-	\]
-	\pause
-	\begin{definition}[Regola di inferenza]
-		Una inferenza in cui usiamo \alert{lettere proposizionali}  invece di proposizioni vere e proprie prende il nome di \alert{regola di inferenza}.
-		\begin{tikzpicture}[overlay, remember picture]
-		\draw [red, thick] (disj) circle (1cm);
-		\path (disj) ++ (0,-1.3cm) node [red] {Regola di inferenza};
-		\end{tikzpicture}
-	\end{definition}
+    \begin{center}
+        A  = ``Carlo è ligure'' \hspace{1cm} B = ``Stefano è piemontese''
+    \end{center}
+    otteniamo
+    \[
+        \begin{tikzpicture}[remember picture]
+            \node (carlo) {\begin{inference}
+                    Carlo è ligure \conn{o} Stefano è piemontese\\
+                    Stefano \conn{non} è piemontese\\
+                    \hline
+                    Carlo è ligure
+                \end{inference}
+            };
+            \node (disj) [right=of carlo] {
+                \begin{inference}
+                    A o B\\
+                    non B\\
+                    \hline
+                    A
+                \end{inference}
+            };
+            \draw [-{Latex[width=3mm]},very thick] (carlo) -- (disj);
+        \end{tikzpicture}
+    \]
+    \pause
+    \begin{definition}[Regola di inferenza]
+        Un'inferenza in cui usiamo \alert{lettere proposizionali}  invece di proposizioni vere e proprie prende il nome di \alert{regola di inferenza}.
+        \begin{tikzpicture}[overlay, remember picture]
+            \draw [red, thick] (disj) circle (1cm);
+            \path (disj) ++ (0,-1.3cm) node [red] {Regola di inferenza};
+        \end{tikzpicture}
+    \end{definition}
 \end{frame}
 
 \subsection{Regole di inferenza corrette}
 
 \begin{frame}{Regole di inferenza corrette}
-	Se al contrario rimpiazziamo le lettere con delle proposizioni, troviamo una \alert{istanza} della regola.
+    Se al contrario rimpiazziamo le lettere con delle proposizioni, troviamo un'\alert{istanza} della regola.
     Se una regola è corretta, tutte le istanze lo sono.
 
     \begin{example}[Sillogismo disgiuntivo]
         La regola di inferenza\\
-            \begin{center}
-        	\begin{inference}
-            A o B\\
-            non B\\
-            \hline
-            A
-        \end{inference}
+        \begin{center}
+            \begin{inference}
+                A o B\\
+                non B\\
+                \hline
+                A
+            \end{inference}
         \end{center}
         chiamata \alert{regola del sillogismo disgiuntivo} è corretta, quindi\\
         \begin{center}
-        		\begin{inference}
-            Il maggiordomo è colpevole, \conn{oppure} la cameriera è colpevole.\\
-            La cameriera \conn{non} è colpevole\\
-            \hline
-            Il maggiordomo è colpevole
-        \end{inference}\\
+            \begin{inference}
+                Il maggiordomo è colpevole, \conn{oppure} la cameriera è colpevole.\\
+                La cameriera \conn{non} è colpevole\\
+                \hline
+                Il maggiordomo è colpevole
+            \end{inference}\\
         \end{center}
         è corretta.
     \end{example}
 \end{frame}
 
 \begin{frame}{Un'altra regola corretta: modus ponens}
-	Consideriamo l'inferenza
-	\begin{center}
-		\begin{inference}
-			\conn{Se} Fabio è genovese, \conn{allora} Fabio è ligure\\
-			Fabio è genovese\\
-			\hline
-			Fabio è ligure
-		\end{inference}
-	\end{center}
-        \only<1-1>{\makebox(0,0)[l]{\hspace{3cm}\vspace{-2.5cm}\raisebox{-1\totalheight}{\includegraphics[width=8.5cm,keepaspectratio]{cartina_liguria.png}}}}
-	\pause
-	Si generalizza nella regola:
-	\begin{center}
-		\begin{inference}
-			Se A allora B\\
-			A\\
-			\hline
-			B
-		\end{inference}
-	\end{center}
-	detta \alert{regola del modus ponens}. Vedi anche:
-	\begin{center}
-		\begin{inference}
-			\conn{Se} sono colpevole \conn{allora} devo essere punito\\
-			Sono colpevole\\
-			\hline
-			Devo essere punito
-		\end{inference}
-	\end{center}
+    Consideriamo l'inferenza
+    \begin{center}
+        \begin{inference}
+            \conn{Se} Fabio è genovese, \conn{allora} Fabio è ligure\\
+            Fabio è genovese\\
+            \hline
+            Fabio è ligure
+        \end{inference}
+    \end{center}
+    \only<1-1>{\makebox(0,0)[l]{\hspace{3cm}\vspace{-2.5cm}\raisebox{-1\totalheight}{\includegraphics[width=8.5cm,keepaspectratio]{cartina_liguria.png}}}}
+    \pause
+    Si generalizza nella regola:
+    \begin{center}
+        \begin{inference}
+            Se A allora B\\
+            A\\
+            \hline
+            B
+        \end{inference}
+    \end{center}
+    detta \alert{regola del modus ponens}. Vedi anche:
+    \begin{center}
+        \begin{inference}
+            \conn{Se} sono colpevole \conn{allora} devo essere punito\\
+            Sono colpevole\\
+            \hline
+            Devo essere punito
+        \end{inference}
+    \end{center}
 \end{frame}
 
 \begin{frame}{Un'altra regola corretta: modus tollens}
-	Consideriamo l'inferenza
-	\begin{center}
-		\begin{inference}
-			\conn{Se} Fabio è genovese, \conn{allora} Fabio è ligure\\
-			Fabio \conn{non} è ligure\\
-			\hline
-			Fabio \conn{non} è genovese
-		\end{inference}
-	\end{center}
-	\pause
-	Si generalizza nella regola:
-	\begin{center}
-		\begin{inference}
-			Se A allora B\\
-			non B\\
-			\hline
-			non A
-		\end{inference}
-	\end{center}
-	detta \alert{regola del modus tollens}. Vedi anche:
-	\begin{center}
-		\begin{inference}
-			\conn{Se} sono colpevole \conn{allora} devo essere punito\\
-			\conn{Non} devo essere punito\\
-			\hline
-			\conn{Non} sono colpevole
-		\end{inference}
-	\end{center}
+    Consideriamo l'inferenza
+    \begin{center}
+        \begin{inference}
+            \conn{Se} Fabio è genovese, \conn{allora} Fabio è ligure\\
+            Fabio \conn{non} è ligure\\
+            \hline
+            Fabio \conn{non} è genovese
+        \end{inference}
+    \end{center}
+    \pause
+    Si generalizza nella regola:
+    \begin{center}
+        \begin{inference}
+            Se A allora B\\
+            non B\\
+            \hline
+            non A
+        \end{inference}
+    \end{center}
+    detta \alert{regola del modus tollens}. Vedi anche:
+    \begin{center}
+        \begin{inference}
+            \conn{Se} sono colpevole \conn{allora} devo essere punito\\
+            \conn{Non} devo essere punito\\
+            \hline
+            \conn{Non} sono colpevole
+        \end{inference}
+    \end{center}
 \end{frame}
 
 \subsection{Regole di inferenza non corrette}
 
 \begin{frame}{Fallacia della negazione dell'antecedente (1)}
-	Consideriamo l'inferenza
-	\begin{center}
-		\begin{inference}
-			\conn{Se} sono un ladro \conn{allora} devo essere punito\\
-			\conn{Non} sono un ladro\\
-			\hline
-			Non devo essere punito
-		\end{inference}
-	\end{center}
-         \only<1-1>{\makebox(0,0)[l]{\hspace{5cm}\vspace{-3.5cm}\raisebox{-1\totalheight}{\includegraphics[width=4.5cm,keepaspectratio]{lupin.png}}}}
-	\pause
+    Consideriamo l'inferenza
+    \begin{center}
+        \begin{inference}
+            \conn{Se} sono un ladro \conn{allora} devo essere punito\\
+            \conn{Non} sono un ladro\\
+            \hline
+            Non devo essere punito
+        \end{inference}
+    \end{center}
+    \only<1-1>{\makebox(0,0)[l]{\hspace{5cm}\vspace{-3.5cm}\raisebox{-1\totalheight}{\includegraphics[width=4.5cm,keepaspectratio]{lupin.png}}}}
+    \pause
     che si generalizza nella regola
     \begin{center}
         \begin{inference}
@@ -386,45 +416,45 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
             non B
         \end{inference}
     \end{center}
-	È corretta?
+    È corretta?
 \end{frame}
 
 \begin{frame}{Fallacia della negazione dell'antecedente (2)}
-   All'apparenza lo sembra, ma consideriamo un'altra istanza della regola.
-   \begin{center}
-   \begin{inference}
-        \conn{Se} Fabio è pescarese, \conn{allora} Fabio è abruzzese \only<3->{\checkmark}\\
-        Fabio \conn{non} è pescarese \only<4->{\checkmark}\\
-        \hline
-        Fabio \conn{non} è abruzzese \only<5->{\xmark}
-    \end{inference}
-   \end{center}
-   È corretta?
-         \only<1-1>{\makebox(0,0)[l]{\hspace{5cm}\vspace{-3.5cm}\raisebox{-1\totalheight}{\includegraphics[width=4.5cm,keepaspectratio]{abruzzo.png}}}}
+    All'apparenza lo sembra, ma consideriamo un'altra istanza della regola.
+    \begin{center}
+        \begin{inference}
+            \conn{Se} Fabio è pescarese, \conn{allora} Fabio è abruzzese \only<3->{\checkmark}\\
+            Fabio \conn{non} è pescarese \only<4->{\checkmark}\\
+            \hline
+            Fabio \conn{non} è abruzzese \only<5->{\xmark}
+        \end{inference}
+    \end{center}
+    È corretta?
+    \only<1-1>{\makebox(0,0)[l]{\hspace{5cm}\vspace{-3.5cm}\raisebox{-1\totalheight}{\includegraphics[width=4.5cm,keepaspectratio]{abruzzo.png}}}}
 
-   \pause
-   \medskip
-   Questa regola \textbf{non è} corretta: pensate al caso in cui Fabio sia nato a Chieti.
+    \pause
+    \medskip
+    Questa regola \textbf{non è} corretta: pensate al caso in cui Fabio sia nato a Chieti.
 
-   \onslide<6->{\medskip
-       Abbiamo trovato un \alert{controesempio}. L'inferenza non è corretta.}
+    \onslide<6->{\medskip
+        Abbiamo trovato un \alert{controesempio}. L'inferenza non è corretta.}
 
-   \onslide<7->{\medskip
-       Ed infatti, se ci pensiamo bene, non è corretta neanche la prima regola di inferenza: magari non sono un ladro, ma devo essere punito per qualche altro motivo.}
+    \onslide<7->{\medskip
+        Ed infatti, se ci pensiamo bene, non è corretta neanche la prima regola di inferenza: magari non sono un ladro, ma devo essere punito per qualche altro motivo.}
 \end{frame}
 
 \begin{frame}{Fallacia dell'affermazione del conseguente}
 
-	Consideriamo questa inferenza\ldots
-	\begin{center}
-		\begin{inference}
- 		    \conn{Se} sono un ladro \conn{allora} devo essere punito\\
-			Devo essere punito\\
-			\hline
-			Sono un ladro
-	\end{inference}
-	\end{center}
-	\pause
+    Consideriamo questa inferenza\ldots
+    \begin{center}
+        \begin{inference}
+            \conn{Se} sono un ladro \conn{allora} devo essere punito\\
+            Devo essere punito\\
+            \hline
+            Sono un ladro
+        \end{inference}
+    \end{center}
+    \pause
     che si generalizza nella regola
     \begin{center}
         \begin{inference}
@@ -434,41 +464,41 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
             A
         \end{inference}
     \end{center}
-	e questa\ldots
-	\begin{center}
-		\begin{inference}
-			\conn{Se} Fabio è pescarese, \conn{allora} Fabio è abruzzese\\
-			Fabio è abruzzese\\
-			\hline
-			Fabio è pescarese
-		\end{inference}
-	\end{center}
-	\pause
+    e questa\ldots
+    \begin{center}
+        \begin{inference}
+            \conn{Se} Fabio è pescarese, \conn{allora} Fabio è abruzzese\\
+            Fabio è abruzzese\\
+            \hline
+            Fabio è pescarese
+        \end{inference}
+    \end{center}
+    \pause
     Anche se la prima può sembrarci corretta (ma non lo è, potrei dover essere punito per qualche altro motivo), la regola di inferenza
     \alert{non è corretta}.
 \end{frame}
 
 \begin{frame}{Correttezza delle inferenze e delle conclusioni}
     \begin{block}{Attenzione!}
-    Se le premesse di una inferenza sono false, anche la conclusione può essere falsa, sebbene l'inferenza sia corretta.
+        Se le premesse di un'inferenza sono false, anche la conclusione può essere falsa, sebbene l'inferenza sia corretta.
     \end{block}
 
-   Abbiamo detto che il \alert{modus ponens} è corretto:
+    Abbiamo detto che il \alert{modus ponens} è corretto:
     \begin{center}
         \begin{inference}
-        Se A allora B\\
-        A\\
-        \hline
-        B
+            Se A allora B\\
+            A\\
+            \hline
+            B
         \end{inference}
     \end{center}
     Ma guardiamo questa istanza:
     \begin{center}
         \begin{inference}
-        \conn{Se} Napoleone è francese \conn{allora} Napoleone è abruzzese\\
-        Napoleone è francese\\
-        \hline
-        Napoleone è abruzzese
+            \conn{Se} Napoleone è francese \conn{allora} Napoleone è abruzzese\\
+            Napoleone è francese\\
+            \hline
+            Napoleone è abruzzese
         \end{inference}
     \end{center}
 \end{frame}
@@ -490,99 +520,99 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
 
 
 \begin{frame}<presentation:0>{Regole di inferenza a livello predicativo}
-	Negli esempi visti prima, le regole di inferenza sono a livello \alert{proposizionale}: la loro verità dipende dai legami tra le proposizioni.
+    Negli esempi visti prima, le regole di inferenza sono a livello \alert{proposizionale}: la loro verità dipende dai legami tra le proposizioni.
 
     \medskip
     Queste inferenze sono più complesse:
-	\begin{center}
-		\begin{inference}
-			2 è minore di 5\\
-			Se un numero è minore di un altro, allora il secondo è maggiore del primo\\
-			\hline
-			5 è maggiore di 2
-		\end{inference}
+    \begin{center}
+        \begin{inference}
+            2 è minore di 5\\
+            Se un numero è minore di un altro, allora il secondo è maggiore del primo\\
+            \hline
+            5 è maggiore di 2
+        \end{inference}
 
-		\medskip\medskip
-		\begin{inference}
-		La retta $r$ è perpendicolare alla retta $s$\\
-		Se una retta è perpendicolare a un'altra, la seconda interseca la prima\\
-		\hline
-		$s$ interseca $r$
-		\end{inference}
+        \medskip\medskip
+        \begin{inference}
+            La retta $r$ è perpendicolare alla retta $s$\\
+            Se una retta è perpendicolare a un'altra, la seconda interseca la prima\\
+            \hline
+            $s$ interseca $r$
+        \end{inference}
 
-		\medskip\medskip
-		\begin{inference}
-		Maria è moglie di Aldo\\
-		Se una persona è moglie di un'altra, allora quest'ultima è marito della prima\\
-		\hline
-		Aldo è marito di Maria
-		\end{inference}
-	\end{center}
-	Hanno la stessa \alert{forma logica}.
+        \medskip\medskip
+        \begin{inference}
+            Maria è moglie di Aldo\\
+            Se una persona è moglie di un'altra, allora quest'ultima è marito della prima\\
+            \hline
+            Aldo è marito di Maria
+        \end{inference}
+    \end{center}
+    Hanno la stessa \alert{forma logica}.
 \end{frame}
 
 \newcommand{\myfbox}[2]{\tikz[baseline=(n.base)]\node(n)[alt=<1>{fill=#1!50}]{#2};}
 \newcommand{\myfboxbis}[2]{\tikz[baseline=(n.base)]\node(n)[alt=<2>{fill=#1!50}]{#2};}
 
 \begin{frame}<presentation:0>{Evidenziare la forma logica}
-	\tikzstyle{every node} = [rounded corners, outer sep=0, inner sep=0.1cm]
-	\begin{center}
-			\begin{inference}
-				\myfbox{red}{2}\myfbox{green}{è minore di}\myfbox{blue}{5}\\
-				Se\myfbox{orange}{un numero}\myfbox{green}{è minore di}\myfbox{pink}{un altro}, allora\myfbox{pink}{il secondo}\myfbox{gray}{è maggiore del} \myfbox{orange}{primo}\\
-				\hline
-				\myfbox{blue}{5}\myfbox{gray}{è maggiore di}\myfbox{red}{2}
-			\end{inference}\\[0.2cm]
-		$\Downarrow$\\[0.2cm]
-		\begin{inference}
-			\myfbox{green}{R}\myfbox{red}{a}\myfbox{blue}{b}\\
-			\myfboxbis{green}{per ogni }\myfbox{orange}{$x$}, \myfboxbis{green}{per ogni } \myfbox{pink}{$y$}, \myfboxbis{red}{se} \myfbox{green}{R}\myfbox{orange}{$x$}\myfbox{pink}{$y$}\myfboxbis{red}{allora}\myfbox{gray}{S}\myfbox{pink}{$y$}\myfbox{orange}{$x$}\\
-			\hline
-			\myfbox{gray}{S}\myfbox{blue}{b}\myfbox{red}{a}\\
-		\end{inference}\\[0.2cm]
-		\only<2->{
-		$\Downarrow$\\[0.2cm]
-		\begin{inference}
-			Rab\\
-			$\myfboxbis{green}{$\forall x \forall y$} (Rxy \myfboxbis{red}{$\ra$} Syx)$\\
-			\hline
-			Sba
-		\end{inference}
-	}
-	\end{center}
+    \tikzstyle{every node} = [rounded corners, outer sep=0, inner sep=0.1cm]
+    \begin{center}
+        \begin{inference}
+            \myfbox{red}{2}\myfbox{green}{è minore di}\myfbox{blue}{5}\\
+            Se\myfbox{orange}{un numero}\myfbox{green}{è minore di}\myfbox{pink}{un altro}, allora\myfbox{pink}{il secondo}\myfbox{gray}{è maggiore del} \myfbox{orange}{primo}\\
+            \hline
+            \myfbox{blue}{5}\myfbox{gray}{è maggiore di}\myfbox{red}{2}
+        \end{inference}\\[0.2cm]
+        $\Downarrow$\\[0.2cm]
+        \begin{inference}
+            \myfbox{green}{R}\myfbox{red}{a}\myfbox{blue}{b}\\
+            \myfboxbis{green}{per ogni }\myfbox{orange}{$x$}, \myfboxbis{green}{per ogni } \myfbox{pink}{$y$}, \myfboxbis{red}{se} \myfbox{green}{R}\myfbox{orange}{$x$}\myfbox{pink}{$y$}\myfboxbis{red}{allora}\myfbox{gray}{S}\myfbox{pink}{$y$}\myfbox{orange}{$x$}\\
+            \hline
+            \myfbox{gray}{S}\myfbox{blue}{b}\myfbox{red}{a}\\
+        \end{inference}\\[0.2cm]
+        \only<2->{
+            $\Downarrow$\\[0.2cm]
+            \begin{inference}
+                Rab\\
+                $\myfboxbis{green}{$\forall x \forall y$} (Rxy \myfboxbis{red}{$\ra$} Syx)$\\
+                \hline
+                Sba
+            \end{inference}
+        }
+    \end{center}
 \end{frame}
 
 \begin{frame}{Regole di inferenza con i quantificatori}
-	\tikzstyle{every node} = [rounded corners, outer sep=0, inner sep=0.1cm]
+    \tikzstyle{every node} = [rounded corners, outer sep=0, inner sep=0.1cm]
 
-	Negli esempi visti prima, le regole di inferenza sono a livello \alert{proposizionale}: la loro verità dipende dai legami tra le proposizioni.
+    Negli esempi visti prima, le regole di inferenza sono a livello \alert{proposizionale}: la loro verità dipende dai legami tra le proposizioni.
 
-	\medskip
-	Queste inferenze sono più complesse:
-	\begin{center}
-		\begin{inference}
-			\myfbox{red}{Napoleone} \myfbox{green}{è corso}\\
-			Tutti \myfbox{green}{i corsi}  \myfbox{gray}{sono francesi}\\
-			\hline
-			\myfbox{red}{Napoleone} \myfbox{gray}{è francese}
-		\end{inference}
-		\qquad
-		\begin{inference}
-           	\myfbox{red}{Socrate} \myfbox{green}{è un uomo}\\
-			Tutti \myfbox{green}{gli uomini}  \myfbox{gray}{sono mortali}\\
-			\hline
-			\myfbox{red}{Socrate} \myfbox{gray}{è mortale}
-		\end{inference}
-	\end{center}
-	ma hanno la stessa \alert{forma logica} e corrispondono alla regola
-	\begin{center}
-		\begin{inference}
-		$\myfbox{green}{P} \myfbox{red}{(a)}$\\
-		\conn{per ogni} $x$, \conn{se} $\myfbox{green}{P}(x)$ \conn{allora} $\myfbox{gray}{Q}(x)$\\
-		\hline
-		$\myfbox{gray}{Q}  \myfbox{red}{(a)}$
-	\end{inference}
-	\end{center}
+    \medskip
+    Queste inferenze sono più complesse:
+    \begin{center}
+        \begin{inference}
+            \myfbox{red}{Napoleone} \myfbox{green}{è corso}\\
+            Tutti \myfbox{green}{i corsi}  \myfbox{gray}{sono francesi}\\
+            \hline
+            \myfbox{red}{Napoleone} \myfbox{gray}{è francese}
+        \end{inference}
+        \qquad
+        \begin{inference}
+            \myfbox{red}{Socrate} \myfbox{green}{è un uomo}\\
+            Tutti \myfbox{green}{gli uomini}  \myfbox{gray}{sono mortali}\\
+            \hline
+            \myfbox{red}{Socrate} \myfbox{gray}{è mortale}
+        \end{inference}
+    \end{center}
+    ma hanno la stessa \alert{forma logica} e corrispondono alla regola
+    \begin{center}
+        \begin{inference}
+            $\myfbox{green}{P} \myfbox{red}{(a)}$\\
+            \conn{per ogni} $x$, \conn{se} $\myfbox{green}{P}(x)$ \conn{allora} $\myfbox{gray}{Q}(x)$\\
+            \hline
+            $\myfbox{gray}{Q}  \myfbox{red}{(a)}$
+        \end{inference}
+    \end{center}
 \end{frame}
 
 \section{Logica delle proposizioni}
@@ -645,7 +675,7 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
     \begin{example}
         Carlo \conn{e} Maria sono appassionati di baseball \medskip
 
-        \hspace{2cm} è una abbreviazione di\medskip
+        \hspace{2cm} è un'abbreviazione di\medskip
 
         Carlo è appassionato di baseball \conn{e} Maria è appassionata di baseball
     \end{example}
@@ -655,7 +685,7 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
     \begin{example}
         Carlo e Maria sono amici\medskip
 
-        \hspace{2cm} \textbf{non è} una abbreviazione di\medskip
+        \hspace{2cm} \textbf{non è} un'abbreviazione di\medskip
 
         Carlo è amico \conn{e} Maria è amica\medskip
     \end{example}
@@ -709,38 +739,38 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
 \begin{frame}{Disgiunzione nella lingua italiana}
     Riconsideriamo l'esempio di prima:\\
     \begin{example}
-    Roma è la capitale d'Italia \conn{o} Lione è la capitale della Francia
+        Roma è la capitale d'Italia \conn{o} Lione è la capitale della Francia
     \end{example}
-    È una proposizione piuttosto strana. Nella lingua italiana, utilizziamo la disgiunzione quasi sempre quando le due proposizioni sono strettamente correlate tra di loro. Ad una interrogazione, uno studente un po' ignorante potrebbe rispondere:
+    È una proposizione piuttosto strana. Nella lingua italiana, utilizziamo la disgiunzione quasi sempre quando le due proposizioni sono strettamente correlate tra di loro. A un'interrogazione, uno studente un po' impreparato potrebbe rispondere:
     \begin{example}
-    Roma è la capitale d'Italia \conn{o} Milano è la capitale d'Italia
+        Roma è la capitale d'Italia \conn{o} Milano è la capitale d'Italia
     \end{example}
     Spesso, in questi casi, abbreviamo la frase, come già visto per la congiunzione
     \begin{example}
-    Roma \conn{o} Milano è la capitale d'Italia
+        Roma \conn{o} Milano è la capitale d'Italia
     \end{example}
 \end{frame}
 
 \begin{frame}{Disgiunzione inclusiva ed esclusiva}
     Consideriamo ancora una proposizione un po' innaturale:
     \begin{example}
-    Roma è la capitale d'Italia \conn{o} Parigi è la capitale della Francia
+        Roma è la capitale d'Italia \conn{o} Parigi è la capitale della Francia
     \end{example}
-    Cosa ne pensate ? È vera o falsa ?
+    Cosa ne pensate? È vera o falsa?
     \pause
     \begin{itemize}
-    \item se per voi la frase è \textbf{vera}, vuol dire che considerate la ``\conn{o}'' in senso \alert{inclusivo}
-    \begin{itemize}
-    \item se entrambe le proposizioni di base sono vere, la disgiunzione è vera;
-    \item la disgiunzione inclusiva è vera quando \alert{una o più} delle proposizioni di base è vera;
-    \end{itemize}
-    \pause
-    \item se per voi la frase è \textbf{falsa}, vuol dire che considerate la ``\conn{o}'' in  senso \alert{esclusivo}
-    \begin{itemize}
-        \item se entrambe le proposizioni di base sono vere, la disgiunzione è falsa;
-        \item per voi la ``\conn{o}'' introduce una alternativa tra due possibilità, una delle quali deve essere falsa;
-        \item la disgiunzione esclusiva è vera quando \alert{esattamente una} delle proposizioni di base è vera.
-    \end{itemize}
+        \item se per voi la frase è \textbf{vera}, vuol dire che considerate la ``\conn{o}'' in senso \alert{inclusivo}
+              \begin{itemize}
+                  \item se entrambe le proposizioni di base sono vere, la disgiunzione è vera;
+                  \item la disgiunzione inclusiva è vera quando \alert{una o più} delle proposizioni di base è vera;
+              \end{itemize}
+              \pause
+        \item se per voi la frase è \textbf{falsa}, vuol dire che considerate la ``\conn{o}'' in  senso \alert{esclusivo}
+              \begin{itemize}
+                  \item se entrambe le proposizioni di base sono vere, la disgiunzione è falsa;
+                  \item per voi la ``\conn{o}'' introduce un'alternativa tra due possibilità, una delle quali deve essere falsa;
+                  \item la disgiunzione esclusiva è vera quando \alert{esattamente una} delle proposizioni di base è vera.
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -748,20 +778,20 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
 \begin{frame}{Disgiunzione inclusiva ed esclusiva}
     Abbiamo detto prima
     \begin{definition}
-    La \alert{disgiunzione} collega due proposizioni tra di loro. La nuova proposizione risultante è vera quando \textbf{una} delle proposizioni di partenza è vera.
+        La \alert{disgiunzione} collega due proposizioni tra di loro. La nuova proposizione risultante è vera quando \textbf{una} delle proposizioni di partenza è vera.
     \end{definition}
     In realtà siamo stati imprecisi. Dovremmo dire:
-        \begin{definition}[Disgiunzione inclusiva]
-            La \alert{disgiunzione inclusiva} collega due proposizioni tra di loro. La nuova proposizione risultante è vera quando \textbf{almeno una} delle proposizioni di partenza è vera.
+    \begin{definition}[Disgiunzione inclusiva]
+        La \alert{disgiunzione inclusiva} collega due proposizioni tra di loro. La nuova proposizione risultante è vera quando \textbf{almeno una} delle proposizioni di partenza è vera.
     \end{definition}
     e
     \begin{definition}[Disgiunzione esclusiva]
-            La \alert{disgiunzione esclusiva} collega due proposizioni tra di loro. La nuova proposizione risultante è vera quando \textbf{esattamente una} delle proposizioni di partenza è vera.
+        La \alert{disgiunzione esclusiva} collega due proposizioni tra di loro. La nuova proposizione risultante è vera quando \textbf{esattamente una} delle proposizioni di partenza è vera.
     \end{definition}
 \end{frame}
 
 \begin{frame}{Disgiunzione inclusiva ed esclusiva nella lingua italiana 1}
-    Ma chi ha ragione ? La ``\conn{o}'' in italiano è inclusiva od esclusiva ?
+    Ma chi ha ragione? La ``\conn{o}'' in italiano è inclusiva od esclusiva?
     \medskip
 
     Spesso il problema non si pone perché, dal contesto, sappiamo che le due proposizioni non possono essere entrambe vere.
@@ -770,16 +800,16 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
     \begin{example}
         Vi assicuro che la seguente proposizione è vera:
         \begin{itemize}
-        \item La capitale della California è Sacramento \conn{o} Los Angeles.
+            \item La capitale della California è Sacramento \conn{o} Los Angeles.
         \end{itemize}
         Vuol dire che possono essere entrambe capitali ?
     \end{example}
     \pause
-         Ovviamente no, perché sappiamo che uno stato non può avere due capitali, ma se questa  ``impossibilità'' dettata dal contesto non si verifica, l'italiano è molto ambiguo.
+    Ovviamente no, perché sappiamo che uno stato non può avere due capitali, ma se questa  ``impossibilità'' dettata dal contesto non si verifica, l'italiano è molto ambiguo.
     \begin{example}
         Vi assicuro che la seguente proposizione è vera:
         \begin{itemize}
-        \item La bandiera della California contiene una stella \conn{o} un orso.
+            \item La bandiera della California contiene una stella \conn{o} un orso.
         \end{itemize}
         Vuol dire che la bandiera può avere entrambe ?
     \end{example}
@@ -788,13 +818,13 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
 \begin{frame}{Disgiunzione inclusiva ed esclusiva nella lingua italiana 2}
     In generale, nella lingua di tutti i giorni, non è chiaro se ``\conn{o}''  e ``\conn{oppure}'' vadano intesi in senso inclusivo o esclusivo, ma
     \begin{block}{Osservazione finale}
-    \begin{itemize}
-        \item quando si studia logica (quindi anche negli esercizi) lo si intende sempre inclusivo;
-        \item in matematica è sempre inclusivo:
         \begin{itemize}
-        \item la proposizione ``$2 + 2 = 4$ \conn{oppure} $5$ è dispari'' è vera!
+            \item quando si studia logica (quindi anche negli esercizi) lo si intende sempre inclusivo;
+            \item in matematica è sempre inclusivo:
+                  \begin{itemize}
+                      \item la proposizione ``$2 + 2 = 4$ \conn{oppure} $5$ è dispari'' è vera!
+                  \end{itemize}
         \end{itemize}
-    \end{itemize}
     \end{block}
 \end{frame}
 
@@ -807,26 +837,26 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
             \begin{tabular}[t]{c|c}
                 $P$ & non $P$ \\
                 \hline
-                V & F       \\
-                F & V
+                V   & F       \\
+                F   & V
             \end{tabular}
             \hspace{2cm}
             \begin{tabular}[t]{c|c|c}
                 $P$ & $Q$ & $P$ e $Q$ \\
                 \hline
-                F & F & F\\
-                F & V & F\\
-                V & F & F\\
-                V & V & V\\
+                F   & F   & F         \\
+                F   & V   & F         \\
+                V   & F   & F         \\
+                V   & V   & V         \\
             \end{tabular}
             \hspace{2cm}
             \begin{tabular}[t]{c|c|c}
                 $P$ & $Q$ & $P$ o $Q$ \\
                 \hline
-                F & F & F\\
-                F & V & V\\
-                V & F & V\\
-                V & V & V\\
+                F   & F   & F         \\
+                F   & V   & V         \\
+                V   & F   & V         \\
+                V   & V   & V         \\
             \end{tabular}
         \end{center}
     \end{example}
@@ -840,8 +870,8 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
     \begin{definition}[Simboli dei connettivi]
         \begin{itemize}
             \item negazione (non $P$):  $\neg P$
-            \item congiunzione ($P$ e $Q$):  $P \wedge Q$
-            \item disgiunzione ($P$ o $Q$):  $P \vee Q$
+            \item congiunzione ($P$ e $Q$):  $P \land Q$
+            \item disgiunzione ($P$ o $Q$):  $P \lor Q$
 
         \end{itemize}
     \end{definition}
@@ -850,29 +880,29 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
 
         \hspace{2cm}$\Downarrow$ usando i simboli visti sopra \medskip
 
-        $2 + 2 = 4 \wedge 3 \times 2 = 6$
+        $2 + 2 = 4 \land 3 \times 2 = 6$
     \end{example}
 \end{frame}
 
 \begin{frame}{Approfondimento: forme proposizionali}
-   Usando le lettere $P$, $Q$, $R$ etc... e i simboli $\wedge$, $\vee$ e $\neg$ è possibile costruire delle \alert{formule logiche}, chiamate anche \alert{forme proposizionali}.
-   \begin{example}
-   $P \vee \neg (Q \wedge R)$ è una forma proposizionale.
-   \end{example}
-   \pause
-   Una forma proposizionale è quella che abbiamo precedentemente chiamato \alert{forma logica}:
-   \begin{example}[dalle forme proposizionali alle proposizioni]
-       Considerate la forma proposizionale  $P \wedge \neg (Q \wedge R)$. Allora se
-       \begin{itemize}
-       \item $P={}$ Il maggiordomo è l'assassino
-       \item $Q={}$ Il delitto è stato commesso in casa
-       \item $R={}$ Il coltello è l'arma del delitto
-       \end{itemize}
-       otteniamo
-       \begin{itemize}
-           \item Il maggiordomo è l'assassino \conn{o} \conn{non è vero che} il delitto è stato commesso in casa \conn{con} il coltello.
-       \end{itemize}
-   \end{example}
+    Usando le lettere $P$, $Q$, $R$ etc... e i simboli $\land$, $\lor$ e $\neg$ è possibile costruire delle \alert{formule logiche}, chiamate anche \alert{forme proposizionali}.
+    \begin{example}
+        $P \lor \neg (Q \land R)$ è una forma proposizionale.
+    \end{example}
+    \pause
+    Una forma proposizionale è quella che abbiamo precedentemente chiamato \alert{forma logica}:
+    \begin{example}[dalle forme proposizionali alle proposizioni]
+        Considerate la forma proposizionale  $P \land \neg (Q \land R)$. Allora se
+        \begin{itemize}
+            \item $P={}$ Il maggiordomo è l'assassino
+            \item $Q={}$ Il delitto è stato commesso in casa
+            \item $R={}$ Il coltello è l'arma del delitto
+        \end{itemize}
+        otteniamo
+        \begin{itemize}
+            \item Il maggiordomo è l'assassino \conn{o} \conn{non è vero che} il delitto è stato commesso in casa \conn{con} il coltello.
+        \end{itemize}
+    \end{example}
 \end{frame}
 
 \subsection{Implicazione}
@@ -886,42 +916,42 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
     \begin{example}[Vero o falso?]
         \begin{itemize}
             \item \conn{se} Roma è la capitale d'Italia \conn{allora} 3+2=5 \pause (\checkmark)
-            \pause
+                  \pause
             \item \conn{se} Roma è la capitale d'Italia \conn{allora} 3+2=0 \pause (\xmark)
-            \pause
+                  \pause
             \item \conn{se} gli elefanti volano \conn{allora} 3+2=5 \pause (\checkmark)
-            \pause
+                  \pause
             \item \conn{se} gli elefanti volano \conn{allora} 3+2=0 \pause (\checkmark)
         \end{itemize}
     \end{example}
 \end{frame}
 
 \begin{frame}[fragile]{Implicazione e linguaggio naturale}
-    Gli esempi di prima vi sono sembrati strani ?
+    Gli esempi di prima vi sono sembrati strani?
     \begin{block}{Note}
         Quello che vi sto presentando è solo un tipo particolare di logica, chiamata \alert{logica classica proposizionale}. Il \conn{se \ldots allora} in italiano non è quasi mai corrispondente alla implicazione di questa logica.
     \end{block}
     \begin{example}
         \begin{itemize}
-        \item \conn{se} sarai promosso a scuola, \conn{allora} ti comprerò la PlayStation 5
-        \begin{itemize}
-            \item coinvolge azioni che avverranno in futuro, non ora: è il reame della \alert{logica temporale};
-            \item la versione classica proposizionale  sarebbe:\\
-            ``\conn{se} sei stato promosso a scuola, \conn{allora} ti ho comprato la PlayStation 5''  \raisebox{-0.2\totalheight}{\includegraphics[width=0.5cm,keepaspectratio]{vomitosa.png}}
-        \end{itemize}
-        \pause
-        % \item \conn{se} un oggetto viene lanciato da una torre, \conn{allora} cade a terra
-        % \begin{itemize}
-        %     \item ``un oggetto viene lanciato da una torre'' non è un proposizione, perché non sta parlando né di un oggetto né di un momento specifico, è una affermazione ipotetica;
-        %     \item quello che intendiamo dire è che in ogni situazione possibile in cui un oggetto viene lanciato, necessariamente questo cadrà per terra;
-        %     \item necessità e possibilità sono il reame della \alert{logica modale}.
-        % \end{itemize}
-        \item \conn{se} $n$ è divisibile per $4$ \conn{allora} $n$ è pari
-        \begin{itemize}
-            \item $n$ è divisibile per $4$ non è una proposizione, non possiamo dire se è vera è falsa perché ciò dipende dal valore di $n$: siamo nel reame della \alert{logica dei predicati};
-            \item la versione proposizionale sarebbe ``\conn{se} 8 è divisibile per $4$ \conn{allora} $8$ è pari'' \raisebox{-0.2\totalheight}{\includegraphics[width=0.5cm,keepaspectratio]{vomitosa.png}}
-            \item si potrebbe trovare forse in un testo matematico, ma non è certo così comune.
-        \end{itemize}
+            \item \conn{se} sarai promosso a scuola, \conn{allora} ti comprerò la PlayStation 5
+                  \begin{itemize}
+                      \item coinvolge azioni che avverranno in futuro, non ora: è il reame della \alert{logica temporale};
+                      \item la versione classica proposizionale  sarebbe:\\
+                            ``\conn{se} sei stato promosso a scuola, \conn{allora} ti ho comprato la PlayStation 5''  \raisebox{-0.2\totalheight}{\includegraphics[width=0.5cm,keepaspectratio]{vomitosa.png}}
+                  \end{itemize}
+                  \pause
+                  % \item \conn{se} un oggetto viene lanciato da una torre, \conn{allora} cade a terra
+                  % \begin{itemize}
+                  %     \item ``un oggetto viene lanciato da una torre'' non è un proposizione, perché non sta parlando né di un oggetto né di un momento specifico, è una affermazione ipotetica;
+                  %     \item quello che intendiamo dire è che in ogni situazione possibile in cui un oggetto viene lanciato, necessariamente questo cadrà per terra;
+                  %     \item necessità e possibilità sono il reame della \alert{logica modale}.
+                  % \end{itemize}
+            \item \conn{se} $n$ è divisibile per $4$ \conn{allora} $n$ è pari
+                  \begin{itemize}
+                      \item $n$ è divisibile per $4$ non è una proposizione, non possiamo dire se è vera è falsa perché ciò dipende dal valore di $n$: siamo nel reame della \alert{logica dei predicati};
+                      \item la versione proposizionale sarebbe ``\conn{se} 8 è divisibile per $4$ \conn{allora} $8$ è pari'' \raisebox{-0.2\totalheight}{\includegraphics[width=0.5cm,keepaspectratio]{vomitosa.png}}
+                      \item si potrebbe trovare forse in un testo matematico, ma non è certo così comune.
+                  \end{itemize}
         \end{itemize}
     \end{example}
 \end{frame}
@@ -930,85 +960,85 @@ La forma principale del ragionamento deduttivo è quella dell'\alert{inferenza}.
 
 \begin{frame}{Equivalenze logiche}
     \begin{definition}
-    Due proposizioni sono \alert{logicamente equivalenti} quando hanno sempre lo stesso valore di verità, indipendentemente dai valori di verità delle proposizioni semplici che la compongono.
+        Due proposizioni sono \alert{logicamente equivalenti} quando hanno sempre lo stesso valore di verità, indipendentemente dai valori di verità delle proposizioni semplici che la compongono.
     \end{definition}
     \begin{columns}
         \column{0.65\textwidth}
-     \begin{example}[Commutatività della congiunzione]
-        \emph{Pikachu è giallo \conn{e} Bulbasaur è verde} [\alert{$P \wedge Q$}]\medskip\\
-        \hspace{1cm} è equivalente a  (si usa il simbolo $\equiv$)\medskip\\
-        \emph{Bulbasaur è verde \conn{e} Pikachu è giallo} [\alert{$Q \wedge P$}]
-     \end{example}
-     \begin{example}[Idempotenza della congiunzione]
-        \emph{Pikachu è giallo \conn{e} Pikachu è giallo}  [\alert{$P \wedge P$}]\medskip\\
-        \hspace{1cm}$\equiv$\medskip\\
-        \emph{Pikachu è giallo}  [\alert{$P$}].
-     \end{example}
-       \column{0.3\textwidth}
-            \begin{center}
-                \includegraphics[width=2cm,keepaspectratio]{Pikachu.png}
+        \begin{example}[Commutatività della congiunzione]
+            \emph{Pikachu è giallo \conn{e} Bulbasaur è verde} [\alert{$P \land Q$}]\medskip\\
+            \hspace{1cm} è equivalente a  (si usa il simbolo $\equiv$)\medskip\\
+            \emph{Bulbasaur è verde \conn{e} Pikachu è giallo} [\alert{$Q \land P$}]
+        \end{example}
+        \begin{example}[Idempotenza della congiunzione]
+            \emph{Pikachu è giallo \conn{e} Pikachu è giallo}  [\alert{$P \land P$}]\medskip\\
+            \hspace{1cm}$\equiv$\medskip\\
+            \emph{Pikachu è giallo}  [\alert{$P$}].
+        \end{example}
+        \column{0.3\textwidth}
+        \begin{center}
+            \includegraphics[width=2cm,keepaspectratio]{Pikachu.png}
 
-                \includegraphics[width=2cm,keepaspectratio]{Bulbasaur.png}
-            \end{center}
+            \includegraphics[width=2cm,keepaspectratio]{Bulbasaur.png}
+        \end{center}
     \end{columns}
 \end{frame}
 
 \begin{frame}{Equivalenze logiche notevoli 1}
-Alcune equivalenze logiche sono molto importanti. Tra di queste:
-\begin{example}[Doppia negazione]
-\conn{Non è vero che} Pikachu \conn{non} è giallo [\alert{$\neg \neg P$}]\\
-\medskip
-\hspace{1cm}$\equiv$\\
-\medskip
-Pikachu è giallo [\alert{$P$}]
-\end{example}
+    Alcune equivalenze logiche sono molto importanti. Tra di queste:
+    \begin{example}[Doppia negazione]
+        \conn{Non è vero che} Pikachu \conn{non} è giallo [\alert{$\neg \neg P$}]\\
+        \medskip
+        \hspace{1cm}$\equiv$\\
+        \medskip
+        Pikachu è giallo [\alert{$P$}]
+    \end{example}
 \end{frame}
 
 \begin{frame}{Equivalenze logiche notevoli 2}
-\begin{example}[Legge di De Morgan]
-\conn{Non è vero} che Pikachu \conn{e} Bulbasaur sono entrambi gialli [\alert{$\neg (P \wedge Q)$}] \\
-\medskip
-\hspace{1cm}$\equiv$\\
-\medskip
-Pikachu \conn{non} è giallo \conn{o} Bulbasaur \conn{non} è giallo [\alert{$\neg P \vee \neg Q$}]
-\end{example}
+    \begin{example}[Legge di De Morgan]
+        \conn{Non è vero} che Pikachu \conn{e} Bulbasaur sono entrambi gialli [\alert{$\neg (P \land Q)$}] \\
+        \medskip
+        \hspace{1cm}$\equiv$\\
+        \medskip
+        Pikachu \conn{non} è giallo \conn{o} Bulbasaur \conn{non} è giallo [\alert{$\neg P \lor \neg Q$}]
+    \end{example}
 
-\begin{example}[Legge di De Morgan]
-\conn{Non è vero} che \conn{o} Pikachu \conn{o} Bulbasaur è rosso [\alert{$\neg (P \vee Q)$}] \\
-\medskip
-\hspace{1cm}$\equiv$\\
-\medskip
-Pikachu \conn{non} è rosso \conn{e} Bulbasaur \conn{non} è rosso [\alert{$\neg P \wedge \neg Q$}]
-\end{example}
+    \begin{example}[Legge di De Morgan]
+        \conn{Non è vero} che \conn{o} Pikachu \conn{o} Bulbasaur è rosso [\alert{$\neg (P \lor Q)$}] \\
+        \medskip
+        \hspace{1cm}$\equiv$\\
+        \medskip
+        Pikachu \conn{non} è rosso \conn{e} Bulbasaur \conn{non} è rosso [\alert{$\neg P \land \neg Q$}]
+    \end{example}
 \end{frame}
 
 \begin{frame}{Equivalenze logiche notevoli 3}
-\begin{example}[Contronominale di una implicazione]
-\conn{Se} $n$ è divisibile per $4$ \conn{allora} $n$ è pari [\alert{$P \to Q$}]\\
-\medskip
-\hspace{2cm}$\equiv$\\
-\medskip
-\conn{Se} $n$ \conn{non} è pari \conn{allora} $n$ \conn{non} è divisibile per 4 [\alert{$\neg Q \to \neg P$}]
-\end{example}
-Invece, le seguenti equivalenze sono false
-\begin{columns}
-\column{0.40\textwidth}
-\begin{example}[Implicazione inversa]
-\conn{Se} $n$ è divisibile per $4$ \conn{allora} $n$ è pari\\[0cm] [\alert{$P \to Q$}]\\
-\medskip
-\hspace{2cm}\alert{$\not\equiv$}\\
-\medskip
-\conn{Se} $n$ è pari \conn{allora} $n$ è divisibile per 4\\[0cm] [\alert{$Q \to P$}]
-\end{example}
-\column{0.55\textwidth}
-\begin{example}[Implicazione contraria]
-\conn{Se} $n$ è divisibile per $4$ \conn{allora} $n$ è pari\\[0cm] [\alert{$P \to Q$}]\\
-\medskip
-\hspace{2cm}\alert{$\not\equiv$}\\
-\medskip
-\conn{Se} $n$ \conn{non} è divisibile per 4 \conn{allora} $n$ \conn{non} è pari \\[0cm] [\alert{$\neg P \to \neg Q$}]
-\end{example}
-\end{columns}
+    \begin{example}[Contronominale di un'implicazione]
+        \conn{Se} $n$ è divisibile per $4$ \conn{allora} $n$ è pari [\alert{$P \to Q$}]\\
+        \medskip
+        \hspace{2cm}$\equiv$\\
+        \medskip
+        \conn{Se} $n$ \conn{non} è pari \conn{allora} $n$ \conn{non} è divisibile per 4 [\alert{$\neg Q \to \neg P$}]
+    \end{example}
+    Invece, le seguenti equivalenze sono false
+    \begin{columns}
+        \column{0.40\textwidth}
+        \begin{example}[Implicazione inversa]
+            \conn{Se} $n$ è divisibile per $4$ \conn{allora} $n$ è pari\\[0cm] [\alert{$P \to Q$}]\\
+            \medskip
+            \hspace{2cm}\alert{$\not\equiv$}\\
+            \medskip
+            \conn{Se} $n$ è pari \conn{allora} $n$ è divisibile per 4\\[0cm] [\alert{$Q \to P$}]
+        \end{example}
+        \column{0.55\textwidth}
+        \begin{example}[Implicazione contraria]
+            \conn{Se} $n$ è divisibile per $4$ \conn{allora} $n$ è pari\\[0cm] [\alert{$P \to Q$}]\\
+            \medskip
+            \hspace{2cm}\alert{$\not\equiv$}\\
+            \medskip
+            \conn{Se} $n$ \conn{non} è divisibile per 4 \conn{allora} $n$ \conn{non} è pari \\[0cm] [\alert{$\neg P \to \neg Q$}]
+        \end{example}
+    \end{columns}
 \end{frame}
 
 %\begin{frame}{Inferenze notevoli}
@@ -1038,7 +1068,7 @@ Invece, le seguenti equivalenze sono false
         \item $\mathbf{3}^2 \geq 1$
     \end{itemize}
 
-     Ma c'è un altro modo per ottenere delle proposizioni dalle forme proposizionali: si possono usare i \alert{quantificatori}.\medskip
+    Ma c'è un altro modo per ottenere delle proposizioni dalle forme proposizionali: si possono usare i \alert{quantificatori}.\medskip
 \end{frame}
 
 \begin{frame}{Quantificatore esistenziale}
@@ -1050,7 +1080,7 @@ Invece, le seguenti equivalenze sono false
     \begin{example}
         \quant{Esiste $x$ tale che} $x$ è la capitale d'Italia \pause (\checkmark)
         \begin{itemize}
-        \item se pongo $x=\text{Roma}$, la proposizione $Roma$  è la capitale d'Italia diventa vera.
+            \item se pongo $x=\text{Roma}$, la proposizione $Roma$  è la capitale d'Italia diventa vera.
         \end{itemize}
         \pause
         \quant{Esiste $x$ tale che} $0 \cdot x = 3$ --- in simboli $\exists x, \, 0 \cdot x = 3$ \pause (\xmark)
@@ -1074,7 +1104,7 @@ Invece, le seguenti equivalenze sono false
     \begin{example}
         \quant{Per ogni $x$,} $x$ è la capitale d'Italia \pause (\xmark)
         \begin{itemize}
-        \item non è vero che qualunque cosa metto al posto di $x$ ottengo una proposizione vera, ad esempio, se $x=\text{Pescara}$ si ottiene ``Pescara è la capitale d'Italia'' che è falsa.
+            \item non è vero che qualunque cosa metto al posto di $x$ ottengo una proposizione vera, ad esempio, se $x=\text{Pescara}$ si ottiene ``Pescara è la capitale d'Italia'' che è falsa.
         \end{itemize}
         \pause
         \quant{Per ogni $x$,} $0 \cdot x = 3$ --- in simboli $\forall x, \, 0 \cdot x = 3$  \pause (\xmark)
@@ -1099,14 +1129,14 @@ Invece, le seguenti equivalenze sono false
     Ogni quantificatore (universale o esistenziale) ha un \alert{dominio di quantificazione} implicito.
     \begin{itemize}
         \item \quant{Per ogni $x$}, $x$ è la capitale d’Italia \pause
-        \begin{itemize}
-            \item dominio: insieme di tutte le città
-        \end{itemize}
-        \pause
+              \begin{itemize}
+                  \item dominio: insieme di tutte le città
+              \end{itemize}
+              \pause
         \item \quant{Per ogni $x$}, $3 + x = 4$ \pause
-        \begin{itemize}
-            \item dominio: insieme dei numeri (ma quale: numeri interi, razionali, reali, \ldots ?)
-        \end{itemize}
+              \begin{itemize}
+                  \item dominio: insieme dei numeri (ma quali: numeri interi, razionali, reali, \ldots?)
+              \end{itemize}
     \end{itemize}
 \end{frame}
 
@@ -1115,8 +1145,8 @@ Invece, le seguenti equivalenze sono false
     \begin{example}
         \quant{Per ogni $x$}, $x + 2 > 0$ \pause
         \begin{itemize}
-        \item è ambiguo... se $x$ può essere un numero qualunque è falso (pensiamo a $x=-10$)
-        \item ma se $x$ sono solo i numeri naturali (interi positivi), allora è vero
+            \item è ambiguo... se $x$ può essere un numero qualunque è falso (pensiamo a $x=-10$)
+            \item ma se $x$ sono solo i numeri naturali (interi positivi), allora è vero
         \end{itemize}
         \pause
         \quant{Per ogni} $x \in \mathbb{N}$, $x + 2 > 0$ \pause
@@ -1139,8 +1169,8 @@ Invece, le seguenti equivalenze sono false
     \begin{example}
         \quant{Esiste $x$ tale che} $2x = 1$ \pause (?)
         \begin{itemize}
-        \item è ambiguo... se $x$ può essere un numero qualunque è vero (pensiamo ad esempio a $x=\frac{1}{2}$)
-        \item ma se $x$ sono solo i numeri interi allora è falso
+            \item è ambiguo... se $x$ può essere un numero qualunque è vero (pensiamo ad esempio a $x=\frac{1}{2}$)
+            \item ma se $x$ sono solo i numeri interi allora è falso
         \end{itemize}
         \quant{Esiste} $x \in \mathbb{Q}$ \quant{tale che} $2x = 1$
         \begin{itemize}
@@ -1156,29 +1186,29 @@ Invece, le seguenti equivalenze sono false
 \begin{frame}{Quantificatori e linguaggio naturale}
     Le proposizioni viste nei lucidi precedenti non sono propriamente in italiano.
     \begin{itemize}
-    \item In italiano non si usano le variabili!! Al loro posto usiamo nomi e pronomi.
-    \item L'uso di ``\quant{per ogni}'' in italiano è raro. Sono più comuni \quant{tutti}, \quant{qualunque}, etc\ldots
-    \item Anche per ``\quant{esiste}'' in italiano ci sono molte alternative \quant{C'è}, \quant{C'è almeno un}, etc\ldots
+        \item In italiano non si usano le variabili!! Al loro posto usiamo nomi e pronomi.
+        \item L'uso di ``\quant{per ogni}'' in italiano è raro. Sono più comuni \quant{tutti}, \quant{qualunque}, ecc.
+        \item Anche per ``\quant{esiste}'' in italiano ci sono molte alternative \quant{C'è}, \quant{C'è almeno un}, ecc.
     \end{itemize}
 
     Proposizioni quantificate in italiano si possono comunque ``tradurre'' con ``\quant{per ogni}'' ed ``\quant{esiste}''.
     \begin{columns}
         \column{0.45\textwidth}
-            \begin{example}
-        \quant{Tutti} gli uomini sono mortali\\
-        \medskip
-        \hspace{1cm}$\equiv$\\
-        \medskip
-        \quant{per ogni} $x$, \conn{se} $x$ è un uomo \conn{allora} $x$ è mortale
-    \end{example}
+        \begin{example}
+            \quant{Tutti} gli uomini sono mortali\\
+            \medskip
+            \hspace{1cm}$\equiv$\\
+            \medskip
+            \quant{per ogni} $x$, \conn{se} $x$ è un uomo \conn{allora} $x$ è mortale
+        \end{example}
         \column{0.45\textwidth}
-    \begin{example}
-        \quant{Esiste} un elefante che vola\\
-        \medskip
-        \hspace{1cm}$\equiv$\\
-        \medskip
-        \quant{esiste $x$ tale che} $x$ è un elefante \conn{e} $x$ vola
-    \end{example}
+        \begin{example}
+            \quant{Esiste} un elefante che vola\\
+            \medskip
+            \hspace{1cm}$\equiv$\\
+            \medskip
+            \quant{esiste $x$ tale che} $x$ è un elefante \conn{e} $x$ vola
+        \end{example}
     \end{columns}
 \end{frame}
 
@@ -1186,19 +1216,19 @@ Invece, le seguenti equivalenze sono false
 
 \begin{frame}{Equivalenze logiche notevoli con i quantificatori 1}
     \begin{example}
-        Tutti gli usignoli volano e trillano [\alert{$\forall x\in U , P(x) \wedge Q(x)$}]\\
+        Tutti gli usignoli volano e trillano [\alert{$\forall x\in U , P(x) \land Q(x)$}]\\
         \medskip
         \hspace{1cm}$\equiv$\\
         \medskip
-        Tutti gli usignoli volano e tutti gli usignoli trillano [\alert{$(\forall x \in U, P(x)) \wedge (\forall x \in U, Q(x))$}]
+        Tutti gli usignoli volano e tutti gli usignoli trillano [\alert{$(\forall x \in U, P(x)) \land (\forall x \in U, Q(x))$}]
     \end{example}
 
     \begin{example}
-        C'è un pokemon di colore giallo o verde\\[0cm] [\alert{$\exists x \in P, G(x) \vee V(x)$}]\\
+        C'è un pokemon di colore giallo o verde\\[0cm] [\alert{$\exists x \in P, G(x) \lor V(x)$}]\\
         \medskip
         \hspace{1cm}$\equiv$\\
         \medskip
-        C'è un pokemon di colore giallo o c'è un pokemon di colore verde\\[0cm] [\alert{$(\exists x \in P, G(x)) \vee (\exists x \in P, V(x))$}]
+        C'è un pokemon di colore giallo o c'è un pokemon di colore verde\\[0cm] [\alert{$(\exists x \in P, G(x)) \lor (\exists x \in P, V(x))$}]
     \end{example}
 \end{frame}
 
@@ -1212,12 +1242,12 @@ Invece, le seguenti equivalenze sono false
         \medskip
         Esiste un gatto che non è nero\\
         Esiste $x$ tale che $G(x)$ e non $N(x)$\\[0cm]
-        [\alert{$\exists x, G(x) \wedge \neg N(x)$}]
+        [\alert{$\exists x, G(x) \land \neg N(x)$}]
     \end{example}
 
     \begin{example}
         Non esiste un elefante volante\\[0cm]
-        [\alert{$\neg \exists x, E(x) \wedge  V(x)$}]\\[0cm]
+        [\alert{$\neg \exists x, E(x) \land  V(x)$}]\\[0cm]
         \medskip
         \hspace{1cm}$\equiv$\\
         \medskip
@@ -1229,113 +1259,113 @@ Invece, le seguenti equivalenze sono false
 \section{Esempi di quiz}
 
 \begin{frame}{Esempio}
- Consideriamo le seguenti affermazioni:
- \begin{enumerate}
-\item Tutti i matematici sono distratti \only<2>{[\alert{$\forall x, M(x) \to D(x)$}]}
-\item Luigi è distratto \only<2>{[\alert{$D(\text{Luigi})$}]}
-\item Tutte le persone distratte amano nuotare \only<2>{[\alert{$\forall x, D(x) \to N(x)$}]}
-\end{enumerate}
-Se queste affermazioni sono vere, quale altra, tra le seguenti affermazioni, è necessariamente vera?
-\begin{enumerate}[A]
-\item Tutte le persone che amano nuotare sono distratte.
-\item Luigi è un matematico.
-\item Tutte le persone distratte sono matematici.
-\item Luigi ama nuotare.
-\item Tutti i matematici amano nuotare.
-\end{enumerate}
+    Consideriamo le seguenti affermazioni:
+    \begin{enumerate}
+        \item Tutti i matematici sono distratti \only<2>{[\alert{$\forall x, M(x) \to D(x)$}]}
+        \item Luigi è distratto \only<2>{[\alert{$D(\text{Luigi})$}]}
+        \item Tutte le persone distratte amano nuotare \only<2>{[\alert{$\forall x, D(x) \to N(x)$}]}
+    \end{enumerate}
+    Se queste affermazioni sono vere, quale altra, tra le seguenti affermazioni, è necessariamente vera?
+    \begin{enumerate}[A]
+        \item Tutte le persone che amano nuotare sono distratte.
+        \item Luigi è un matematico.
+        \item Tutte le persone distratte sono matematici.
+        \item Luigi ama nuotare.
+        \item Tutti i matematici amano nuotare.
+    \end{enumerate}
 \end{frame}
 
 \begin{frame}{Esempio}
- Consideriamo le seguenti affermazioni:
- \begin{enumerate}
-\item Tutti i matematici sono distratti [\alert{$\forall x, M(x) \to D(x)$}]
-\item Luigi è distratto [\alert{$D(\text{Luigi})$}]
-\item Tutte le persone distratte amano nuotare [\alert{$\forall x, D(x) \to N(x)$}]
-\end{enumerate}
-Se queste affermazioni sono vere, quale altra, tra le seguenti affermazioni, è necessariamente vera?
-\begin{enumerate}[A]
-\item Tutte le persone che amano nuotare sono distratte \only<2->{\alert{[$\forall x, N(x) \to D(x)$]}} \only<3>{(\xmark)}
-\end{enumerate}
-\pause
-\medskip
-Non c'è motivo per cui debba essere vera (la proposizione $3$ afferma l'inverso)
+    Consideriamo le seguenti affermazioni:
+    \begin{enumerate}
+        \item Tutti i matematici sono distratti [\alert{$\forall x, M(x) \to D(x)$}]
+        \item Luigi è distratto [\alert{$D(\text{Luigi})$}]
+        \item Tutte le persone distratte amano nuotare [\alert{$\forall x, D(x) \to N(x)$}]
+    \end{enumerate}
+    Se queste affermazioni sono vere, quale altra, tra le seguenti affermazioni, è necessariamente vera?
+    \begin{enumerate}[A]
+        \item Tutte le persone che amano nuotare sono distratte \only<2->{\alert{[$\forall x, N(x) \to D(x)$]}} \only<3>{(\xmark)}
+    \end{enumerate}
+    \pause
+    \medskip
+    Non c'è motivo per cui debba essere vera (la proposizione $3$ afferma l'inverso)
 \end{frame}
 
 \begin{frame}{Esempio}
- Consideriamo le seguenti affermazioni:
- \begin{enumerate}
-\item Tutti i matematici sono distratti [\alert{$\forall x, M(x) \to D(x)$}]
-\item Luigi è distratto [\alert{$D(\text{Luigi})$}]
-\item Tutte le persone distratte amano nuotare [\alert{$\forall x, D(x) \to N(x)$}]
-\end{enumerate}
-Se queste affermazioni sono vere, quale altra, tra le seguenti affermazioni, è necessariamente vera?
-\begin{enumerate}[A]\addtocounter{enumi}{2}
-\item Tutte le persone distratte sono matematici \only<2->{\alert{[$\forall x, D(x) \to M(x)$]}} \only<3>{(\xmark)}
-\end{enumerate}
-\pause
-\medskip
-Non c'è motivo per cui debba essere vera (la proposizione $1$ afferma l'inverso)
+    Consideriamo le seguenti affermazioni:
+    \begin{enumerate}
+        \item Tutti i matematici sono distratti [\alert{$\forall x, M(x) \to D(x)$}]
+        \item Luigi è distratto [\alert{$D(\text{Luigi})$}]
+        \item Tutte le persone distratte amano nuotare [\alert{$\forall x, D(x) \to N(x)$}]
+    \end{enumerate}
+    Se queste affermazioni sono vere, quale altra, tra le seguenti affermazioni, è necessariamente vera?
+    \begin{enumerate}[A]\addtocounter{enumi}{2}
+        \item Tutte le persone distratte sono matematici \only<2->{\alert{[$\forall x, D(x) \to M(x)$]}} \only<3>{(\xmark)}
+    \end{enumerate}
+    \pause
+    \medskip
+    Non c'è motivo per cui debba essere vera (la proposizione $1$ afferma l'inverso)
 \end{frame}
 
 \begin{frame}{Esempio}
- Consideriamo le seguenti affermazioni:
- \begin{enumerate}
-\item Tutti i matematici sono distratti [\alert{$\forall x, M(x) \to D(x)$}]
-\item Luigi è distratto [\alert{$D(\text{Luigi})$}]
-\item Tutte le persone distratte amano nuotare [\alert{$\forall x, D(x) \to N(x)$}]
-\end{enumerate}
-Se queste affermazioni sono vere, quale altra, tra le seguenti affermazioni, è necessariamente vera?
-\begin{enumerate}[A]\addtocounter{enumi}{1}
-\item Luigi è un matematico. \only<2->{\alert{[$M(\text{Luigi})$]}} \only<3>{(\xmark)}
-\end{enumerate}
-\pause
-\medskip
-Non c'è motivo per cui debba essere vera.
+    Consideriamo le seguenti affermazioni:
+    \begin{enumerate}
+        \item Tutti i matematici sono distratti [\alert{$\forall x, M(x) \to D(x)$}]
+        \item Luigi è distratto [\alert{$D(\text{Luigi})$}]
+        \item Tutte le persone distratte amano nuotare [\alert{$\forall x, D(x) \to N(x)$}]
+    \end{enumerate}
+    Se queste affermazioni sono vere, quale altra, tra le seguenti affermazioni, è necessariamente vera?
+    \begin{enumerate}[A]\addtocounter{enumi}{1}
+        \item Luigi è un matematico. \only<2->{\alert{[$M(\text{Luigi})$]}} \only<3>{(\xmark)}
+    \end{enumerate}
+    \pause
+    \medskip
+    Non c'è motivo per cui debba essere vera.
 \end{frame}
 
 \begin{frame}{Esempio}
- Consideriamo le seguenti affermazioni:
- \begin{enumerate}
-\item Tutti i matematici sono distratti [\alert{$\forall x, M(x) \to D(x)$}]
-\item Luigi è distratto [\alert{$D(\text{Luigi})$}]
-\item Tutte le persone distratte amano nuotare [\alert{$\forall x, D(x) \to N(x)$}]
-\end{enumerate}
-Se queste affermazioni sono vere, quale altra, tra le seguenti affermazioni, è necessariamente vera?
-\begin{enumerate}[A]\addtocounter{enumi}{3}
-\item Luigi ama nuotare. \only<2->{[\alert{$N(\text{Luigi}$)}]} \only<3>{(\checkmark)}
-\end{enumerate}
-\pause
-\medskip
-L'inferenza è corretta. Infatti:
-\begin{itemize}
-\item da (3) sappiamo che tutte le persone distratta sanno nuotare, ne inferiamo che:\\
-\hspace{1cm}\conn{se} Luigi è distratto, \conn{allora} Luigi ama nuotare'' [\alert{$D(\text{Luigi}) \to N(\text{Luigi})$}]
-\item da (2) e la proposizione di sopra, per la regola chiamata \alert{modus ponens}, sappiamo che:\\
-\hspace{1cm}Luigi ama nuotare [\alert{$N(\text{Luigi})$)}]
-\end{itemize}
+    Consideriamo le seguenti affermazioni:
+    \begin{enumerate}
+        \item Tutti i matematici sono distratti [\alert{$\forall x, M(x) \to D(x)$}]
+        \item Luigi è distratto [\alert{$D(\text{Luigi})$}]
+        \item Tutte le persone distratte amano nuotare [\alert{$\forall x, D(x) \to N(x)$}]
+    \end{enumerate}
+    Se queste affermazioni sono vere, quale altra, tra le seguenti affermazioni, è necessariamente vera?
+    \begin{enumerate}[A]\addtocounter{enumi}{3}
+        \item Luigi ama nuotare. \only<2->{[\alert{$N(\text{Luigi})$}]} \only<3>{(\checkmark)}
+    \end{enumerate}
+    \pause
+    \medskip
+    L'inferenza è corretta. Infatti:
+    \begin{itemize}
+        \item da (3) sappiamo che tutte le persone distratte amano nuotare; ne inferiamo che:\\
+              \hspace{1cm}\conn{se} Luigi è distratto, \conn{allora} Luigi ama nuotare [\alert{$D(\text{Luigi}) \to N(\text{Luigi})$}]
+        \item da (2) e la proposizione di sopra, per la regola chiamata \alert{modus ponens}, sappiamo che:\\
+              \hspace{1cm}Luigi ama nuotare [\alert{$N(\text{Luigi})$}]
+    \end{itemize}
 \end{frame}
 
 
 
 \begin{frame}{Esempio}
- Consideriamo le seguenti affermazioni:
- \begin{enumerate}
-\item Tutti i matematici sono distratti [\alert{$\forall x, M(x) \to D(x)$}]
-\item Luigi è distratto [\alert{$D(\text{Luigi})$}]
-\item Tutte le persone distratte amano nuotare [\alert{$\forall x, D(x) \to N(x)$}]
-\end{enumerate}
-Se queste affermazioni sono vere, quale altra, tra le seguenti affermazioni, è necessariamente vera?
-\begin{enumerate}[A]\addtocounter{enumi}{4}
-\item Tutti i matematici amano nuotare. \only<2->{\alert{[$\forall x, M(x) \to N(x)$]}} \only<3>{(\checkmark)}
-\end{enumerate}
-\pause
-\medskip
-Sebbene questa proposizione non sia esplicitamente contenuta nelle premesse, è ovviamente inferibile dalle premesse.
-\begin{itemize}
-    \item Preso una persona qualunque ($x$), se quella persona è un matematico ($M(x)$)\ldots
-    \item Dalla (1) consegue che quella persona è distratta ($D(x)$)
-    \item Dalla (3) consegue che quella persona ama nuotare ($N(x)$)
-\end{itemize}
+    Consideriamo le seguenti affermazioni:
+    \begin{enumerate}
+        \item Tutti i matematici sono distratti [\alert{$\forall x, M(x) \to D(x)$}]
+        \item Luigi è distratto [\alert{$D(\text{Luigi})$}]
+        \item Tutte le persone distratte amano nuotare [\alert{$\forall x, D(x) \to N(x)$}]
+    \end{enumerate}
+    Se queste affermazioni sono vere, quale altra, tra le seguenti affermazioni, è necessariamente vera?
+    \begin{enumerate}[A]\addtocounter{enumi}{4}
+        \item Tutti i matematici amano nuotare. \only<2->{\alert{[$\forall x, M(x) \to N(x)$]}} \only<3>{(\checkmark)}
+    \end{enumerate}
+    \pause
+    \medskip
+    Sebbene questa proposizione non sia esplicitamente contenuta nelle premesse, è ovviamente inferibile dalle premesse.
+    \begin{itemize}
+        \item Preso una persona qualunque ($x$), se quella persona è un matematico ($M(x)$)\ldots
+        \item Dalla (1) consegue che quella persona è distratta ($D(x)$)
+        \item Dalla (3) consegue che quella persona ama nuotare ($N(x)$)
+    \end{itemize}
 \end{frame}
 
 % \begin{frame}{Esempio 1}
