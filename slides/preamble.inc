@@ -15,6 +15,8 @@
 \usetikzlibrary{overlay-beamer-styles, tikzmark, shapes}
 
 \usetheme{Madrid}
+\logo{\includegraphics[width=0.8cm,keepaspectratio]{img/udalogo.png}}
+
 \deftranslation[to=italian]{Definition}{Definizione}
 \deftranslation[to=italian]{Example}{Esempio}
 \deftranslation[to=italian]{Theorem}{Teorema}
