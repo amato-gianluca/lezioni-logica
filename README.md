@@ -1,4 +1,4 @@
-# Lezioni di Logica 
+# Lezioni di Logica
 
 Questo repository contiene sorgenti LaTeX con varie lezioni di logica di base. Si tratta principalmente delle slide che utilizzo per il corso di logica da 3 CFU che tengo al [Corso di Laurea in Economia e Informatica per l'Impresa](https://cleii.unich.it) dell'[Università "G. d'Annunzio" di Chieti-Pescara](https://www.unich.it).
 
@@ -9,7 +9,7 @@ Ci sono due versioni delle slide:
 Entrambe sono basate sul libro:
 <blockquote>
 Dario Palladino<br>
-<a href="https://www.carocci.it/prodotto/corso-di-logica-3" target="_blanl">Corso di logica: introduzione elementare al calcolo dei predicati (terza edizione)</a><br>
+<a href="https://www.carocci.it/prodotto/corso-di-logica-3" target="_blank">Corso di logica: introduzione elementare al calcolo dei predicati (terza edizione)</a><br>
 Carocci editore
 </blockquote>
 
