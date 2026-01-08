@@ -6,6 +6,13 @@ Ci sono due versioni delle slide:
   * versione compatta, adatta ad una singola lezione intensiva di 2/3 ore, nella cartella `compact`;
   * versione estesa, adatta ad un corso di 3 CFU, nella cartella `slides`.
 
+Entrambe sono basate sul libro:
+<blockquote>
+Dario Palladino<br>
+<a href="https://www.carocci.it/prodotto/corso-di-logica-3" target="_blanl">Corso di logica: introduzione elementare al calcolo dei predicati (terza edizione)</a><br>
+Carocci editore
+</blockquote>
+
 La versione compatta può essere compilata con `latexmk` o con `pdflatex`.
 
 I file della versione estesa possono essere compilati con `latexmk` o con `pdflatex -shell-escape`. La versione estesa comprende alcune note che vengono normalmente ignorate, ma che possono essere attivate decommentando il comando
