@@ -41,17 +41,17 @@
     \begin{prooftree}
         \AXC{$\forall x \phi(x)$}
         \RightLabel{($\elim\forall$)}
-        \UIC{$\phi(t)$}
+        \UIC{$\phi(k)$}
     \end{prooftree}
     dove
     \begin{itemize}
         \item $\phi(x)$ indica una qualunque formula potenzialmente contenente $x$;
         \item $t$ è un termine (costante individuale o variabile libera) qualunque;
-        \item $\phi(t)$ è ottenuta rimpiazzando le occorrenze libere di $x$ con $t$.
+        \item $\phi(k)$ è ottenuta rimpiazzando le occorrenze libere di $x$ con la costante $k$.
     \end{itemize}
 
     \medskip
-    Informalmente, vuol dire che se so che $\phi(x)$ è vera per tutti gli individui, allora sarà sicuramente vera per $t$, chiunque sia $t$.
+    Informalmente, vuol dire che se so che $\phi(x)$ è vera per tutti gli individui, allora sarà sicuramente vera per $k$, chiunque sia $k$.
     \begin{example}[$\forall x (Px \to Qx), Pa \vdash Qa$]
         \begin{prooftree}
             \AXC{$\forall x (Px \to Qx)$}
@@ -66,12 +66,12 @@
 
 \begin{frame}{Introduzione del quantificatore esistenziale}
     \begin{prooftree}
-        \AXC{$\phi(t)$}
+        \AXC{$\phi(k)$}
         \RightLabel{($\intro\exists$)}
         \UIC{$\exists x \phi(x)$}
     \end{prooftree}
     \medskip
-    Informalmente, vuol dire che se so che $\phi$ è vera per un certo individuo  specifico $t$, posso concludere che esiste un individuo $x$ che rende vera $\phi$ (l'individuo in questione è proprio $t$!!).
+    Informalmente, vuol dire che se so che $\phi$ è vera per un certo individuo specifico $k$, posso concludere che esiste un individuo $x$ che rende vera $\phi$ (l'individuo in questione è proprio $k$!).
     \begin{example}[$\forall x Px \vdash \exists x Px$]
         \begin{prooftree}
             \AXC{$\forall x Px$}
@@ -87,17 +87,17 @@
     Come posso concludere una formula del tipo $\forall x Px$ ?
 
     \medskip
-    Dimostrando che $Px$ è vera per un individuo $x$ qualsiasi, di cui non so nulla.
+    Dimostrando che $Px$ è vera per un individuo $k$ qualsiasi, di cui non so nulla.
 
     \begin{center}
         \framebox{\begin{minipage}{0.8\textwidth}
                 \begin{prooftree}
-                    \AXC{$\phi(t)$}
+                    \AXC{$\phi(k)$}
                     \RightLabel{($\intro\forall$)}
                     \UIC{$\forall x \phi(x)$}
                 \end{prooftree}
                 \begin{center}
-                    se $t$ non appare in nessuna ipotesi non cancellata
+                    se $k$ non appare in $\phi(x)$ e in alcuna ipotesi da cui dipende $\phi(k)$
                 \end{center}
             \end{minipage}}
     \end{center}
@@ -144,14 +144,14 @@
         \framebox{\begin{minipage}{0.8\textwidth}
                 \begin{prooftree}
                     \AXC{$\exists x \phi(x)$}
-                    \AXC{$[\phi(t)]$}
+                    \AXC{$[\phi(k)]$}
                     \dottedLine
                     \UIC{$\psi$}
                     \RightLabel{($\elim\exists$)}
                     \BIC{$\psi$}
                 \end{prooftree}
                 \begin{center}
-                    se $t$ non compare in $\psi$ e in nessuna ipotesi non cancellata di $\psi$
+                    se $k$ non compare in $\psi$, in $\phi(x)$ e in nessuna ipotesi da cui dipende $\psi$ tranne $\phi(k)$
                 \end{center}
             \end{minipage}}
     \end{center}

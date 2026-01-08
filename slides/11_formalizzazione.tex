@@ -28,7 +28,8 @@
     \medskip Non introdurremo nulla di nuovo, ma il livello di formalità molto elevato potrebbe mettervi in difficoltà. Se vi sembra che tutto ciò sia inutile, tenete conto di due cose:
     \begin{itemize}
         \item lasciare tutto a livello un po' informale consente di fare molto, ma rende difficile dimostrare proprietà delle formule logiche;
-        \item la formalizzazione è necessaria per poter scrivere programmi che manipolano formule logiche, per esempio un programma che prende in input una forma proposizionale e stabilisce se è una tautologia; grazie alla formalizzazione che vedremo il problema è più approcciabile (ma comunque alcune delle conoscenze di programmazione richieste verranno introdotte solo nel corso di ``Programmazione e Algoritmi 2'').
+        \item la formalizzazione è necessaria per poter scrivere programmi che manipolano formule logiche, per esempio un programma che prende in input una forma proposizionale e stabilisce se è una tautologia; grazie alla formalizzazione che vedremo il problema è più approcciabile.
+        % (ma comunque alcune delle conoscenze di programmazione richieste verranno introdotte solo nel corso di ``Programmazione e Algoritmi 2'').
     \end{itemize}
 \end{frame}
 
@@ -394,10 +395,9 @@
         \end{itemize}
     \end{example}
     \begin{block}{Osservazioni}
-        \begin{itemize}
-            \item Come già visto, informalmente possiamo eliminare alcune parentesi confidando sulla priorità tra gli operatori.
-                  % \item Nel seguito quando daremo una segnatura $\Sigma$ forniremo solo le costanti individuali e predicative. Per le variabili assumeremo sempre che contengano $x$, $y$, $z$ e tutte le possibili varianti con apici e pedici.
-        \end{itemize}
+        Come già visto, informalmente possiamo eliminare alcune parentesi confidando sulla priorità tra gli operatori.
+
+        %Nel seguito quando daremo una segnatura $\Sigma$ forniremo solo le costanti individuali e predicative. Per le variabili assumeremo sempre che contengano $x$, $y$, $z$ e tutte le possibili varianti con apici e pedici.
     \end{block}
 \end{frame}
 
@@ -485,7 +485,7 @@
 \end{frame}
 
 \begin{frame}{Interpretazione (1)}
-    Indichiamo con  $\partof(D^n)$ l'\emph{insieme delle parti} di $D^n$, ovvero l'insieme di tutti i possibili sottinsiemi di $D^n$, ovvero l'insieme di tutte le relazioni su $D^n$.
+    Indichiamo con  $\partof(D^n)$ l'\emph{insieme delle parti} di $D^n$, ovvero l'insieme di tutti i possibili sottinsiemi di $D^n$, ovvero l'insieme di tutte le relazioni $n$-arie su $D$.
     \medskip
 
     Possiamo a questo punto fissare il concetto di interpretazione per la logica dei predicati come segue.
@@ -605,7 +605,7 @@
 \begin{frame}<1-2>[label=model]{Modello}
     Per la logica dei predicati, preferiamo definire direttamente il concetto di modello:
     \begin{definition}[Modello]
-        Data una interpretazione $\mcI = (D, \mcI_C, \mcI_P)$ su $\Sigma$ e una valutazione $\alpha$, definiamo cosa vuol dire che $(\mcI, \alpha)$ è un modello della \fbf $X$, in formula $\mcI \models_\alpha X$,  per induzione sulla struttura di $X$. In particolare:
+        Data una interpretazione $\mcI = (D, \mcI_C, \mcI_P)$ su $\Sigma$ e una valutazione $\alpha$, definiamo cosa vuol dire che $(\mcI, \alpha)$ è un modello della \fbf $X$, che scriveremo $\mcI \models_\alpha X$,  per induzione sulla struttura di $X$. In particolare:
         \begin{itemize}[<+->]
             \item $\mcI \models_\alpha \top$;
             \item $\mcI \models_\alpha Pt_1\ldots t_N$ se e solo se \only<.|handout:0>{???}\uncover<+->{$(\mcI_\alpha(t_1), \ldots, \mcI_\alpha(t_N)) \in \mcI_P(P)$;}
@@ -764,7 +764,7 @@
 \begin{frame}{Esempio: $\mcI \models_\alpha \exists x (Px \lor Qb)$}
     Tenendo conto della interpretazione, la formula in italiano diventa
     \begin{center}
-        ``esiste un $x$ tale $x$ è pari oppure $b$ è compreso tra $0$ e $3$''
+        ``esiste un $x$ tale che $x$ è pari oppure $b$ è compreso tra $0$ e $3$''
     \end{center}
 
     \begin{itemize}[<+->]
@@ -941,7 +941,7 @@
     Queste definizioni sono praticamente le stesse che abbiamo già visto, solo rifrasate usando i concetti di interpretazione e modello.
 
     \begin{definition}[Tautologia e contraddizione]
-        Una \fbf $X$ è detta \emph{tautologia} se e solo se $\mcI \models_\alpha X$ per tutte le interpretazioni $\mcI$ e valutazioni $\alpha$. Una \fbf $X$ è detta \emph{contraddizione} se e solo se $\mcI \not\models_\alpha X$ per tutte le interpretazioni $\mcI$ e valutazioni $\alpha$.
+        Una \fbf $X$ è detta \emph{valida} se e solo se $\mcI \models_\alpha X$ per tutte le interpretazioni $\mcI$ e valutazioni $\alpha$. Una \fbf $X$ è detta \emph{contraddizione} se e solo se $\mcI \not\models_\alpha X$ per tutte le interpretazioni $\mcI$ e valutazioni $\alpha$.
     \end{definition}
 
     \begin{definition}[Equivalenza logica]
