@@ -1,0 +1,35 @@
+name: Build LaTeX PDF and attach to Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX (prebuilt TeXLive container)
+        uses: xu-cheng/latex-action@v4
+        with:
+          root_file: |
+            compact/*.tex
+            slides/*.tex
+          work_in_root_file_dir: true
+
+      - name: Copy PDFs
+        run: |
+          mkdir -p dist
+          cp slides/*.pdf dist
+          cp compact/*.pdf dist
+
+      - name: Create Release and upload PDF
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.pdf
+          generate_release_notes: true
