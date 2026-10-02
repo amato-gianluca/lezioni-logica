@@ -20,12 +20,13 @@
 	\bookpage{sul capitolo \emph{Introduzione}}
 \end{frame}
 
-\section{Logica, inferenze e proposizioni}
+\section{Logica}
 
 \begin{frame}{Cos'è la logica}
 	\begin{definition}[Logica]
 		La \alert{logica} (dal greco \textit{logos}, ovvero ``parola'', ``pensiero'') è lo studio del ragionamento.
 	\end{definition}
+	\pause
 	\begin{example}[Esempi di ragionamento]
 		\begin{columns}
 			\column{0.5\textwidth}
@@ -43,6 +44,7 @@
 			\alert{Sono ragionamenti corretti?}
 		\end{columns}
 	\end{example}
+	\pause
 	\begin{block}{Nota}
 		Esistono varie forme di ragionamento, qui siamo interessati solo al \alert{ragionamento deduttivo}.
 	\end{block}
@@ -50,9 +52,6 @@
 
 \begin{frame}{Inferenze}
 	La forma principale del ragionamento è quella dell'\alert{inferenza}.
-	\begin{definition}[Inferenza]
-		Una \alert{inferenza} è una sequenza di \alert{proposizioni} di cui l'ultima è ottenuta come \alert{conclusione} delle rimanenti, che si assumono come \alert{premesse}.
-	\end{definition}
 	\begin{example}
 		\medskip
 		\[
@@ -69,27 +68,27 @@
 				\node (p2) [below of=p1] {\prop{Socrate è un uomo}.};
 				\node (c) [below of=p2] {\prop{Socrate è mortale}.};
 				\begin{scope}[on background layer]
-					\only<2->{\node (inf) [greenstyle, fit={(p1) (p2) (c)}, inner sep=0.5cm] {};}
-					\only<4->{\node (premises) [redstyle, fit={(p1) (p2)},  inner sep=0.2cm] {};}
-					\only<5->{\node (conclusion) [yellowstyle, fit={(c)},  inner sep=0.2cm] {};}
-					\only<3->{\node (prop1) [bluestyle, fit={(p1)},  inner sep=-0.05cm] {};}
-					\only<3->{\node (prop2) [bluestyle, fit={(p2)},  inner sep=-0.05cm] {};}
-					\only<3->{\node (prop3) [bluestyle, fit={(c)},  inner sep=-0.05cm] {};}
+					\only<1->{\node (inf) [greenstyle, fit={(p1) (p2) (c)}, inner sep=0.5cm] {};}
+					\only<3->{\node (premises) [redstyle, fit={(p1) (p2)},  inner sep=0.2cm] {};}
+					\only<4->{\node (conclusion) [yellowstyle, fit={(c)},  inner sep=0.2cm] {};}
+					\only<2->{\node (prop1) [bluestyle, fit={(p1)},  inner sep=-0.05cm] {};}
+					\only<2->{\node (prop2) [bluestyle, fit={(p2)},  inner sep=-0.05cm] {};}
+					\only<2->{\node (prop3) [bluestyle, fit={(c)},  inner sep=-0.05cm] {};}
 				\end{scope}
 				\draw ($(c.west) + (-1cm,0.5cm)$) -- ($(c.east) + (1cm,0.5cm)$);
-				\only<2->{
+				\only<1->{
 					\draw (inf) ++ (-4.5cm,0cm)  node (inflabel) [greenstyle] {Inferenza};
 					\draw [thick, ->] (inflabel) -- (inf.west);
 				}
-				\only<4->{
+				\only<3->{
 					\draw (premises) ++ (-4.5cm,0cm)  node (premiseslabel) [redstyle] {Premesse};
 					\draw [thick, ->] (premiseslabel) -- (premises.west);
 				}
-				\only<5->{
+				\only<4->{
 					\draw (conclusion) ++ (-4.5cm,0cm)  node (conclusionlabel) [yellowstyle] {Conclusione};
 					\draw [thick, ->] (conclusionlabel) -- (conclusion.west);
 				}
-				\only<3->{
+				\only<2->{
 					\draw (prop2) ++ (+4.5cm,0cm)  node (proplabel) [bluestyle] {Proposizioni};
 					\draw [thick, ->] (proplabel) -- (prop1.east);
 					\draw [thick, ->] (proplabel) -- (prop2.east);
@@ -98,16 +97,23 @@
 			\end{tikzpicture}
 		\]
 	\end{example}
+	\uncover<5>{
+		\begin{definition}[Inferenza]
+			Una \alert{inferenza} è una sequenza di \alert{proposizioni} di cui l'ultima è ottenuta come \alert{conclusione} delle rimanenti, che si assumono come \alert{premesse}.
+		\end{definition}
+	}
 \end{frame}
 
+\section{Proposizioni}
+
 \begin{frame}{Proposizioni}
-	\begin{definition}[Proposizione]
-		Una \alert{proposizione} è una qualsiasi espressione linguistica per la quale ha senso chiedersi se sia vera o falsa.
+	\begin{definition}[Proposizione: definizione preliminare]
+		Una \alert{proposizione} è una qualsiasi espressione linguistica per la quale ha senso chiedersi se sia \alert{vera} o \alert{falsa}.
 	\end{definition}
 	\begin{example}[Proposizioni \checkmark o no? \xmark]
 		\begin{itemize}
-			\item \prop{Elisa ama Massimo} \pause \checkmark
-			\item \prop{Elisa ama Massimo?} \pause \xmark\ (è una \emph{domanda})
+			\item \prop{L'Italia confina con la Francia} \pause \checkmark
+			\item \prop{L'Italia confina con la Francia?} \pause \xmark\ (è una \emph{domanda})
 			\item \prop{$4 + 2 = 6$} \pause  \checkmark
 			\item \prop{$4 + 2 = 5$} \pause \checkmark (è falsa, ma è comunque una proposizione)
 			\item \prop{$3 + 5^2$} \pause \ \xmark \ (è una \emph{descrizione})
@@ -118,62 +124,93 @@
 	\end{example}
 \end{frame}
 
-% \begin{frame}{Proposizioni}
-% 	\begin{definition}[Proposizione]
-% 		Una \alert{proposizione} è una qualsiasi espressione linguistica per la quale ha senso chiedersi se sia vera o falsa.
-% 	\end{definition}
-% 	Non è necessario che sappiamo dire veramente se una proposizione è vera o falsa.
+\begin{frame}{Verità e conoscenza}
+	\begin{block}{Osservazione}
+		Il fatto che una proposizione possa essere vera o falsa non significa che dobbiamo essere in grado di stabilire quale delle due possibilità si verifichi.
+	\end{block}
 
-% 	\begin{example}[Mancanza di contesto]
-% 		\emph{Luigi è più alto di Michele.}
+	\begin{example}[La congettura di Goldbach]
+		\smallskip
+		\begin{proposition}
+			Ogni numero pari maggiore di 2 può essere scritto come somma di due numeri primi.
+		\end{proposition}
 
-% 		\medskip
-% 		Se non sappiamo a chi ci riferiamo con Luigi e Michele, non sappiamo le proposizione è vera o falsa.
-% 	\end{example}
+		\pause
+		Facciamo qualche esperimento:\\
+		\begin{center}
+			$4 =$ \pause $2+2$; \pause \qquad $6 =$ \pause $3+3$; \qquad $8 =$ \pause $3+5$; \pause \qquad $10 =$ \pause $5+5$; \pause  \qquad \ldots \qquad
+			$20 =$ \pause $13 + 7$ \pause
+		\end{center}
+		È stata verificata\footnote{\href{https://www.jstor.org/stable/24488269}{Tomás Oliveira e Silva, Siegfried Herzog, Silvio Pardi. Empirical Verification of the even Goldbach’s Conjecture of Prime Gaps up to $4 \cdot 10^{18}$. Mathematics of Computation 83 (288), pp 2033--2060, 2014.}} nel 2014 per tutti i numeri pari fino a $4 \cdot 10^{18}$ (4 miliardi di miliardi), ma per i numeri più grandi ?
 
-% 	\begin{example}[Congettura di Goldbach]
-% 		\emph{Ogni numero pari maggiore di 2 può essere scritto come somma di due numeri primi (eventualmente uguali).}
-
-% 		\medskip
-% 		È stata verificata al calcolatore fino a  $4 \cdot 10^{18}$, ma nessuno è mai riuscito a dimostrarla.
-% 	\end{example}
-% \end{frame}
-
-\begin{frame}{Valori di verità}
-	\begin{definition}[Principio di bivalenza]
-		Una proposizione può assumere uno e uno solo dei due \alert{valori di verità}:
-		\begin{itemize}
-			\item vero (\alert{V}), oppure true in inglese (\alert{T})
-			\item falso (\alert{F}), oppure false in inglese (\alert{F})
-		\end{itemize}
-	\end{definition}
-	Nella vita quotidiana, questo principio non sempre si applica:
-	\begin{itemize}
-		\item è quasi certo che \ldots
-		\item è probabile che \ldots
-		\item sono abbastanza sicuro che \ldots
-	\end{itemize}
-	La logica si occupa anche dei casi in cui il principio di bivalenza non vale, ma non lo faremo in questo corso.
+		\pause
+		\smallskip
+		\alert{Nessuno sa se è vera, ma è comunque una proposizione.}
+	\end{example}
 \end{frame}
 
 \begin{frame}{Proposizioni ed enunciati}
-	Quando vorremo essere più precisi, distingueremo tra \alert{proposizioni} ed \alert{enunciati}:
-	\begin{itemize}
-		\item una proposizione è qualcosa che può essere valutata come vera o falsa;
-		\item un enunciato è una sequenza di parole che esprime una proposizione.
-	\end{itemize}
+	Quando vorremo essere più precisi, distingueremo tra \alert{proposizioni} ed \alert{enunciati}.
 
-	\medskip
-	Un esempio dovrebbe rendere evidente la differenza. Consideriamo le tre frasi:
-	\begin{itemize}
-		\item \prop{il gatto non è nero}
-		\item \prop{non è vero che il gatto è nero}
-		\item \prop{the cat is not black}
-	\end{itemize}
-	Questi sono tre enunciati che però vogliono dire la stessa cosa, ovvero esprimono la stessa proposizione.
+	\begin{definition}[Proposizione]
+		Una \alert{proposizione} è ciò che viene affermato e che può essere vero o falso.
+	\end{definition}
+
+	\begin{definition}[Enunciato]
+		Un \alert{enunciato} è un'espressione linguistica che esprime una proposizione.
+	\end{definition}
+
+	\begin{example}
+		Consideriamo le tre frasi:
+		\begin{itemize}
+			\item \prop{Il numero 7 è primo}
+			\item \prop{7 è un numero primo}
+			\item \prop{Seven is a prime number}
+		\end{itemize}
+		Questi sono tre enunciati che esprimono la stessa proposizione.
+	\end{example}
 \end{frame}
 
-%
+\begin{frame}{Enunciati e contesto (1)}
+	\begin{block}{Osservazione}
+		Alcuni enunciati esprimono una proposizione soltanto quando sono interpretati in un \alert{contesto}.
+	\end{block}
+
+	\begin{example}
+		Consideriamo l'enunciato:
+		\begin{proposition}
+			Luigi è più alto di Michele.
+		\end{proposition}
+		\pause
+		Senza ulteriori informazioni, non sappiamo a quali persone si
+		riferiscano i nomi ``Luigi'' e ``Michele''. L'enunciato non determina
+		quindi una proposizione precisa.
+
+		\medskip
+		In un contesto appropriato, per esempio se Luigi e Michele sono due
+		miei compagni di classe, i nomi identificano due persone determinate.
+		L'enunciato esprime allora una proposizione, che è vera oppure falsa.
+	\end{example}
+\end{frame}
+
+\begin{frame}{Enunciati e contesto (2)}
+	Possiamo quindi perfezionare la definizione di \alert{enunciato} come seuge:
+
+	\begin{definition}[Enunciato]
+		Un \alert{enunciato} è un'espressione linguistica che. \alert{in un determinato contesto} esprime una proposizione.
+	\end{definition}
+
+	\pause
+	\medskip
+	Nel resto del corso:
+	\begin{itemize}
+		\item utilizzeremo regolarmente enunciati come ``\prop{Luigi è più alto di Michele}'', assumendo che un contesto c'è anche se non sappiamo quale;
+		\item eviteremo di distinguere tra enunciati e proposizioni se non strettamente necessario.
+	\end{itemize}
+\end{frame}
+
+
+
 %\begin{frame}{Introduciamo qualche simbolo}
 %	\textbf{Variabili per proposizioni}\\
 %	Quando vogliamo indicare una proposizione senza specificarla esattamente, useremo le lettere maiuscole: $A$, $B$, $C$, \ldots, $P$, \ldots.
@@ -210,6 +247,45 @@
 % 	\end{block}
 % \end{frame}
 
+\section{Inferenze}
+
+\begin{frame}{Ritorniamo alle inferenze}
+	\[
+		\begin{tikzpicture}
+			\tikzset{
+				fillstyle/.style={rounded corners, draw=black},
+				greenstyle/.style={fillstyle,fill=green!50},
+				redstyle/.style={fillstyle,fill=red!50},
+				bluestyle/.style={fillstyle,fill=blue!50},
+				yellowstyle/.style={fillstyle,fill=yellow!50}
+			}
+			\clip (-6cm, -3cm) rectangle (6cm, 0.5cm);
+			\node (p1) {\prop{Tutti gli uomini sono mortali}.};
+			\node (p2) [below of=p1] {\prop{Socrate è un uomo}.};
+			\node (c) [below of=p2] {\prop{Socrate è mortale}.};
+			\begin{scope}[on background layer]
+				\node (inf) [greenstyle, fit={(p1) (p2) (c)}, inner sep=0.5cm] {};
+				\node (premises) [redstyle, fit={(p1) (p2)},  inner sep=0.2cm] {};
+				\node (conclusion) [yellowstyle, fit={(c)},  inner sep=0.2cm] {};
+				\node (prop1) [bluestyle, fit={(p1)},  inner sep=-0.05cm] {};
+				\node (prop2) [bluestyle, fit={(p2)},  inner sep=-0.05cm] {};
+				\node (prop3) [bluestyle, fit={(c)},  inner sep=-0.05cm] {};
+			\end{scope}
+			\draw ($(c.west) + (-1cm,0.5cm)$) -- ($(c.east) + (1cm,0.5cm)$);
+			\draw (inf) ++ (-4.5cm,0cm)  node (inflabel) [greenstyle] {Inferenza};
+			\draw [thick, ->] (inflabel) -- (inf.west);
+			\draw (premises) ++ (-4.5cm,0cm)  node (premiseslabel) [redstyle] {Premesse};
+			\draw [thick, ->] (premiseslabel) -- (premises.west);
+			\draw (conclusion) ++ (-4.5cm,0cm)  node (conclusionlabel) [yellowstyle] {Conclusione};
+			\draw [thick, ->] (conclusionlabel) -- (conclusion.west);
+			\draw (prop2) ++ (+4.5cm,0cm)  node (proplabel) [bluestyle] {Proposizioni};
+			\draw [thick, ->] (proplabel) -- (prop1.east);
+			\draw [thick, ->] (proplabel) -- (prop2.east);
+			\draw [thick, ->] (proplabel) -- (prop3.east);
+		\end{tikzpicture}
+	\]
+\end{frame}
+
 \begin{frame}{Inferenze corrette}
 	\begin{definition}[Inferenza  corretta]
 		Un'inferenza è \alert{corretta} (o \alert{valida}) se ogni qualvolta le premesse sono vere, allora anche la conclusione è necessariamente vera.
@@ -228,7 +304,6 @@
 		In alternativa, possiamo dire che l'inferenza è corretta quando è impossibile che le premesse siano vere e la conclusione falsa.
 	\end{block}
 \end{frame}
-
 
 \begin{frame}{Inferenze corrette e verità delle conclusioni}
 	Il fatto che un'inferenza sia corretta non vuol dire che la conclusione sia vera.
@@ -250,32 +325,35 @@
 	\end{center}
 
 	\medskip
-	L'inferenza è corretta, ma se un giorno dovessimo scoprire che Carlo è nato a Roma e Stefano è di Pescara, la conclusione dell'inferenza sarebbe falsa. Ma ciò è normale, perché le premesse dell'inferenza non erano vere!
+	L'inferenza è corretta, ma se un giorno dovessimo scoprire che Carlo non è ligure  e Stefano non è piemontese, la conclusione dell'inferenza sarebbe falsa. Ma ciò è normale, perché le premesse dell'inferenza non erano vere!
 \end{frame}
 
-\begin{frame}{Inferenze e contesto}
-	Non consideriamo corrette inferenze la cui correttezza dipende da conoscenze di contesto non esplicitate.
-	\begin{example}[Inferenza non corretta]
+\begin{frame}{Premesse implicite}
+	Nei ragionamenti quotidiani, alcune informazioni possono
+	rimanere sottintese.
+
+	\begin{example}[Una premessa sottintesa]
 		\begin{columns}
-			\begin{column}{0.3\textwidth}
-				\begin{center}
-					\begin{inference}
-						Marco è pescarese\\
-						\hline
-						Marco è abruzzese
-					\end{inference}
-				\end{center}
-				\vspace{0.1cm}
+			\begin{column}{0.35\textwidth}
+				\centering
+				\begin{inference}
+					Marco è pescarese\\
+					\hline
+					Marco è abruzzese
+				\end{inference}
 			\end{column}
-			\begin{column}{0.6\textwidth}
-				\pause
-				dipende dal significato di pescarese e abruzzese
+
+			\begin{column}{0.55\textwidth}
+				Per giustificare la conclusione stiamo usando
+				un'informazione che non compare tra le premesse.
 			\end{column}
 		\end{columns}
 	\end{example}
+
 	\pause
-	La si può rendere corretta esplicitando le assunzioni di fondo:
-	\begin{example}[Inferenza corretta]
+	Rendiamo esplicita l'informazione mancante:
+
+	\begin{example}[Tutte le premesse esplicite]
 		\begin{center}
 			\begin{inference}
 				Marco è pescarese\\
@@ -284,8 +362,11 @@
 				Marco è abruzzese
 			\end{inference}
 		\end{center}
-		\vspace{0.1cm}
 	\end{example}
+
+	\begin{block}{Convenzione}
+		Nel valutare un'inferenza, considereremo soltanto le premesse esplicitamente formulate, e considereremo la prima inferenza come scorretta.
+	\end{block}
 \end{frame}
 
 %\begin{frame}{Inferenze e struttura sintattica (1)}
@@ -309,7 +390,7 @@
 \section{Regole di inferenza}
 
 \begin{frame}{Inferenze e struttura sintattica}
-	Se rimpiazziamo ``Carlo è ligure'' e ``Stefano è piemontese'' con altre proposizioni, otteniamo altre inferenze corrette: quella che importa è solo la struttura sintattica delle proposizioni, chiamata \alert{forma logica}.
+	Se rimpiazziamo ``Carlo è ligure'' e ``Stefano è piemontese'' con altre proposizioni, otteniamo altre inferenze corrette: ciò che importa è solo la struttura sintattica delle proposizioni, chiamata \alert{forma logica}.
 	\begin{example}
 		\centering
 		\begin{inference}
@@ -328,27 +409,20 @@
 		\end{inference}
 
 		\medskip
-		% \begin{inference}
-		% 	Marcello è matematico o fisico\\
-		% 	Marcello non è fisico\\
-		% 	\hline
-		% 	Marcello è matematico
-		% \end{inference}
 		\begin{inference}
-			Due buchi neri si sono scontrati,\hspace{6cm}\hfill\\ \hfill o il rivelatore di onde gravitazionali è rotto.\\
-			Il rivelatore di onde gravitazionali non è rotto.\\
+			$x=2$ o $y=1$\\
+			$y \neq 1$\\
 			\hline
-			Due buchi neri si sono scontrati.
+			$x=2$
 		\end{inference}
 	\end{example}
-	%\small Per l'ultima inferenza, notate che dire ``Marcello è matematico o fisico'' è solo un modo compatto per dire ``Marcello è matematico o Marcello è fisico''.
 \end{frame}
 
 \begin{frame}{Regole di inferenza}
 	Mettiamo in evidenza la \alert{forma logica} dell'inferenza.
 	\begin{itemize}
 		\item usiamo delle \alert{lettere proposizionali}, al posto delle proposizioni;
-		\item lasciamo invariante parole chiavi come ``o'' e ``non'', chiamate \alert{connettivi}.
+		\item lasciamo invariate parole chiave come ``o'' e ``non'', chiamate \alert{connettivi}.
 	\end{itemize}
 	\begin{example}[Forma logica]
 		Se si pone \textit{A=``Carlo è ligure''} e \textit{B=``Stefano è piemontese''}:
@@ -611,7 +685,7 @@
 	È corretta?
 \end{frame}
 
-\begin{frame}{Fallacia della affermazione del conseguente (2)}
+\begin{frame}{Fallacia dell'affermazione del conseguente (2)}
 	All'apparenza potrebbe sembrare corretta, ma consideriamo un'altra istanza della regola.
 	\begin{center}
 		\begin{inference}
@@ -628,7 +702,7 @@
 	Anche questa inferenza \alert{non è corretta}: pensate di nuovo al caso in cui Fabio sia nato a Chieti.
 
 	\medskip
-	Ed infatti, se ci pensiamo bene, non è corretta neanche la prima inferenza: magari l'auto non parte perché è scarica la batteria.
+	Ed infatti, se ci pensiamo bene, non è corretta neanche la prima inferenza: magari l'auto non parte perché la batteria è scarica.
 \end{frame}
 
 \begin{frame}{Esercizi consigliati}
@@ -674,7 +748,7 @@
 
 \begin{frame}{Inferenze a livello predicativo}
 	\tikzstyle{every node} = [rounded corners, outer sep=0, inner sep=0.1cm]
-	Negli esempi visti prima, le regole di inferenza sono a livello di \alert{logica proposizionale}: la loro verità dipende dai legami tra le proposizioni.
+	Negli esempi visti prima, le regole di inferenza sono a livello di \alert{logica proposizionale}: la loro validità dipende dai legami tra le proposizioni.
 
 	\medskip
 	Queste inferenze sono più complesse:
@@ -906,39 +980,53 @@
 % 		\end{inference}
 % 	\end{center}
 
-% 	Invece le inferenze (e i ragionamenti deduttivi) \alert{sono monotòne}. Se aggiungo nuove premesse, l'inferenza rimane corretta.
+% 	Invece le inferenze (e i ragionamenti deduttivi) \alert{sono monotòni}. Se aggiungo nuove premesse, l'inferenza rimane corretta.
 
 % 	\medskip
 % 	Per questo l'inferenza è il meccanismo principale delle \alert{dimostrazioni matematiche}.
 % \end{frame}
 
-\begin{frame}{Inferenze e monotònia}
-	\begin{itemize}
-		\item Ragionamenti induttivi e abduttivi \alert{non sono monotòni}: nuove premesse possono trasformare la conclusione del ragionamento.
-		      \begin{center}
-			      \begin{inference}
-				      L'assassino ha lasciato tracce di fango\\
-				      Chiunque fosse entrato dal giardino, avrebbe lasciato tracce di fango\\
-				      \textcolor{blue}{Un uomo è stato visto imbrattare appositamente le scarpe di fango}\\
-				      \hline
-				      L'assassino non è entrato dal giardino
-			      \end{inference}
-		      \end{center}
 
-		\item Invece il ragionamento deduttivo \alert{è monotòno}: se aggiungo nuove premesse, un'inferenza rimane corretta. Per questo il ragionamento deduttivo è il meccanismo principale delle \alert{dimostrazioni matematiche}:
+\begin{frame}{Inferenze e monotònia (1)}
+	Il ragionamento deduttivo \alert{è monotòno}: se aggiungo nuove premesse, un'inferenza rimane corretta. Per questo il ragionamento deduttivo è il meccanismo principale delle \alert{dimostrazioni matematiche}:
+	\begin{itemize}
+		\item si parte da proposizioni assunte vere per principio, chiamate \alert{assiomi};
 		      \begin{itemize}
-			      \item si parte da proposizioni assunte vere per principio, chiamate \alert{assiomi};
-			            \begin{itemize}
-				            \item assiomi di Euclide, assiomi dei numeri reali, etc\ldots
-			            \end{itemize}
-			      \item si applicano inferenze corrette a premesse vere per ottenere conclusioni vere (\alert{teoremi});
-			      \item in questo modo il teorema sarà vero per sempre:
-			            \begin{itemize}
-				            \item \link{\url{https://youtu.be/LlED5V7EuFY?si=40FmAOQ4491dCbVQ&t=313}}
-			            \end{itemize}
+			      \item assiomi di Euclide, assiomi dei numeri reali, etc\ldots
 		      \end{itemize}
+		\item si applicano inferenze corrette a premesse vere per ottenere conclusioni vere (\alert{teoremi});
+		\item in questo modo i teoremi ottenuti sarnno veri per sempre.
+		\begin{itemize}
+			\item Vi consiglio la visione di questo video umoristico di Eduardo Saenz de Cabezon: \emph{A cosa serve la matematica}.
+			\item \link{\url{https://youtu.be/LlED5V7EuFY?si=40FmAOQ4491dCbVQ&t=313}}
+		\end{itemize}
 	\end{itemize}
 \end{frame}
+
+\begin{frame}{Inferenze e monotònia (2)}
+	Ragionamenti induttivi e abduttivi invece \alert{non sono monotòni}: nuove premesse possono trasformare la conclusione del ragionamento. Partiamo dal ragionamento di prima:
+	\begin{center}
+		\begin{inference}
+			L'assassino ha lasciato tracce di fango\\
+			Chiunque fosse entrato dal giardino, avrebbe lasciato tracce di fango\\
+			\hline
+			L'assassino è entrato dal giardino
+		\end{inference}
+	\end{center}
+
+	\pause
+	Ma se qualcuno ha visto un uomo imbrattare volutamente le scarpe di fanghe prima dell'omicio, forse si potrebbe pensare ad un \alert{depistaggio}, e l'inferenza potrebbe cambiare in:
+	\begin{center}
+		\begin{inference}
+			L'assassino ha lasciato tracce di fango\\
+			Chiunque fosse entrato dal giardino, avrebbe lasciato tracce di fango\\
+			\textcolor{blue}{Un uomo è stato visto imbrattare appositamente le scarpe di fango}\\
+			\hline
+			L'assassino non è entrato dal giardino
+		\end{inference}
+	\end{center}
+\end{frame}
+
 
 \begin{frame}{L'esempio di Charles S. Peirce (1839-1914)}
 	\begin{inference}
