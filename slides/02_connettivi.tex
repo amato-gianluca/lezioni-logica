@@ -1,10 +1,9 @@
 \documentclass[aspectratio=169,10pt,dvipsnames,handout]{beamer}
-
 %\setbeameroption{show notes}
 
 \input{preamble.inc}
 
-\title{Connettivi}
+\title{Logica proposizionale}
 
 \begin{document}
 
@@ -20,6 +19,108 @@
     \bookpage{sui capitoli 1 (solo la prima pagina) e 2 (esclusa sezione 2.3)}
 \end{frame}
 
+\section{Logica delle proposizioni}
+
+\begin{frame}{Dalla lezione precedente (1)}
+    \begin{definition}[Logica]
+        La \alert{logica} (dal greco \textit{logos}, ovvero ``parola'', ``pensiero'') è lo studio del ragionamento.
+    \end{definition}
+    \pause
+    \begin{block}{Forme di ragionamento}
+        Esistono varie forme di ragionamento, tra cui
+        \begin{itemize}
+            \item \alert{ragionamento deduttivo},
+            \item \alert{ragionamento induttivo},
+            \item \alert{ragionamento abduttivo}.
+        \end{itemize}
+        Noi siamo interessati al solo ragionamento deduttivo.
+    \end{block}
+
+    \pause
+    \medskip
+    \begin{block}{Inferenza}
+        Una delle forme fondamentali del ragionamento è l'inferenza.
+    \end{block}
+\end{frame}
+
+\begin{frame}{Dalla lezione precedente (2)}
+    \begin{definition}[Inferenza]
+        Una \alert{inferenza} è una sequenza di \alert{proposizioni} di cui l'ultima è ottenuta come \alert{conclusione} delle rimanenti, che si assumono come \alert{premesse}.
+    \end{definition}
+
+    \medskip
+    \[
+        \begin{tikzpicture}[scale=0.9, transform shape]
+            \tikzset{
+                fillstyle/.style={rounded corners, draw=black},
+                greenstyle/.style={fillstyle,fill=green!50},
+                redstyle/.style={fillstyle,fill=red!50},
+                bluestyle/.style={fillstyle,fill=blue!50},
+                yellowstyle/.style={fillstyle,fill=yellow!50}
+            }
+            \clip (-6cm, -3cm) rectangle (6cm, 0.5cm);
+            \node (p1) {\prop{Tutti gli uomini sono mortali}.};
+            \node (p2) [below of=p1] {\prop{Socrate è un uomo}.};
+            \node (c) [below of=p2] {\prop{Socrate è mortale}.};
+            \begin{scope}[on background layer]
+                \node (inf) [greenstyle, fit={(p1) (p2) (c)}, inner sep=0.5cm] {};
+                \node (premises) [redstyle, fit={(p1) (p2)},  inner sep=0.2cm] {};
+                \node (conclusion) [yellowstyle, fit={(c)},  inner sep=0.2cm] {};
+                \node (prop1) [bluestyle, fit={(p1)},  inner sep=-0.05cm] {};
+                \node (prop2) [bluestyle, fit={(p2)},  inner sep=-0.05cm] {};
+                \node (prop3) [bluestyle, fit={(c)},  inner sep=-0.05cm] {};
+            \end{scope}
+            \draw ($(c.west) + (-1cm,0.5cm)$) -- ($(c.east) + (1cm,0.5cm)$);
+            \draw (inf) ++ (-4.5cm,0cm)  node (inflabel) [greenstyle] {Inferenza};
+            \draw [thick, ->] (inflabel) -- (inf.west);
+            \draw (premises) ++ (-4.5cm,0cm)  node (premiseslabel) [redstyle] {Premesse};
+            \draw [thick, ->] (premiseslabel) -- (premises.west);
+            \draw (conclusion) ++ (-4.5cm,0cm)  node (conclusionlabel) [yellowstyle] {Conclusione};
+            \draw [thick, ->] (conclusionlabel) -- (conclusion.west);
+            \draw (prop2) ++ (+4.5cm,0cm)  node (proplabel) [bluestyle] {Proposizioni};
+            \draw [thick, ->] (proplabel) -- (prop1.east);
+            \draw [thick, ->] (proplabel) -- (prop2.east);
+            \draw [thick, ->] (proplabel) -- (prop3.east);
+        \end{tikzpicture}
+    \]
+    \begin{definition}[Proposizione]
+        Una \alert{proposizione} è una qualsiasi espressione linguistica per la quale ha senso chiedersi se sia \alert{vera} o \alert{falsa}.
+    \end{definition}
+\end{frame}
+
+\begin{frame}{Valore di verità}
+    \begin{block}{Valore di verità}
+        Possiamo pensare di associare ad ogni proposizione un \alert{valore di verità}, che ci dice in quale modo la proposizione si rapporta alla verità.
+    \end{block}
+    Possiamo quindi dire che la proposizione $3+2=5$ è vera o, alternativamente, che il valore di verità della proposizione $3+2=5$ è vero.
+
+    \medskip\pause
+    In linea di principio, la nostra definizione di proposizione è molto \emph{prudente}, e lascia aperta la possibilità che ci siano diversi valori di verità.
+
+    \begin{example}
+        Prendiamo la proposizione
+        \begin{proposition}
+            Carlo è alto.
+        \end{proposition}
+        Difficile dire se è vera o falsa in assoluto, perché non abbiamo un'idea precisa di cosa voglia dire \emph{alto}. Un metro e ottanta è alto? Un metro e novanta? Potremmo allora pensare di associare diversi valori di verità a seconda di quanto alto sia Carlo. Si ottiene così la \alert{logica fuzzy}.
+    \end{example}
+\end{frame}
+
+\begin{frame}{Principio di bivalenza}
+    Noi però ci occuperemo solo della \alert{logica classica}, in cui una proposizione può essere solo vera o falsa. In altre parole, la logica classica gode del \alert{principio di bivalenza}.
+
+    \begin{definition}[Principio di bivalenza]
+        Una proposizione può assumere esattamente uno dei due valori di verità:
+        \begin{itemize}
+            \item vero (\alert{V}), oppure true in inglese (\alert{T})
+            \item falso (\alert{F}), oppure false in inglese (\alert{F})
+        \end{itemize}
+    \end{definition}
+
+    \pause\medskip
+    In futuro, per enunciati come \prop{``Carlo è alto''} supporremo che ci sia un contesto nel quale interpretare la parola ``alto'', in modo da poter dire se la proposizione è vera o falsa.
+\end{frame}
+
 \begin{frame}{Proposizioni semplici e composte}
     Abbiamo visto nella lezione introduttiva che per studiare le inferenze dobbiamo rendere esplicita la \alert{forma logica} delle proposizioni, ovvero ciò che è rilevante per riconoscere il nesso tra premesse e conclusione.
 
@@ -32,19 +133,19 @@
 
     \vspace*{-0.5cm}
     \begin{columns}[t]
+        \column{0.50\textwidth}
+        \begin{example}[Proposizioni composte]
+            \propshape
+            Non è vero che {\only<3->{\color{blue}}Carlo è ligure}\\
+            {\only<4->{\color{blue}}Marcello è matematico} o fisico\\
+            Se {\only<5->{\color{blue}}manca la benzina}, {\only<5->{\color{blue}}l'auto non parte}
+        \end{example}
         \column{0.45\textwidth}
         \begin{example}[Proposizioni semplici]
             \propshape
             Carlo è ligure\\
             Carlo è più alto di Mario\\
             Tutti gli uomini sono mortali
-        \end{example}
-        \column{0.50\textwidth}
-        \begin{example}[Proposizioni composte]
-            \propshape
-            Non è vero che Carlo è ligure\\
-            Marcello è matematico o fisico\\
-            Se manca la benzina, l'auto non parte
         \end{example}
     \end{columns}
 \end{frame}
@@ -325,7 +426,7 @@
 
         \medskip
         \uncover<8->{
-            Non possiamo riempire l'ultima riga della tabella: Lucia ha guardato la TV e mangiato, ma lo ha fatto nello stesso momento o in momenti diversi?
+            Non possiamo riempire l'ultima riga della tabella: Lucia ha guardato la TV e ha mangiato una mela, ma lo ha fatto nello stesso momento o in momenti diversi?
         }
     }
 \end{frame}
@@ -391,10 +492,10 @@
                   \item la disgiunzione inclusiva è vera quando \alert{almeno una} delle proposizioni di base è vera;
               \end{itemize}
               \pause
-        \item se per voi la frase è \textbf{falsa}, vuol dire che considerate la ``\conn{o}'' in  senso \alert{esclusivo}
+        \item se per voi la frase è \textbf{falsa}, vuol dire che considerate la ``\conn{o}'' in senso \alert{esclusivo}
               \begin{itemize}
                   \item se entrambe le proposizioni di base sono vere, la disgiunzione è falsa;
-                  \item per voi la ``\conn{o}'' introduce una alternativa tra due possibilità, una delle quali deve essere falsa;
+                  \item per voi la ``\conn{o}'' introduce un'alternativa tra due possibilità, una delle quali deve essere falsa;
                   \item la disgiunzione esclusiva è vera quando \alert{esattamente una} delle proposizioni di base è vera.
               \end{itemize}
     \end{itemize}
@@ -469,7 +570,7 @@
 \end{frame}
 
 \begin{frame}{Disgiunzione inclusiva ed esclusiva nella lingua italiana (1)}
-    Ma la ``\conn{o}'' in italiano è inclusiva od esclusiva ?
+    Ma la ``\conn{o}'' in italiano è inclusiva o esclusiva?
 
     \pause
     \medskip
@@ -483,7 +584,7 @@
     \end{example}
 
     \pause
-    Ovviamente no, perché sappiamo che uno stato non può avere due capitali, ma se questa  ``impossibilità'' dettata dal contesto viene meno ?
+    Ovviamente no, perché sappiamo che uno stato non può avere due capitali, ma se questa ``impossibilità'' dettata dal contesto viene meno?
 
 \end{frame}
 
@@ -543,7 +644,7 @@
     In matematica, informatica e nelle scienze sperimentali, le parole ``\conn{o}'' e ``\conn{oppure}'' vanno sempre interpretate in maniera inclusiva. Pertanto:
     \begin{itemize}
         \item la proposizione ``$2 + 2 = 4$ \conn{oppure} $5$ è dispari'' è vera;
-        \item da ora poi, in mancanza di ulteriore indicazioni, le parole ``\conn{o}'' e ``\conn{oppure}'' saranno sempre interpretate in maniera inclusiva.
+        \item d'ora in poi, in mancanza di ulteriori indicazioni, le parole ``\conn{o}'' e ``\conn{oppure}'' saranno sempre interpretate in maniera inclusiva.
     \end{itemize}
 \end{frame}
 
@@ -628,12 +729,12 @@
     \end{example}
 \end{frame}
 
-\begin{frame}{Interpretazione dell'implicazione (3)}
+\begin{frame}{Interpretazione dell'implicazione (2)}
     Se avete dubbi sulla seconda riga della tabella di prima è perché spesso in italiano diciamo \conn{se \ldots allora} ma in realtà intendiamo \conn{se e solo se} (che è un altro connettivo).
 
     \pause
     \begin{example}
-        Supponiamo che un amico ci ha assicurato che:
+        Supponiamo che un amico ci abbia assicurato che:
         \begin{itemize}
             \item \prop{\conn{se} piove \conn{allora} vengo a prenderti in macchina}
         \end{itemize}
@@ -651,7 +752,7 @@
     \end{example}
 \end{frame}
 
-\begin{frame}{Interpretazione dell'implicazione in italiano (2)}
+\begin{frame}{Interpretazione dell'implicazione in italiano (3)}
     Se proviamo a interpretare la tavola di verità dell'implicazione ``da sinistra verso destra'', otteniamo spesso qualcosa di poco sensato.
 
     \medskip
@@ -756,7 +857,7 @@
     In conclusione,
     \begin{itemize}
         \item l'implicazione nel linguaggio naturale è spesso diversa dall'implicazione materiale in logica;
-        \item non a caso in Python (e in altri linguaggi di programmazione) esistono gli operatori logici \texttt{and}, \texttt{or}, \texttt{not} ma non esiste una operazione per l'implicazione;
+        \item non a caso in Python (e in altri linguaggi di programmazione) esistono gli operatori logici \texttt{and}, \texttt{or}, \texttt{not} ma non esiste un'operazione per l'implicazione;
         \item l'implicazione materiale è molto usata in matematica, ma quasi sempre in presenza di variabili:
               \begin{itemize}
                   \item è difficile trovare affermazioni del tipo ``\prop{\conn{se} 8 è divisibile per 4 \conn{allora} 8 è divisibile per 2}\/'';
@@ -804,22 +905,21 @@
 \begin{frame}{Altre forme dell'implicazione in linguaggio naturale (1)}
     L'implicazione, nel linguaggio naturale, compare spesso in forme diverse rispetto al \conn{se \ldots allora}, non sempre immediate da interpretare.
 
-    \medskip
-    Nella tabella seguente, potete pensare ad $A$ come ``x è divisibile per 4'' ed B come ``x è divisibile per 2''. Stiamo un po' barando perché non si tratta di proposizioni bensì di funzioni proposizionali, ma in questo contesto non cambia nulla.
+    \medskip Supponiamo quindi che sia $A$ la proposizione ``$x > 2$'' e $B$ la proposizione ``$x$ > 1''. Le seguenti sono tutte forme equivalenti di $A \to B$:
 
     \begin{center}
         \begin{tabular}{c|c}
-            proposizione in italiano                              & proposizione in simboli \\
+            schema linguistico                                   & proposizione \\
             \hline
-            \conn{se} A \conn{allora} B                           & \pause A $\to$ B        \\
-            \pause A \conn{se} B                                  & \pause B $\to$ A        \\
-            \pause A \conn{solo se} B                             & \pause A $\to$ B        \\
-            \pause \conn{da} A \conn{segue} B                     & \pause A $\to$ B        \\
-            \pause A \conn{implica} B                             & \pause A $\to$ B        \\
-            \pause A \conn{è condizione sufficiente per} B        & \pause A $\to$ B        \\
-            \pause A \conn{è condizione necessaria per} B         & \pause B $\to$ A        \\
-            \pause \conn{condizione sufficiente per} A \conn{è} B & \pause B $\to$ A        \\
-            \pause \conn{condizione necessaria per} A \conn{è} B  & \pause A $\to$ B
+            \conn{se} A \conn{allora} B                          & se $x > 2$ allora $x > 1$ \\
+            \pause B \conn{se} A                                 & $x > 1$, se $x > 2$  \\
+            \pause A \conn{solo se} B                            & $x > 2$ solo se $x > 1$  \\
+            \pause \conn{da} A \conn{segue} B                    & da $x > 2$ segue $x > 1$ \\
+            \pause A \conn{implica} B                            & $x > 2$ implica $x > 1$ \\
+            \pause A \conn{è condizione sufficiente per} B       & $x > 2$ è condizione sufficiente per $x > 1$\\
+            \pause B \conn{è condizione necessaria per} A          & $x > 1$ è condizione necessaria per $x > 2$ \\
+            \pause \conn{condizione sufficiente per} B \conn{è} A  & condizione sufficiente per $x > 1$ è $x > 2$\\
+            \pause \conn{condizione necessaria per} A \conn{è} B   & condizione necessaria per $x > 2$ è $x > 1$
         \end{tabular}
     \end{center}
 \end{frame}
